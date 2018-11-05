@@ -1,11 +1,11 @@
 {% if accordion_first|default %}
-    <div class="accordion" id="accordion{{ accordion_parentId }}">
+    <div class="accordion" id="accordion_{{ accordion_parentId }}">
 {% endif %}
 
 <section class="card {{ class }} ce_accordion ce_text block"{{ cssID }}{% if style|default %} style="{{ style }}"{% endif %}>
     <div class="card-header" id="heading_{{ id }}">
         <{{ hl }} class="mb-0">
-            <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapse_{{ id }}" data-parent="#accordion{{ accordion_parentId }}" aria-expanded="true" aria-controls="collapse_{{ id }}">
+            <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapse_{{ id }}" data-parent="#accordion_{{ accordion_parentId }}" aria-expanded="true" aria-controls="collapse_{{ id }}">
                 {{ headline }}
             </button>
         </{{ hl }}>
