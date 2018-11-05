@@ -25,6 +25,8 @@ If you don't want to use *automapping* you can also assign the template you want
 Contao content element | Contao template | Twig template | Notes
 ---------------------- | --------------- | ------------- | -----
 `ContentAccordion` | `ce_accordionSingle.html5` | `ce_accordionSingle_bs.html.twig` | single element accordions
+`ContentAccordionStart` | `ce_accordionStart.html5` | `ce_accordionStart_bs.html.twig` |
+`ContentAccordionStop` | `ce_accordionStop.html5` | `ce_accordionStop_bs.html.twig` |
 
 ### Supported modules
 

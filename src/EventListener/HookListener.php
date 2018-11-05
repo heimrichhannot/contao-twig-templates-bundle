@@ -48,6 +48,16 @@ class HookListener implements FrameworkAwareInterface, ContainerAwareInterface
                 $template->setData($data);
 
                 break;
+
+            case 'ce_accordionStart':
+            case 'ce_accordionStop':
+                $data = $template->getData();
+
+                $this->container->get('huh.utils.accordion')->structureAccordionStartStop($data);
+
+                $template->setData($data);
+
+                break;
         }
 
         // custom controls
