@@ -1,0 +1,13 @@
+services:
+  _instanceof:
+    Contao\CoreBundle\Framework\FrameworkAwareInterface:
+      calls:
+      - ["setFramework", ["@contao.framework"]]
+    Symfony\Component\DependencyInjection\ContainerAwareInterface:
+      calls:
+      - ["setContainer", ["@service_container"]]
+
+  huh.bootstrap_templates.event_listener.hook_listener:
+    class: HeimrichHannot\BootstrapTemplatesBundle\EventListener\HookListener
+    public: true
+    autowire: true

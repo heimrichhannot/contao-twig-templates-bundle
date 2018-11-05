@@ -1,0 +1,31 @@
+# Contao Bootstrap Templates Bundle
+
+This bundle offers templates using the latest [Bootstrap](https://getbootstrap.com) framework's CSS for the Contao CMS.
+
+## Features
+
+- contains various templates already styled with Bootstrap's CSS classes
+- template caching using [Twig](https://twig.symfony.com)
+- automatic usage of templates if the *bootstrap option* is checked in the layout (inspired by [contao-bootstrap/templates](https://github.com/contao-bootstrap/templates))
+
+## Installation
+
+Install via composer: `composer require heimrichhannot/contao-bootstrap-templates-bundle` and update your database.
+
+## Configuration
+
+It's as simple as that: Set the option `addBootstrap` in your existing layout or create a new one. This way the *automapping* takes place and
+according to the current content element or module, the correct template is used which name's usually built with the suffix `_bs`.
+
+If you don't want to use *automapping* you can also assign the template you want in the ordinary way by selecting it in the `customTpl` field of your module or content element.
+
+### Supported content elements
+
+Contao content element | Contao template | Twig template | Notes
+---------------------- | --------------- | ------------- | -----
+`ContentAccordion` | `ce_accordionSingle.html5` | `ce_accordionSingle_bs.html.twig` | single element accordions
+
+### Supported modules
+
+Contao module | Contao template | Twig template | Notes
+------------- | --------------- | ------------- | -----
