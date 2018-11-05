@@ -5,6 +5,7 @@ This bundle offers templates using the latest [Bootstrap](https://getbootstrap.c
 ## Features
 
 - contains various templates already styled with Bootstrap's CSS classes
+- (optional) support for custom form controls
 - template caching using [Twig](https://twig.symfony.com)
 - automatic usage of templates if the *bootstrap option* is checked in the layout (inspired by [contao-bootstrap/templates](https://github.com/contao-bootstrap/templates))
 
@@ -14,7 +15,7 @@ Install via composer: `composer require heimrichhannot/contao-bootstrap-template
 
 ## Configuration
 
-It's as simple as that: Set the option `addBootstrap` in your existing layout or create a new one. This way the *automapping* takes place and
+It's as simple as that: Set the option `addBootstrapTemplates` in your existing layout or create a new one. This way the *automapping* takes place and
 according to the current content element or module, the correct template is used which name's usually built with the suffix `_bs`.
 
 If you don't want to use *automapping* you can also assign the template you want in the ordinary way by selecting it in the `customTpl` field of your module or content element.
@@ -29,3 +30,4 @@ Contao content element | Contao template | Twig template | Notes
 
 Contao module | Contao template | Twig template | Notes
 ------------- | --------------- | ------------- | -----
+`ModuleLogin` | `mod_login.html5` | `mod_login_bs.html.twig` |
