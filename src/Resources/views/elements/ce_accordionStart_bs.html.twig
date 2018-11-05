@@ -3,16 +3,16 @@
     {% endif %}
 
     <div class="card {{ class }} ce_accordion block"{{ cssID }}{% if style|default %} style="{{ style }}"{% endif %}>
-        <div class="card-header" id="heading{{ id }}">
+        <div class="card-header" id="heading_{{ id }}">
             <{{ hl }} class="mb-0">
-                <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapse{{ id }}"
+                <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapse_{{ id }}"
                         data-parent="#accordion{{ accordion_parentId }}" aria-expanded="true"
-                        aria-controls="collapse{{ id }}">
+                        aria-controls="collapse_{{ id }}">
                     {{ headline }}
                 </button>
             </{{ hl }}>
         </div>
 
-        <div id="collapse{{ id }}" class="collapse{% if accordion_first|default %} show{% endif %}"
-             aria-labelledby="heading{{ id }}">
+        <div id="collapse_{{ id }}" class="collapse_{% if accordion_first|default %} show{% endif %}"
+             aria-labelledby="heading_{{ id }}">
             <div class="card-body">
