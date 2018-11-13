@@ -33,3 +33,9 @@ Contao content element | Contao template | Twig template | Notes
 Contao module | Contao template | Twig template | Notes
 ------------- | --------------- | ------------- | -----
 `ModuleLogin` | `mod_login.html5` | `mod_login_bs.html.twig` |
+
+### Additional templates
+
+Twig template | Notes
+------------- | -----
+`nav_tabs_bs.html.twig` |
