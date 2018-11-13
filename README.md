@@ -39,3 +39,4 @@ Contao module | Contao template | Twig template | Notes
 Twig template | Notes
 ------------- | -----
 `nav_tabs_bs.html.twig` |
+`pagination_bs.html.twig` |
