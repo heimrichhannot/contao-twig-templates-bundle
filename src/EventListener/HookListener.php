@@ -26,7 +26,11 @@ class HookListener implements FrameworkAwareInterface, ContainerAwareInterface
     {
         global $objPage;
 
-        if (null === ($layout = $this->container->get('huh.utils.model')->findModelInstanceByPk('tl_layout', $objPage->layout)) ||
+        // deactivate if AMP mode is active
+        $ampMode = $this->container->get('huh.utils.container')->isBundleActive('HeimrichHannot\AmpBundle\HeimrichHannotContaoAmpBundle') &&
+            $this->container->get('huh.request')->getGet('amp');
+
+        if ($ampMode || null === ($layout = $this->container->get('huh.utils.model')->findModelInstanceByPk('tl_layout', $objPage->layout)) ||
             !$layout->addBootstrapTemplates) {
             return;
         }
