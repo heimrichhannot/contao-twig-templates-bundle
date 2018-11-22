@@ -5,11 +5,11 @@
 
     <ul class="pagination">
         {% if hasFirst|default %}
-            <li class="page-item first"><a href="{{ first.href }}" class="page-link first" title="{{ first.title }}">{{ first.link }}</a></li>
+            <li class="page-item first"><a href="{{ first.href }}" class="page-link first" title="{{ first.title }}">{{ first.link|raw }}</a></li>
         {% endif %}
 
         {% if hasPrevious|default %}
-            <li class="page-item previous"><a href="{{ previous.href }}" class="page-link previous" title="{{ previous.title }}">{{ previous.link }}</a></li>
+            <li class="page-item previous"><a href="{{ previous.href }}" class="page-link previous" title="{{ previous.title }}">{{ previous.link|raw }}</a></li>
         {% endif %}
 
         {% for page in pages %}
@@ -21,11 +21,11 @@
         {% endfor %}
 
         {% if hasNext|default %}
-            <li class="page-item next"><a href="{{ next.href }}" class="page-link next" title="{{ next.title }}">{{ next.link }}</a></li>
+            <li class="page-item next"><a href="{{ next.href }}" class="page-link next" title="{{ next.title }}">{{ next.link|raw }}</a></li>
         {% endif %}
 
         {% if hasLast|default %}
-            <li class="page-item last"><a href="{{ last.href }}" class="page-link last" title="{{ last.title }}">{{ last.link }}</a></li>
+            <li class="page-item last"><a href="{{ last.href }}" class="page-link last" title="{{ last.title }}">{{ last.link|raw }}</a></li>
         {% endif %}
     </ul>
 </nav>
