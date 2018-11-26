@@ -1,17 +1,3 @@
-<?php
-
-$attributes = [];
-$reflection = new ReflectionClass($this);
-/** @var ReflectionProperty $property */
-foreach($reflection->getProperties() as $reflectionProperty){
-    $property = $reflection->getProperty($reflectionProperty->getName());
-    $property->setAccessible(true);
-    $attributes[$reflectionProperty->getName()] = $property->getValue($this);
-};
-
-
-$attributes = \Contao\System::getContainer()->get('huh.utils.class')->jsonSerialize($this, $attributes);
-
-?>
-
-<?= \Contao\System::getContainer()->get('huh.utils.template')->renderTwigTemplate($this->template, $attributes); ?>
+<?= \Contao\System::getContainer()->get('huh.utils.template')->renderTwigTemplate($this->template, System::getContainer()->get('huh.utils.class')->jsonSerialize($this, [], [
+    'ignorePropertyVisibility' => true
+])); ?>

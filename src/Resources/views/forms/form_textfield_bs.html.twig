@@ -9,7 +9,7 @@
     {% set groupClass = 'input-group datetimepicker' %}
 {% endif %}
 
-{% extends '@HeimrichHannotContaoBootstrapTemplates/forms/form_row.html.twig' %}
+{% extends '@HeimrichHannotContaoBootstrapTemplates/forms/form_row_bs.html.twig' %}
 
 {% block label %}
     {% if(not arrConfiguration.hideLabel|default(false)) %}
@@ -24,15 +24,13 @@
 
 
 {% block field %}
-    <input type="text" name="{{ strName }}" id="ctrl_{{ strId }}" class="form-control {{ strClass }}" value="{{ varValue|default() }}"{{ attributes|default() }}{{ arrConfiguration.placeholder|default }}>
+    <input type="text" name="{{ strName }}" id="ctrl_{{ strId }}" class="form-control {{ strClass }}" value="{{ varValue|default() }}"{{ attributes|default()|raw }}{{ arrConfiguration.placeholder|default|raw }}>
 
     {% if datePicker|default(false) or timePicker|default(false) or dateTimePicker|default(false) %}
         <div class="input-group-append">
             <button class="btn btn-outline-secondary" type="button">Button</button>
         </div>
     {% endif %}
-
-
 {% endblock %}
 
 {% block help %}

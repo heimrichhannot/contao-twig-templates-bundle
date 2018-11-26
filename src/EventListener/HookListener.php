@@ -23,21 +23,67 @@ class HookListener implements FrameworkAwareInterface, ContainerAwareInterface
 
     const SUFFIX = '_bs';
 
+    /**
+     * Hook for applying bootstrap templates for elements and modules.
+     *
+     * @param Template $template
+     */
     public function parseTemplate(Template $template)
     {
-        $this->applyBootstrapTemplate($template);
+        $result = $this->applyBootstrapTemplate($template->getName(), $template->getData());
+
+        if (false === $result) {
+            return;
+        }
+
+        list($templateName, $templateData) = $result;
+
+        $template->setName($templateName);
+        $template->setData($templateData);
     }
 
-    public function parseWidget($strBuffer, Widget $widget)
+    /**
+     * Hook for applying bootstrap templates for elements and modules.
+     *
+     * @param $buffer
+     * @param Widget $widget
+     *
+     * @throws \ReflectionException
+     *
+     * @return string
+     */
+    public function parseWidget($buffer, Widget $widget)
     {
-        return $strBuffer;
-//        $widget->template .= '_bs';
-//        $widget->template = 'form_text';
+        $data = $this->container->get('huh.utils.class')->jsonSerialize($widget, [], [
+            'ignorePropertyVisibility' => true,
+        ]);
+
+        $result = $this->applyBootstrapTemplate($widget->template, $data);
+
+        if (false === $result) {
+            return $buffer;
+        }
+
+        list($templateName, $templateData) = $result;
+
+        $widget->template = $templateName;
+
+        foreach ($templateData as $k => $v) {
+            $widget->{$k} = $v;
+        }
 
         return $widget->inherit();
     }
 
-    public function applyBootstrapTemplate(Template $template)
+    /**
+     * Applies bootstrap template.
+     *
+     * @param string $templateName
+     * @param array  $data
+     *
+     * @return array|bool
+     */
+    public function applyBootstrapTemplate(string $templateName, array $data)
     {
         global $objPage;
 
@@ -47,42 +93,36 @@ class HookListener implements FrameworkAwareInterface, ContainerAwareInterface
 
         if ($ampMode || null === ($layout = $this->container->get('huh.utils.model')->findModelInstanceByPk('tl_layout', $objPage->layout)) ||
             !$layout->addBootstrapTemplates) {
-            return;
+            return false;
         }
 
         try {
-            TemplateLoader::getPath($template->getName().static::SUFFIX, 'html5');
+            TemplateLoader::getPath($templateName.static::SUFFIX, 'html5');
         } catch (\Exception $e) {
             // template not found
-            return;
+            return false;
         }
 
         // prepare template data for amp
-        switch ($template->getName()) {
+        switch ($templateName) {
             case 'ce_accordionSingle':
-                $data = $template->getData();
-
                 $this->container->get('huh.utils.accordion')->structureAccordionSingle($data);
-
-                $template->setData($data);
 
                 break;
 
             case 'ce_accordionStart':
             case 'ce_accordionStop':
-                $data = $template->getData();
-
                 $this->container->get('huh.utils.accordion')->structureAccordionStartStop($data);
-
-                $template->setData($data);
 
                 break;
         }
 
         // custom controls
-        $template->addBootstrapCustomControls = $layout->addBootstrapCustomControls;
+        $data['addBootstrapCustomControls'] = $layout->addBootstrapCustomControls;
 
         // set bootstrap template
-        $template->setName($template->getName().static::SUFFIX);
+        $bsTemplateName = $templateName.static::SUFFIX;
+
+        return [$bsTemplateName, $data];
     }
 }
