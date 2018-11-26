@@ -12,6 +12,7 @@ use Contao\CoreBundle\Framework\FrameworkAwareInterface;
 use Contao\CoreBundle\Framework\FrameworkAwareTrait;
 use Contao\Template;
 use Contao\TemplateLoader;
+use Contao\Widget;
 use Symfony\Component\DependencyInjection\ContainerAwareInterface;
 use Symfony\Component\DependencyInjection\ContainerAwareTrait;
 
@@ -23,6 +24,20 @@ class HookListener implements FrameworkAwareInterface, ContainerAwareInterface
     const SUFFIX = '_bs';
 
     public function parseTemplate(Template $template)
+    {
+        $this->applyBootstrapTemplate($template);
+    }
+
+    public function parseWidget($strBuffer, Widget $widget)
+    {
+        return $strBuffer;
+//        $widget->template .= '_bs';
+//        $widget->template = 'form_text';
+
+        return $widget->inherit();
+    }
+
+    public function applyBootstrapTemplate(Template $template)
     {
         global $objPage;
 
