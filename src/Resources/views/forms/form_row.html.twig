@@ -1,0 +1,23 @@
+
+<div class="{{ groupClass|default(arrConfiguration.groupClass|default('form-group')) }} {{ strPrefix }}{% if(strClass|default()) %} {{ strClass }} {% endif %}{% if(arrConfiguration.invisible|default(false)) %} invisible{% endif %}">
+
+    {% block label %}
+    {% endblock %}
+
+    {% block field %}
+    {% endblock %}
+
+    {% block explanation %}
+        {% if(arrConfiguration.explanation|default()) %}
+            <div class="explanation">{{ arrConfiguration.explanation }}</div>
+        {% endif %}
+    {% endblock %}
+
+    {% block help %}
+        {% if(hasErrors|default(false) and errorsAsString|default()) %}
+            <span class="help-block">{{ errorsAsString }}</span>
+        {% elseif arrConfiguration.description|default() %}
+            <span class="help-block">{{ arrConfiguration.description }}</span>
+        {% endif %}
+    {% endblock %}
+</div>
