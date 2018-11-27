@@ -40,3 +40,12 @@ Twig template | Notes
 ------------- | -----
 `nav_tabs_bs.html.twig` |
 `pagination_bs.html.twig` |
+
+### Additional dca configuration keys
+
+These keys can be used in fields eval entry:
+
+Key            | Description
+-------------- |-----------
+`inputPrepend` | Content to be added before the input (within input-group-prepend). Overrides other prepended elements.
+`inputAppend`  | Content to be added after the input (within input-group-append). Overrides other appended elements.

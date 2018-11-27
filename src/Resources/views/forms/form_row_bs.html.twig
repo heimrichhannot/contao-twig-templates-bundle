@@ -1,11 +1,40 @@
-
 <div class="{{ groupClass|default(arrConfiguration.groupClass|default('form-group')) }} {{ strPrefix }}{% if(strClass|default()) %} {{ strClass }} {% endif %}{% if(arrConfiguration.invisible|default(false)) %} invisible{% endif %}">
+
+    {% if arrConfiguration.inputPrepend|default() %}
+        {% set inputPrepend = true %}
+    {% endif %}
+
+    {% if arrConfiguration.inputAppend|default() %}
+        {% set inputAppend = true %}
+    {% endif %}
 
     {% block label %}
     {% endblock %}
 
-    {% block field %}
-    {% endblock %}
+    {% if inputGroupClass|default() or inputPrepend|default(false) or inputAppend|default(false) %}<div class="{{ inputGroupClass }}">{% endif %}
+
+        {% set blockInputPrepend = block('inputPrepend') %}
+        {% if blockInputPrepend is not empty or inputPrepend|default(false) %}<div class="input-group-prepend">{% endif %}
+            {% if inputPrepend|default(false) %}
+                {{ arrConfiguration.inputPrepend|raw }}
+            {% else %}
+                {% block inputPrepend %}{% endblock %}
+            {% endif %}
+        {% if blockInputPrepend is not empty or inputPrepend|default(false) %}</div>{% endif %}
+
+        {% block field %}
+        {% endblock %}
+
+        {% set blockInputAppend = block('inputAppend') %}
+        {% if blockInputAppend is not empty or inputAppend|default(false) %}<div class="input-group-append">{% endif %}
+            {% if inputAppend|default(false) %}
+                {{ arrConfiguration.inputAppend|raw }}
+            {% else %}
+                {% block inputAppend %}{% endblock %}
+            {% endif %}
+        {% if blockInputAppend is not empty or inputAppend|default(false) %}</div>{% endif %}
+
+    {% if inputGroupClass|default() or inputPrepend|default(false) or inputAppend|default(false) %}</div>{% endif %}
 
     {% block explanation %}
         {% if(arrConfiguration.explanation|default()) %}
