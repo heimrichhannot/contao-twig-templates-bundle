@@ -49,3 +49,4 @@ Key            | Description
 -------------- |-----------
 `inputPrepend` | Content to be added before the input (within input-group-prepend). Overrides other prepended elements.
 `inputAppend`  | Content to be added after the input (within input-group-append). Overrides other appended elements.
+`inline`       | Input will be displayed horizontal. Only for checkboxes and radio buttons. 

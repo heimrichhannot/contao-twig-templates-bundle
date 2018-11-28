@@ -1,0 +1,4 @@
+<?= \Contao\System::getContainer()->get('huh.utils.template')->renderTwigTemplate($this->template, System::getContainer()->get('huh.utils.class')->jsonSerialize($this, [], [
+    'includeProperties' => true,
+    'ignorePropertyVisibility' => true
+])); ?>

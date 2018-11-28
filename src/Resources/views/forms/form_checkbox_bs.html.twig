@@ -1,0 +1,31 @@
+{% extends '@HeimrichHannotContaoBootstrapTemplates/forms/form_row_bs.html.twig' %}
+
+{% block label %}
+    {% if(not arrConfiguration.hideLabel|default(false)) %}
+    <label id="lbl_{{ strId }}>" for="ctrl_{{ strId }}" class="control-label">{{ strLabel }}
+        {% if arrConfiguration.mandatory|default(false) %}
+            <span class="invisible">{{ 'huh.bootstrap.templates.label.mandatory'|trans }}</span>
+            <span class="mandatory">*</span>
+        {% endif %}
+    </label>
+    {% endif %}
+{% endblock %}
+
+
+{% block field %}
+    <div class="checkbox-group ctrl_{{ strId }}">
+    {% for option in arrOptions %}
+        {% set counter = ( counter | default(0) ) + 1 %}
+        {% block option %}
+        <div class="form-check {% if arrConfiguration.inline|default(false) %}form-check-inline{% endif %}">
+            <input class="form-check-input" type="checkbox" value="{{ option.value }}" id="opt_{{ strId }}_{{ counter }}">
+            <label class="form-check-label" for="option_{{ strId }}_{{ counter }}">{{ option.label }}</label>
+        </div>
+        {% endblock %}
+    {% endfor %}
+    </div>
+{% endblock %}
+
+{% block help %}
+{% endblock %}
+
