@@ -1,0 +1,18 @@
+{% extends '@HeimrichHannotContaoBootstrapTemplates/forms/form_row_bs.html.twig' %}
+
+{% block label %}
+    {% if(not arrConfiguration.hideLabel|default(false)) %}
+    <label id="lbl_{{ strId }}>" for="ctrl_{{ strId }}" class="control-label">{{ strLabel }}
+        {% if arrConfiguration.mandatory|default(false) %}
+            <span class="invisible">{{ 'huh.bootstrap.templates.label.mandatory'|trans }}</span>
+            <span class="mandatory">*</span>
+        {% endif %}
+    </label>
+    {% endif %}
+{% endblock %}
+
+
+{% block field %}
+    <textarea class="form-control {{ strClass }}" name="{{ strName }}" id="ctrl_{{ strId }}" rows="3"{{ attributes|default()|raw }}{{ arrConfiguration.placeholder|default|raw }}>{{ varValue|default() }}</textarea>
+{% endblock %}
+

@@ -1,15 +1,18 @@
+{% extends '@HeimrichHannotContaoBootstrapTemplates/forms/form_row_bs.html.twig' %}
+
 {% if(arrConfiguration.datepicker|default(false)) and not arrConfiguration.timepicker|default(false) %}
     {% set datePicker = true %}
-    {% set inputGroupClass = 'input-group datepicker' %}
+    {% set inputGroupClass = 'datepicker' %}
+    {% set inputGroup = true %}
 {% elseif (arrConfiguration.timepicker|default(false)) and not arrConfiguration.datepicker|default(false) %}
     {% set timePicker = true %}
-    {% set inputGroupClass = 'input-group timepicker' %}
+    {% set inputGroupClass = 'timepicker' %}
+    {% set inputGroup = true %}
 {% elseif (arrConfiguration.timepicker|default(false)) and arrConfiguration.datepicker|default(false) %}
     {% set dateTimePicker = true %}
-    {% set inputGroupClass = 'input-group datetimepicker' %}
+    {% set inputGroupClass = 'datetimepicker' %}
+    {% set inputGroup = true %}
 {% endif %}
-
-{% extends '@HeimrichHannotContaoBootstrapTemplates/forms/form_row_bs.html.twig' %}
 
 {% block label %}
     {% if(not arrConfiguration.hideLabel|default(false)) %}
@@ -27,14 +30,12 @@
     <input type="text" name="{{ strName }}" id="ctrl_{{ strId }}" class="form-control {{ strClass }}" value="{{ varValue|default() }}"{{ attributes|default()|raw }}{{ arrConfiguration.placeholder|default|raw }}>
 {% endblock %}
 
-{% if datePicker|default(false) or timePicker|default(false) or dateTimePicker|default(false) %}
-    {% block inputAppend %}
+
+{% block inputAppend %}
+    {% if datePicker|default(false) or timePicker|default(false) or dateTimePicker|default(false) %}
         <button class="btn btn-outline-secondary" type="button">Button</button>
-    {% endblock %}
-{% endif %}
-
-
-{% block help %}
-
+    {% else %}
+        {{ parent() }}
+    {% endif %}
 {% endblock %}
 
