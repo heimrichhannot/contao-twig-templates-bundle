@@ -12,36 +12,56 @@
 namespace HeimrichHannot\BootstrapTemplatesBundle\BootstrapTemplate;
 
 
+use HeimrichHannot\BootstrapTemplatesBundle\Event\BeforeRenderEvent;
 use HeimrichHannot\UtilsBundle\Template\TemplateUtil;
+use Symfony\Component\EventDispatcher\EventDispatcherInterface;
 
 abstract class AbstractTemplate
 {
+	protected $templateName;
+	protected $templateData;
+	protected $entity;
+
 	/**
 	 * @var TemplateUtil
 	 */
-	private $templateUtil;
-
-	protected $templateName;
-	protected $templateData;
+	protected $templateUtil;
+	/**
+	 * @var EventDispatcherInterface
+	 */
+	protected $eventDispatcher;
 
 
 	/**
 	 * AbstractTemplate constructor.
 	 */
-	public function __construct(TemplateUtil $templateUtil)
+	public function __construct(TemplateUtil $templateUtil, EventDispatcherInterface $eventDispatcher)
 	{
 		$this->templateUtil = $templateUtil;
+		$this->eventDispatcher = $eventDispatcher;
 	}
+
+	abstract public function getType(): string;
 
 	/**
 	 * Set the form entity, e.g. Widget, Module,...
-	 * Should be used to fill $this->templateName and $this->templateData
 	 *
+	 *
+	 * @param $entity
+	 */
+	public function setEntity($entity)
+	{
+		$this->prepareData($entity);
+		$this->entity = $entity;
+	}
+
+	/**
+	 * Prepare templateName and templateData from entity (Widget, Module, ContentElement,...)
 	 *
 	 * @param $entity
 	 * @return mixed
 	 */
-	abstract function setEntity($entity);
+	abstract protected function prepareData($entity);
 
 	/**
 	 * Render the widget
@@ -56,6 +76,10 @@ abstract class AbstractTemplate
 	 */
 	public function render()
 	{
-		return $this->templateUtil->renderTwigTemplate($this->templateName, $this->templateData);
+		$event = $this->eventDispatcher->dispatch(
+			BeforeRenderEvent::NAME,
+			new BeforeRenderEvent($this->getType(), $this->templateName, $this->templateData, $this->entity)
+		);
+		return $this->templateUtil->renderTwigTemplate($event->getTemplateName(), $event->getTemplateData());
 	}
 }

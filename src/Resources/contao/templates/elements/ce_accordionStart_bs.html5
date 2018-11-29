@@ -1,1 +1,3 @@
-<?= \Contao\System::getContainer()->get('huh.utils.template')->renderTwigTemplate($this->getName(), $this->getData()); ?>
+<?php
+$template =\Contao\System::getContainer()->get('huh.bootstraptemplates.template.factory')->createInstance($this);
+echo $template->render();

@@ -1,23 +1,13 @@
 {% if arrConfiguration.inputPrepend|default() %}
-    {% set inputPrepend = true %}
+    {% set hasInputPrepend = true %}
     {% set inputGroup = true %}
 {% endif %}
 
 {% if arrConfiguration.inputAppend|default() %}
-    {% set inputAppend = true %}
+    {% set hasInputAppend = true %}
     {% set inputGroup = true %}
 {% endif %}
 
-{% set blockInputPrepend = block('inputPrepend') %}
-{% if blockInputPrepend is not empty%}
-    {% set inputGroup = true %}
-    {% set inputPrepend = true %}
-{% endif %}
-{% set blockInputAppend = block('inputAppend') %}
-{% if blockInputAppend is not empty %}
-    {% set inputGroup = true %}
-    {% set inputAppend = true %}
-{% endif %}
 {% if hasErrors|default(false) %}
     {% set strClass = strClass ~ " is-invalid" %}
 {% endif %}
@@ -29,28 +19,32 @@
 
     {% if inputGroup|default(false) %}<div class="input-group {{ inputGroupClass|default() }}">{% endif %}
 
-        {% if inputPrepend|default(false) %}
-            <div class="input-group-prepend">
-                {% if arrConfiguration.inputPrepend|default() %}
-                    {{ arrConfiguration.inputPrepend|raw }}
-                {% else %}
-                    {{ blockInputPrepend|raw }}
-                {% endif %}
-            </div>
-        {% endif %}
+        {% block inputPrepend %}
+            {% if hasInputPrepend|default(false) %}
+                <div class="input-group-prepend">
+                    {% if arrConfiguration.inputPrepend|default() %}
+                        {{ arrConfiguration.inputPrepend|raw }}
+                    {% else %}
+                        {{ block('inputPrependInner')|raw }}
+                    {% endif %}
+                </div>
+            {% endif %}
+        {% endblock %}
 
-    {% block field %}
-    {% endblock %}
+        {% block field %}
+        {% endblock %}
 
-        {% if inputAppend|default(false) %}
-            <div class="input-group-append">
-                {% if arrConfiguration.inputAppend|default() %}
-                    {{ arrConfiguration.inputAppend|raw }}
-                {% else %}
-                    {{ blockInputAppend|raw }}
-                {% endif %}
-            </div>
-        {% endif %}
+        {% block inputAppend %}
+            {% if hasInputAppend|default(false) %}
+                <div class="input-group-append">
+                    {% if arrConfiguration.inputAppend|default() %}
+                        {{ arrConfiguration.inputAppend|raw }}
+                    {% else %}
+                        {{ block('inputAppendInner')|raw }}
+                    {% endif %}
+                </div>
+            {% endif %}
+        {% endblock %}
 
     {% if inputGroup|default(false) %}</div>{% endif %}
 

@@ -15,22 +15,24 @@ namespace HeimrichHannot\BootstrapTemplatesBundle\BootstrapTemplate;
 use Contao\Widget;
 use HeimrichHannot\BootstrapTemplatesBundle\EventListener\HookListener;
 use HeimrichHannot\UtilsBundle\Classes\ClassUtil;
-use HeimrichHannot\UtilsBundle\Template\TemplateUtil;
 
 class FormTemplate extends AbstractTemplate
 {
+	const TYPE = "widget";
+
 	/**
 	 * @var ClassUtil
 	 */
 	protected $classUtil;
 	protected $widgetSupportsCustomForms;
 
-	public function __construct(TemplateUtil $templateUtil, ClassUtil $classUtil)
+	/**
+	 * @param ClassUtil $classUtil
+	 */
+	public function setClassUtil(ClassUtil $classUtil): void
 	{
-		parent::__construct($templateUtil);
 		$this->classUtil = $classUtil;
 	}
-
 
 	public function supportCustomForm()
 	{
@@ -38,7 +40,7 @@ class FormTemplate extends AbstractTemplate
 		{
 			try {
 				$customFormTemplate = $this->templateName.HookListener::CUSTOM_SUFFIX;
-				if (\Contao\System::getContainer()->get('huh.utils.template')->getTemplate($customFormTemplate) !== $customFormTemplate)
+				if ($this->templateUtil->getTemplate($customFormTemplate) !== $customFormTemplate)
 				{
 					$this->templateName = $customFormTemplate;
 				}
@@ -48,14 +50,7 @@ class FormTemplate extends AbstractTemplate
 		}
 	}
 
-	/**
-	 * Set the form entity, e.g. Widget, Module,...
-	 *
-	 * @param Widget $entity
-	 * @return mixed
-	 * @throws \ReflectionException
-	 */
-	function setEntity($entity)
+	function prepareData($entity)
 	{
 		$this->templateName              = $entity->template;
 		$this->templateData              = $this->classUtil->jsonSerialize($entity, [], [
@@ -63,5 +58,10 @@ class FormTemplate extends AbstractTemplate
 			'ignorePropertyVisibility' => true
 		]);
 		$this->widgetSupportsCustomForms = $entity->addBootstrapCustomControls;
+	}
+
+	public function getType(): string
+	{
+		return static::TYPE;
 	}
 }

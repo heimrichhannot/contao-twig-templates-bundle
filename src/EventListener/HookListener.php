@@ -104,7 +104,7 @@ class HookListener implements FrameworkAwareInterface, ContainerAwareInterface
 			return false;
 		}
 
-        // prepare template data for amp
+        // prepare template data for bootstrap
         switch ($templateName) {
             case 'ce_accordionSingle':
                 $this->container->get('huh.utils.accordion')->structureAccordionSingle($data);

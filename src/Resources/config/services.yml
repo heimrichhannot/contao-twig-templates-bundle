@@ -1,5 +1,5 @@
 services:
   huh.bootstraptemplates.template.factory:
     class: HeimrichHannot\BootstrapTemplatesBundle\BootstrapTemplate\TemplateFactory
-    arguments:
-      ['@huh.utils.template', '@huh.utils.class']
+    public: true
+    autowire: true
