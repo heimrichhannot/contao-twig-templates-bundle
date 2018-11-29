@@ -1,0 +1,8 @@
+{% extends '@HeimrichHannotContaoBootstrapTemplates/forms/form_checkbox_bs.html.twig' %}
+
+{% block option %}
+    <div class="custom-control custom-checkbox {% if arrConfiguration.inline|default(false) %}form-check-inline{% endif %}">
+        <input class="custom-control-input" type="checkbox" value="{{ option.value }}"  id="opt_{{ strId }}_{{ counter }}">
+        <label class="custom-control-label" for="opt_{{ strId }}_{{ counter }}">{{ option.value }}</label>
+    </div>
+{% endblock %}

@@ -22,6 +22,7 @@ class HookListener implements FrameworkAwareInterface, ContainerAwareInterface
     use ContainerAwareTrait;
 
     const SUFFIX = '_bs';
+    const CUSTOM_SUFFIX = '_custom';
 
     /**
      * Hook for applying bootstrap templates for elements and modules.
@@ -96,12 +97,12 @@ class HookListener implements FrameworkAwareInterface, ContainerAwareInterface
             return false;
         }
 
-        try {
-            TemplateLoader::getPath($templateName.static::SUFFIX, 'html5');
-        } catch (\Exception $e) {
-            // template not found
-            return false;
-        }
+		try {
+			TemplateLoader::getPath($templateName.static::SUFFIX, 'html5');
+		} catch (\Exception $e) {
+			// template not found
+			return false;
+		}
 
         // prepare template data for amp
         switch ($templateName) {

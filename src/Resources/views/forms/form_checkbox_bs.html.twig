@@ -19,7 +19,7 @@
         {% block option %}
         <div class="form-check {% if arrConfiguration.inline|default(false) %}form-check-inline{% endif %}">
             <input class="form-check-input" type="checkbox" value="{{ option.value }}" id="opt_{{ strId }}_{{ counter }}">
-            <label class="form-check-label" for="option_{{ strId }}_{{ counter }}">{{ option.label }}</label>
+            <label class="form-check-label" for="opt_{{ strId }}_{{ counter }}">{{ option.label }}</label>
         </div>
         {% endblock %}
     {% endfor %}

@@ -1,4 +1,18 @@
-<?= \Contao\System::getContainer()->get('huh.utils.template')->renderTwigTemplate($this->template, System::getContainer()->get('huh.utils.class')->jsonSerialize($this, [], [
+<?php
+$templateName = $this->template;
+if ($this->addBootstrapCustomControls)
+{
+	try {
+		$customFormTemplate = $templateName.\HeimrichHannot\BootstrapTemplatesBundle\EventListener\HookListener::CUSTOM_SUFFIX;
+		\Contao\System::getContainer()->get('huh.utils.template')->getTemplate($customFormTemplate);
+		$templateName = $customFormTemplate;
+	} catch (\Exception $e) {
+		// if template not found, use default template
+	}
+}
+?>
+
+<?= \Contao\System::getContainer()->get('huh.utils.template')->renderTwigTemplate($templateName, System::getContainer()->get('huh.utils.class')->jsonSerialize($this, [], [
     'includeProperties' => true,
     'ignorePropertyVisibility' => true
 ])); ?>
