@@ -18,6 +18,9 @@
     {% set inputGroup = true %}
     {% set inputAppend = true %}
 {% endif %}
+{% if hasErrors|default(false) %}
+    {% set strClass = strClass ~ " is-invalid" %}
+{% endif %}
 
 <div class="{{ groupClass|default(arrConfiguration.groupClass|default('form-group')) }} {{ strPrefix }}{% if(strClass|default()) %} {{ strClass }} {% endif %}{% if(arrConfiguration.invisible|default(false)) %} invisible{% endif %}">
 
@@ -59,9 +62,9 @@
 
     {% block help %}
         {% if(hasErrors|default(false) and errorsAsString|default()) %}
-            <span class="help-block">{{ errorsAsString }}</span>
+            <div class="invalid-feedback">{{ errorsAsString|raw }}</div>
         {% elseif arrConfiguration.description|default() %}
-            <span class="help-block">{{ arrConfiguration.description }}</span>
+            <span class="form-text text-muted">{{ arrConfiguration.description }}</span>
         {% endif %}
     {% endblock %}
 </div>

@@ -1,7 +1,7 @@
 {% extends '@HeimrichHannotContaoBootstrapTemplates/forms/form_checkbox_bs.html.twig' %}
 
 {% block option %}
-    <div class="custom-control custom-radio {% if arrConfiguration.inline|default(false) %}form-check-inline{% endif %}">
+    <div class="custom-control custom-radio {% if arrConfiguration.inline|default(false) %}custom-control-inline{% endif %}">
         <input class="custom-control-input" type="radio" value="{{ option.value }}" name="{{ strName }}" id="opt_{{ strId }}_{{ counter }}"{% if arrConfiguration.disabled|default(false) %} disabled{% endif %}>
         <label class="custom-control-label" for="opt_{{ strId }}_{{ counter }}">{{ option.value }}</label>
     </div>

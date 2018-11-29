@@ -31,11 +31,8 @@
 {% endblock %}
 
 
-{% block inputAppend %}
+{% block inputAppend %}{% spaceless %}
     {% if datePicker|default(false) or timePicker|default(false) or dateTimePicker|default(false) %}
         <button class="btn btn-outline-secondary" type="button">Button</button>
-    {% else %}
-        {{ parent() }}
     {% endif %}
-{% endblock %}
-
+{% endspaceless %}{% endblock %}
