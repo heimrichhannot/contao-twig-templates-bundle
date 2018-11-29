@@ -18,7 +18,7 @@
         {% set counter = ( counter | default(0) ) + 1 %}
         {% block option %}
         <div class="form-check {% if arrConfiguration.inline|default(false) %}form-check-inline{% endif %}">
-            <input class="form-check-input" type="checkbox" value="{{ option.value }}" id="opt_{{ strId }}_{{ counter }}">
+            <input class="form-check-input" type="checkbox" value="{{ option.value }}" id="opt_{{ strId }}_{{ counter }}"{% if arrConfiguration.disabled|default(false) %} disabled{% endif %}>
             <label class="form-check-label" for="opt_{{ strId }}_{{ counter }}">{{ option.label }}</label>
         </div>
         {% endblock %}

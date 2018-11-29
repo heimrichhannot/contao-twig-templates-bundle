@@ -2,7 +2,7 @@
 
 {% block option %}
     <div class="custom-control custom-checkbox {% if arrConfiguration.inline|default(false) %}form-check-inline{% endif %}">
-        <input class="custom-control-input" type="checkbox" value="{{ option.value }}"  id="opt_{{ strId }}_{{ counter }}">
+        <input class="custom-control-input" type="checkbox" value="{{ option.value }}"  id="opt_{{ strId }}_{{ counter }}"{% if arrConfiguration.disabled|default(false) %} disabled{% endif %}>
         <label class="custom-control-label" for="opt_{{ strId }}_{{ counter }}">{{ option.value }}</label>
     </div>
 {% endblock %}
