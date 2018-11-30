@@ -14,9 +14,9 @@ namespace HeimrichHannot\BootstrapTemplatesBundle\Event;
 
 use Symfony\Component\EventDispatcher\Event;
 
-class BeforeRenderEvent extends Event
+class BeforeRenderBootstrapTemplateEvent extends Event
 {
-	const NAME = "huh_bootstrap_templates_before_render";
+	const NAME = "huh.bootstrap.beforeRenderTemplate";
 
 	protected $templateName;
 	protected $templateData;

@@ -12,12 +12,12 @@
     {% set strClass = strClass ~ " is-invalid" %}
 {% endif %}
 
-<div class="{{ groupClass|default(arrConfiguration.groupClass|default('form-group')) }} {{ strPrefix }}{% if(strClass|default()) %} {{ strClass }} {% endif %}{% if(arrConfiguration.invisible|default(false)) %} invisible{% endif %}">
+<div class="{{ groupClass|default(arrConfiguration.groupClass|default('form-group')) }} {{ strPrefix }}{% if(arrConfiguration.invisible|default(false)) %} invisible{% endif %}">
 
     {% block label %}
     {% endblock %}
 
-    {% if inputGroup|default(false) %}<div class="input-group {{ inputGroupClass|default() }}">{% endif %}
+    {% if inputGroup|default(false) %}<div class="input-group {{ inputGroupClass|default('') }}">{% endif %}
 
         {% block inputPrepend %}
             {% if hasInputPrepend|default(false) %}

@@ -50,3 +50,14 @@ Key            | Description
 `inputPrepend` | Content to be added before the input (within input-group-prepend). Overrides other prepended elements.
 `inputAppend`  | Content to be added after the input (within input-group-append). Overrides other appended elements.
 `inline`       | Input will be displayed horizontal. Only for checkboxes and radio buttons. 
+`groupClass`   | Classes for outer form group wrapper (default: form-group)
+`inputGroupClass`   | Classes for input group wrapper (input-group is always added)
+
+### Template variables
+
+Additional template variables
+
+Name            | Type   | Default    | Description
+--------------- | ------ | ---------- | -----------
+groupClass      | string | form-group | The outer form group class
+inputGroupClass | string | form-group | The input group class
