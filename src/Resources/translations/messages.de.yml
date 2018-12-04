@@ -1,2 +1,5 @@
 # labels
-huh.bootstrap.templates.label.mandatory: Pflichtfeld
+huh.bootstrap.templates:
+  label:
+    mandatory: Pflichtfeld
+    submit: Absenden

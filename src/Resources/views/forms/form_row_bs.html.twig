@@ -54,10 +54,14 @@
         {% endif %}
     {% endblock %}
 
-    {% block help %}
+    {% block error %}
         {% if(hasErrors|default(false) and errorsAsString|default()) %}
             <div class="invalid-feedback">{{ errorsAsString|raw }}</div>
-        {% elseif arrConfiguration.description|default() %}
+        {% endif %}
+    {% endblock %}
+
+    {% block help %}
+        {% if(hasErrors|default(false) == false and arrConfiguration.description|default()) %}
             <span class="form-text text-muted">{{ arrConfiguration.description }}</span>
         {% endif %}
     {% endblock %}
