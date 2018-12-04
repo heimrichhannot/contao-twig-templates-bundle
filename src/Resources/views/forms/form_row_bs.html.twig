@@ -62,7 +62,7 @@
 
     {% block help %}
         {% if(hasErrors|default(false) == false and arrConfiguration.description|default()) %}
-            <span class="form-text text-muted">{{ arrConfiguration.description }}</span>
+            <span class="form-text text-muted description">{{ arrConfiguration.description }}</span>
         {% endif %}
     {% endblock %}
 </div>
