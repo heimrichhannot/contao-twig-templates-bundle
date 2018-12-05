@@ -28,7 +28,7 @@
     </div>
 </form>
 
-{% if header %}
+{% if header|default() %}
     <p class="header text-muted">
         <small>{{ header|raw }} ({{ duration|raw }})</small>
     </p>
