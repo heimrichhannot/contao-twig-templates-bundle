@@ -1,0 +1,4 @@
+<?php
+$template = \Contao\System::getContainer()->get('huh.bootstraptemplates.template.factory')->createInstance($this);
+$template->supportCustomForm();
+echo $template->render();

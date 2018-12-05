@@ -15,6 +15,14 @@
 <div class="{{ groupClass|default(arrConfiguration.groupClass|default('form-group')) }} {{ strPrefix }}{% if(arrConfiguration.invisible|default(false)) %} invisible{% endif %}">
 
     {% block label %}
+        {% if(not arrConfiguration.hideLabel|default(false)) %}
+            <label id="lbl_{{ strId }}>" for="ctrl_{{ strId }}" class="control-label">{{ strLabel }}
+                {% if arrConfiguration.mandatory|default(false) %}
+                    <span class="invisible">{{ 'huh.bootstrap.templates.label.mandatory'|trans }}</span>
+                    <span class="mandatory">*</span>
+                {% endif %}
+            </label>
+        {% endif %}
     {% endblock %}
 
     {% if inputGroup|default(false) %}<div class="input-group {{ inputGroupClass|default('') }}">{% endif %}

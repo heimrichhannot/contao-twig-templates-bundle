@@ -1,0 +1,13 @@
+{% extends '@HeimrichHannotContaoBootstrapTemplates/forms/form_row_bs.html.twig' %}
+
+{% block field %}
+    <select class="{% block selectClasses %}form-control {{ strClass }}{% endblock %}" name="{{ strName }}" id="ctrl_{{ strId }}" {{ attributes|default()|raw }}>
+        {% for option in arrOptions %}
+            {% set counter = ( counter | default(0) ) + 1 %}
+            {% set default = option.value == arrConfiguration.default|default() %}
+            {% block option %}
+                <option value="{{ option.value }}" {% if default|default(false) %}selected{% endif %}>{{ option.label }}</option>
+            {% endblock %}
+        {% endfor %}
+    </select>
+{% endblock %}
