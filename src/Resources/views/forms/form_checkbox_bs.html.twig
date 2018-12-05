@@ -14,7 +14,7 @@
 
 {% block field %}
     <div class="checkbox-group ctrl_{{ strId }}">
-    {% for option|default in arrOptions %}
+    {% for option in arrOptions %}
         {% set counter = ( counter | default(0) ) + 1 %}
         {% block option %}
         <div class="form-check {% if arrConfiguration.inline|default(false) %}form-check-inline{% endif %}">
