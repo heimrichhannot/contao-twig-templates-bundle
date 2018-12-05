@@ -16,21 +16,23 @@ use Contao\Widget;
 use Symfony\Component\DependencyInjection\ContainerAwareInterface;
 use Symfony\Component\DependencyInjection\ContainerAwareTrait;
 
-class HookListener implements FrameworkAwareInterface, ContainerAwareInterface
+class HookListener implements ContainerAwareInterface
 {
-    use FrameworkAwareTrait;
     use ContainerAwareTrait;
 
     const SUFFIX = '_bs';
     const CUSTOM_SUFFIX = '_custom';
 
-    /**
+	/**
      * Hook for applying bootstrap templates for elements and modules.
      *
      * @param Template $template
      */
     public function parseTemplate(Template $template)
     {
+    	if (!$this->container->get('huh.utils.container')->isFrontend()){
+    		return;
+		}
         $result = $this->applyBootstrapTemplate($template->getName(), $template->getData());
 
         if (false === $result) {
@@ -55,6 +57,9 @@ class HookListener implements FrameworkAwareInterface, ContainerAwareInterface
      */
     public function parseWidget($buffer, Widget $widget)
     {
+		if (!$this->container->get('huh.utils.container')->isFrontend()){
+			return $buffer;
+		}
         $data = $this->container->get('huh.utils.class')->jsonSerialize($widget, [], [
             'ignorePropertyVisibility' => true,
         ]);
