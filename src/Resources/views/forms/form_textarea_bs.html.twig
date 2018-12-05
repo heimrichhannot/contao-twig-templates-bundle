@@ -1,6 +1,6 @@
 {% extends '@HeimrichHannotContaoBootstrapTemplates/forms/form_row_bs.html.twig' %}
 
 {% block field %}
-    <textarea class="form-control {{ strClass }}" name="{{ strName }}" id="ctrl_{{ strId }}" rows="3"{{ attributes|default()|raw }}{{ arrConfiguration.placeholder|default|raw }}>{{ varValue|default() }}</textarea>
+    <textarea class="form-control {{ strClass }}" name="{{ strName }}" id="ctrl_{{ strId }}" rows="{{ intRows|default(3) }}"{{ attributes|default()|raw }}{{ arrConfiguration.placeholder|default|raw }}>{{ varValue|default() }}</textarea>
 {% endblock %}
 
