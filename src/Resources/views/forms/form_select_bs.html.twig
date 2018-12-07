@@ -10,4 +10,11 @@
             {% endblock %}
         {% endfor %}
     </select>
+
+    {% if(hasErrors|default(false) and errorsAsString|default()) %}
+        <div class="invalid-feedback">{{ errorsAsString|raw }}</div>
+    {% endif %}
+{% endblock %}
+
+{% block error %}
 {% endblock %}
