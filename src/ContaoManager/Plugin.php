@@ -30,12 +30,12 @@ class Plugin implements BundlePluginInterface, ConfigPluginInterface
         ];
     }
 
-	/**
-	 * Allows a plugin to load container configuration.
-	 */
-	public function registerContainerConfiguration(LoaderInterface $loader, array $managerConfig)
-	{
-		$loader->load('@HeimrichHannotContaoBootstrapTemplatesBundle/Resources/config/listeners.yml');
-		$loader->load('@HeimrichHannotContaoBootstrapTemplatesBundle/Resources/config/services.yml');
-	}
+    /**
+     * Allows a plugin to load container configuration.
+     */
+    public function registerContainerConfiguration(LoaderInterface $loader, array $managerConfig)
+    {
+        $loader->load('@HeimrichHannotContaoBootstrapTemplatesBundle/Resources/config/listeners.yml');
+        $loader->load('@HeimrichHannotContaoBootstrapTemplatesBundle/Resources/config/services.yml');
+    }
 }

@@ -1,16 +1,12 @@
 <?php
-/**
- * Contao Open Source CMS
- *
+
+/*
  * Copyright (c) 2018 Heimrich & Hannot GmbH
  *
- * @author  Thomas Körner <t.koerner@heimrich-hannot.de>
- * @license http://www.gnu.org/licences/lgpl-3.0.html LGPL
+ * @license LGPL-3.0-or-later
  */
 
-
 namespace HeimrichHannot\BootstrapTemplatesBundle\BootstrapTemplate;
-
 
 use HeimrichHannot\BootstrapTemplatesBundle\Event\BeforeRenderBootstrapTemplateEvent;
 use HeimrichHannot\UtilsBundle\Template\TemplateUtil;
@@ -18,68 +14,70 @@ use Symfony\Component\EventDispatcher\EventDispatcherInterface;
 
 abstract class AbstractTemplate
 {
-	protected $templateName;
-	protected $templateData;
-	protected $entity;
+    protected $templateName;
+    protected $templateData;
+    protected $entity;
 
-	/**
-	 * @var TemplateUtil
-	 */
-	protected $templateUtil;
-	/**
-	 * @var EventDispatcherInterface
-	 */
-	protected $eventDispatcher;
+    /**
+     * @var TemplateUtil
+     */
+    protected $templateUtil;
+    /**
+     * @var EventDispatcherInterface
+     */
+    protected $eventDispatcher;
 
+    /**
+     * AbstractTemplate constructor.
+     */
+    public function __construct(TemplateUtil $templateUtil, EventDispatcherInterface $eventDispatcher)
+    {
+        $this->templateUtil = $templateUtil;
+        $this->eventDispatcher = $eventDispatcher;
+    }
 
-	/**
-	 * AbstractTemplate constructor.
-	 */
-	public function __construct(TemplateUtil $templateUtil, EventDispatcherInterface $eventDispatcher)
-	{
-		$this->templateUtil = $templateUtil;
-		$this->eventDispatcher = $eventDispatcher;
-	}
+    abstract public function getType(): string;
 
-	abstract public function getType(): string;
+    /**
+     * Set the form entity, e.g. Widget, Module,...
+     *
+     *
+     * @param $entity
+     */
+    public function setEntity($entity)
+    {
+        $this->prepareData($entity);
+        $this->entity = $entity;
+    }
 
-	/**
-	 * Set the form entity, e.g. Widget, Module,...
-	 *
-	 *
-	 * @param $entity
-	 */
-	public function setEntity($entity)
-	{
-		$this->prepareData($entity);
-		$this->entity = $entity;
-	}
+    /**
+     * Render the widget.
+     *
+     * Uses $this->templateName and $this->templateData
+     *
+     * @throws \Psr\Cache\InvalidArgumentException
+     * @throws \Twig_Error_Loader
+     * @throws \Twig_Error_Runtime
+     * @throws \Twig_Error_Syntax
+     *
+     * @return string
+     */
+    public function render()
+    {
+        $event = $this->eventDispatcher->dispatch(
+            BeforeRenderBootstrapTemplateEvent::NAME,
+            new BeforeRenderBootstrapTemplateEvent($this->getType(), $this->templateName, $this->templateData, $this->entity)
+        );
 
-	/**
-	 * Prepare templateName and templateData from entity (Widget, Module, ContentElement,...)
-	 *
-	 * @param $entity
-	 * @return mixed
-	 */
-	abstract protected function prepareData($entity);
+        return $this->templateUtil->renderTwigTemplate($event->getTemplateName(), $event->getTemplateData());
+    }
 
-	/**
-	 * Render the widget
-	 *
-	 * Uses $this->templateName and $this->templateData
-	 *
-	 * @return string
-	 * @throws \Psr\Cache\InvalidArgumentException
-	 * @throws \Twig_Error_Loader
-	 * @throws \Twig_Error_Runtime
-	 * @throws \Twig_Error_Syntax
-	 */
-	public function render()
-	{
-		$event = $this->eventDispatcher->dispatch(
-			BeforeRenderBootstrapTemplateEvent::NAME,
-			new BeforeRenderBootstrapTemplateEvent($this->getType(), $this->templateName, $this->templateData, $this->entity)
-		);
-		return $this->templateUtil->renderTwigTemplate($event->getTemplateName(), $event->getTemplateData());
-	}
+    /**
+     * Prepare templateName and templateData from entity (Widget, Module, ContentElement,...).
+     *
+     * @param $entity
+     *
+     * @return mixed
+     */
+    abstract protected function prepareData($entity);
 }

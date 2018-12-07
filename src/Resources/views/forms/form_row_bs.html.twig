@@ -12,11 +12,11 @@
     {% set strClass = strClass ~ " is-invalid" %}
 {% endif %}
 
-<div class="{{ groupClass|default(arrConfiguration.groupClass|default('form-group')) }} {{ strPrefix }}{% if(arrConfiguration.invisible|default(false)) %} invisible{% endif %}">
+<div class="{{ strName }} {{ groupClass|default(arrConfiguration.groupClass|default('form-group')) }} {{ strPrefix }}{% if(arrConfiguration.invisible|default(false)) %} invisible{% endif %}">
 
     {% block label %}
         {% if(not arrConfiguration.hideLabel|default(false)) %}
-            <label id="lbl_{{ strId }}>" for="ctrl_{{ strId }}" class="control-label">{{ strLabel }}
+            <label id="lbl_{{ strId }}>" for="ctrl_{{ strId }}" class="control-label">{{ strLabel|raw }}
                 {% if arrConfiguration.mandatory|default(false) %}
                     <span class="invisible">{{ 'huh.bootstrap.templates.label.mandatory'|trans }}</span>
                     <span class="mandatory">*</span>

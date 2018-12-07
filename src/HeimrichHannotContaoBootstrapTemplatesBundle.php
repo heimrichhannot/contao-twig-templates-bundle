@@ -8,7 +8,6 @@
 
 namespace HeimrichHannot\BootstrapTemplatesBundle;
 
-use HeimrichHannot\BootstrapTemplatesBundle\DependencyInjection\BootstrapTemplatesExtension;
 use Symfony\Component\HttpKernel\Bundle\Bundle;
 
 class HeimrichHannotContaoBootstrapTemplatesBundle extends Bundle

@@ -2,7 +2,7 @@
 
 {% block label %}
     {% if(not arrConfiguration.hideLabel|default(false)) %}
-    <label id="lbl_{{ strId }}>" for="ctrl_{{ strId }}" class="control-label">{{ strLabel }}
+    <label id="lbl_{{ strId }}>" for="ctrl_{{ strId }}" class="control-label">{{ strLabel|raw }}
         {% if arrConfiguration.mandatory|default(false) %}
             <span class="invisible">{{ 'huh.bootstrap.templates.label.mandatory'|trans }}</span>
             <span class="mandatory">*</span>
@@ -19,7 +19,7 @@
         {% block option %}
         <div class="form-check {% if arrConfiguration.inline|default(false) %}form-check-inline{% endif %}">
             <input class="form-check-input" type="checkbox" value="{{ option.value }}" id="opt_{{ strId }}_{{ counter }}"{% if arrConfiguration.disabled|default(false) %} disabled{% endif %}>
-            <label class="form-check-label" for="opt_{{ strId }}_{{ counter }}">{{ option.label }}</label>
+            <label class="form-check-label" for="opt_{{ strId }}_{{ counter }}">{{ option.label|raw }}</label>
         </div>
         {% endblock %}
     {% endfor %}

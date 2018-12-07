@@ -8,8 +8,6 @@
 
 namespace HeimrichHannot\BootstrapTemplatesBundle\EventListener;
 
-use Contao\CoreBundle\Framework\FrameworkAwareInterface;
-use Contao\CoreBundle\Framework\FrameworkAwareTrait;
 use Contao\Template;
 use Contao\TemplateLoader;
 use Contao\Widget;
@@ -23,16 +21,16 @@ class HookListener implements ContainerAwareInterface
     const SUFFIX = '_bs';
     const CUSTOM_SUFFIX = '_custom';
 
-	/**
+    /**
      * Hook for applying bootstrap templates for elements and modules.
      *
      * @param Template $template
      */
     public function parseTemplate(Template $template)
     {
-    	if (!$this->container->get('huh.utils.container')->isFrontend()){
-    		return;
-		}
+        if (!$this->container->get('huh.utils.container')->isFrontend()) {
+            return;
+        }
         $result = $this->applyBootstrapTemplate($template->getName(), $template->getData());
 
         if (false === $result) {
@@ -57,9 +55,9 @@ class HookListener implements ContainerAwareInterface
      */
     public function parseWidget($buffer, Widget $widget)
     {
-		if (!$this->container->get('huh.utils.container')->isFrontend()){
-			return $buffer;
-		}
+        if (!$this->container->get('huh.utils.container')->isFrontend()) {
+            return $buffer;
+        }
         $data = $this->container->get('huh.utils.class')->jsonSerialize($widget, [], [
             'ignorePropertyVisibility' => true,
         ]);
@@ -102,12 +100,12 @@ class HookListener implements ContainerAwareInterface
             return false;
         }
 
-		try {
-			TemplateLoader::getPath($templateName.static::SUFFIX, 'html5');
-		} catch (\Exception $e) {
-			// template not found
-			return false;
-		}
+        try {
+            TemplateLoader::getPath($templateName.static::SUFFIX, 'html5');
+        } catch (\Exception $e) {
+            // template not found
+            return false;
+        }
 
         // prepare template data for bootstrap
         switch ($templateName) {
