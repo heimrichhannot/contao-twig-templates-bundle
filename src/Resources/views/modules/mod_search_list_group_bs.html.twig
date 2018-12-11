@@ -6,11 +6,13 @@
 
 <form{% if action|default() %} action="{{ action }}"{% endif %} method="get">
     <div class="formbody">
-        <div class="input-group mb-2">
+        <div class="form-group mb-2">
             <label for="ctrl_keywords_{{ uniqueId }}" class="sr-only">{{ keywordLabel }}</label>
-            <input type="search" name="keywords" id="ctrl_keywords_{{ uniqueId }}" class="form-control" value="{{ keyword }}" placeholder="{{ keywordLabel }}">
-            <div class="input-group-append">
-                <button type="submit" id="ctrl_submit_{{ uniqueId }}" class="btn btn-outline-primary">{{ search }}</button>
+            <div class="input-group">
+                <input type="search" name="keywords" id="ctrl_keywords_{{ uniqueId }}" class="form-control" value="{{ keyword }}" placeholder="{{ keywordLabel }}">
+                <div class="input-group-append">
+                    <button type="submit" id="ctrl_submit_{{ uniqueId }}" class="btn btn-outline-primary">{{ search }}</button>
+                </div>
             </div>
         </div>
         {% if advanced|default(false) %}
