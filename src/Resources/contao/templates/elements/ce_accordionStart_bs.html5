@@ -1,3 +1,1 @@
-<?php
-$template =\Contao\System::getContainer()->get('huh.bootstraptemplates.template.factory')->createInstance($this);
-echo $template->render();
+<?= \Contao\System::getContainer()->get('huh.bootstraptemplates.template.factory')->createInstance($this)->render(); ?>
