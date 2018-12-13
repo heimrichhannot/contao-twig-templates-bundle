@@ -6,9 +6,9 @@
  * @license LGPL-3.0-or-later
  */
 
-namespace HeimrichHannot\BootstrapTemplatesBundle\BootstrapTemplate;
+namespace HeimrichHannot\TwigTemplatesBundle\Twig;
 
-use HeimrichHannot\BootstrapTemplatesBundle\Event\BeforeRenderBootstrapTemplateEvent;
+use HeimrichHannot\TwigTemplatesBundle\Event\BeforeRenderBootstrapTemplateEvent;
 use HeimrichHannot\UtilsBundle\Template\TemplateUtil;
 use Symfony\Component\EventDispatcher\EventDispatcherInterface;
 

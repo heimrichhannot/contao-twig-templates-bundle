@@ -6,7 +6,7 @@
  * @license LGPL-3.0-or-later
  */
 
-namespace HeimrichHannot\BootstrapTemplatesBundle\Exception;
+namespace HeimrichHannot\TwigTemplatesBundle\Exception;
 
 class TemplateTypeNotSupportedException extends \Exception
 {

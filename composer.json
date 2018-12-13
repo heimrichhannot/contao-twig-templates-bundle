@@ -1,7 +1,7 @@
 {
-  "name": "heimrichhannot/contao-bootstrap-templates-bundle",
+  "name": "heimrichhannot/contao-twig-templates-bundle",
   "type": "contao-bundle",
-  "description": "This bundle offers templates using the latest Bootstrap framework's CSS for the Contao CMS.",
+  "description": "This bundle ships core contao templates as twig templates and additional templates using the latest Bootstrap framework's CSS for the Contao CMS.",
   "license": "LGPL-3.0-or-later",
   "require": {
     "php": "^7.1",
@@ -22,7 +22,7 @@
   },
   "autoload": {
     "psr-4": {
-      "HeimrichHannot\\BootstrapTemplatesBundle\\": "src/"
+      "HeimrichHannot\\TwigTemplatesBundle\\": "src/"
     },
     "classmap": [
       "src/"
@@ -36,14 +36,14 @@
   },
   "autoload-dev": {
     "psr-4": {
-      "HeimrichHannot\\BootstrapTemplatesBundle\\Test\\": "tests/"
+      "HeimrichHannot\\TwigTemplatesBundle\\Test\\": "tests/"
     }
   },
   "config": {
     "preferred-install": "dist"
   },
   "extra": {
-    "contao-manager-plugin": "HeimrichHannot\\BootstrapTemplatesBundle\\ContaoManager\\Plugin",
+    "contao-manager-plugin": "HeimrichHannot\\TwigTemplatesBundle\\ContaoManager\\Plugin",
     "foxy": true
   }
 }

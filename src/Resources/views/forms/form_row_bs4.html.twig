@@ -18,7 +18,7 @@
         {% if(not arrConfiguration.hideLabel|default(false)) %}
             <label id="lbl_{{ strId }}>" for="ctrl_{{ strId }}" class="control-label">{{ strLabel|raw }}
                 {% if arrConfiguration.mandatory|default(false) %}
-                    <span class="invisible">{{ 'huh.bootstrap.templates.label.mandatory'|trans }}</span>
+                    <span class="invisible">{{ 'huh.twig.templates.label.mandatory'|trans }}</span>
                     <span class="mandatory">*</span>
                 {% endif %}
             </label>

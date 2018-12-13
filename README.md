@@ -1,6 +1,6 @@
-# Contao Bootstrap Templates Bundle
+# Contao Twig Templates Bundle
 
-This bundle offers templates using the latest [Bootstrap](https://getbootstrap.com) framework's CSS for the Contao CMS.
+This bundle ships core contao templates as twig templates and additional templates using the latest [Bootstrap](https://getbootstrap.com) framework's CSS for the Contao CMS.
 
 ## Features
 

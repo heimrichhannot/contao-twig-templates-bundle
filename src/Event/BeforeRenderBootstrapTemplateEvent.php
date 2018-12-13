@@ -6,13 +6,13 @@
  * @license LGPL-3.0-or-later
  */
 
-namespace HeimrichHannot\BootstrapTemplatesBundle\Event;
+namespace HeimrichHannot\TwigTemplatesBundle\Event;
 
 use Symfony\Component\EventDispatcher\Event;
 
 class BeforeRenderBootstrapTemplateEvent extends Event
 {
-    const NAME = 'huh.bootstrap.beforeRenderTemplate';
+    const NAME = 'huh.twig.beforeRenderTemplate';
 
     protected $templateName;
     protected $templateData;

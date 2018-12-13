@@ -5,32 +5,34 @@ $dca = &$GLOBALS['TL_DCA']['tl_layout'];
 /**
  * Palettes
  */
-$dca['palettes']['__selector__'][] = 'addBootstrapTemplates';
+$dca['palettes']['__selector__'][] = 'frameworkTemplate';
 
-$dca['palettes']['default'] = str_replace('{sections_legend', '{bootstrap_templates_legend},addBootstrapTemplates;{sections_legend', $dca['palettes']['default']);
+$dca['palettes']['default'] = str_replace('{sections_legend', '{framework_templates_legend},frameworkTemplate;{sections_legend', $dca['palettes']['default']);
 
 /**
  * Subpalettes
  */
-$dca['subpalettes']['addBootstrapTemplates'] = 'addBootstrapCustomControls';
+$dca['subpalettes']['frameworkTemplate_bs4'] = 'useFrameworkCustomControls';
 
 /**
  * Fields
  */
 $fields = [
-    'addBootstrapTemplates'               => [
-        'label'     => &$GLOBALS['TL_LANG']['tl_layout']['addBootstrapTemplates'],
+    'frameworkTemplate'          => [
+        'label'     => &$GLOBALS['TL_LANG']['tl_layout']['frameworkTemplateSuffix'],
+        'exclude'   => true,
+        'inputType' => 'select',
+        'options'   => ['bs4'],
+        'reference' => $GLOBALS['TL_LANG']['tl_layout']['references']['frameworkTemplate'],
+        'eval'      => ['includeBlankOption' => true, 'submitOnChange' => true],
+        'sql'       => "varchar(64) NOT NULL default ''",
+    ],
+    'useFrameworkCustomControls' => [
+        'label'     => &$GLOBALS['TL_LANG']['tl_layout']['useFrameworkCustomControls'],
         'exclude'   => true,
         'inputType' => 'checkbox',
-        'eval'      => ['tl_class' => 'w50', 'submitOnChange' => true],
-        'sql'       => "char(1) NOT NULL default ''"
-    ],
-    'addBootstrapCustomControls' => [
-        'label'                   => &$GLOBALS['TL_LANG']['tl_layout']['addBootstrapCustomControls'],
-        'exclude'                 => true,
-        'inputType'               => 'checkbox',
-        'eval'                    => ['tl_class' => 'w50'],
-        'sql'                     => "char(1) NOT NULL default ''"
+        'eval'      => ['tl_class' => 'w50'],
+        'sql'       => "char(1) NOT NULL default ''",
     ],
 ];
 

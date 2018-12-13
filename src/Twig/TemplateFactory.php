@@ -6,11 +6,11 @@
  * @license LGPL-3.0-or-later
  */
 
-namespace HeimrichHannot\BootstrapTemplatesBundle\BootstrapTemplate;
+namespace HeimrichHannot\TwigTemplatesBundle\Twig;
 
 use Contao\FrontendTemplate;
 use Contao\Widget;
-use HeimrichHannot\BootstrapTemplatesBundle\Exception\TemplateTypeNotSupportedException;
+use HeimrichHannot\TwigTemplatesBundle\Exception\TemplateTypeNotSupportedException;
 use HeimrichHannot\UtilsBundle\Classes\ClassUtil;
 use HeimrichHannot\UtilsBundle\Template\TemplateUtil;
 use Symfony\Component\EventDispatcher\EventDispatcherInterface;

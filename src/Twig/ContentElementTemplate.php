@@ -6,13 +6,13 @@
  * @license LGPL-3.0-or-later
  */
 
-namespace HeimrichHannot\BootstrapTemplatesBundle\BootstrapTemplate;
+namespace HeimrichHannot\TwigTemplatesBundle\Twig;
 
 use Contao\FrontendTemplate;
 
-class DefaultTemplate extends AbstractTemplate
+class ContentElementTemplate extends DefaultTemplate
 {
-    const TYPE = 'frontendtemplate';
+    const TYPE = 'contentelement';
 
     /**
      * Prepare templateName and templateData from entity (Widget, Module, ContentElement,...).

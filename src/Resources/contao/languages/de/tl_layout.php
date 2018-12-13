@@ -5,12 +5,17 @@ $lang = &$GLOBALS['TL_LANG']['tl_layout'];
 /**
  * Fields
  */
-$lang['addBootstrapTemplates'][0]      = 'Bootstrap-Templates aktivieren';
-$lang['addBootstrapTemplates'][1]      = 'Wählen Sie diese Option, wenn Sie die Standard-Contao-Templates durch solche mit Bootstrap-Unterstützung ersetzen möchten.';
-$lang['addBootstrapCustomControls'][0] = 'Custom Controls aktivieren';
-$lang['addBootstrapCustomControls'][1] = 'Wählen Sie diese Option, wenn Sie Bootstrap\'s Custom Controls aktivieren möchten.';
+$lang['frameworkTemplate'][0]          = 'Framework-Templates verwenden';
+$lang['frameworkTemplate'][1]          = 'Wählen Sie ein Framework aus, um die Standard-Contao-Templates durch solche mit Framework-Unterstützung ersetzen möchten.';
+$lang['useFrameworkCustomControls'][0] = 'Custom Controls verwenden';
+$lang['useFrameworkCustomControls'][1] = 'Wählen Sie diese Option, wenn Sie vom Framework Custom Controls (Checkbox, Radio…) aktivieren möchten.';
 
 /**
  * Legends
  */
-$lang['bootstrap_templates_legend'] = 'Bootstrap-Templates';
+$lang['framework_templates_legend'] = 'Framework-Templates';
+
+/**
+ * References
+ */
+$GLOBALS['TL_LANG']['tl_layout']['references']['frameworkTemplate']['bs4'] = 'Bootstrap 4';

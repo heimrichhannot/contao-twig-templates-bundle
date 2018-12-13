@@ -1,5 +1,5 @@
 # labels
-huh.bootstrap.templates:
+huh.twig.templates:
   label:
     mandatory: Pflichtfeld
     submit: Absenden

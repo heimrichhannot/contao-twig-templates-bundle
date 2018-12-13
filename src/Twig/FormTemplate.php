@@ -6,10 +6,10 @@
  * @license LGPL-3.0-or-later
  */
 
-namespace HeimrichHannot\BootstrapTemplatesBundle\BootstrapTemplate;
+namespace HeimrichHannot\TwigTemplatesBundle\Twig;
 
 use Contao\System;
-use HeimrichHannot\BootstrapTemplatesBundle\EventListener\HookListener;
+use HeimrichHannot\TwigTemplatesBundle\EventListener\HookListener;
 use HeimrichHannot\UtilsBundle\Classes\ClassUtil;
 
 class FormTemplate extends AbstractTemplate

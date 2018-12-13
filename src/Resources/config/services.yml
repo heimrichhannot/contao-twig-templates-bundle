@@ -1,5 +1,5 @@
 services:
-  huh.bootstraptemplates.template.factory:
-    class: HeimrichHannot\BootstrapTemplatesBundle\BootstrapTemplate\TemplateFactory
+  huh.twig.template.factory:
+    class: HeimrichHannot\TwigTemplatesBundle\Twig\TemplateFactory
     public: true
     autowire: true

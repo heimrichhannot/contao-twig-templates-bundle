@@ -6,7 +6,7 @@
  * @license LGPL-3.0-or-later
  */
 
-namespace HeimrichHannot\BootstrapTemplatesBundle\EventListener;
+namespace HeimrichHannot\TwigTemplatesBundle\EventListener;
 
 use Contao\Template;
 use Contao\TemplateLoader;
