@@ -1,3 +1,3 @@
 <?php
-$template = \Contao\System::getContainer()->get('huh.bootstraptemplates.template.factory')->createInstance($this);
+$template = \Contao\System::getContainer()->get('huh.twig.template.factory')->createInstance($this);
 echo $template->render();

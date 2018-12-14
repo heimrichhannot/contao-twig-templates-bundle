@@ -18,7 +18,6 @@ class HookListener implements ContainerAwareInterface
 {
     use ContainerAwareTrait;
 
-    const SUFFIX = '_bs';
     const CUSTOM_SUFFIX = '_custom';
 
     /**
@@ -31,7 +30,7 @@ class HookListener implements ContainerAwareInterface
         if (!$this->container->get('huh.utils.container')->isFrontend()) {
             return;
         }
-        $result = $this->applyBootstrapTemplate($template->getName(), $template->getData());
+        $result = $this->applyTwigTemplate($template->getName(), $template->getData());
 
         if (false === $result) {
             return;
@@ -46,7 +45,7 @@ class HookListener implements ContainerAwareInterface
     /**
      * Hook for applying bootstrap templates for elements and modules.
      *
-     * @param $buffer
+     * @param        $buffer
      * @param Widget $widget
      *
      * @throws \ReflectionException
@@ -58,11 +57,15 @@ class HookListener implements ContainerAwareInterface
         if (!$this->container->get('huh.utils.container')->isFrontend()) {
             return $buffer;
         }
-        $data = $this->container->get('huh.utils.class')->jsonSerialize($widget, [], [
-            'ignorePropertyVisibility' => true,
-        ]);
+        $data = $this->container->get('huh.utils.class')->jsonSerialize(
+            $widget,
+            [],
+            [
+                'ignorePropertyVisibility' => true,
+            ]
+        );
 
-        $result = $this->applyBootstrapTemplate($widget->template, $data);
+        $result = $this->applyTwigTemplate($widget->template, $data);
 
         if (false === $result) {
             return $buffer;
@@ -80,30 +83,47 @@ class HookListener implements ContainerAwareInterface
     }
 
     /**
-     * Applies bootstrap template.
+     * Applies twig template.
      *
-     * @param string $templateName
-     * @param array  $data
+     * @param string $templateName Template name
+     * @param array  $data         Template data
      *
      * @return array|bool
      */
-    public function applyBootstrapTemplate(string $templateName, array $data)
+    public function applyTwigTemplate(string $templateName, array $data)
     {
         global $objPage;
 
         // deactivate if AMP mode is active
-        $ampMode = $this->container->get('huh.utils.container')->isBundleActive('HeimrichHannot\AmpBundle\HeimrichHannotContaoAmpBundle') &&
-            $this->container->get('huh.request')->getGet('amp');
+        $ampMode = $this->container->get('huh.utils.container')->isBundleActive('HeimrichHannot\AmpBundle\HeimrichHannotContaoAmpBundle')
+                   && $this->container->get('huh.request')->getGet('amp');
 
-        if ($ampMode || null === ($layout = $this->container->get('huh.utils.model')->findModelInstanceByPk('tl_layout', $objPage->layout)) ||
-            !$layout->addBootstrapTemplates) {
+        if ($ampMode || null === ($layout = $this->container->get('huh.utils.model')->findModelInstanceByPk('tl_layout', $objPage->layout))) {
             return false;
         }
 
+        $suffix = $layout->ttFramework ? ('_'.$layout->ttFramework) : '';
+
+        $path = null;
+
         try {
-            TemplateLoader::getPath($templateName.static::SUFFIX, 'html5');
+            $path = TemplateLoader::getPath($templateName.$suffix, 'html5');
         } catch (\Exception $e) {
-            // template not found
+            $path = null;
+        }
+
+        if ($layout->ttUseTwig) {
+            $suffix = '_core';
+
+            try {
+                $path = TemplateLoader::getPath($templateName.$suffix, 'html5');
+            } catch (\Exception $e) {
+                $path = null;
+            }
+        }
+
+        // template not found
+        if (null === $path) {
             return false;
         }
 
@@ -122,11 +142,11 @@ class HookListener implements ContainerAwareInterface
         }
 
         // custom controls
-        $data['addBootstrapCustomControls'] = $layout->addBootstrapCustomControls;
+        $data['ttUseFrameworkCustomControls'] = $layout->ttUseFrameworkCustomControls;
 
-        // set bootstrap template
-        $bsTemplateName = $templateName.static::SUFFIX;
+        // set framework template
+        $twigTemplateName = $templateName.$suffix;
 
-        return [$bsTemplateName, $data];
+        return [$twigTemplateName, $data];
     }
 }

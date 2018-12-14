@@ -15,8 +15,8 @@ Install via composer: `composer require heimrichhannot/contao-bootstrap-template
 
 ## Configuration
 
-It's as simple as that: Set the option `addBootstrapTemplates` in your existing layout or create a new one. This way the *automapping* takes place and
-according to the current content element or module, the correct template is used which name's usually built with the suffix `_bs`.
+It's as simple as that: Set the selected framework `frameworkTemplates` in your existing layout or create a new one. This way the *automapping* takes place and
+according to the current content element or module, the correct template is used which name's usually built with the suffix `_bs4`.
 
 If you don't want to use *automapping* you can also assign the template you want in the ordinary way by selecting it in the `customTpl` field of your module or content element.
 
@@ -24,22 +24,22 @@ If you don't want to use *automapping* you can also assign the template you want
 
 Contao content element | Contao template | Twig template | Notes
 ---------------------- | --------------- | ------------- | -----
-`ContentAccordion` | `ce_accordionSingle.html5` | `ce_accordionSingle_bs.html.twig` | single element accordions
-`ContentAccordionStart` | `ce_accordionStart.html5` | `ce_accordionStart_bs.html.twig` |
-`ContentAccordionStop` | `ce_accordionStop.html5` | `ce_accordionStop_bs.html.twig` |
+`ContentAccordion` | `ce_accordionSingle.html5` | `ce_accordionSingle_bs4.html.twig` | single element accordions
+`ContentAccordionStart` | `ce_accordionStart.html5` | `ce_accordionStart_bs4.html.twig` |
+`ContentAccordionStop` | `ce_accordionStop.html5` | `ce_accordionStop_bs4.html.twig` |
 
 ### Supported modules
 
 Contao module | Contao template | Twig template | Notes
 ------------- | --------------- | ------------- | -----
-`ModuleLogin` | `mod_login.html5` | `mod_login_bs.html.twig` |
+`ModuleLogin` | `mod_login.html5` | `mod_login_bs4.html.twig` |
 
 ### Additional templates
 
 Twig template | Notes
 ------------- | -----
-`nav_tabs_bs.html.twig` |
-`pagination_bs.html.twig` |
+`nav_tabs_bs4.html.twig` |
+`pagination_bs4.html.twig` |
 
 ### Additional dca configuration keys
 

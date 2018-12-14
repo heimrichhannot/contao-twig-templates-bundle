@@ -8,7 +8,7 @@
 
 namespace HeimrichHannot\TwigTemplatesBundle\Twig;
 
-use HeimrichHannot\TwigTemplatesBundle\Event\BeforeRenderBootstrapTemplateEvent;
+use HeimrichHannot\TwigTemplatesBundle\Event\BeforeRenderTwigTemplateEvent;
 use HeimrichHannot\UtilsBundle\Template\TemplateUtil;
 use Symfony\Component\EventDispatcher\EventDispatcherInterface;
 
@@ -65,8 +65,8 @@ abstract class AbstractTemplate
     public function render()
     {
         $event = $this->eventDispatcher->dispatch(
-            BeforeRenderBootstrapTemplateEvent::NAME,
-            new BeforeRenderBootstrapTemplateEvent($this->getType(), $this->templateName, $this->templateData, $this->entity)
+            BeforeRenderTwigTemplateEvent::NAME,
+            new BeforeRenderTwigTemplateEvent($this->getType(), $this->templateName, $this->templateData, $this->entity)
         );
 
         return $this->templateUtil->renderTwigTemplate($event->getTemplateName(), $event->getTemplateData());
