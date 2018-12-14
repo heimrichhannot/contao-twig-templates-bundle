@@ -9,6 +9,7 @@
 namespace HeimrichHannot\TwigTemplatesBundle\Twig;
 
 use Contao\FrontendTemplate;
+use Contao\System;
 use Contao\Widget;
 use HeimrichHannot\TwigTemplatesBundle\Exception\TemplateTypeNotSupportedException;
 use HeimrichHannot\UtilsBundle\Classes\ClassUtil;
@@ -35,6 +36,84 @@ class TemplateFactory
         $this->templateUtil = $templateUtil;
         $this->classUtil = $classUtil;
         $this->eventDispatcher = $eventDispatcher;
+    }
+
+    /**
+     * Get the custom controls template name based on given template name.
+     *
+     * @return string
+     */
+    public function getCustomControlsTemplateName(string $templateName)
+    {
+        global $objPage;
+
+        if (null === $objPage || null === ($layout = System::getContainer()->get('huh.utils.model')->findModelInstanceByPk('tl_layout', $objPage->layout))) {
+            return $templateName;
+        }
+
+        if ($layout->ttFramework && true === (bool) $layout->ttUseFrameworkCustomControls) {
+            $suffix = $this->getTemplateSuffix();
+            $templateName = preg_replace('/'.$suffix.'$/', '', $templateName);
+            $templateName .= $this->getCustomControlsTemplateSuffix();
+        }
+
+        return $templateName;
+    }
+
+    /**
+     * Get custom controls template suffix.
+     *
+     * @return string
+     */
+    public function getCustomControlsTemplateSuffix(): string
+    {
+        global $objPage;
+
+        $suffix = '';
+
+        if (null === $objPage || null === ($layout = System::getContainer()->get('huh.utils.model')->findModelInstanceByPk('tl_layout', $objPage->layout))) {
+            return $suffix;
+        }
+
+        if ($layout->ttFramework && true === (bool) $layout->ttUseFrameworkCustomControls) {
+            $suffix = '_custom_'.$layout->ttFramework;
+        }
+
+        return $suffix;
+    }
+
+    /**
+     * Get current templates suffix from layout.
+     *
+     * @return string
+     */
+    public function getTemplateSuffix(): string
+    {
+        global $objPage;
+
+        if (null === $objPage || null === ($layout = System::getContainer()->get('huh.utils.model')->findModelInstanceByPk('tl_layout', $objPage->layout))) {
+            return '';
+        }
+
+        if ($layout->ttFramework) {
+            return '_'.$layout->ttFramework;
+        }
+
+        if ($layout->ttUseTwig) {
+            return $this->getCoreTemplateSuffix();
+        }
+
+        return '';
+    }
+
+    /**
+     * Get the contao core twig templates suffix.
+     *
+     * @return string
+     */
+    public function getCoreTemplateSuffix(): string
+    {
+        return '_core';
     }
 
     /**

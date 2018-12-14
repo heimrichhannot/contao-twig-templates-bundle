@@ -98,23 +98,22 @@ class HookListener implements ContainerAwareInterface
         $ampMode = $this->container->get('huh.utils.container')->isBundleActive('HeimrichHannot\AmpBundle\HeimrichHannotContaoAmpBundle')
                    && $this->container->get('huh.request')->getGet('amp');
 
-        if ($ampMode || null === ($layout = $this->container->get('huh.utils.model')->findModelInstanceByPk('tl_layout', $objPage->layout))) {
+        if ($ampMode) {
             return false;
         }
 
-        $suffix = $layout->ttFramework ? ('_'.$layout->ttFramework) : '';
-
         $path = null;
+        $suffix = $this->container->get('huh.twig.template.factory')->getTemplateSuffix();
 
-        try {
-            $path = TemplateLoader::getPath($templateName.$suffix, 'html5');
-        } catch (\Exception $e) {
-            $path = null;
+        if ($suffix && $suffix !== $this->container->get('huh.twig.template.factory')->getCoreTemplateSuffix()) {
+            try {
+                $path = TemplateLoader::getPath($templateName.$suffix, 'html5');
+            } catch (\Exception $e) {
+                $path = null;
+            }
         }
 
-        if ($layout->ttUseTwig) {
-            $suffix = '_core';
-
+        if (null === $path && $suffix === $this->container->get('huh.twig.template.factory')->getCoreTemplateSuffix()) {
             try {
                 $path = TemplateLoader::getPath($templateName.$suffix, 'html5');
             } catch (\Exception $e) {
@@ -142,7 +141,7 @@ class HookListener implements ContainerAwareInterface
         }
 
         // custom controls
-        $data['ttUseFrameworkCustomControls'] = $layout->ttUseFrameworkCustomControls;
+        $data['ttCustomControlsSuffix'] = $this->container->get('huh.twig.template.factory')->getCustomControlsTemplateSuffix();
 
         // set framework template
         $twigTemplateName = $templateName.$suffix;

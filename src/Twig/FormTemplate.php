@@ -9,7 +9,6 @@
 namespace HeimrichHannot\TwigTemplatesBundle\Twig;
 
 use Contao\System;
-use HeimrichHannot\TwigTemplatesBundle\EventListener\HookListener;
 use HeimrichHannot\UtilsBundle\Classes\ClassUtil;
 
 class FormTemplate extends AbstractTemplate
@@ -20,7 +19,7 @@ class FormTemplate extends AbstractTemplate
      * @var ClassUtil
      */
     protected $classUtil;
-    protected $widgetSupportsCustomForms;
+    protected $ttCustomFormsSuffix;
 
     /**
      * @param ClassUtil $classUtil
@@ -32,10 +31,10 @@ class FormTemplate extends AbstractTemplate
 
     public function supportCustomForm()
     {
-        if ($this->widgetSupportsCustomForms) {
-            try {
-                $customFormTemplate = $this->templateName.HookListener::CUSTOM_SUFFIX;
+        if ($this->ttCustomFormsSuffix) {
+            $customFormTemplate = System::getContainer()->get('huh.twig.template.factory')->getCustomControlsTemplateName($this->templateName);
 
+            try {
                 if ($this->templateUtil->getTemplate($customFormTemplate) !== $customFormTemplate) {
                     $this->templateName = $customFormTemplate;
                 }
@@ -49,16 +48,22 @@ class FormTemplate extends AbstractTemplate
     {
         $this->templateName = $entity->template;
 
-        $this->templateData = $this->classUtil->jsonSerialize($entity, [], [
-            'includeProperties' => true,
-            'ignorePropertyVisibility' => true,
-        ]);
+        $this->templateData = $this->classUtil->jsonSerialize(
+            $entity,
+            [],
+            [
+                'includeProperties' => true,
+                'ignorePropertyVisibility' => true,
+            ]
+        );
 
         if (method_exists($entity, 'getOptions')) {
             $this->templateData['arrOptions'] = System::getContainer()->get('huh.utils.class')->callInaccessibleMethod($entity, 'getOptions');
         }
 
-        $this->widgetSupportsCustomForms = $entity->addBootstrapCustomControls;
+        if ($entity->ttCustomControlsSuffix) {
+            $this->ttCustomFormsSuffix = $entity->ttCustomControlsSuffix;
+        }
     }
 
     public function getType(): string
