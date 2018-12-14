@@ -113,8 +113,9 @@ class HookListener implements ContainerAwareInterface
             }
         }
 
-        if (null === $path && $suffix === $this->container->get('huh.twig.template.factory')->getCoreTemplateSuffix()) {
+        if (null === $path && $suffix) {
             try {
+                $suffix = $this->container->get('huh.twig.template.factory')->getCoreTemplateSuffix();
                 $path = TemplateLoader::getPath($templateName.$suffix, 'html5');
             } catch (\Exception $e) {
                 $path = null;
