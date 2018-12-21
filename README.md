@@ -61,3 +61,13 @@ Name            | Type   | Default    | Description
 --------------- | ------ | ---------- | -----------
 groupClass      | string | form-group | The outer form group class
 inputGroupClass | string | form-group | The input group class
+
+## Developers
+
+### Events
+
+Through the bundle lifecycle following [Events](https://symfony.com/doc/current/event_dispatcher.html) are dispatched: 
+
+Event                         | Description
+----------------------------- | -----------
+huh.twig.beforeRenderTemplate | Modify template data before rendering the widget
