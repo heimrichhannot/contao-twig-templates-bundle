@@ -3,3 +3,4 @@ huh.twig.templates:
   label:
     mandatory: Pflichtfeld
     submit: Absenden
+    password_confirm: Passwort bestätigen
