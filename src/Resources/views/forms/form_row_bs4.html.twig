@@ -1,3 +1,9 @@
+{% set attributes =  attributes|default() %}
+
+{% if(arrConfiguration.explanation|default() or (hasErrors|default(false) and errorsAsString|default())) %}
+    {% set attributes =  attributes ~ ('aria-describedby="help-block-ctrl_' ~ strId ~ '"') %}
+{% endif %}
+
 {% if arrConfiguration.inputPrepend|default() %}
     {% set hasInputPrepend = true %}
     {% set inputGroup = true %}
@@ -8,11 +14,17 @@
     {% set inputGroup = true %}
 {% endif %}
 
+{% set formFeedbackClass = formFeedbackClass|default({})|merge(['form-feedback']) %}
+{% set groupClass = groupClass|default(arrConfiguration.groupClass|default('form-group')) %}
+
 {% if hasErrors|default(false) %}
     {% set strClass = strClass ~ " is-invalid" %}
+    {% if(errorsAsString|default()) %}
+        {% set formFeedbackClass = formFeedbackClass|default({})|merge(['invalid-feedback']) %}
+    {% endif %}
 {% endif %}
 
-<div class="{{ strName }} {{ groupClass|default(arrConfiguration.groupClass|default('form-group')) }} {{ strPrefix }}{% if(arrConfiguration.invisible|default(false)) %} invisible{% endif %}">
+<div class="{{ strName }} {{ groupClass }} {{ strPrefix }}{% if(arrConfiguration.invisible|default(false)) %} invisible{% endif %}">
 
     {% block label %}
         {% if(not arrConfiguration.hideLabel|default(false)) %}
@@ -25,7 +37,8 @@
         {% endif %}
     {% endblock %}
 
-    {% if inputGroup|default(false) %}<div class="input-group{{ ' ' ~ inputGroupClass|default('') }}">{% endif %}
+    {% if inputGroup|default(false) %}
+    <div class="input-group{{ ' ' ~ inputGroupClass|default('') }}">{% endif %}
 
         {% block inputPrepend %}
             {% if hasInputPrepend|default(false) %}
@@ -54,23 +67,21 @@
             {% endif %}
         {% endblock %}
 
-    {% if inputGroup|default(false) %}</div>{% endif %}
+        {% if inputGroup|default(false) %}</div>{% endif %}
 
-    {% block explanation %}
-        {% if(arrConfiguration.explanation|default()) %}
-            <div class="explanation">{{ arrConfiguration.explanation }}</div>
-        {% endif %}
-    {% endblock %}
+    {% block feedback %}
+        <div class="{{ formFeedbackClass|join(' ') }}" id="help-block-ctrl_{{ strId }}">
+            {% block explanation %}
+                {% if(arrConfiguration.explanation|default()) %}
+                    <div class="form-text text-muted explanation">{{ arrConfiguration.explanation }}</div>
+                {% endif %}
+            {% endblock %}
 
-    {% block error %}
-        {% if(hasErrors|default(false) and errorsAsString|default()) %}
-            <div class="invalid-feedback">{{ errorsAsString|raw }}</div>
-        {% endif %}
-    {% endblock %}
-
-    {% block help %}
-        {% if(hasErrors|default(false) == false and arrConfiguration.description|default()) %}
-            <span class="form-text text-muted description">{{ arrConfiguration.description }}</span>
-        {% endif %}
+            {% block error %}
+                {% if(hasErrors|default(false) and errorsAsString|default()) %}
+                    <div class="feedback-message">{{ errorsAsString|raw }}</div>
+                {% endif %}
+            {% endblock %}
+        </div>
     {% endblock %}
 </div>

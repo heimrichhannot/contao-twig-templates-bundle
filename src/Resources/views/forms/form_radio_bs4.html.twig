@@ -1,9 +1,42 @@
-{% extends '@ContaoTwigTemplates/forms/form_checkbox_bs4.html.twig' %}
+{% extends '@ContaoTwigTemplates/forms/form_row_bs4.html.twig' %}
 
-{% block option %}
-    <div class="form-check {% if arrConfiguration.inline|default(false) %}form-check-inline{% endif %}">
-        <input class="form-check-input" type="radio" name="{{ strName }}" value="{{ option.value }}"{{ option.checked }} id="opt_{{ strId }}_{{ counter }}"{% if arrConfiguration.disabled|default(false) %} disabled{% endif %}>
-        <label class="form-check-label" for="opt_{{ strId }}_{{ counter }}">{{ option.label|raw }}</label>
+{% set optionGroupClass = "radio-group ctrl_" ~ strId %}
+
+{% block label %}
+    {% if(not arrConfiguration.hideLabel|default(false)) %}
+        <label id="lbl_{{ strId }}>" for="ctrl_{{ strId }}" class="control-label">{{ strLabel|raw }}
+            {% if arrConfiguration.mandatory|default(false) %}
+                <span class="invisible">{{ 'huh.twig.templates.label.mandatory'|trans }}</span>
+                <span class="mandatory">*</span>
+            {% endif %}
+        </label>
+    {% endif %}
+{% endblock %}
+
+
+{% block field %}
+    <div class="{{ optionGroupClass }}">
+        {% for option in arrOptions %}
+            {% set counter = ( counter | default(0) ) + 1 %}
+            {% block option %}
+                <div class="form-check {% if arrConfiguration.inline|default(false) %}form-check-inline{% endif %}">
+                    <input class="form-check-input{% if(hasErrors|default(false)) %} is-invalid{% endif %}" type="radio" name="{{ strName }}" value="{{ option.value }}"{{ option.checked }} id="opt_{{ strId }}_{{ counter }}" {{ attributes|default()|raw }} {% if arrConfiguration.disabled|default(false) %} disabled{% endif %}>
+                    <label class="form-check-label" for="opt_{{ strId }}_{{ counter }}">{{ option.label|raw }}</label>
+
+                    {% if loop.last and not arrConfiguration.inline|default(false)%}
+                        {% if(hasErrors|default(false) and errorsAsString|default()) %}
+                            <div class="invalid-feedback">{{ errorsAsString|raw }}</div>
+                        {% endif %}
+                    {% endif %}
+                </div>
+            {% endblock %}
+        {% endfor %}
     </div>
 {% endblock %}
 
+{% block feedback %}
+    {% if arrConfiguration.inline|default(false) %}
+        {% set formFeedbackClass = formFeedbackClass|merge(['d-block']) %}
+        {{ parent() }}
+    {% endif %}
+{% endblock %}

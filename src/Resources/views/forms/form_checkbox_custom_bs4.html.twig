@@ -1,15 +1,23 @@
 {% extends '@ContaoTwigTemplates/forms/form_checkbox_bs4.html.twig' %}
 
+{% set optionGroupClass = "radio-group ctrl_" ~ strId %}
+
 {% block option %}
     <div class="custom-control custom-checkbox {% if arrConfiguration.inline|default(false) %}custom-control-inline{% endif %}">
-        <input class="custom-control-input{% if hasErrors|default(false) %} is-invalid{% endif %}" name="{{ strName }}{% if arrConfiguration.multiple|default %}[]{% endif %}" type="checkbox" value="{{ option.value }}"{{ option.checked }} id="opt_{{ strId }}_{{ counter }}"{% if arrConfiguration.disabled|default(false) %} disabled{% endif %}>
+        <input class="custom-control-input{% if hasErrors|default(false) %} is-invalid{% endif %}" name="{{ strName }}{% if arrConfiguration.multiple|default %}[]{% endif %}" type="checkbox" value="{{ option.value }}"{{ option.checked }} id="opt_{{ strId }}_{{ counter }}" {{ attributes|default()|raw }} {% if arrConfiguration.disabled|default(false) %} disabled{% endif %}>
         <label class="custom-control-label" for="opt_{{ strId }}_{{ counter }}">{{ option.label|raw }}</label>
 
-        {% if(hasErrors|default(false) and errorsAsString|default()) %}
-            <div class="invalid-feedback">{{ errorsAsString|raw }}</div>
+        {% if loop.last and not arrConfiguration.inline|default(false)%}
+            {% if(hasErrors|default(false) and errorsAsString|default()) %}
+                <div class="invalid-feedback">{{ errorsAsString|raw }}</div>
+            {% endif %}
         {% endif %}
     </div>
 {% endblock %}
 
-{% block error %}
+{% block feedback %}
+    {% if arrConfiguration.inline|default(false) %}
+        {% set formFeedbackClass = formFeedbackClass|merge(['d-block']) %}
+        {{ parent() }}
+    {% endif %}
 {% endblock %}
