@@ -20,7 +20,7 @@
         {% set counter = ( counter | default(0) ) + 1 %}
         {% block option %}
         <div class="form-check {% if arrConfiguration.inline|default(false) %}form-check-inline{% endif %}">
-            <input class="form-check-input{% if(hasErrors|default(false)) %} is-invalid{% endif %}" name="{{ strName }}{% if arrConfiguration.multiple|default %}[]{% endif %}" type="checkbox" value="{{ option.value }}"{{ option.checked }} id="opt_{{ strId }}_{{ counter }}" {{ attributes|default()|raw }} {% if arrConfiguration.disabled|default(false) %} disabled{% endif %}>
+            <input class="form-check-input{% if(hasErrors|default(false)) %} is-invalid{% endif %}" name="{{ strName }}{% if arrConfiguration.multiple|default %}[]{% endif %}" type="checkbox" value="{{ option.value }}"{{ option.checked }} id="opt_{{ strId }}_{{ counter }}" {{ attributes|default()|raw }} {% if arrConfiguration.disabled|default(false) %} disabled{% endif %} {{ option.attributes }}>
             <label class="form-check-label" for="opt_{{ strId }}_{{ counter }}">{{ option.label|raw }}</label>
 
             {% if loop.last and not arrConfiguration.inline|default(false)%}
