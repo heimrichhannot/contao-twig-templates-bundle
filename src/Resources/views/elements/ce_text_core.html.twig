@@ -1,7 +1,7 @@
 {% extends '@ContaoTwigTemplates/block/block_searchable_core.html.twig' %}
 
 {% block content %}
-    {% if floating|default() != 'below' %}
+    {% if floating|default() == 'below' %}
         <div class="text">{{ text|raw }}</div>
     {% endif %}
 
@@ -12,7 +12,7 @@
         </div>
     {% endif %}
 
-    {% if floating|default() == 'below' %}
+    {% if floating|default() != 'below' %}
         <div class="text">{{ text|raw }}</div>
     {% endif %}
 {% endblock %}

@@ -1,6 +1,11 @@
 # Changelog
 All notable changes to this project will be documented in this file.
 
+## [0.2.2] - 2019-01-29
+
+### Fixed
+- order of image and text at twig-template `ce_text_core`
+
 ## [0.2.1] - 2019-01-25
 
 ### Added
