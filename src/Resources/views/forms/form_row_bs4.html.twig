@@ -70,6 +70,9 @@
         {% if inputGroup|default(false) %}</div>{% endif %}
 
     {% block feedback %}
+        {% if inputGroup|default(false) %}
+            {% set formFeedbackClass = formFeedbackClass|merge(['d-block']) %}
+        {% endif %}
         <div class="{{ formFeedbackClass|join(' ') }}" id="help-block-ctrl_{{ strId }}">
             {% block explanation %}
                 {% if(arrConfiguration.explanation|default()) %}
@@ -85,3 +88,4 @@
         </div>
     {% endblock %}
 </div>
+

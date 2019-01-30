@@ -1,6 +1,11 @@
 # Changelog
 All notable changes to this project will be documented in this file.
 
+## [0.3.1] - 2019-01-30
+
+### Fixed
+- properly display `form-feedback` block on `input-grop` form elements
+
 ## [0.3.0] - 2019-01-29
 
 ### Added

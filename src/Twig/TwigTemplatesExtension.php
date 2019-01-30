@@ -1,18 +1,14 @@
 <?php
-/**
- * Copyright (c) 2018 Heimrich & Hannot GmbH
+
+/*
+ * Copyright (c) 2019 Heimrich & Hannot GmbH
  *
- * @author Rico Kaltofen <r.kaltofen@heimrich-hannot.de>
- * @license http://www.gnu.org/licences/lgpl-3.0.html LGPL
+ * @license LGPL-3.0-or-later
  */
 
 namespace HeimrichHannot\TwigTemplatesBundle\Twig;
 
-
-use Contao\StringUtil;
-use Contao\System;
 use Twig\Extension\AbstractExtension;
-use Twig\TwigFilter;
 use Twig\TwigFunction;
 
 class TwigTemplatesExtension extends AbstractExtension
@@ -20,7 +16,7 @@ class TwigTemplatesExtension extends AbstractExtension
     public function getFunctions()
     {
         return [
-            new TwigFunction('getCurrentLanguage', [$this, 'getCurrentLanguage'])
+            new TwigFunction('getCurrentLanguage', [$this, 'getCurrentLanguage']),
         ];
     }
 
