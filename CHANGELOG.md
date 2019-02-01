@@ -1,6 +1,11 @@
 # Changelog
 All notable changes to this project will be documented in this file.
 
+## [0.3.3] - 2019-02-01
+
+### Fixed
+- dropped unused method in `HookListener`
+
 ## [0.3.2] - 2019-02-01
 
 ### Fixed

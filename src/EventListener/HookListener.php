@@ -21,11 +21,6 @@ class HookListener implements ContainerAwareInterface
 
     const CUSTOM_SUFFIX = '_custom';
 
-    public function initializeSystem()
-    {
-
-    }
-
     /**
      * Hook for applying bootstrap templates for elements and modules.
      *
