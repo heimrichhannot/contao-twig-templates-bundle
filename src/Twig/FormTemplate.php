@@ -44,6 +44,12 @@ class FormTemplate extends AbstractTemplate
         }
     }
 
+    /**
+     * Prepare templateName and templateData from entity (Widget, Module, ContentElement,...).
+     *
+     * @param FrontendTemplate $entity
+     *
+     */
     public function prepareData($entity)
     {
         $this->templateName = $entity->template;

@@ -8,6 +8,7 @@
 
 namespace HeimrichHannot\TwigTemplatesBundle\EventListener;
 
+use Contao\System;
 use Contao\Template;
 use Contao\TemplateLoader;
 use Contao\Widget;
@@ -19,6 +20,11 @@ class HookListener implements ContainerAwareInterface
     use ContainerAwareTrait;
 
     const CUSTOM_SUFFIX = '_custom';
+
+    public function initializeSystem()
+    {
+
+    }
 
     /**
      * Hook for applying bootstrap templates for elements and modules.
@@ -92,8 +98,6 @@ class HookListener implements ContainerAwareInterface
      */
     public function applyTwigTemplate(string $templateName, array $data)
     {
-        global $objPage;
-
         // deactivate if AMP mode is active
         $ampMode = $this->container->get('huh.utils.container')->isBundleActive('HeimrichHannot\AmpBundle\HeimrichHannotContaoAmpBundle')
                    && $this->container->get('huh.request')->getGet('amp');
@@ -102,24 +106,27 @@ class HookListener implements ContainerAwareInterface
             return false;
         }
 
-        $path = null;
-        $suffix = $this->container->get('huh.twig.template.factory')->getTemplateSuffix();
+        $path              = null;
+        $prefixedTemplates = TemplateLoader::getPrefixedFiles($templateName);
 
-        if ($suffix && $suffix !== $this->container->get('huh.twig.template.factory')->getCoreTemplateSuffix()) {
-            try {
-                $path = TemplateLoader::getPath($templateName.$suffix, 'html5');
-            } catch (\Exception $e) {
-                $path = null;
-            }
+        // provide suffixed templates in priority order
+        $suffixedTemplates = [
+            $templateName.$this->container->get('huh.twig.template.factory')->getTemplateSuffix(),
+            $templateName.$this->container->get('huh.twig.template.factory')->getCoreTemplateSuffix(),
+            $templateName,
+        ];
+
+        $templates          = array_intersect($suffixedTemplates, $prefixedTemplates);
+        $customTemplateName = reset($templates);
+
+        if ($customTemplateName === $templateName) {
+            return false;
         }
 
-        if (null === $path && $suffix) {
-            try {
-                $suffix = $this->container->get('huh.twig.template.factory')->getCoreTemplateSuffix();
-                $path = TemplateLoader::getPath($templateName.$suffix, 'html5');
-            } catch (\Exception $e) {
-                $path = null;
-            }
+        try {
+            $path = TemplateLoader::getDefaultPath($customTemplateName, 'html5');
+        } catch (\Exception $e) {
+            $path = null;
         }
 
         // template not found
@@ -144,9 +151,6 @@ class HookListener implements ContainerAwareInterface
         // custom controls
         $data['ttCustomControlsSuffix'] = $this->container->get('huh.twig.template.factory')->getCustomControlsTemplateSuffix();
 
-        // set framework template
-        $twigTemplateName = $templateName.$suffix;
-
-        return [$twigTemplateName, $data];
+        return [$customTemplateName, $data];
     }
 }

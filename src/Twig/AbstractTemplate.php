@@ -77,7 +77,6 @@ abstract class AbstractTemplate
      *
      * @param $entity
      *
-     * @return mixed
      */
     abstract protected function prepareData($entity);
 }

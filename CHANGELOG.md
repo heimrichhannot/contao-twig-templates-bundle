@@ -1,6 +1,11 @@
 # Changelog
 All notable changes to this project will be documented in this file.
 
+## [0.3.2] - 2019-02-01
+
+### Fixed
+- performance improvement on `HookListener::applyTwigTemplate` (now roughly 5 times faster)
+
 ## [0.3.1] - 2019-01-30
 
 ### Fixed

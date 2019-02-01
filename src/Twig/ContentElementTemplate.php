@@ -19,7 +19,6 @@ class ContentElementTemplate extends DefaultTemplate
      *
      * @param FrontendTemplate $entity
      *
-     * @return mixed
      */
     public function prepareData($entity)
     {

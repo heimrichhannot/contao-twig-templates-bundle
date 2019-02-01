@@ -19,7 +19,6 @@ class DefaultTemplate extends AbstractTemplate
      *
      * @param FrontendTemplate $entity
      *
-     * @return mixed
      */
     public function prepareData($entity)
     {
