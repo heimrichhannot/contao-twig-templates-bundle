@@ -1,0 +1,12 @@
+<ul class="nav {{ level }}">
+    {% for item in items %}
+        <li class="nav-item {{ item.class }}">
+            <a href="{{ item.href|default ? item.href : './' }}" title="{{ pageTitle|default ? pageTitle : item.title }}" class="nav-link {{ item.class }}" {% if item.accesskey is not same as('') %} accesskey="{{ item.accesskey }}"{% endif %} {% if item.tabindex|default() %} tabindex="{{ item.tabindex }}"{% endif %} {% if item.nofollow|default() %} rel="nofollow"{% endif %}{{ item.target }}{% if item.subitems|default %} aria-haspopup="true"{% endif %} itemprop="url">
+                <span itemprop="name">
+                    {{ item.link }}
+                </span>
+            </a>
+            {{ item.subitems|default }}
+        </li>
+    {% endfor %}
+</ul>
