@@ -1,6 +1,11 @@
 # Changelog
 All notable changes to this project will be documented in this file.
 
+## [0.4.3] - 2019-03-04
+
+### Fixed
+- checkbox label for 1 option checkbox "groups"
+
 ## [0.4.2] - 2019-03-04
 
 ### Fixed
