@@ -3,7 +3,7 @@
 {% set optionGroupClass = "checkbox-group ctrl_" ~ strId %}
 
 {% block label %}
-    {% if(not arrConfiguration.hideLabel|default(false)) %}
+    {% if(not arrConfiguration.hideLabel|default(false) and arrOptions|default([])|length > 1) %}
     <label id="lbl_{{ strId }}" for="ctrl_{{ strId }}" class="control-label">{{ strLabel|raw }}
         {% if arrConfiguration.mandatory|default(false) %}
             <span class="invisible">{{ 'huh.twig.templates.label.mandatory'|trans }}</span>
