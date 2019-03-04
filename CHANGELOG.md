@@ -1,6 +1,17 @@
 # Changelog
 All notable changes to this project will be documented in this file.
 
+## [0.4.1] - 2019-03-04
+
+### Fixed
+- ">" character in label of some of the widget templates
+
+## [0.4.0] - 2019-03-04
+
+### Added
+- `nav_inline_bs4`
+- `nav_vertical_bs4`
+
 ## [0.3.3] - 2019-02-01
 
 ### Fixed
