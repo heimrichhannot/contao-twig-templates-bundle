@@ -130,14 +130,12 @@ class TemplateFactory
             $template = new FormTemplate($this->templateUtil, $this->eventDispatcher);
             $template->setClassUtil($this->classUtil);
         } elseif ($object instanceof FrontendTemplate) {
-            $type = strtok($object->getName());
+            $type = strtok($object->getName(), '_');
 
             switch ($type) {
                 case 'ce':
                     $template = new ContentElementTemplate($this->templateUtil, $this->eventDispatcher);
-
                     break;
-
                 default:
                     $template = new DefaultTemplate($this->templateUtil, $this->eventDispatcher);
             }
