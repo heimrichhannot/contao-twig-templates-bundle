@@ -1,6 +1,12 @@
 # Changelog
 All notable changes to this project will be documented in this file.
 
+## [0.4.4] - 2019-03-05
+
+### Fixed
+* nav target output in nav templates
+* FrontendTemplate type in `TemplateFactory`
+
 ## [0.4.3] - 2019-03-04
 
 ### Fixed
