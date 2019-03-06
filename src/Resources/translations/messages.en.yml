@@ -1,4 +1,6 @@
 # labels
 huh.twig.templates:
   label:
-    submit: Wyślij
+    mandatory: Mandatory field
+    submit: Send
+    password_confirm: Confirm password
