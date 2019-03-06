@@ -1,6 +1,11 @@
 # Changelog
 All notable changes to this project will be documented in this file.
 
+## [0.4.5] - 2019-03-06
+
+### Added
+- some english and polish translations
+
 ## [0.4.4] - 2019-03-05
 
 ### Fixed
