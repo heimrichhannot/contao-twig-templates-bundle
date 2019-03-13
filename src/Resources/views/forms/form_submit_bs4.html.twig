@@ -1,3 +1,7 @@
+{% extends '@ContaoTwigTemplates/forms/form_row_bs4.html.twig' %}
+
+{% block field %}
 <button type="submit" id="ctrl_{{ strId }}" class="btn btn-primary {{ strClass }}" {{ attributes|default()|raw }}>
     {% trans %}huh.twig.templates.label.submit{% endtrans %}
 </button>
+{% endblock %}

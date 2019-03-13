@@ -1,6 +1,11 @@
 # Changelog
 All notable changes to this project will be documented in this file.
 
+## [0.5.0] - 2019-03-13
+
+### Changed
+- bs4 submit button now extends row
+
 ## [0.4.6] - 2019-03-06
 
 ### Fixed
