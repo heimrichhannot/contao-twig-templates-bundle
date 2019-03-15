@@ -1,6 +1,11 @@
 # Changelog
 All notable changes to this project will be documented in this file.
 
+## [0.5.1] - 2019-03-15
+
+### Fixed
+- headline in `ce_text_core` not outputted raw
+
 ## [0.5.0] - 2019-03-13
 
 ### Changed
