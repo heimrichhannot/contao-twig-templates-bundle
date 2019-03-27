@@ -9,7 +9,9 @@
 namespace HeimrichHannot\TwigTemplatesBundle\Twig;
 
 use HeimrichHannot\TwigTemplatesBundle\Event\BeforeRenderTwigTemplateEvent;
+use HeimrichHannot\TwigTemplatesBundle\FrontendFramework\AbstractFrontendFramework;
 use HeimrichHannot\UtilsBundle\Template\TemplateUtil;
+use Symfony\Component\DependencyInjection\ContainerInterface;
 use Symfony\Component\EventDispatcher\EventDispatcherInterface;
 
 abstract class AbstractTemplate
@@ -26,14 +28,28 @@ abstract class AbstractTemplate
      * @var EventDispatcherInterface
      */
     protected $eventDispatcher;
+    /**
+     * @var ContainerInterface
+     */
+    protected $container;
+    /**
+     * @var AbstractFrontendFramework
+     */
+    protected $frontendFramework;
+    /**
+     * @var array
+     */
+    protected $support;
 
     /**
      * AbstractTemplate constructor.
      */
-    public function __construct(TemplateUtil $templateUtil, EventDispatcherInterface $eventDispatcher)
+    public function __construct(ContainerInterface $container, AbstractFrontendFramework $frontendFramework)
     {
-        $this->templateUtil = $templateUtil;
-        $this->eventDispatcher = $eventDispatcher;
+        $this->templateUtil = $container->get('huh.utils.template');
+        $this->eventDispatcher = $container->get('event_dispatcher');
+        $this->container = $container;
+        $this->frontendFramework = $frontendFramework;
     }
 
     abstract public function getType(): string;
@@ -51,6 +67,14 @@ abstract class AbstractTemplate
     }
 
     /**
+     * @return mixed
+     */
+    public function getEntity()
+    {
+        return $this->entity;
+    }
+
+    /**
      * Render the widget.
      *
      * Uses $this->templateName and $this->templateData
@@ -64,6 +88,8 @@ abstract class AbstractTemplate
      */
     public function render()
     {
+        $this->frontendFramework->compile($this->templateName, $this->templateData, $this);
+
         $event = $this->eventDispatcher->dispatch(
             BeforeRenderTwigTemplateEvent::NAME,
             new BeforeRenderTwigTemplateEvent($this->getType(), $this->templateName, $this->templateData, $this->entity)
@@ -79,4 +105,43 @@ abstract class AbstractTemplate
      *
      */
     abstract protected function prepareData($entity);
+
+    /**
+     * Set if element support a feature
+     *
+     * @param string $key
+     * @param mixed $value
+     */
+    public function addSupport(string $key, $value)
+    {
+        $this->support[$key] = $value;
+    }
+
+    /**
+     * Check if element supports a feature
+     * Return false, if support is not set or false.
+     *
+     * @param string $key
+     * @return bool
+     */
+    public function hasSupport(string $key)
+    {
+        return (isset($this->support[$key]) && $this->support !== false);
+    }
+
+    /**
+     * Get the value for a support feature.
+     * Return false, if feature not found.
+     *
+     * @param string $key
+     * @return bool|mixed
+     */
+    public function getSupport(string $key)
+    {
+        if (isset($this->support[$key]))
+        {
+            return $this->support[$key];
+        }
+        return false;
+    }
 }

@@ -1,0 +1,7 @@
+services:
+  _defaults:
+    public: true
+    autowire: true
+
+  huh.twig.templates.data_containers.layout_container:
+    class: HeimrichHannot\TwigTemplatesBundle\DataContainer\LayoutContainer

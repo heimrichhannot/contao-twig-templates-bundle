@@ -8,10 +8,11 @@
 
 namespace HeimrichHannot\TwigTemplatesBundle\EventListener;
 
-use Contao\System;
+use Contao\LayoutModel;
 use Contao\Template;
 use Contao\TemplateLoader;
 use Contao\Widget;
+use HeimrichHannot\TwigTemplatesBundle\FrontendFramework\FrontendFrameworkCollection;
 use Symfony\Component\DependencyInjection\ContainerAwareInterface;
 use Symfony\Component\DependencyInjection\ContainerAwareTrait;
 
@@ -20,6 +21,11 @@ class HookListener implements ContainerAwareInterface
     use ContainerAwareTrait;
 
     const CUSTOM_SUFFIX = '_custom';
+
+    /**
+     * @var LayoutModel
+     */
+    protected $layout;
 
     /**
      * Hook for applying bootstrap templates for elements and modules.
@@ -129,23 +135,29 @@ class HookListener implements ContainerAwareInterface
             return false;
         }
 
-        // prepare template data for bootstrap
-        switch ($templateName) {
-            case 'ce_accordionSingle':
-                $this->container->get('huh.utils.accordion')->structureAccordionSingle($data);
-
-                break;
-
-            case 'ce_accordionStart':
-            case 'ce_accordionStop':
-                $this->container->get('huh.utils.accordion')->structureAccordionStartStop($data);
-
-                break;
+        if (null !== ($layout = $this->getLayout()) && null !== ($frontendFramework = $this->container
+                ->get(FrontendFrameworkCollection::class)->getFramework($layout->ttFramework))
+        ) {
+            $frontendFramework->generate($templateName, $data);
         }
 
-        // custom controls
-        $data['ttCustomControlsSuffix'] = $this->container->get('huh.twig.template.factory')->getCustomControlsTemplateSuffix();
-
         return [$customTemplateName, $data];
+    }
+
+    protected function getLayout()
+    {
+        if (!$this->layout)
+        {
+            global $objPage;
+
+            if (null === $objPage || null === ($this->layout = $this->container
+                    ->get('huh.utils.model')
+                    ->findModelInstanceByPk('tl_layout', $objPage->layout)
+                ))
+            {
+                return null;
+            }
+        }
+        return $this->layout;
     }
 }

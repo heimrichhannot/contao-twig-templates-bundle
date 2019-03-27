@@ -8,3 +8,6 @@ services:
     public: false
     tags:
       - {name: twig.extension}
+  HeimrichHannot\TwigTemplatesBundle\FrontendFramework\FrontendFrameworkCollection:
+    public: true
+    autowire: true

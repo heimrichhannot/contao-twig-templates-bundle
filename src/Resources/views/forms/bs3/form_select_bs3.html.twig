@@ -1,0 +1,13 @@
+{% extends '@ContaoTwigTemplates/forms/bs3/form_row_bs3.html.twig' %}
+
+{% block field %}
+    <select class="{% block selectClasses %}form-control {{ strClass }}{% endblock %}" name="{{ strName }}" id="ctrl_{{ strId }}" {{ attributes|default()|raw }}>
+        {% for option in arrOptions %}
+            {% set counter = ( counter | default(0) ) + 1 %}
+            {% set default = option.value == arrConfiguration.default|default() %}
+            {% block option %}
+                <option value="{{ option.value }}"{% if option.selected|default(false) %} selected{% endif %}>{{ option.label|raw }}</option>
+            {% endblock %}
+        {% endfor %}
+    </select>
+{% endblock %}

@@ -4,3 +4,6 @@ huh.twig.templates:
     mandatory: Pflichtfeld
     submit: Absenden
     password_confirm: Passwort bestätigen
+  framework:
+    bs3: "Bootstrap 3"
+    bs4: "Bootstrap 4"

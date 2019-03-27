@@ -1,8 +1,6 @@
-<!-- indexer::stop -->
-<div class="{{ class }} block"{{ cssID }}{% if style|default %} style="{{ style }}"{% endif %}>
-    {% if headline|default %}
-    <{{ hl }}>{{ headline }}</{{ hl }}>
-{% endif %}
+{% extends "@ContaoTwigTemplates/block/block_unsearchable_core.html.twig" %}
+
+{% block content %}
 
 <form{% if action|default() %} action="{{ action }}"{% endif %} method="get">
     <div class="formbody">
@@ -37,5 +35,4 @@
 {{ results|raw }}
 {{ pagination|raw }}
 
-</div>
-<!-- indexer::continue -->
+{% endblock %}

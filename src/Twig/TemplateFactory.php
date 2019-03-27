@@ -9,11 +9,15 @@
 namespace HeimrichHannot\TwigTemplatesBundle\Twig;
 
 use Contao\FrontendTemplate;
+use Contao\LayoutModel;
 use Contao\System;
 use Contao\Widget;
+use HeimrichHannot\TwigTemplatesBundle\DependencyInjection\Compiler\FrontendFrameworkPass;
 use HeimrichHannot\TwigTemplatesBundle\Exception\TemplateTypeNotSupportedException;
+use HeimrichHannot\TwigTemplatesBundle\FrontendFramework\FrontendFrameworkCollection;
 use HeimrichHannot\UtilsBundle\Classes\ClassUtil;
 use HeimrichHannot\UtilsBundle\Template\TemplateUtil;
+use Symfony\Component\DependencyInjection\ContainerInterface;
 use Symfony\Component\EventDispatcher\EventDispatcherInterface;
 
 class TemplateFactory
@@ -30,56 +34,21 @@ class TemplateFactory
      * @var EventDispatcherInterface
      */
     private $eventDispatcher;
-
-    public function __construct(TemplateUtil $templateUtil, ClassUtil $classUtil, EventDispatcherInterface $eventDispatcher)
-    {
-        $this->templateUtil = $templateUtil;
-        $this->classUtil = $classUtil;
-        $this->eventDispatcher = $eventDispatcher;
-    }
-
     /**
-     * Get the custom controls template name based on given template name.
-     *
-     * @return string
+     * @var ContainerInterface
      */
-    public function getCustomControlsTemplateName(string $templateName)
-    {
-        global $objPage;
-
-        if (null === $objPage || null === ($layout = System::getContainer()->get('huh.utils.model')->findModelInstanceByPk('tl_layout', $objPage->layout))) {
-            return $templateName;
-        }
-
-        if ($layout->ttFramework && true === (bool) $layout->ttUseFrameworkCustomControls) {
-            $suffix = $this->getTemplateSuffix();
-            $templateName = preg_replace('/'.$suffix.'$/', '', $templateName);
-            $templateName .= $this->getCustomControlsTemplateSuffix();
-        }
-
-        return $templateName;
-    }
-
+    private $container;
     /**
-     * Get custom controls template suffix.
-     *
-     * @return string
+     * @var LayoutModel|null
      */
-    public function getCustomControlsTemplateSuffix(): string
+    private $layout = null;
+
+    public function __construct(ContainerInterface $container)
     {
-        global $objPage;
-
-        $suffix = '';
-
-        if (null === $objPage || null === ($layout = System::getContainer()->get('huh.utils.model')->findModelInstanceByPk('tl_layout', $objPage->layout))) {
-            return $suffix;
-        }
-
-        if ($layout->ttFramework && true === (bool) $layout->ttUseFrameworkCustomControls) {
-            $suffix = '_custom_'.$layout->ttFramework;
-        }
-
-        return $suffix;
+        $this->templateUtil = $container->get('huh.utils.template');
+        $this->classUtil = $container->get('huh.utils.class');
+        $this->eventDispatcher = $container->get('event_dispatcher');
+        $this->container = $container;
     }
 
     /**
@@ -89,14 +58,14 @@ class TemplateFactory
      */
     public function getTemplateSuffix(): string
     {
-        global $objPage;
-
-        if (null === $objPage || null === ($layout = System::getContainer()->get('huh.utils.model')->findModelInstanceByPk('tl_layout', $objPage->layout))) {
+        if (null === ($layout = $this->getLayout()))
+        {
             return '';
         }
 
         if ($layout->ttFramework) {
-            return '_'.$layout->ttFramework;
+            $frontendFramework = $this->container->get(FrontendFrameworkCollection::class)->getFramework($layout->ttFramework);
+            return '_'.$frontendFramework->getAlias();
         }
 
         if ($layout->ttUseTwig) {
@@ -126,18 +95,23 @@ class TemplateFactory
      */
     public function createInstance($object)
     {
-        if ($object instanceof Widget) {
-            $template = new FormTemplate($this->templateUtil, $this->eventDispatcher);
-            $template->setClassUtil($this->classUtil);
-        } elseif ($object instanceof FrontendTemplate) {
+        $layout = $this->getLayout();
+        $frontendFramework = $this->container->get(FrontendFrameworkCollection::class)->getFramework($layout->ttFramework);
+
+        if ($object instanceof Widget)
+        {
+            $template = new FormTemplate($this->container, $frontendFramework);
+        }
+        elseif ($object instanceof FrontendTemplate)
+        {
             $type = strtok($object->getName(), '_');
 
             switch ($type) {
                 case 'ce':
-                    $template = new ContentElementTemplate($this->templateUtil, $this->eventDispatcher);
+                    $template = new ContentElementTemplate($this->container, $frontendFramework);
                     break;
                 default:
-                    $template = new DefaultTemplate($this->templateUtil, $this->eventDispatcher);
+                    $template = new DefaultTemplate($this->container, $frontendFramework);
             }
         }
 
@@ -148,5 +122,22 @@ class TemplateFactory
         $template->setEntity($object);
 
         return $template;
+    }
+
+    protected function getLayout()
+    {
+        if (!$this->layout)
+        {
+            global $objPage;
+
+            if (null === $objPage || null === ($this->layout = $this->container
+                    ->get('huh.utils.model')
+                    ->findModelInstanceByPk('tl_layout', $objPage->layout)
+                ))
+            {
+                return null;
+            }
+        }
+        return $this->layout;
     }
 }
