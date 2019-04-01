@@ -1,5 +1,0 @@
-{% extends '@ContaoTwigTemplates/forms/bs3/form_row_bs3.html.twig' %}
-
-{% block field %}
-    <input type="text" name="{{ strName }}" id="ctrl_{{ strId }}" class="form-control {{ strClass }}" value="{{ varValue|default() }}" {{ attributes|default()|raw }} {{ arrConfiguration.placeholder|default|raw }}>
-{% endblock %}
