@@ -1,12 +1,12 @@
 # Contao Twig Templates Bundle
 
-This bundle brings twig support to Contao CMS. In addition to supporting replacing the core templates with twig pendants, it also supports different frontend frameworks like [Bootstrap](https://getbootstrap.com) (Bootstrap 4 templates are supported out of the box).
+This bundle brings twig support to Contao CMS. In addition to replacing the core templates with twig pendants, it also brings support for different frontend framework prepared templates like [Bootstrap](https://getbootstrap.com) (Bootstrap 4 prepared templates are part of this bundle).
  
 ## Features
 
 - replaces various core templates with twig templates
 - automatic usage of templates prepared for frontend frameworks, if set in settings (inspired by [contao-bootstrap/templates](https://github.com/contao-bootstrap/templates))
-- bundles bootstrap 4 support with optional support for custom form controls
+- bundled bootstrap 4 support with optional support for custom form controls
 - template caching using [Twig](https://twig.symfony.com)
 
 ## Installation
