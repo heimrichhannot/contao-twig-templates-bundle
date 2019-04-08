@@ -1,45 +1,34 @@
 # Contao Twig Templates Bundle
 
-This bundle ships core contao templates as twig templates and additional templates using the latest [Bootstrap](https://getbootstrap.com) framework's CSS for the Contao CMS.
-
+This bundle brings twig support to Contao CMS. In addition to supporting replacing the core templates with twig pendants, it also supports different frontend frameworks like [Bootstrap](https://getbootstrap.com) (Bootstrap 4 templates are supported out of the box).
+ 
 ## Features
 
-- contains various templates already styled with Bootstrap's CSS classes
-- (optional) support for custom form controls
+- replaces various core templates with twig templates
+- automatic usage of templates prepared for frontend frameworks, if set in settings (inspired by [contao-bootstrap/templates](https://github.com/contao-bootstrap/templates))
+- bundles bootstrap 4 support with optional support for custom form controls
 - template caching using [Twig](https://twig.symfony.com)
-- automatic usage of templates if the *bootstrap option* is checked in the layout (inspired by [contao-bootstrap/templates](https://github.com/contao-bootstrap/templates))
 
 ## Installation
 
 Install via composer: `composer require heimrichhannot/contao-bootstrap-templates-bundle` and update your database.
 
-## Configuration
+### Additional frontend frameworks
 
-It's as simple as that: Set the selected framework `frameworkTemplates` in your existing layout or create a new one. This way the *automapping* takes place and
-according to the current content element or module, the correct template is used which name's usually built with the suffix `_bs4`.
+Currently available (known) extensions:
+* [Bootstrap 3](https://github.com/heimrichhannot/contao-twig-templates-bootstrap3-bundle)
+
+## Usage
+
+
+It's as simple as that: Check 'Use twig templates' in your page layout configuration. If your want to use a frontend framework like bootstrap, select the corresponding option in the 'Use framework' select. This way the *automapping* takes place and according to the current content element or module, the correct template is used.
+
+Automapping order (check if template exists, else use the next one):
+1. Frontend framework twig template
+1. Core twig template
+1. default (contao html5) template
 
 If you don't want to use *automapping* you can also assign the template you want in the ordinary way by selecting it in the `customTpl` field of your module or content element.
-
-### Supported content elements
-
-Contao content element | Contao template | Twig template | Notes
----------------------- | --------------- | ------------- | -----
-`ContentAccordion` | `ce_accordionSingle.html5` | `ce_accordionSingle_bs4.html.twig` | single element accordions
-`ContentAccordionStart` | `ce_accordionStart.html5` | `ce_accordionStart_bs4.html.twig` |
-`ContentAccordionStop` | `ce_accordionStop.html5` | `ce_accordionStop_bs4.html.twig` |
-
-### Supported modules
-
-Contao module | Contao template | Twig template | Notes
-------------- | --------------- | ------------- | -----
-`ModuleLogin` | `mod_login.html5` | `mod_login_bs4.html.twig` |
-
-### Additional templates
-
-Twig template | Notes
-------------- | -----
-`nav_tabs_bs4.html.twig` |
-`pagination_bs4.html.twig` |
 
 ### Additional dca configuration keys
 
@@ -53,14 +42,46 @@ Key            | Description
 `groupClass`   | Classes for outer form group wrapper (default: form-group)
 `inputGroupClass`   | Classes for input group wrapper (input-group is always added)
 
-### Template variables
+## Bundled templates
 
-Additional template variables
+### Content elements
 
-Name            | Type   | Default    | Description
---------------- | ------ | ---------- | -----------
-groupClass      | string | form-group | The outer form group class
-inputGroupClass | string | form-group | The input group class
+Content Element  | bundled
+---------------- | -------
+Headline         | core
+Player           | core 
+Text             | core
+Accordion Single | bs4
+Accordion Start  | bs4
+Accordion Ende   | bs4
+
+### Modules
+
+Modules          | Bundled
+---------------- | -------
+Login            | bs4
+Search           | bs4
+
+Additional: 
+
+Template              | Bundled
+--------------------- | -------
+mod_search_list_group | bs4
+
+### Block templates
+
+Template | Bundled
+-------- | -------
+block_searchable | core
+block_unsearchable | core
+
+### Additional templates
+
+Twig template | Notes
+------------- | -----
+`nav_tabs_bs4.html.twig` |
+`pagination_bs4.html.twig` |
+
 
 ## Developers
 
@@ -71,3 +92,35 @@ Through the bundle lifecycle following [Events](https://symfony.com/doc/current/
 Event                         | Description
 ----------------------------- | -----------
 huh.twig.beforeRenderTemplate | Modify template data before rendering the widget
+
+### Add custom frontend frameworks
+
+1. Create a class which extends `HeimrichHannot\TwigTemplatesBundle\FrontendFramework\AbstractFrontendFramework` and implement the abstract methods
+    > Please read the method comments for implementation
+1. Register your newly created class as service with `huh.contao_twig_templates.framework` service tag
+1. For each template, you want to replace, create an html5 template (where filename suffix is the same as the alias set in the class, example `form_checkbox_bs4.html5`) and call the template factory. Typical this code can be used without any adjustment: 
+
+    ```php
+    <?php 
+    $template = \Contao\System::getContainer()->get('huh.twig.template.factory')->createInstance($this);
+    echo $template->render();
+    ```
+    * If your want to set template specific options (for example bootstrap 4 custom control support) you can use `$template::addSupport()`. Example:
+    
+        ```
+         <?php 
+        $template = \Contao\System::getContainer()->get('huh.twig.template.factory')->createInstance($this);
+        $template->addSupport('custom-forms', true);
+        echo $template->render();
+        ```
+
+1. Create a twig template with the same name as the html5 template (e.g. `form_checkbox_bs4.html.twig`). This is the place where your custom template code will live. All template variable are given as twig variables. Please see bundle templates for some examples.
+
+### Template variables
+
+Additional template variables
+
+Name            | Type   | Default    | Description
+--------------- | ------ | ---------- | -----------
+groupClass      | string | form-group | The outer form group class
+inputGroupClass | string | form-group | The input group class

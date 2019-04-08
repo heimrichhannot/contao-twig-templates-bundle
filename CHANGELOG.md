@@ -3,7 +3,8 @@ All notable changes to this project will be documented in this file.
 
 ## [0.6.0] - 2019-04-08
 
-### 
+### Changed 
+* decoubled framework dependend logic to make bundle expandable for other frontend frameworks
 
 ## [0.5.1] - 2019-03-15
 
