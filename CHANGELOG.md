@@ -1,6 +1,10 @@
 # Changelog
 All notable changes to this project will be documented in this file.
 
+## [0.6.0] - 2019-04-08
+
+### 
+
 ## [0.5.1] - 2019-03-15
 
 ### Fixed
