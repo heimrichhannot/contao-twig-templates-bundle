@@ -62,7 +62,7 @@ class Bootstrap4Framework extends AbstractFrontendFramework
         {
             return;
         }
-        if (false === (bool) $layout->ttUseFrameworkCustomControls || false === $entity->getSupport(static::SUPPORT_CUSTOM_FORMS))
+        if ($layout->ttUseFrameworkCustomControls && $entity->getSupport(static::SUPPORT_CUSTOM_FORMS))
         {
             $suffix = $this->container->get('huh.twig.template.factory')->getTemplateSuffix();
             $customFormTemplate = preg_replace('/'.$suffix.'$/', '', $templateName);
