@@ -2,7 +2,7 @@
 
 {% set optionGroupClass = "checkbox-group ctrl_" ~ strId %}
 
-{% if arrOptions|length == 1 %}
+{% if arrOptions|length == 1 and not arrConfiguration.multiple|default(false) %}
     {% set option = arrOptions[0] %}
     {% set option = option|merge({label: strLabel}) %}
 
@@ -14,7 +14,7 @@
 {% endif %}
 
 {% block label %}
-    {% if(not arrConfiguration.hideLabel|default(false) and arrOptions|default([])|length > 1) %}
+    {% if(not arrConfiguration.hideLabel|default(false) and (arrOptions|default([])|length > 1 or arrConfiguration.multiple|default(false))) %}
     <label id="lbl_{{ strId }}" for="ctrl_{{ strId }}" class="control-label">{{ strLabel|raw }}
         {% if arrConfiguration.mandatory|default(false) %}
             <span class="invisible">{{ 'huh.twig.templates.label.mandatory'|trans }}</span>
