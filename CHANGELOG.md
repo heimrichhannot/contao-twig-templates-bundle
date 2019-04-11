@@ -1,6 +1,11 @@
 # Changelog
 All notable changes to this project will be documented in this file.
 
+## [0.6.3] - 2019-04-11
+
+### Fixed
+- login templates
+
 ## [0.6.2] - 2019-04-10
 
 ### Fixed

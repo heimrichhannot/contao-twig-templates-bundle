@@ -1,1 +1,5 @@
-<?= \Contao\System::getContainer()->get('huh.utils.template')->renderTwigTemplate($this->getName(), $this->getData()); ?>
+<?php
+
+$template = \Contao\System::getContainer()->get('huh.twig.template.factory')->createInstance($this);
+$template->addSupport('custom-forms', true);
+echo $template->render();

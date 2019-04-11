@@ -27,9 +27,9 @@
             </div>
             {% if autologin|default %}
                 <div class="form-group widget widget-checkbox">
-                    <div class="form-check checkbox_container">
-                        <input class="form-check-input" type="checkbox" value="1" name="autologin" id="autologin">
-                        <label class="form-check-label" for="autologin">
+                    <div class="custom-control custom-checkbox">
+                        <input type="checkbox" class="custom-control-input" id="autologin">
+                        <label class="custom-control-label" for="autologin">
                             {{ autoLabel }}
                         </label>
                     </div>
