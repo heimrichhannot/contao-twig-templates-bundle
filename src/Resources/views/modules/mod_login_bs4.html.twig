@@ -1,7 +1,7 @@
 <!-- indexer::stop -->
 <div class="{{ class }} {{ logout|default ? 'logout' : 'login' }} block"{{ cssID }}{% if style|default %} style="{{ style }}"{% endif %}>
 
-    {% if headline|default %}
+{% if headline|default %}
     <{{ hl }}>{{ headline }}</{{ hl }}>
 {% endif %}
 
@@ -15,7 +15,7 @@
         <input type="hidden" name="REQUEST_TOKEN" value="{{ '{{request_token}}' }}">
 
         {% if logout|default %}
-            <p class="login_info">{{ loggedInAs }}<br>{{ lastLogin }}</p>
+            <p class="login_info">{{ loggedInAs }}{{ lastLogin|default() ? '<br>' ~ lastLogin : '' }}</p>
         {% else %}
             <div class="form-group widget widget-text">
                 <label for="username">{{ username }}</label>
@@ -27,12 +27,14 @@
             </div>
             {% if autologin|default %}
                 <div class="form-group widget widget-checkbox">
-                    <div class="form-check checkbox_container">
-                        <input class="form-check-input" type="checkbox" value="1" name="autologin" id="autologin">
-                        <label class="form-check-label" for="autologin">
-                            {{ autoLabel }}
-                        </label>
-                    </div>
+                    {% block autologin %}
+                        <div class="form-check checkbox_container">
+                            <input class="form-check-input" type="checkbox" value="1" name="autologin" id="autologin">
+                            <label class="form-check-label" for="autologin">
+                                {{ autoLabel }}
+                            </label>
+                        </div>
+                    {% endblock %}
                 </div>
             {% endif %}
         {% endif %}

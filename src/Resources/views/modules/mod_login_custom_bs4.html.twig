@@ -1,47 +1,10 @@
-<!-- indexer::stop -->
-<div class="{{ class }} {{ logout|default ? 'logout' : 'login' }} block"{{ cssID }}{% if style|default %} style="{{ style }}"{% endif %}>
+{% extends '@ContaoTwigTemplates/modules/mod_login_bs4.html.twig' %}
 
-    {% if headline|default %}
-    <{{ hl }}>{{ headline }}</{{ hl }}>
-{% endif %}
-
-<form{% if action|default %} action="{{ action }}"{% endif %} id="{{ formId }}" method="post">
-    <div class="formbody">
-        {% if message|default %}
-            <p class="error">{{ message }}</p>
-        {% endif %}
-
-        <input type="hidden" name="FORM_SUBMIT" value="{{ formId }}">
-        <input type="hidden" name="REQUEST_TOKEN" value="{{ '{{request_token}}' }}">
-
-        {% if logout|default %}
-            <p class="login_info">{{ loggedInAs }}<br>{{ lastLogin }}</p>
-        {% else %}
-            <div class="form-group widget widget-text">
-                <label for="username">{{ username }}</label>
-                <input type="text" name="username" id="username" class="form-control text" value="{{ value }}">
-            </div>
-            <div class="form-group widget widget-password">
-                <label for="password">{{ password }}</label>
-                <input type="password" name="password" id="password" class="form-control text password" value="">
-            </div>
-            {% if autologin|default %}
-                <div class="form-group widget widget-checkbox">
-                    <div class="custom-control custom-checkbox">
-                        <input type="checkbox" class="custom-control-input" id="autologin">
-                        <label class="custom-control-label" for="autologin">
-                            {{ autoLabel }}
-                        </label>
-                    </div>
-                </div>
-            {% endif %}
-        {% endif %}
-
-        <div class="form-group widget widget-submit">
-            <button type="submit" class="btn btn-primary submit">{{ slabel }}</button>
-        </div>
+{% block autologin %}
+    <div class="custom-control custom-checkbox">
+        <input type="checkbox" class="custom-control-input" id="autologin">
+        <label class="custom-control-label" for="autologin">
+            {{ autoLabel }}
+        </label>
     </div>
-</form>
-
-</div>
-<!-- indexer::continue -->
+{% endblock %}
