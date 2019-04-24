@@ -1,0 +1,12 @@
+
+<div class="{{ class|default }} ce_text block"{{ cssID|default }}{% if style|default %} style="{{ style }}"{% endif %}>
+
+    {% if headline|default %}
+        <h1>{{ headline }}</h1>
+    {% endif %}
+
+    {{ text|default }}
+
+    <p class="more"><a href="{{ href|default }}" title="{{ readMore|default }}">{{ more|default }}<span class="invisible"> {{ headline|default }}</span></a></p>
+
+</div>

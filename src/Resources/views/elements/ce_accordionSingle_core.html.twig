@@ -1,0 +1,37 @@
+
+<section class="card {{ class }} ce_accordion ce_text block"{{ cssID }}{% if style|default %} style="{{ style }}"{% endif %}>
+    <div class="{{ toggler }}"{% if headlineStyles %} style="{{ headlineStyles }}"{% endif %}
+        {{ headline }}
+    </div>
+    <div class="{{ accordion }}"><div>
+
+            {% if not addBefore|default %}
+                {{ text|raw }}
+            {% endif %}
+
+            {% if addImage|default %}
+                {% include 'HeimrichHannotContaoUtilsBundle::image.html.twig' %}
+            {% endif %}
+
+            {% if addBefore|default %}
+                {{ text|raw }}
+            {% endif %}
+
+        </div>
+    </div>
+    <div id="collapse_{{ id }}" class="collapse{% if accordion_first|default %} show{% endif %}" aria-labelledby="heading_{{ id }}">
+        <div class="card-body">
+            {% if not addBefore|default %}
+                {{ text|raw }}
+            {% endif %}
+
+            {% if addImage|default %}
+                {% include 'HeimrichHannotContaoUtilsBundle::image.html.twig' %}
+            {% endif %}
+
+            {% if addBefore|default %}
+                {{ text|raw }}
+            {% endif %}
+        </div>
+    </div>
+</section>

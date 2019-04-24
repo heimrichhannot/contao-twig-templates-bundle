@@ -1,0 +1,11 @@
+<pre>
+    {{ dump() }}
+</pre>
+<div class="{{ strPrefix|default() }}{% if class|default %} {{ class }}{% endif %}">
+
+  {% block label %}
+  {% endblock %}
+
+  {% block field %}
+  {% endblock %}
+</div>

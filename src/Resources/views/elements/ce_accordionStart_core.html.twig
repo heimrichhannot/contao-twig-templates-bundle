@@ -1,0 +1,7 @@
+<section class="{{ class }} ce_accordion ce_text block"{{ cssID }}{% if style %} style="{{ style }}"{% endif %}
+    <div class="{{ toggler|default }}"{% if headlineStyle %} style="{{ headlineStyle }}"{% endif %}>
+        <?= $this->headline ?>
+    </div>
+
+    <div class="{{ accordion }}">
+        <div>

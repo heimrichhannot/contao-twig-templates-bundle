@@ -1,0 +1,9 @@
+
+<div class="{{ class|default }} block"{{ cssID|default }}{% if style|default %} style="{{ style }}"{% endif %}>
+
+    {% if headline|default %}
+    <{{ hl }}>{{ headline }}</{{ hl }}>
+    {% endif %}
+
+    <div class="content-slider" data-config="{{ config|default }}">
+        <div class="slider-wrapper">

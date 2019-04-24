@@ -1,0 +1,7 @@
+{% extends '@ContaoTwigTemplates/block/block_searchable_core.html.twig' %}
+
+{% block content %}
+    {% if image.singleSRC %}
+        {{ include('@HeimrichHannotContaoUtils/image.html.twig', picture) }}
+    {% endif %}
+{% endblock %}
