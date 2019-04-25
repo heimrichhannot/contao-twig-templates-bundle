@@ -1,16 +1,16 @@
 
-<div class="<?= $this->prefix ?><?php if ($this->class) echo ' ' . $this->class; ?>">
-  <?php $this->block('label'); ?>
-  <?php $this->endblock(); ?>
+<div class="{{ strPrefix|default() }}{% if class|default %} {{ class }}{% endif %}">
+  {% block label %}
+  {% endblock %}
 
-  <?php $this->block('field'); ?>
-  <?php $this->endblock(); ?>
+  {% block field %}
+  {% endblock %}
 </div>
 
-<div class="<?= $this->prefix ?> confirm<?php if ($this->class) echo ' ' . $this->class; ?>">
-  <?php $this->block('label2'); ?>
-  <?php $this->endblock(); ?>
+<div class="{{ strPrefix|default() }} confirm{% if class|default %} {{ class }}{% endif %}">
+  {% block label2 %}
+  {% endblock %}
 
-  <?php $this->block('field2'); ?>
-  <?php $this->endblock(); ?>
+  {% block field2 %}
+  {% endblock %}
 </div>

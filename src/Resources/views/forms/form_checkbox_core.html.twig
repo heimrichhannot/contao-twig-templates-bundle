@@ -1,58 +1,40 @@
-{% extends '@ContaoTwigTemplates/forms/form_row_core.html.twig' %}
-
-{% set optionGroupClass = "checkbox-group ctrl_" ~ strId %}
-
-{% if arrOptions|length == 1 and not arrConfiguration.multiple|default(false) %}
-    {% set option = arrOptions[0] %}
-    {% set option = option|merge({label: strLabel}) %}
-
-    {% if arrConfiguration.mandatory|default(false) %}
-        {% set option = option|merge({label: option.label ~ '<span class="invisible">' ~ 'huh.twig.templates.label.mandatory'|trans ~ '</span><span class="mandatory">*</span>'}) %}
-    {% endif %}
-
-    {% set arrOptions = [option] %}
-{% endif %}
-
-
-{% block fieldset %}
-<fieldset id="{{ strId|default }}" class="checkbox_container {{ class|default() }}">
-
-{% block label %}
-    {% if(not arrConfiguration.hideLabel|default(false) and (arrOptions|default([])|length > 1 or arrConfiguration.multiple|default(false))) %}
-        <legend id="lbl_{{ strId }}" for="ctrl_{{ strId }}" class="control-label">{{ strLabel|raw }}
-            {% if arrConfiguration.mandatory|default(false) %}
-                <span class="invisible">{{ 'huh.twig.templates.label.mandatory'|trans }}</span>
-                <span class="mandatory">*</span>
-            {% endif %}
-        </legend>
-    {% endif %}
-{% endblock %}
+{% extends '@ContaoTwigTemplates/forms/form_row_core.html.twig.' %}
 
 {% block field %}
-    <div class="{{ optionGroupClass }}">
-        {% for option in arrOptions %}
-            {% set counter = ( counter | default(0) ) + 1 %}
-            {% block option %}
-                {% if option.type == 'option' %}
-                <div class="form-check {% if arrConfiguration.inline|default(false) %}form-check-inline{% endif %}">
-                    <input class="form-check-input{% if(hasErrors|default(false)) %} is-invalid{% endif %}" name="{{ strName }}{% if arrConfiguration.multiple|default %}[]{% endif %}" type="checkbox" value="{{ option.value }}"{{ option.checked }} id="opt_{{ strId }}_{{ counter }}" {{ attributes|default()|raw }} {% if arrConfiguration.disabled|default(false) %} disabled{% endif %} {{ option.attributes }}>
-                    <label class="form-check-label" for="opt_{{ strId }}_{{ counter }}">{{ option.label|raw }}</label>
+    <fieldset id="ctrl_{{ strId|default }}" class="checkbox_container{% if strClass %} {{ strClass }}{% endif %}">
 
-                    {% if loop.last and not arrConfiguration.inline|default(false)%}
-                        {% if(hasErrors|default(false) and errorsAsString|default()) %}
-                            <div class="invalid-feedback">{{ errorsAsString|raw }}</div>
-                        {% endif %}
-                    {% endif %}
-                </div>
-                {% elseif option.type == 'group_start' %}
-                <fieldset>
-                    <legend>{{ option.label }}</legend>
-                {% elseif option.type == 'group_end' %}
-                    </fieldset>
+        {% if strLabel|default %}
+            <legend>
+                {% if mandatory|default(false) %}
+                <span class="invisible">{{ mandatoryField }} </span>{{ strLabel }}span class="mandatory">*</span>
+                {% else %}
+                {{ strLabel }}
                 {% endif %}
-            {% endblock %}
+            </legend>
+        {% endif %}
+
+        {% if arrErrors|default %}
+            <p class="error"></p>
+        {% endif %}
+
+        <input type="hidden" name="{{ name|default }}" value="">
+
+        {% for option in arrOptions %}
+            {% if option.type == 'group_start' %}
+                <fieldset>
+                <legend>{{ option.label }}</legend>
+            {% endif %}
+
+            {% if option.type == 'option' %}
+                <span><input type="checkbox" name="{{ option.name }}" id="opt_{{ option.id }}" class="checkbox" value="{{ option.value }} ?>"{{ option.checked }}{{ option.attributes }}> <label id="lbl_{{ option.id }}" for="opt_{{ option.id }}">{{ option.label }}</label></span>
+            {% endif %}
+
+            {% if option.type == 'group_start' %}
+                </fieldset>
+
+            {% endif %}
         {% endfor %}
-    </div>
-</fieldset>
-{% endblock %}
+
+    </fieldset>
+
 {% endblock %}

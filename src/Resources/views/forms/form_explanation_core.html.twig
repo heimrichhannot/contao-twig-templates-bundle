@@ -1,4 +1,4 @@
 
-<div class="<?= $this->prefix ?> explanation<?php if ($this->class) echo ' ' . $this->class; ?>">
-  <?= $this->generate() ?>
+<div class="{{ prefix|default }} explanation{% if strClass|default %} {{ strClass }}{% endif %}">
+    {{ arrConfiguration.text|raw }}
 </div>

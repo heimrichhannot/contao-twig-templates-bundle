@@ -1,13 +1,13 @@
 
-<?php if ($this->fsType == 'fsStart'): ?>
+{% if arrConfiguration.fsType == 'fsStart' %}
 
-  <fieldset<?php if ($this->class): ?> class="<?= $this->class ?>"<?php endif; ?>>
-  <?php if ($this->label): ?>
-    <legend><?= $this->label ?></legend>
-  <?php endif; ?>
+<fieldset{% if strClass|default %} class="{{ strClass }}"{% endif %}>
+    {% if strLabel|default %}
+        <legend>{{ strLabel }}</legend>
+    {% endif %}
 
-<?php else: ?>
+{% else %}
 
-  </fieldset>
+    </fieldset>
 
-<?php endif; ?>
+{% endif %}
