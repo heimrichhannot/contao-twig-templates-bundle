@@ -1,9 +1,9 @@
-<?php $this->extend('form_row'); ?>
+{% extends '@ContaoTwigTemplates/forms/form_row_core.html.twig' %}
 
-<?php $this->block('field'); ?>
-  <?php if ($this->src): ?>
-    <input type="image" src="<?= $this->src ?>" id="ctrl_<?= $this->id ?>" class="submit<?php if ($this->class) echo ' ' . $this->class; ?>" title="<?= StringUtil::specialchars($this->slabel) ?>" alt="<?= StringUtil::specialchars($this->slabel) ?>"<?= $this->getattributes() ?>>
-  <?php else: ?>
-    <button type="submit" id="ctrl_<?= $this->id ?>" class="submit<?php if ($this->class) echo ' ' . $this->class; ?>"<?= $this->getattributes() ?>><?= $this->slabel ?></button>
-  <?php endif; ?>
-<?php $this->endblock(); ?>
+{% block field %}
+    {% if arrConfiguration.src|default() %}
+        <input type="image" src="{{ arrConfiguration.src|default }}" id="ctrl_{{ strId|default }}" class="submit{% if strClass %} {{ strClass }}{% endif %}" title="{{ arrConfiguration.slabel|e('html')|default('Absenden') }}" alt="{{ arrConfiguration.slabel|e('html')|default('Absenden') }}"{{ attributes|default()|raw }}>
+    {% else %}
+        <button type="submit" id="ctrl_{{ strId|default }}" class="submit{% if strClass %} {{ strClass }}{% endif %}"{{ arrConfiguration.attributes|default }}>{{ arrConfiguration.slabel|default('Absenden') }}</button>
+    {% endif %}
+{% endblock %}

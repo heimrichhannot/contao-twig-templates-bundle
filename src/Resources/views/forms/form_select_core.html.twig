@@ -1,10 +1,6 @@
 {% extends '@ContaoTwigTemplates/forms/form_row_core.html.twig' %}
 
 {% block label %}
-<pre>
-    {{ dump() }}
-</pre>
-
     {% if strLabel|default %}
         <label for="ctrl_{{ strId|default }}"{% if strClass %} class="{{ strClass }}"{% endif %}>
             {% if arrConfiguration.mandatory|default(false) %}

@@ -1,21 +1,21 @@
-<?php $this->extend('form_row'); ?>
+{% extends '@ContaoTwigTemplates/forms/form_row_core.html.twig' %}
 
-<?php $this->block('label'); ?>
-  <?php if ($this->label): ?>
-    <label for="ctrl_<?= $this->id ?>"<?php if ($this->class): ?> class="<?= $this->class ?>"<?php endif; ?>>
-      <?php if ($this->mandatory): ?>
-        <span class="invisible"><?= $this->mandatoryField ?> </span><?= $this->label ?><span class="mandatory">*</span>
-      <?php else: ?>
-        <?= $this->label ?>
-      <?php endif; ?>
-    </label>
-  <?php endif; ?>
-<?php $this->endblock(); ?>
+{% block label %}
+    {% if strLabel|default %}
+        <label for="ctrl_{{ strId }}"{% if strClass %} class="{{ strClass }}"{% endif %}>
+            {% if arrConfiguration.mandatory|default(false) %}
+                <span class="invisible">{{ arrConfiguration.mandatoryField }} </span>{{ strLabel|default }}<span class="mandatory">*</span>
+            {% else %}
+                {{ strLabel|default }}
+            {% endif %}
+        </label>
+    {% endif %}
+{% endblock %}
 
-<?php $this->block('field'); ?>
-  <?php if ($this->hasErrors()): ?>
-    <p class="error"><?= $this->getErrorAsString() ?></p>
-  <?php endif; ?>
+{% block field %}
+    {% if hasErrors|default(false) %}
+        <p class="error">{{ errorAsString|default(null) }}</p>
+    {% endif %}
 
-  <textarea name="<?= $this->name ?>" id="ctrl_<?= $this->id ?>" class="textarea<?php if ($this->class) echo ' ' . $this->class; ?>" rows="<?= $this->rows ?>" cols="<?= $this->cols ?>"<?= $this->getAttributes() ?>><?= $this->value ?></textarea>
-<?php $this->endblock(); ?>
+    <textarea name="{{ strName }}" id="ctrl_{{ strId }}" class="textarea{% if strClass %} {{ strClass }}{% endif %}" rows="{{ intRows|default(3) }}" cols="{{ intCols|default(3) }}"{{ attributes|default()|raw }}>{{ varValue|default() }}</textarea>
+{% endblock %}

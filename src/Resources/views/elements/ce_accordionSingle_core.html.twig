@@ -1,37 +1,29 @@
 
-<section class="card {{ class }} ce_accordion ce_text block"{{ cssID }}{% if style|default %} style="{{ style }}"{% endif %}>
-    <div class="{{ toggler }}"{% if headlineStyles %} style="{{ headlineStyles }}"{% endif %}
+<section class="{{ class }} ce_accordion ce_text block"{{ cssID }}{% if style|default %} style="{{ style }}"{% endif %}>
+    <div class="{{ toggler }}"{% if headlineStyles|default %} style="{{ headlineStyles }}"{% endif %}>
         {{ headline }}
     </div>
-    <div class="{{ accordion }}"><div>
-
+    <div class="{{ accordion }}">
+        <div>
             {% if not addBefore|default %}
                 {{ text|raw }}
             {% endif %}
 
             {% if addImage|default %}
-                {% include 'HeimrichHannotContaoUtilsBundle::image.html.twig' %}
+                {% include ('@HeimrichHannotContaoUtils/image.html.twig') with {
+                    'margin': margin|default,
+                    'href': href|default,
+                    'linkTitle': linkTitle|default,
+                    'attributes': attributes|default,
+                    'picture': picture|default,
+                    'caption': caption|default
+                } only %}
             {% endif %}
 
             {% if addBefore|default %}
                 {{ text|raw }}
             {% endif %}
 
-        </div>
-    </div>
-    <div id="collapse_{{ id }}" class="collapse{% if accordion_first|default %} show{% endif %}" aria-labelledby="heading_{{ id }}">
-        <div class="card-body">
-            {% if not addBefore|default %}
-                {{ text|raw }}
-            {% endif %}
-
-            {% if addImage|default %}
-                {% include 'HeimrichHannotContaoUtilsBundle::image.html.twig' %}
-            {% endif %}
-
-            {% if addBefore|default %}
-                {{ text|raw }}
-            {% endif %}
         </div>
     </div>
 </section>
