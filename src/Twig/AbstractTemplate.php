@@ -46,9 +46,9 @@ abstract class AbstractTemplate
      */
     public function __construct(ContainerInterface $container, AbstractFrontendFramework $frontendFramework)
     {
-        $this->templateUtil = $container->get('huh.utils.template');
-        $this->eventDispatcher = $container->get('event_dispatcher');
-        $this->container = $container;
+        $this->templateUtil      = $container->get('huh.utils.template');
+        $this->eventDispatcher   = $container->get('event_dispatcher');
+        $this->container         = $container;
         $this->frontendFramework = $frontendFramework;
     }
 
@@ -79,12 +79,12 @@ abstract class AbstractTemplate
      *
      * Uses $this->templateName and $this->templateData
      *
-     * @throws \Psr\Cache\InvalidArgumentException
+     * @return string
      * @throws \Twig_Error_Loader
      * @throws \Twig_Error_Runtime
      * @throws \Twig_Error_Syntax
      *
-     * @return string
+     * @throws \Psr\Cache\InvalidArgumentException
      */
     public function render()
     {
@@ -95,7 +95,7 @@ abstract class AbstractTemplate
             new BeforeRenderTwigTemplateEvent($this->getType(), $this->templateName, $this->templateData, $this->entity)
         );
 
-        return $this->templateUtil->renderTwigTemplate($event->getTemplateName(), $event->getTemplateData());
+        return $this->templateUtil->renderTwigTemplate($event->getTemplateName(), array_merge(is_array($event->getTemplateData()) ? $event->getTemplateData() : [], ['_entity' => $this->getEntity()]));
     }
 
     /**
@@ -138,8 +138,7 @@ abstract class AbstractTemplate
      */
     public function getSupport(string $key)
     {
-        if (isset($this->support[$key]))
-        {
+        if (isset($this->support[$key])) {
             return $this->support[$key];
         }
         return false;

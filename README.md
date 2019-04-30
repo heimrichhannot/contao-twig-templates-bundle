@@ -124,3 +124,4 @@ Name            | Type   | Default    | Description
 --------------- | ------ | ---------- | -----------
 groupClass      | string | form-group | The outer form group class
 inputGroupClass | string | form-group | The input group class
+_entity | object | - | The context entity object (e.g. \Contao\FormTextField)

@@ -1,6 +1,14 @@
 # Changelog
 All notable changes to this project will be documented in this file.
 
+## [0.7.0] - 2019-04-30
+
+### Added
+- `_entity` variable within each twig template, to have access on the original contao template object (e.g. `FormTextField`)
+
+### Fixed
+- set proper input type on `form_textfield_bs4.html.twig`, based on field rgxp (`number`, `tel`, `email`, `url`) 
+
 ## [0.6.4] - 2019-04-11
 
 ### Fixed
