@@ -1,6 +1,11 @@
 # Changelog
 All notable changes to this project will be documented in this file.
 
+## [0.7.2] - 2019-04-30
+
+### Fixed
+- `aria-current="page"` added for links in `nav_` templates for better accessibility support for active links
+
 ## [0.7.1] - 2019-04-30
 
 ### Fixed
