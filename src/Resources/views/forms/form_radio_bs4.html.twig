@@ -1,15 +1,16 @@
 {% extends '@ContaoTwigTemplates/forms/form_row_bs4.html.twig' %}
 
 {% set optionGroupClass = "radio-group ctrl_" ~ strId %}
+{% set wrapperTag = "fieldset" %}
 
 {% block label %}
     {% if(not arrConfiguration.hideLabel|default(false)) %}
-        <label id="lbl_{{ strId }}" class="control-label">{{ strLabel|raw }}
+        <legend id="lbl_{{ strId }}" class="control-label">{{ strLabel|raw }}
             {% if arrConfiguration.mandatory|default(false) %}
                 <span class="invisible">{{ 'huh.twig.templates.label.mandatory'|trans }}</span>
                 <span class="mandatory">*</span>
             {% endif %}
-        </label>
+        </legend>
     {% endif %}
 {% endblock %}
 

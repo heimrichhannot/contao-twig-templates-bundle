@@ -1,6 +1,11 @@
 # Changelog
 All notable changes to this project will be documented in this file.
 
+## [0.8.0] - 2019-04-30
+
+### Changed
+- render checkbox and radio groups as fieldset and render fieldset label as legend for better accessibility support
+
 ## [0.7.2] - 2019-04-30
 
 ### Fixed
