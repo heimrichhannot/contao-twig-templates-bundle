@@ -48,9 +48,28 @@ Key            | Description
 
 Content Element  | bundled
 ---------------- | -------
+Accordion Single | core
+Accordion Start  | core
+Accordion Stop   | core
+Code             | core
+Download         | core
+Downloads        | core
+Gallery          | core
 Headline         | core
-Player           | core 
+HTML             | core
+Hyperlink        | core
+Image            | core
+List             | core
+Markdown         | core
+Player           | core
+Slider Start     | core
+Slider Stop      | core
+Table            | core
+Teaser           | core 
 Text             | core
+Toplink          | core
+Vimeo            | core
+Youtube          | core
 Accordion Single | bs4
 Accordion Start  | bs4
 Accordion Ende   | bs4
