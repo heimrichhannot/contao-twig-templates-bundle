@@ -1,6 +1,11 @@
 # Changelog
 All notable changes to this project will be documented in this file.
 
+## [0.7.1] - 2019-04-30
+
+### Fixed
+- removed `for` from `label` in `form_checkbox_bs4` and `form_radio_bs4`, as they do not have any related form control with the given `id` (options have labels)
+
 ## [0.7.0] - 2019-04-30
 
 ### Added
