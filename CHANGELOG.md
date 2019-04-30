@@ -1,6 +1,24 @@
 # Changelog
 All notable changes to this project will be documented in this file.
 
+## [0.7.2] - 2019-04-30
+
+### Fixed
+- `aria-current="page"` added for links in `nav_` templates for better accessibility support for active links
+
+## [0.7.1] - 2019-04-30
+
+### Fixed
+- removed `for` from `label` in `form_checkbox_bs4` and `form_radio_bs4`, as they do not have any related form control with the given `id` (options have labels)
+
+## [0.7.0] - 2019-04-30
+
+### Added
+- `_entity` variable within each twig template, to have access on the original contao template object (e.g. `FormTextField`)
+
+### Fixed
+- set proper input type on `form_textfield_bs4.html.twig`, based on field rgxp (`number`, `tel`, `email`, `url`) 
+
 ## [0.6.4] - 2019-04-11
 
 ### Fixed

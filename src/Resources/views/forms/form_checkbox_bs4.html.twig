@@ -16,7 +16,7 @@
 
 {% block label %}
     {% if(not arrConfiguration.hideLabel|default(false) and (arrOptions|default([])|length > 1 or arrConfiguration.multiple|default(false))) %}
-    <label id="lbl_{{ strId }}" for="ctrl_{{ strId }}" class="control-label">{{ strLabel|raw }}
+    <label id="lbl_{{ strId }}" class="control-label">{{ strLabel|raw }}
         {% if arrConfiguration.mandatory|default(false) %}
             <span class="invisible">{{ 'huh.twig.templates.label.mandatory'|trans }}</span>
             <span class="mandatory">*</span>
