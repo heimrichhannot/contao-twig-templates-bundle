@@ -1,6 +1,11 @@
 # Changelog
 All notable changes to this project will be documented in this file.
 
+## [0.8.1] - 2019-05.22
+
+### Changed
+- changed accordion_parentId to optional in accordion start and single templates to prevent errors while rendering
+
 ## [0.8.0] - 2019-04-30
 
 ### Changed

@@ -6,7 +6,7 @@
         <div class="card-header" id="heading_{{ id }}">
             <h3 class="mb-0">
                 <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapse_{{ id }}"
-                        data-parent="#accordion_{{ accordion_parentId }}"{% if accordion_first|default %} aria-expanded="true"{% endif %}
+                        {% if accordion_parentId|default %}data-parent="#accordion_{{ accordion_parentId }}"{% endif %}{% if accordion_first|default %} aria-expanded="true"{% endif %}
                         aria-controls="collapse_{{ id }}">
                     {{ headline }}
                 </button>
