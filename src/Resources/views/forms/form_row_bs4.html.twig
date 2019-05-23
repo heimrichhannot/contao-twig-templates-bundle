@@ -24,7 +24,7 @@
     {% endif %}
 {% endif %}
 
-<div class="{{ strName }} {{ groupClass }} {{ strPrefix }}{% if(arrConfiguration.invisible|default(false)) %} invisible{% endif %}">
+<{{ wrapperTag|default('div') }} class="{{ strName }} {{ groupClass }} {{ strPrefix }}{% if(arrConfiguration.invisible|default(false)) %} invisible{% endif %}">
 
     {% block label %}
         {% if(not arrConfiguration.hideLabel|default(false)) %}
@@ -87,5 +87,5 @@
             {% endblock %}
         </div>
     {% endblock %}
-</div>
+</{{ wrapperTag|default('div') }}>
 

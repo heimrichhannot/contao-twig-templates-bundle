@@ -1,6 +1,7 @@
 {% extends '@ContaoTwigTemplates/forms/form_row_bs4.html.twig' %}
 
 {% set optionGroupClass = "checkbox-group ctrl_" ~ strId %}
+{% set wrapperTag = "fieldset" %}
 
 {% if arrOptions|length == 1 and not arrConfiguration.multiple|default(false) %}
     {% set option = arrOptions[0] %}
@@ -16,12 +17,12 @@
 
 {% block label %}
     {% if(not arrConfiguration.hideLabel|default(false) and (arrOptions|default([])|length > 1 or arrConfiguration.multiple|default(false))) %}
-    <label id="lbl_{{ strId }}" class="control-label">{{ strLabel|raw }}
+    <legend id="lbl_{{ strId }}" class="control-label">{{ strLabel|raw }}
         {% if arrConfiguration.mandatory|default(false) %}
             <span class="invisible">{{ 'huh.twig.templates.label.mandatory'|trans }}</span>
             <span class="mandatory">*</span>
         {% endif %}
-    </label>
+    </legend>
     {% endif %}
 {% endblock %}
 
