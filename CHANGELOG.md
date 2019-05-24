@@ -1,7 +1,17 @@
 # Changelog
 All notable changes to this project will be documented in this file.
 
-## [0.8.1] - 2019-05.22
+## [1.0.0] - 2019-05-23
+
+### Changed
+- readme
+
+### Added
+- all available contao core templates
+- all depending bootstrap 4 templates
+- LGPL License
+
+## [0.8.1] - 2019-05-22
 
 ### Changed
 - changed accordion_parentId to optional in accordion start and single templates to prevent errors while rendering

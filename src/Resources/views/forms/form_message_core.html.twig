@@ -1,6 +1,3 @@
-<pre>
-  {{ dump() }}
-</pre>
 <div class="{{ strClass|default }}">
-    {{ message }}
+    {{ message|default|raw }}
 </div>

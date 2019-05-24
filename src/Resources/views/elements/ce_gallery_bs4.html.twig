@@ -3,7 +3,7 @@
     : '@ContaoTwigTemplates/block/block_searchable_core.html.twig' %}
 
 {% block content %}
-    {{ images|raw }}
+    {{ images|default|raw }}
     {{ pagination|default|raw }}
 
 {% endblock %}

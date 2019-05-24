@@ -46,33 +46,30 @@ Key            | Description
 
 ### Content elements
 
-Content Element  | bundled
----------------- | -------
-Accordion Single | core
-Accordion Start  | core
-Accordion Stop   | core
-Code             | core
-Download         | core
-Downloads        | core
-Gallery          | core
-Headline         | core
-HTML             | core
-Hyperlink        | core
-Image            | core
-List             | core
-Markdown         | core
-Player           | core
-Slider Start     | core
-Slider Stop      | core
-Table            | core
-Teaser           | core 
-Text             | core
-Toplink          | core
-Vimeo            | core
-Youtube          | core
-Accordion Single | bs4
-Accordion Start  | bs4
-Accordion Ende   | bs4
+Content Element  | bundled core | bundled bs4
+---------------- | :----------: | :----------:
+Accordion Single |       x      |       x     
+Accordion Start  |       x      |       x    
+Accordion Stop   |       x      |       x    
+Code             |       x      |       x    
+Download         |       x      |       x    
+Downloads        |       x      |       x    
+Gallery          |       x      |       x    
+Headline         |       x      |       x    
+HTML             |       x      |       x    
+Hyperlink        |       x      |       x    
+Image            |       x      |       x    
+List             |       x      |       x    
+Markdown         |       x      |       x    
+Player           |       x      |       x    
+Slider Start     |       x      |       x    
+Slider Stop      |       x      |       x    
+Table            |       x      |       x    
+Teaser           |       x      |       x     
+Text             |       x      |       x    
+Toplink          |       x      |       x    
+Vimeo            |       x      |       x    
+Youtube          |       x      |       x    
 
 ### Modules
 
