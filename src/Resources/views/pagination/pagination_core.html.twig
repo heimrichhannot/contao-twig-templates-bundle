@@ -1,0 +1,33 @@
+<!-- indexer::stop -->
+<div class="pagination block">
+
+    <p>{{ total }}</p>
+
+    <ul>
+        {% if hasFirst|default %}
+            <li class="first"><a href="{{ first.href }}" class="first" title="{{ first.title }}">{{ first.link|raw }}</a></li>
+        {% endif %}
+
+        {% if hasPrevious|default %}
+            <li class="previous"><a href="{{ hasPrevious.href }}" class="previous" title="{{ hasPrevious.title }}">{{ hasPrevious.link|raw }}</a></li>
+        {% endif %}
+
+        {% for page in pages %}
+            {% if page.href is null %}
+                <li class="active"><span class="active">{{ page.page }}</span></li>
+            {% else %}
+                <lim"><a href="{{ page.href }}" class="link" title="{{ page.title }}">{{ page.page }}</a></li>
+            {% endif %}
+        {% endfor %}
+
+        {% if hasNext|default %}
+            <li class="next"><a href="{{ hasNext.href }}" class="next" title="{{ hasNext.title }}">{{ hasPrevious.link|raw }}</a></li>
+        {% endif %}
+
+        {% if hasLast|default %}
+            <li class="last"><a href="{{ hasLast.href }}" class="last" title="{{ hasLast.title }}">{{ hasLast.link|raw }}</a></li>
+        {% endif %}
+    </ul>
+
+</div>
+<!-- indexer::continue -->

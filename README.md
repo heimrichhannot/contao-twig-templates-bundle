@@ -44,6 +44,13 @@ Key            | Description
 
 ## Bundled templates
 
+### Block templates
+
+Template | Bundled
+-------- | -------
+block_searchable | core
+block_unsearchable | core
+
 ### Content elements
 
 Content Element  | bundled core | bundled bs4
@@ -102,26 +109,21 @@ Random Image     |       x      |              |
 Search           |       x      |       x      | 
 Sitemap          |       x      |              | 
 
-Additional: 
+### Navigation
 
-Template              | Bundled
---------------------- | -------
-mod_search_list_group | bs4
+Modules          | bundled core | bundled bs4  | 
+---------------- | :----------: | :----------: | 
+Nav Default      |       x      |              | 
+Nav Inline       |              |       x      | 
+Nav Tabs         |              |       x      | 
+Nav Vertical     |              |       x      | 
 
-### Block templates
+### Search
 
-Template | Bundled
--------- | -------
-block_searchable | core
-block_unsearchable | core
-
-### Additional templates
-
-Twig template | Notes
-------------- | -----
-`nav_tabs_bs4.html.twig` |
-`pagination_bs4.html.twig` |
-
+Modules          | bundled core | bundled bs4  | 
+---------------- | :----------: | :----------: | 
+Search Default   |       x      |       x      | 
+Search List Group|              |       x      | 
 
 ## Developers
 
@@ -141,9 +143,7 @@ huh.twig.beforeRenderTemplate | Modify template data before rendering the widget
 1. For each template, you want to replace, create an html5 template (where filename suffix is the same as the alias set in the class, example `form_checkbox_bs4.html5`) and call the template factory. Typical this code can be used without any adjustment: 
 
     ```php
-    <?php 
-    $template = \Contao\System::getContainer()->get('huh.twig.template.factory')->createInstance($this);
-    echo $template->render();
+    <?= \Contao\System::getContainer()->get('huh.utils.template')->renderTwigTemplate($this->getName(), $this->getData()); ?>
     ```
     * If your want to set template specific options (for example bootstrap 4 custom control support) you can use `$template::addSupport()`. Example:
     
