@@ -66,17 +66,41 @@ Slider Start     |       x      |       x
 Slider Stop      |       x      |       x    
 Table            |       x      |       x    
 Teaser           |       x      |       x     
-Text             |       x      |       x    
-Toplink          |       x      |       x    
+Text             |       x      |           
+Toplink          |       x      |           
 Vimeo            |       x      |       x    
-Youtube          |       x      |       x    
+Youtube          |       x      |       x   
+
+### Member elements
+
+Content Element  | bundled core | bundled bs4
+---------------- | :----------: | :----------:
+Member default   |       x      |            
+Member grouped   |       x      |            
 
 ### Modules
 
-Modules          | Bundled
----------------- | -------
-Login            | bs4
-Search           | bs4
+Modules          | bundled core | bundled bs4  | changes
+---------------- | :----------: | :----------: | :----------:
+Article          |       x      |              | removed Gplus Button
+Article List     |       x      |              | 
+Article Nav      |       x      |              | 
+Book Nav         |       x      |              | 
+Breadcrumb       |       x      |       x      | 
+Change Password  |       x      |              | 
+Close Account    |       x      |              | 
+Custom Nav       |       x      |              | 
+HTML             |       x      |              | 
+Login            |       x      |       x      | 
+Lost Password    |       x      |              | 
+Message          |       x      |              | 
+Navigation       |       x      |              | 
+Password         |       x      |              | 
+Quicklink        |       x      |              | 
+Quicknav         |       x      |              | 
+Random Image     |       x      |              | 
+Search           |       x      |       x      | 
+Sitemap          |       x      |              | 
 
 Additional: 
 

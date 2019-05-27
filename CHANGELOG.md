@@ -1,13 +1,13 @@
 # Changelog
 All notable changes to this project will be documented in this file.
 
-## [1.0.0] - 2019-05-23
+## [1.0.0] - 2019-05-25
 
 ### Changed
 - readme
 
 ### Added
-- all available contao core templates
+- nearly all available contao core templates
 - all depending bootstrap 4 templates
 - LGPL License
 

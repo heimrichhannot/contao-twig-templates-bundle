@@ -1,0 +1,35 @@
+<!-- indexer::stop -->
+<div class="{{ class|default }} pagination block"{{ cssID|default }}{% if style|default %} style="{{ style }}"{% endif %}>
+
+    {% if headline|default %}
+    <{{ hl|default('h1') }}>{{ headline }}</{{ hl|default('h1') }}>
+    {% endif %}
+
+<ul>
+    {% if first|default %}
+        <li class="first"><a href="{{ first.href|default }}" class="first" title="{{ first.title|default }}">{{ first.link|raw|default }}</a></li>
+    {% endif %}
+
+    {% if previous|default %}
+        <li class="previous"><a href="{{ previous.href|default }}" class="previous" title="{{ previous.title|default }}">{{ previous.link|raw|default }}</a></li>
+    {% endif %}
+
+    {% for article in articles %}
+        {% if article.isActive|default %}
+        <li class="active"><strong class="active">{{ article.link|default }}</strong></li>
+        {% else %}
+        <li class="link"><a href="{{ article.href|default }}" class="link" title="{{ article.title|default }}">{{ article.link|raw|default }}</a></li>
+        {% endif %}
+    {% endfor %}
+
+    {% if next|default %}
+        <li class="next"><a href="{{ next.href|default }}" class="next" title="{{ next.title|default }}">{{ next.link|raw|default }}</a></li>
+    {% endif %}
+
+    {% if last|default %}
+        <li class="last"><a href="{{ last.href|default }}" class="last" title="{{ last.title|default }}">{{ last.link|raw|default }}</a></li>
+    {% endif %}
+</ul>
+
+</div>
+<!-- indexer::continue -->

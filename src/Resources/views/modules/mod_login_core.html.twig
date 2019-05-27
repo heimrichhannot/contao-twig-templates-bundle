@@ -1,0 +1,44 @@
+<!-- indexer::stop -->
+<div class="{{ class|default }} {{ logout|default ? 'logout' : 'login' }} block"{{ cssID|default }}{% if style|default %} style="{{ style }}"{% endif %}>
+
+    {% if headline|default %}
+        <{{ hl|default('h1') }}>{{ headline }}</{{ hl|default('h1') }}>
+    {% endif %}
+
+    <form{% if action|default %} action="{{ action }}"{% endif %} id="{{ formId }}" method="post">
+    <div class="formbody">
+        <input type="hidden" name="FORM_SUBMIT" value="{{ formId }}">
+        <input type="hidden" name="REQUEST_TOKEN" value="{{ '{{request_token}}' }}">
+
+        {% if message|default %}
+        <p class="error">{{ message }}</p>
+        {% endif %}
+
+        {% if logout|default %}
+            <p class="login_info">{{ loggedInAs }}{{ lastLogin|default() ? '<br>' ~ lastLogin : '' }}</p>
+        {% else %}
+            <div class="widget widget-text">
+                <label for="username">{{ username }}</label>
+                <input type="text" name="username" id="username" class="text" value="{{ value|default }}">
+            </div>
+            <div class="widget widget-password">
+                <label for="password">{{ password }}</label>
+                <input type="password" name="password" id="password" class="text password" value="">
+            </div>
+            {% if autologin|default %}
+                <div class="widget widget-checkbox">
+                    <fieldset class="checkbox_container">
+                        <span><input type="checkbox" name="autologin" id="autologin" value="1" class="checkbox"> <label for="autologin">{{ autoLabel }}</label></span>
+                    </fieldset>
+                </div>
+            {% endif %}
+        {% endif %}
+
+        <div class="widget widget-submit">
+            <button type="submit" class="submit">{{ slabel|default }}</button>
+        </div>
+    </div>
+    </form>
+
+</div>
+<!-- indexer::continue -->
