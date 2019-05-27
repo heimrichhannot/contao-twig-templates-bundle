@@ -56,16 +56,16 @@ Download         |       x      |       x
 Downloads        |       x      |       x    
 Gallery          |       x      |       x    
 Headline         |       x      |       x    
-HTML             |       x      |       x    
-Hyperlink        |       x      |       x    
-Image            |       x      |       x    
-List             |       x      |       x    
-Markdown         |       x      |       x    
-Player           |       x      |       x    
-Slider Start     |       x      |       x    
-Slider Stop      |       x      |       x    
-Table            |       x      |       x    
-Teaser           |       x      |       x     
+HTML             |       x      |           
+Hyperlink        |       x      |           
+Image            |       x      |           
+List             |       x      |           
+Markdown         |       x      |           
+Player           |       x      |           
+Slider Start     |       x      |           
+Slider Stop      |       x      |           
+Table            |       x      |           
+Teaser           |       x      |            
 Text             |       x      |           
 Toplink          |       x      |           
 Vimeo            |       x      |       x    
