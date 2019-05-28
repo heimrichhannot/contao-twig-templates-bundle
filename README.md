@@ -83,7 +83,15 @@ Youtube          |       x      |       x
 Content Element  | bundled core | bundled bs4
 ---------------- | :----------: | :----------:
 Member default   |       x      |            
-Member grouped   |       x      |            
+Member grouped   |       x      |     
+
+### Gallery
+
+Content Element  | bundled core | bundled bs4
+---------------- | :----------: | :----------:
+Gallery default  |       x      |       x
+
+Both version with minimal setting. You definitely need to change those templates to fit your requirements.
 
 ### Modules
 
