@@ -2,7 +2,7 @@
 
 {% block content %}
 
-<form{% if action|default %} action="{{ action }}"{% endif %} id="{{ formId }}" method="post">
+<form{{ action|default ? ' action="' ~ action ~ '"' : '' }} id="{{ formId }}" method="post">
     <div class="formbody">
         <input type="hidden" name="FORM_SUBMIT" value="{{ formId }}">
         <input type="hidden" name="REQUEST_TOKEN" value="{{ '{{request_token}}' }}">
@@ -10,7 +10,7 @@
             <select name="target" class="select">
                 <option value="">{{ title|default }}</option>
                 {% for item in items %}
-                <option value="<?= $item['href'] ?>"{{ item.active|default ? ' selected' : }}>{{ item.link|default }}</option>
+                <option value="{{ item.href|default }}"{{ item.active|default ? ' selected' : '' }}>{{ item.link|default }}</option>
                 {% endfor %}
             </select>
         </div>

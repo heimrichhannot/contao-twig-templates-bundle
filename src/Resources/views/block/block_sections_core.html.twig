@@ -1,0 +1,5 @@
+<div class="custom">
+    {% for section in matches|default %}
+        {% set section.template = _context|merge({section.template: {'id': section.id, 'content': section.content|raw }}) %}
+    {% endfor %}
+</div>

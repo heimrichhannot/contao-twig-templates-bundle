@@ -1,9 +1,7 @@
 <!-- indexer::stop -->
-<div class="{{ class|default }} pagination block"{{ cssID|default }}{% if style|default %} style="{{ style }}"{% endif %}>
+<div class="{{ class|default }} pagination block"{{ cssID|default }}{{ style|default ? ' style="' ~ style ~ '"' : '' }}>
 
-    {% if headline|default %}
-    <{{ hl|default('h1') }}>{{ headline }}</{{ hl|default('h1') }}>
-    {% endif %}
+{%  include '@ContaoTwigTemplates/parts/headline_core.html.twig' %}
 
 <ul>
     {% if first|default %}
