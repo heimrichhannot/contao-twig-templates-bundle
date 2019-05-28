@@ -21,7 +21,7 @@
     {% endfor %}
 
     {% if next|default %}
-        <li class="next"><a href="{{ next.href|default }}" class="next" title="{{ next.title|default }}">{{ next.linkdefault|raw| }}</a></li>
+        <li class="next"><a href="{{ next.href|default }}" class="next" title="{{ next.title|default }}">{{ next.link|default|raw| }}</a></li>
     {% endif %}
 
     {% if last|default %}
