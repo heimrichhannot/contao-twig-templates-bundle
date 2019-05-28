@@ -2,7 +2,7 @@
     <div class="accordion" id="accordion_{{ accordion_parentId }}">
 {% endif %}
 
-<section class="card {{ class }} ce_accordion ce_text block"{{ cssID }}{% if style|default %} style="{{ style }}"{% endif %}>
+<section class="card {{ class }} ce_accordion ce_text block"{{ cssID }}{{ style|default ? ' style="' ~ style ~ '"' }}>
     <div class="card-header" id="heading_{{ id }}">
         <h3 class="mb-0">
             <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapse_{{ id }}" {% if accordion_parentId|default %}data-parent="#accordion_{{ accordion_parentId }}"{% endif %}{% if accordion_first|default %} aria-expanded="true"{% endif %} aria-controls="collapse_{{ id }}">
@@ -18,7 +18,14 @@
             {% endif %}
 
             {% if addImage|default %}
-                {% include 'HeimrichHannotContaoUtilsBundle::image.html.twig' %}
+                {% include ('@HeimrichHannotContaoUtils/image.html.twig') with {
+                    'margin': margin|default,
+                    'href': href|default,
+                    'linkTitle': linkTitle|default,
+                    'attributes': attributes|default,
+                    'picture': picture|default,
+                    'caption': caption|default
+                } only %}
             {% endif %}
 
             {% if addBefore|default %}

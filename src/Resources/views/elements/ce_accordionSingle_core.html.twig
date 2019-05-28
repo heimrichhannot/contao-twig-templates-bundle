@@ -1,0 +1,29 @@
+
+<section class="{{ class }} ce_accordion ce_text block"{{ cssID }}{{ style|default ? ' style="' ~ style ~ '"' }}>
+    <div class="{{ toggler }}"{{ headlienStyles|default ? ' style="' ~ style ~ '"' }}>
+        {{ headline }}
+    </div>
+    <div class="{{ accordion }}">
+        <div>
+            {% if not addBefore|default %}
+                {{ text|raw }}
+            {% endif %}
+
+            {% if addImage|default %}
+                {% include ('@HeimrichHannotContaoUtils/image.html.twig') with {
+                    'margin': margin|default,
+                    'href': href|default,
+                    'linkTitle': linkTitle|default,
+                    'attributes': attributes|default,
+                    'picture': picture|default,
+                    'caption': caption|default
+                } only %}
+            {% endif %}
+
+            {% if addBefore|default %}
+                {{ text|raw }}
+            {% endif %}
+
+        </div>
+    </div>
+</section>

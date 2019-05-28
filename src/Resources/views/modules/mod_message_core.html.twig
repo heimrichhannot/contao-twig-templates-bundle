@@ -1,0 +1,5 @@
+{% extends '@ContaoTwigTemplates/block/block_unsearchable_core.html.twig' %}
+
+{% block content %}
+    {% include '@ContaoTwigTemplates/parts/message_core.html.twig' with { 'mclass': type|default, 'message': message|default } %}
+{% endblock %}

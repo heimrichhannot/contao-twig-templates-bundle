@@ -1,0 +1,50 @@
+{% extends '@ContaoTwigTemplates/block/block_searchable_core.html.twig' %}
+
+{% block content %}
+    <div class="table-responsive">
+        <table id="{{ id }}" class="table{% if sortable|default %} sortable{% endif %}">
+
+            {% if summary|default is not empty %}
+                <caption>{{ summary }}</caption>
+            {% endif %}
+
+            {% if useHeader|default %}
+                <thead>
+                    <tr>
+                        {% for col in header %}
+                            <th scope="col" class="{{ col.class|default }}">{{ col.content|default("&nbsp;") }}</th>
+                        {% endfor %}
+                    </tr>
+                </thead>
+            {% endif %}
+
+            {% if useFooter|default() %}
+                <tfoot>
+                    <tr>
+                        {% for i, col in footer %}
+                            {% if i == 0 and useLeftTh|default %}
+                                <th scope="row" class="{{ col.class|default }}">{{ col.content|default("&nbsp;") }}</th>
+                            {% else %}
+                                <td class="{{ col.class|default }}">{{ col.content|default("&nbsp;") }}</td>
+                            {% endif %}
+                        {% endfor %}
+                    </tr>
+                </tfoot>
+            {% endif %}
+
+            <tbody>
+                {% for class, row in body %}
+                    <tr class="{{ class }}">
+                        {% for i, col in row %}
+                            {% if i == 0 and useLeftTh|default %}
+                                <th scope="row" class="{{ col.class|default }}">{{ col.content|default("&nbsp;") }}</th>
+                            {% else %}
+                                <td class="{{ col.class|default }}">{{ col.content|default("&nbsp;") }}</td>
+                            {% endif %}
+                        {% endfor %}
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+{% endblock %}

@@ -1,0 +1,9 @@
+{% extends '@ContaoTwigTemplates/block/block_unsearchable_core.html.twig' %}
+
+{% block content %}
+    <ul>
+        {% for article in articles %}
+            <li><a href="{{ request|default ~ '#' ~ article.id|default }}" title="{{ articel.title|default }}">{{ article.link|raw|default }}</a></li>
+        {% endfor %}
+    </ul>
+{% endblock %}

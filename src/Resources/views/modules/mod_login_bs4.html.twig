@@ -1,22 +1,22 @@
 <!-- indexer::stop -->
-<div class="{{ class }} {{ logout|default ? 'logout' : 'login' }} block"{{ cssID }}{% if style|default %} style="{{ style }}"{% endif %}>
+<div class="{{ class }} {{ logout|default ? 'logout' : 'login' }} block"{{ cssID }}{{ style|default ? ' style="' ~ style ~ '"' : '' }}>
 
-{% if headline|default %}
-    <{{ hl }}>{{ headline }}</{{ hl }}>
-{% endif %}
+{% include '@ContaoTwigTemplates/parts/headline_core.html.twig' %}
 
 <form{% if action|default %} action="{{ action }}"{% endif %} id="{{ formId }}" method="post">
     <div class="formbody">
-        {% if message|default %}
-            <p class="error">{{ message }}</p>
-        {% endif %}
+
+        {% include '@ContaoTwigTemplates/parts/message_core.html.twig' with { 'mclass': 'error', 'message': message|default } %}
 
         <input type="hidden" name="FORM_SUBMIT" value="{{ formId }}">
         <input type="hidden" name="REQUEST_TOKEN" value="{{ '{{request_token}}' }}">
+        <input type="hidden" name="_target_path" value="{{ targetPath|default }}">
 
         {% if logout|default %}
             <p class="login_info">{{ loggedInAs }}{{ lastLogin|default() ? '<br>' ~ lastLogin : '' }}</p>
         {% else %}
+            <input type="hidden" name="_failure_path" value="{{ failurePath|default }}">
+            <input type="hidden" name="_always_use_target_path" value="{{ forceTargetPath|default }}">
             <div class="form-group widget widget-text">
                 <label for="username">{{ username }}</label>
                 <input type="text" name="username" id="username" class="form-control text" value="{{ value }}">

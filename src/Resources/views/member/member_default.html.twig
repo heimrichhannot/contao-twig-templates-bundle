@@ -1,0 +1,26 @@
+<!-- indexer::stop -->
+<div class="{{ class|default }} block"{{ cssID|default }}{{ style|default ? ' class="' ~ style ~ '"' }>
+
+    {% if headline|default %}
+        <{{ hl|default('h1') }}>{{ headline }}</{{ hl|default('h1') }}>
+    {% endif %}
+
+    {% if message|default %}
+        <p class="tl_confirm">{{ message }}</p>
+    {% endif %}
+
+    <form{{ action|default ? ' action="' ~ action ~ '"' }} id="{{ formId|default }}" method="post" enctype="{{ enctype|default }}">
+        <div class="formbody">
+            <input type="hidden" name="FORM_SUBMIT" value="{{ formId|default }}">
+            <input type="hidden" name="REQUEST_TOKEN" value="{{ '{{ request_token }}' }}">
+            <div class="fields">
+                {{ fields|default }}
+            </div>
+            <div class="widget widget-submit">
+                <button type="submit" class="submit">{{ slabel|default }}</button>
+            </div>
+        </div>
+    </form>
+
+</div>
+<!-- indexer::continue -->

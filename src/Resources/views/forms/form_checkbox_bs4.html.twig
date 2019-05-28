@@ -14,6 +14,7 @@
     {% set arrOptions = [option] %}
 {% endif %}
 
+
 {% block label %}
     {% if(not arrConfiguration.hideLabel|default(false) and (arrOptions|default([])|length > 1 or arrConfiguration.multiple|default(false))) %}
     <legend id="lbl_{{ strId }}" class="control-label">{{ strLabel|raw }}

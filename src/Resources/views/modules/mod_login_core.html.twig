@@ -1,0 +1,46 @@
+<!-- indexer::stop -->
+<div class="{{ class|default }} {{ logout|default ? 'logout' : 'login' }} block"{{ cssID|default }}{{ style|default ? ' style="' ~ style ~ '"' : '' }}>
+
+    {% include '@ContaoTwigTemplates/parts/headline_core.html.twig' %}
+
+    <form{% if action|default %} action="{{ action }}"{% endif %} id="{{ formId }}" method="post">
+    <div class="formbody">
+
+        {% include '@ContaoTwigTemplates/parts/message_core.html.twig' with { 'mclass': 'error', 'message': message|default } %}
+
+        <input type="hidden" name="FORM_SUBMIT" value="{{ formId }}">
+        <input type="hidden" name="REQUEST_TOKEN" value="{{ '{{request_token}}' }}">
+        <input type="hidden" name="_target_path" value="{{ targetPath|default }}">
+
+        {% if logout|default %}
+            <p class="login_info">{{ loggedInAs|default }}{{ lastLogin|default ? '<br>' ~ lastLogin : '' }}</p>
+        {% else %}
+            <input type="hidden" name="_failure_path" value="{{ failurePath|default }}">
+            <input type="hidden" name="_always_use_target_path" value="{{ forceTargetPath|default }}">
+            <div class="widget widget-text">
+                <label for="username">{{ username }}</label>
+                <input type="text" name="username" id="username" class="text" value="{{ value|default }}">
+            </div>
+            <div class="widget widget-password">
+                <label for="password">{{ password }}</label>
+                <input type="password" name="password" id="password" class="text password" value="">
+            </div>
+            {% if autologin|default %}
+                <div class="widget widget-checkbox">
+                    {% block autologin %}
+                    <fieldset class="checkbox_container">
+                        <span><input type="checkbox" name="autologin" id="autologin" value="1" class="checkbox"> <label for="autologin">{{ autoLabel }}</label></span>
+                    </fieldset>
+                    {% endblock %}
+                </div>
+            {% endif %}
+        {% endif %}
+
+        <div class="widget widget-submit">
+            <button type="submit" class="submit">{{ slabel|default }}</button>
+        </div>
+    </div>
+    </form>
+
+</div>
+<!-- indexer::continue -->

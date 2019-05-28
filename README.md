@@ -44,30 +44,6 @@ Key            | Description
 
 ## Bundled templates
 
-### Content elements
-
-Content Element  | bundled
----------------- | -------
-Headline         | core
-Player           | core 
-Text             | core
-Accordion Single | bs4
-Accordion Start  | bs4
-Accordion Ende   | bs4
-
-### Modules
-
-Modules          | Bundled
----------------- | -------
-Login            | bs4
-Search           | bs4
-
-Additional: 
-
-Template              | Bundled
---------------------- | -------
-mod_search_list_group | bs4
-
 ### Block templates
 
 Template | Bundled
@@ -75,13 +51,79 @@ Template | Bundled
 block_searchable | core
 block_unsearchable | core
 
-### Additional templates
+### Content elements
 
-Twig template | Notes
-------------- | -----
-`nav_tabs_bs4.html.twig` |
-`pagination_bs4.html.twig` |
+Content Element  | bundled core | bundled bs4
+---------------- | :----------: | :----------:
+Accordion Single |       x      |       x     
+Accordion Start  |       x      |       x    
+Accordion Stop   |       x      |       x    
+Code             |       x      |       x    
+Download         |       x      |       x    
+Downloads        |       x      |       x    
+Gallery          |       x      |       x    
+Headline         |       x      |       x    
+HTML             |       x      |           
+Hyperlink        |       x      |           
+Image            |       x      |           
+List             |       x      |           
+Markdown         |       x      |           
+Player           |       x      |           
+Slider Start     |       x      |           
+Slider Stop      |       x      |           
+Table            |       x      |           
+Teaser           |       x      |            
+Text             |       x      |           
+Toplink          |       x      |           
+Vimeo            |       x      |       x    
+Youtube          |       x      |       x   
 
+### Member elements
+
+Content Element  | bundled core | bundled bs4
+---------------- | :----------: | :----------:
+Member default   |       x      |            
+Member grouped   |       x      |            
+
+### Modules
+
+Modules          | bundled core | bundled bs4  | changes
+---------------- | :----------: | :----------: | :----------:
+Article          |       x      |              | removed Gplus Button
+Article List     |       x      |              | 
+Article Nav      |       x      |              | 
+Book Nav         |       x      |              | 
+Breadcrumb       |       x      |       x      | 
+Change Password  |       x      |              | 
+Close Account    |       x      |              | 
+Custom Nav       |       x      |              | 
+HTML             |       x      |              | 
+Login            |       x      |       x      | 
+Lost Password    |       x      |              | 
+Message          |       x      |              | 
+Navigation       |       x      |              | 
+Password         |       x      |              | 
+Quicklink        |       x      |              | 
+Quicknav         |       x      |              | 
+Random Image     |       x      |              | 
+Search           |       x      |       x      | 
+Sitemap          |       x      |              | 
+
+### Navigation
+
+Modules          | bundled core | bundled bs4  | 
+---------------- | :----------: | :----------: | 
+Nav Default      |       x      |              | 
+Nav Inline       |              |       x      | 
+Nav Tabs         |              |       x      | 
+Nav Vertical     |              |       x      | 
+
+### Search
+
+Modules          | bundled core | bundled bs4  | 
+---------------- | :----------: | :----------: | 
+Search Default   |       x      |       x      | 
+Search List Group|              |       x      | 
 
 ## Developers
 
@@ -101,9 +143,7 @@ huh.twig.beforeRenderTemplate | Modify template data before rendering the widget
 1. For each template, you want to replace, create an html5 template (where filename suffix is the same as the alias set in the class, example `form_checkbox_bs4.html5`) and call the template factory. Typical this code can be used without any adjustment: 
 
     ```php
-    <?php 
-    $template = \Contao\System::getContainer()->get('huh.twig.template.factory')->createInstance($this);
-    echo $template->render();
+    <?= \Contao\System::getContainer()->get('huh.utils.template')->renderTwigTemplate($this->getName(), $this->getData()); ?>
     ```
     * If your want to set template specific options (for example bootstrap 4 custom control support) you can use `$template::addSupport()`. Example:
     

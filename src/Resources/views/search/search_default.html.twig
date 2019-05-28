@@ -1,0 +1,9 @@
+<div class="{{ class }}">
+    <h3><a href="{{ href }}" title="{{ title }}">{{ link }}</a>
+        <small class="relevance">[{{ relevance }}]</small>
+    </h3>
+    {% if(context) %}
+        <p class="context">{{ context|raw }}</p>
+    {% endif %}
+    <p class="url">{{ url }}<span class="filesize"> - {{ filesize }} kB</span></p>
+</div>

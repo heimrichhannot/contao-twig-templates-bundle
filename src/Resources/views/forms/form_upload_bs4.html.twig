@@ -1,0 +1,8 @@
+{% extends '@ContaoTwigTemplates/forms/form_row_core.html.twig' %}
+
+{% block field %}
+    {% if hasErrors|default(false) %}
+        <p class="error">{{ errorAsString|default(null) }}</p>
+    {% endif %}
+        <input type="file" class="form-control-file{% if strClass|default %} {{ strClass }}{% endif %}" id="ctrl_{{ strId }}" name="{{ strName }}" {{ attributes|default()|raw }}>
+{% endblock %}

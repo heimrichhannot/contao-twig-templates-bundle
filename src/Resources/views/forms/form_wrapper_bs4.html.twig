@@ -1,0 +1,19 @@
+<!-- indexer::stop -->
+<div class="{{ class|default('ce_form') }} block"{{ cssId|default }}{{ style|default ? ' class="' ~ style ~ '"' }}>
+    {% include '@ContaoTwigTemplates/parts/headline_core.html.twig' %}
+</div>
+<form{{ action|default ? ' action="' ~ action ~ '"' }} method="{{ method|default('post') }}"
+                                                              enctype="{{ enctype|default('multipart/form-data') }}"{{ attributes|default() }}{{ novalidate|default }}>
+    <div class="formbody">
+        {% if method != 'get' %}
+            <input type="hidden" name="FORM_SUBMIT" value="{{ formSubmit|default }}">
+            <input type="hidden" name="REQUEST_TOKEN" value="{{ '{{request_token}}' }}">
+            {% if maxFileSize %}
+                <input type="hidden" name="MAX_FILE_SIZE" value="{{ maxFileSize|default }}">
+            {% endif %}
+        {% endif %}
+        {{ hidden|default|raw }}
+        {{ fields|default|raw }}
+    </div>
+</form>
+<!-- indexer::start -->

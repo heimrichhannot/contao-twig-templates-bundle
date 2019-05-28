@@ -1,0 +1,19 @@
+{% extends '@ContaoTwigTemplates/block/block_unsearchable_core.html.twig' %}
+
+{% block content %}
+    <ul class="list-inline list-unstyled" itemprop="breadcrumb" itemscope itemtype="http://schema.org/BreadcrumbList">
+        {% for key, item in items %}
+            {% if item.isActive|default %}
+                <li class="active list-inline-item{{ item.class|default ? ' ' ~ item.class : '' }} last">
+                    <a href="{{ item.href|default }}" title="{{ item.title|default }}">{{ item.isRoot|default ? item.title : item.link }}</a>
+                </li>
+            {% else %}
+                <li class="list-inline-item{{ item.class|default ? ' ' ~ item.class : '' }}" itemscope itemtype="http://schema.org/ListItem"
+                    itemprop="itemListElement">
+                    <a href="{{ item.href|default }}" title="{{ item.title|default }}" itemprop="url"><span itemprop="name">{{ item.isRoot|default ? item.title : item.link }}</span> > </a>
+                    <meta itemprop="position" content="{{ (key + 1) }}">
+                </li>
+            {% endif %}
+        {% endfor %}
+    </ul>
+{% endblock %}

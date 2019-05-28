@@ -1,0 +1,13 @@
+<!-- indexer::stop -->
+<nav class="{{ class|default }} block"{{ cssID|default }}{{ style|default ? ' style="' ~ style ~ '"' }} itemscope itemtype="http://schema.org/SiteNavigationElement">
+
+    {% include '@ContaoTwigTemplates/parts/headline_core.html.twig' %}
+
+    <a href="{{ request|default ~ '#' ~ skipId|default }}" class="invisible">{{ skipNavigation|default }}</a>
+
+    {{ items|raw }}
+
+    <a id="{{ skipId|default }}" class="invisible">&nbsp;</a>
+
+</nav>
+<!-- indexer::continue -->

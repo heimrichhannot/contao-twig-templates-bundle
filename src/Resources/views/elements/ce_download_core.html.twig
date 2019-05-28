@@ -1,0 +1,7 @@
+{% extends '@ContaoTwigTemplates/block/block_searchable_core.html.twig' %}
+
+{% block content %}
+    <p class="download-element ext-{{ extension|default }}"{% if attributes|default() %} {{ attributes }}{% endif %}>
+        <a href="{{ href  }}" title="{{ title  }}"{% if target|default() %} target="_blank"{% endif %}>{{ link|raw }} <span class="size">({{ filesize }})</span></a>
+    </p>
+{% endblock %}

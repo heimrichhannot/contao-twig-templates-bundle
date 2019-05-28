@@ -1,0 +1,17 @@
+<ul class="cols_{{ perRow }}" itemscope itemtype="http://schema.org/ImageGallery">
+    {% for row in body %}
+        {% for image in row %}
+            {% if image.singleSRC|default %}
+                <li class="{{ class|default }}">
+                    {% include ('@HeimrichHannotContaoUtils/image.html.twig') with {
+                        'margin': image.margin|default,
+                        'attributes': image.attributes|default,
+                        'alt' : image.alt|default,
+                        'picture': image.picture|default,
+                        'caption': image.caption|default,
+                    } only %}
+                </li>
+            {% endif %}
+        {% endfor %}
+    {% endfor %}
+</ul>
