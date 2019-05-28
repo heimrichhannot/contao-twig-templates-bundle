@@ -1,0 +1,16 @@
+<div class="row text-center text-lg-left" itemscope itemtype="http://schema.org/ImageGallery">
+    {% for row in body %}
+        {% for image in row %}
+            {% if image.singleSRC|default %}
+                <div class="col-12 col-sm-6 col-md-4 col-lg-3 {{ class|default }}">
+                    <figure class="image_container">
+                        {{ include('@HeimrichHannotContaoUtils/picture.html.twig', image.picture) }}
+                        {% if image.caption|default %}
+                        <figcaption class="caption">image.caption</figcaption>
+                        {% endif %}
+                    </figure>
+                </div>
+            {% endif %}
+        {% endfor %}
+    {% endfor %}
+</div>

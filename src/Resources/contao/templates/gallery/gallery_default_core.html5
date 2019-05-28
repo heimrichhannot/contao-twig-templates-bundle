@@ -1,0 +1,1 @@
+<?= \Contao\System::getContainer()->get('huh.twig.template.factory')->createInstance($this)->render(); ?>
