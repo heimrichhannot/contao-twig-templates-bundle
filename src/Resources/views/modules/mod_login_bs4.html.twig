@@ -15,6 +15,8 @@
         {% if logout|default %}
             <p class="login_info">{{ loggedInAs }}{{ lastLogin|default() ? '<br>' ~ lastLogin : '' }}</p>
         {% else %}
+            <input type="hidden" name="_failure_path" value="{{ failurePath|default }}">
+            <input type="hidden" name="_always_use_target_path" value="{{ forceTargetPath|default }}">
             <div class="form-group widget widget-text">
                 <label for="username">{{ username }}</label>
                 <input type="text" name="username" id="username" class="form-control text" value="{{ value }}">
