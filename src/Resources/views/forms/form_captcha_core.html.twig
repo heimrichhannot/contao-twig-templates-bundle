@@ -2,7 +2,7 @@
 
 {% block label %}
     {% if label %}
-        <label for="ctrl_{{ id }}"{% if class %} class="{{ class }}"{% endif %}>
+        <label for="ctrl_{{ id }}"{{ class|default ? ' class="' ~ class ~ '"' }}>
             <span class="invisible">{{ mandatoryField|default }} </span>{{ label }}<span class="mandatory">*</span>
         </label>
     {% endif %}

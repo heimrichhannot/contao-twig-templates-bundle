@@ -1,7 +1,7 @@
 {% extends '@ContaoTwigTemplates/forms/form_row_core.html.twig' %}
 
 {% block field %}
-<fieldset id="ctrl_{{ strId}}" class="radio_container{% if strClass %} {{ strClass }}{% endif %}">
+<fieldset id="ctrl_{{ strId}}" class="radio_container {{ strClass|default }}">
     {% if strLabel|default %}
         <legend>
             {% if arrConfiguration.mandatory|default(false) %}

@@ -1,12 +1,12 @@
 {% extends '@ContaoTwigTemplates/forms/form_row_core.html.twig.' %}
 
 {% block field %}
-    <fieldset id="ctrl_{{ strId|default }}" class="checkbox_container{% if strClass %} {{ strClass }}{% endif %}">
+    <fieldset id="ctrl_{{ strId|default }}" class="checkbox_container {{ strClass|default }}">
 
         {% if strLabel|default %}
             <legend>
                 {% if mandatory|default(false) %}
-                <span class="invisible">{{ mandatoryField }} </span>{{ strLabel }}span class="mandatory">*</span>
+                <span class="invisible">{{ mandatoryField }} </span>{{ strLabel }}<span class="mandatory">*</span>
                 {% else %}
                 {{ strLabel }}
                 {% endif %}

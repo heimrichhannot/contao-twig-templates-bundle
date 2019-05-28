@@ -2,7 +2,7 @@
 
 {% block content %}
 
-<form{{ action|default ? ' action="' ~ action ~ '"' : '' }} id="{{ formId }}" method="post">
+<form{{ action|default ? ' action="' ~ action ~ '"' }} id="{{ formId }}" method="post">
     <div class="formbody">
         <input type="hidden" name="FORM_SUBMIT" value="{{ formId }}">
         <input type="hidden" name="REQUEST_TOKEN" value="{{ '{{request_token}}' }}">

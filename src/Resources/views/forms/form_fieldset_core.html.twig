@@ -1,7 +1,7 @@
 
 {% if arrConfiguration.fsType == 'fsStart' %}
 
-<fieldset{% if strClass|default %} class="{{ strClass }}"{% endif %}>
+<fieldset{{ strClass|default ? ' class="' ~ strClass ~ '"' }}>
     {% if strLabel|default %}
         <legend>{{ strLabel }}</legend>
     {% endif %}

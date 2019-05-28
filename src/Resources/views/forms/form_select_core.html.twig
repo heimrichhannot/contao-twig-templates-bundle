@@ -2,7 +2,7 @@
 
 {% block label %}
     {% if strLabel|default %}
-        <label for="ctrl_{{ strId|default }}"{% if strClass %} class="{{ strClass }}"{% endif %}>
+        <label for="ctrl_{{ strId|default }}"{{ strClass|default ? ' class="' ~ strClass ~ '"' }}>
             {% if arrConfiguration.mandatory|default(false) %}
                 <span class="invisible">{{ arrConfiguration.mandatoryField }}</span>{{ strLabel|default }}<span class="mandatory">*</span>
             {% else %}

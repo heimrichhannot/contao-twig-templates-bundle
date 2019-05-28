@@ -1,5 +1,5 @@
 
-<div class="{{ class|default }} ce_text block"{{ cssID|default }}{% if style|default %} style="{{ style }}"{% endif %}>
+<div class="{{ class|default }} ce_text block"{{ cssID|default }}{{ style|default ? ' style="' ~ style ~ '"' }}>
 
     {% if headline|default %}
         <h1>{{ headline }}</h1>

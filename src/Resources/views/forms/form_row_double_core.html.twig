@@ -1,5 +1,5 @@
 
-<div class="{{ strPrefix|default() }}{% if class|default %} {{ class }}{% endif %}">
+<div class="{{ strPrefix|default() }} {{ class|default }} %}">
   {% block label %}
   {% endblock %}
 
@@ -7,7 +7,7 @@
   {% endblock %}
 </div>
 
-<div class="{{ strPrefix|default() }} confirm{% if class|default %} {{ class }}{% endif %}">
+<div class="{{ strPrefix|default() }} confirm {{ class|default }}">
   {% block label2 %}
   {% endblock %}
 
