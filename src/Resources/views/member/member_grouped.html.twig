@@ -16,7 +16,7 @@
                 {% if category %}
                     <fieldset>
                         <legend>{{ legend|default }}</legend>
-                        {{ category|raw|join('') }}
+                        {{ category|join('')|raw }}
                     </fieldset>
                 {% endif %}
             {% endfor %}
