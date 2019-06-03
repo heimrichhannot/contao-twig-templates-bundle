@@ -1,12 +1,12 @@
 <!-- indexer::stop -->
 <div class="{{ class }} {{ logout|default ? 'logout' : 'login' }} block"{{ cssID }}{{ style|default ? ' style="' ~ style ~ '"' : '' }}>
 
-{% include '@ContaoTwigTemplates/parts/headline_core.html.twig' %}
+{% include '@ContaoTwigTemplates/parts/headline.html.twig' %}
 
 <form{% if action|default %} action="{{ action }}"{% endif %} id="{{ formId }}" method="post">
     <div class="formbody">
 
-        {% include '@ContaoTwigTemplates/parts/message_core.html.twig' with { 'mclass': 'error', 'message': message|default } %}
+        {% include '@ContaoTwigTemplates/parts/message.html.twig' with { 'mclass': 'error', 'message': message|default } %}
 
         <input type="hidden" name="FORM_SUBMIT" value="{{ formId }}">
         <input type="hidden" name="REQUEST_TOKEN" value="{{ '{{request_token}}' }}">

@@ -82,7 +82,7 @@ class TemplateFactory
      */
     public function getCoreTemplateSuffix(): string
     {
-        return '_core';
+        return '';
     }
 
     /**

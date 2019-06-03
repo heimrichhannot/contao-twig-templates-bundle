@@ -1,0 +1,21 @@
+{% extends '@ContaoTwigTemplates/forms/form_row.html.twig' %}
+
+{% block label %}
+    {% if strLabel|default %}
+        <label for="ctrl_{{ strId }}"{{ strClass|default ? ' class="' ~ strClass ~ '"' }}>
+            {% if arrConfiguration.mandatory|default(false) %}
+                <span class="invisible">{{ arrConfiguration.mandatoryField }} </span>{{ strLabel|default }}<span class="mandatory">*</span>
+            {% else %}
+                {{ strLabel|default }}
+            {% endif %}
+        </label>
+    {% endif %}
+{% endblock %}
+
+{% block field %}
+    {% if hasErrors|default(false) %}
+        <p class="error">{{ errorAsString|default(null) }}</p>
+    {% endif %}
+
+    <textarea name="{{ strName }}" id="ctrl_{{ strId }}" class="textarea{% if strClass %} {{ strClass }}{% endif %}" rows="{{ intRows|default(3) }}" cols="{{ intCols|default(3) }}"{{ attributes|default()|raw }}>{{ varValue|default() }}</textarea>
+{% endblock %}

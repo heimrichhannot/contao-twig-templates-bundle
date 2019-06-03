@@ -1,0 +1,23 @@
+{% extends '@ContaoTwigTemplates/block/block_unsearchable.html.twig' %}
+
+{% block content %}
+
+  <form{{ action|default ? ' action="' ~ action ~ '"' : '' }} id="{{ formId }}" method="post">
+    <div class="formbody">
+      <input type="hidden" name="FORM_SUBMIT" value="{{ formId }}">
+      <input type="hidden" name="REQUEST_TOKEN" value="{{ '{{request_token}}' }}">
+      <div class="widget widget-select">
+        <select name="target" class="select">
+          <option value="">{{ title|default }}</option>
+          {% for item in items %}
+            <option value="{{ item.href|default }}"{{ item.active|default ? ' selected' : '' }}>{% for space in 0..(item.level|default) if (item.level > 0) %} &nbsp; {% endfor %}{{ item.link|default }}</option>
+          {% endfor %}
+        </select>
+      </div>
+      <div class="widget widget-submit">
+        <button type="submit" class="submit">{{ button|default }}</button>
+      </div>
+    </div>
+  </form>
+
+{% endblock %}

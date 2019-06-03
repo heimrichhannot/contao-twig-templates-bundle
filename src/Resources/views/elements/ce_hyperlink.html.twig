@@ -1,0 +1,11 @@
+{% extends '@ContaoTwigTemplates/block/block_searchable.html.twig' %}
+
+{% block content %}
+    {% if useImage %}
+        {{ include('@HeimrichHannotContaoUtils/image.html.twig', picture) }}
+    {% else %}
+        {{ embed_pre|default }}
+        <a href="{{ href }}" class="hyperlink_txt" title="{{ linkTitle|default }}"{{ attribute|default }}{{ target|default }}>{{ link|default }}</a>
+        {{ embed_post|default }}
+    {% endif %}
+{% endblock %}

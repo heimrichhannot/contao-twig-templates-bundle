@@ -1,0 +1,9 @@
+{% extends '@ContaoTwigTemplates/block/block_searchable.html.twig' %}
+
+{% block content %}
+    <{{ tag|default('ul') }}>
+    {% for item in items %}
+        <li{% if item.class|default %} class="{{ item.class }}"{% endif %}>{{ item.content|default }}</li>
+    {% endfor %}
+    </{{ tag }}>
+{% endblock %}

@@ -1,0 +1,17 @@
+{% extends '@ContaoTwigTemplates/block/block_unsearchable.html.twig' %}
+
+{% block content %}
+    {% if isVideo %}
+        <video{{ size|default()|raw }}{% if poster|default()%} poster="{{ poster }}" preload="none"{% endif %}{% if autoplay|default() %} autoplay{% endif %} controls>
+            {% for file in files %}
+                <source type="{{ attribute(file, '__get', ['mime']) }}" src="{{ attribute(file, '__get', ['path']) }}" title="{{ attribute(file, '__get', ['title']) }}">
+            {% endfor %}
+        </video>
+    {% else %}
+        <audio{{ size|default() }} preload="none"{% if autoplay|default() %} autoplay{% endif %} controls>
+            {% for file in files %}
+                <source type="{{ attribute(file, '__get', ['mime']) }}" src="{{ attribute(file, '__get', ['path']) }}" title="{{ attribute(file, '__get', ['title']) }}">
+            {% endfor %}
+        </audio>
+    {% endif %}
+{% endblock %}

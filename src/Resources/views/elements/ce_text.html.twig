@@ -1,0 +1,18 @@
+{% extends '@ContaoTwigTemplates/block/block_searchable.html.twig' %}
+
+{% block content %}
+    {% if floating|default == 'below' %}
+        <div class="text">{{ text|raw }}</div>
+    {% endif %}
+
+    {% if addImage|default and singleSRC|default %}
+        {% set data = _context|merge({'href' : url}) %}
+        <div class="image">
+            {{ singleSRC|image(size,data)|raw }}
+        </div>
+    {% endif %}
+
+    {% if floating|default != 'below' %}
+        <div class="text">{{ text|raw }}</div>
+    {% endif %}
+{% endblock %}

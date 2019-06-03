@@ -1,0 +1,9 @@
+{% extends '@ContaoTwigTemplates/forms/form_row.html.twig' %}
+
+{% block field %}
+    {% if arrConfiguration.src|default() %}
+        <input type="image" src="{{ arrConfiguration.src|default }}" id="ctrl_{{ strId|default }}" class="submit {{ strClass|default }}" title="{{ arrConfiguration.slabel|e('html')|default('Absenden') }}" alt="{{ arrConfiguration.slabel|e('html')|default('Absenden') }}"{{ attributes|default()|raw }}>
+    {% else %}
+        <button type="submit" id="ctrl_{{ strId|default }}" class="submit {{ strClass|default }}"{{ arrConfiguration.attributes|default }}>{{ arrConfiguration.slabel|default('Absenden') }}</button>
+    {% endif %}
+{% endblock %}

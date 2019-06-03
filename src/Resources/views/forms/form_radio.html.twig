@@ -1,0 +1,34 @@
+{% extends '@ContaoTwigTemplates/forms/form_row.html.twig' %}
+
+{% block field %}
+<fieldset id="ctrl_{{ strId}}" class="radio_container {{ strClass|default }}">
+    {% if strLabel|default %}
+        <legend>
+            {% if arrConfiguration.mandatory|default(false) %}
+                <span class="invisible">{{ arrConfiguration.mandatoryField }} </span>{{ strLabel|default }}<span class="mandatory">*</span>
+            {% else %}
+                {{ strLabel|default }}
+            {% endif %}
+        </legend>
+    {% endif %}
+
+    {% if hasErrors|default(false) %}
+        <p class="error">{{ errorAsString|default(null) }}</p>
+    {% endif %}
+
+    {% for option in arrOptions %}
+        {% if option.type|default() == 'group_start' %}
+            <fieldset>
+                <legend>{{ option.label|default }}</legend>
+        {% endif %}
+
+        {% if option.type|default() == 'option' %}
+            <span><input type="radio" name="{{ option.name }}" id="opt_{{ option.id }}" class="radio" value="{{ option.value }}"{{ option.checked }}{{ option.attributes }}><label id="lbl_{{ option.id }}" for="opt_{{ option.id }}">{{ option.label|default }}</label></span>
+        {% endif %}
+
+        {% if option.type|default() == 'group_end' %}
+            </fieldset>
+        {% endif %}
+    {% endfor %}
+</fieldset>
+{% endblock %}

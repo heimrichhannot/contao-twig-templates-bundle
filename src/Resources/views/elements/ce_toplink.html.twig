@@ -1,0 +1,5 @@
+{% extends '@ContaoTwigTemplates/block/block_unsearchable.html.twig' %}
+
+{% block content %}
+    <a href="{{ request|default }}#top" title="{{ title|default }}">{{ label|default }}</a>
+{% endblock %}

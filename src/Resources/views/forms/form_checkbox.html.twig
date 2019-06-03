@@ -1,0 +1,40 @@
+{% extends '@ContaoTwigTemplates/forms/form_row.html.twig.' %}
+
+{% block field %}
+    <fieldset id="ctrl_{{ strId|default }}" class="checkbox_container {{ strClass|default }}">
+
+        {% if strLabel|default %}
+            <legend>
+                {% if mandatory|default(false) %}
+                <span class="invisible">{{ mandatoryField }} </span>{{ strLabel }}<span class="mandatory">*</span>
+                {% else %}
+                {{ strLabel }}
+                {% endif %}
+            </legend>
+        {% endif %}
+
+        {% if arrErrors|default %}
+            <p class="error"></p>
+        {% endif %}
+
+        <input type="hidden" name="{{ name|default }}" value="">
+
+        {% for option in arrOptions %}
+            {% if option.type == 'group_start' %}
+                <fieldset>
+                <legend>{{ option.label }}</legend>
+            {% endif %}
+
+            {% if option.type == 'option' %}
+                <span><input type="checkbox" name="{{ option.name }}" id="opt_{{ option.id }}" class="checkbox" value="{{ option.value }} ?>"{{ option.checked }}{{ option.attributes }}> <label id="lbl_{{ option.id }}" for="opt_{{ option.id }}">{{ option.label }}</label></span>
+            {% endif %}
+
+            {% if option.type == 'group_start' %}
+                </fieldset>
+
+            {% endif %}
+        {% endfor %}
+
+    </fieldset>
+
+{% endblock %}

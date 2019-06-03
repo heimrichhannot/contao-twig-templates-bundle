@@ -1,0 +1,29 @@
+{% extends '@ContaoTwigTemplates/forms/form_row.html.twig' %}
+
+{% block label %}
+    {% if label %}
+        <label for="ctrl_{{ id }}"{{ class|default ? ' class="' ~ class ~ '"' }}>
+            <span class="invisible">{{ mandatoryField|default }} </span>{{ label }}<span class="mandatory">*</span>
+        </label>
+    {% endif %}
+{% endblock %}
+
+{% block field %}
+    {% if(hasErrors|default(false) and errorsAsString|default())  %}
+        <p class="error">{{ getErrorAsString|raw }}</p>
+    {% endif %}
+
+    <input type="text" name="{{ name }}" id="ctrl_{{ id }}" class="captcha mandatory{% if class %} {{ class }}{% endif %}" value="" aria-describedby="captcha_text_{{ id }}"{{ getAttributes }}>
+    <span id="captcha_text_{{ id }}" class="captcha_text{% if class %} {{ class }}{% endif %}">{{ getQuestion }}</span>
+
+    {% if hasErrors %}
+        <div style="display:none">
+            <label for="ctrl_{{ id }}_hp">Do not fill in this field</label>
+            <input type="text" name="{{ name }}_name" id="ctrl_{{ id }}_hp" value="">
+        </div>
+        <script>
+            document.getElementById('ctrl_{{ id }}').parentNode.style.display = 'none';
+            document.getElementById('ctrl_{{ id }}').value = '{{ getSum }}';
+        </script>
+    {% endif %}
+{% endblock %}

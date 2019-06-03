@@ -1,8 +1,13 @@
 # Changelog
 All notable changes to this project will be documented in this file.
 
-## [1.0.0] - 2019-05-28
+## [1.0.1] - 2019-06-03
 
+### Changed
+- removed all _core from template files.
+
+## [1.0.0] - 2019-05-28
+        
 ### Changed
 - readme
 

@@ -1,10 +1,10 @@
 {% extends '@ContaoTwigTemplates/block/block_searchable.html.twig' %}
 
 {% block content %}
-    <ul class="list-unstyled">
+    <ul>
         {% for file in files %}
             <li class="download-element ext-{{ file.extension|default }}">
-                <a href="{{ file.href|default }}" title="{{ file.title|default }}" class="btn btn-primary" role="button" download>{{ file.link|default }} <span class="size">({{ file.filesize|default }})</span></a>
+                <a href="{{ file.href|default }}" title="{{ file.title|default }}">{{ file.link|default }} <span class="size">({{ file.filesize|default }})</span></a>
             </li>
         {% endfor %}
     </ul>

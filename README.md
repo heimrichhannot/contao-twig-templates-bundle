@@ -25,10 +25,15 @@ It's as simple as that: Check 'Use twig templates' in your page layout configura
 
 Automapping order (check if template exists, else use the next one):
 1. Frontend framework twig template
+1. modified Template Files in your specific bundle
 1. Core twig template
 1. default (contao html5) template
 
 If you don't want to use *automapping* you can also assign the template you want in the ordinary way by selecting it in the `customTpl` field of your module or content element.
+
+## Update
+
+If you used _core templates in versions before 1.0 you need to refactor them to filenames without _core. 
 
 ### Additional dca configuration keys
 
