@@ -1,6 +1,12 @@
 # Changelog
 All notable changes to this project will be documented in this file.
 
+## [1.0.2] - 2019-06-03
+
+### Changed
+- added support to show element preview in back end
+- added support to select contao as framework to prevent empty or missleading templates
+
 ## [1.0.1] - 2019-06-03
 
 ### Changed

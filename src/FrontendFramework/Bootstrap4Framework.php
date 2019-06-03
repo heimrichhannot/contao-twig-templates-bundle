@@ -40,16 +40,16 @@ class Bootstrap4Framework extends AbstractFrontendFramework
     }
 
     /**
-     * Prepare template data at the applyTwigTemplate method
-     *
-     * @param string $templateName
-     * @param array $templateData
+     * @inheritDoc
      */
     public function generate(string &$templateName, array &$templateData): void
     {
         $this->prepareAccordeons($templateName, $templateData);
     }
 
+    /**
+     * @inheritDoc
+     */
     public function compile(string &$templateName, array &$templateData, AbstractTemplate $entity): void
     {
         $this->supportCustomControl($templateName, $entity);

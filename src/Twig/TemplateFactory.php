@@ -96,7 +96,7 @@ class TemplateFactory
     public function createInstance($object)
     {
         $layout = $this->getLayout();
-        $frontendFramework = $this->container->get(FrontendFrameworkCollection::class)->getFramework($layout->ttFramework);
+        $frontendFramework = $this->container->get(FrontendFrameworkCollection::class)->getFramework($layout->ttFramework ? : 'contao');
 
         if ($object instanceof Widget)
         {

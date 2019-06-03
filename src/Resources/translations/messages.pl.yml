@@ -1,4 +1,10 @@
 # labels
 huh.twig.templates:
   label:
+    mandatory: Pole obowiązkowe
     submit: Wyślij
+    password_confirm: Potwierdź hasło
+  framework:
+    contao: "Contao"
+    bs3: "Bootstrap 3"
+    bs4: "Bootstrap 4"

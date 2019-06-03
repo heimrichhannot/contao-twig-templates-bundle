@@ -4,3 +4,7 @@ huh.twig.templates:
     mandatory: Mandatory field
     submit: Send
     password_confirm: Confirm password
+  framework:
+    contao: "Contao"
+    bs3: "Bootstrap 3"
+    bs4: "Bootstrap 4"

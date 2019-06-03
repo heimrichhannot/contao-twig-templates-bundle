@@ -20,4 +20,5 @@ $lang['tt_framework_templates_legend'] = 'Twig templates & frontend framework';
 /**
  * References
  */
-$GLOBALS['TL_LANG']['tl_layout']['references']['ttFramework']['bs4'] = 'Bootstrap 4';
+$GLOBALS['TL_LANG']['tl_layout']['references']['ttFramework']['contao'] = 'Contao';
+$GLOBALS['TL_LANG']['tl_layout']['references']['ttFramework']['bs4']    = 'Bootstrap 4';

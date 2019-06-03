@@ -4,3 +4,4 @@ services:
     autowire: true
 
   HeimrichHannot\TwigTemplatesBundle\FrontendFramework\Bootstrap4Framework: ~
+  HeimrichHannot\TwigTemplatesBundle\FrontendFramework\ContaoFramework: ~

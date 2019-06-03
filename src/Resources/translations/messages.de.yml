@@ -5,5 +5,6 @@ huh.twig.templates:
     submit: Absenden
     password_confirm: Passwort bestätigen
   framework:
+    contao: "Contao"
     bs3: "Bootstrap 3"
     bs4: "Bootstrap 4"

@@ -103,7 +103,7 @@ class HookListener implements ContainerAwareInterface
         $ampMode = $this->container->get('huh.utils.container')->isBundleActive('HeimrichHannot\AmpBundle\HeimrichHannotContaoAmpBundle')
                    && $this->container->get('huh.request')->getGet('amp');
 
-        if ($ampMode) {
+        if ($ampMode || !empty($data['customTpl'])) {
             return false;
         }
 
