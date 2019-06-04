@@ -14,7 +14,6 @@
 {% elseif noMarkup|default %}
     {{ elements|join('')|raw }}
 {% else %}
-    bla
     <div class="{{ class|default }} block"{{ cssID|default }}{{ style|default ? ' style="' ~ style ~ '"' : '' }}>
         {% if printable|default %}
             {% block syndication %}

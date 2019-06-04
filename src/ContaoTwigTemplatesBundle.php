@@ -18,5 +18,4 @@ class ContaoTwigTemplatesBundle extends Bundle
     {
         $container->addCompilerPass(new FrontendFrameworkPass());
     }
-
 }

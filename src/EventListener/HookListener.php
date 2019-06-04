@@ -107,7 +107,7 @@ class HookListener implements ContainerAwareInterface
             return false;
         }
 
-        $path              = null;
+        $path = null;
         $prefixedTemplates = TemplateLoader::getPrefixedFiles($templateName);
 
         // provide suffixed templates in priority order
@@ -117,7 +117,7 @@ class HookListener implements ContainerAwareInterface
             $templateName,
         ];
 
-        $templates          = array_intersect($suffixedTemplates, $prefixedTemplates);
+        $templates = array_intersect($suffixedTemplates, $prefixedTemplates);
         $customTemplateName = reset($templates);
 
         if ($customTemplateName === $templateName) {
@@ -146,18 +146,17 @@ class HookListener implements ContainerAwareInterface
 
     protected function getLayout()
     {
-        if (!$this->layout)
-        {
+        if (!$this->layout) {
             global $objPage;
 
             if (null === $objPage || null === ($this->layout = $this->container
                     ->get('huh.utils.model')
                     ->findModelInstanceByPk('tl_layout', $objPage->layout)
-                ))
-            {
+                )) {
                 return null;
             }
         }
+
         return $this->layout;
     }
 }

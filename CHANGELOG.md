@@ -1,16 +1,24 @@
 # Changelog
 All notable changes to this project will be documented in this file.
 
+## [1.1.0] - 2019-06-04
+
+### Removed
+- block_searchable.html5 and block_unsearchable.html5 because they caused issues concerning non-twig templates inheriting from one of them
+
+### Fixed
+- issue in form_hidden.html.twig
+
 ## [1.0.2] - 2019-06-03
 
-### Changed
-- added support to show element preview in back end
-- added support to select contao as framework to prevent empty or missleading templates
+### Added
+- support to show element preview in back end
+- support to select contao as framework to prevent empty or missleading templates
 
 ## [1.0.1] - 2019-06-03
 
-### Changed
-- removed all _core from template files.
+### Removed
+- all _core from template files.
 
 ## [1.0.0] - 2019-05-28
         

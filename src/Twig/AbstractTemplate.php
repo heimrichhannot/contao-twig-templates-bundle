@@ -46,9 +46,9 @@ abstract class AbstractTemplate
      */
     public function __construct(ContainerInterface $container, AbstractFrontendFramework $frontendFramework)
     {
-        $this->templateUtil      = $container->get('huh.utils.template');
-        $this->eventDispatcher   = $container->get('event_dispatcher');
-        $this->container         = $container;
+        $this->templateUtil = $container->get('huh.utils.template');
+        $this->eventDispatcher = $container->get('event_dispatcher');
+        $this->container = $container;
         $this->frontendFramework = $frontendFramework;
     }
 
@@ -79,38 +79,31 @@ abstract class AbstractTemplate
      *
      * Uses $this->templateName and $this->templateData
      *
-     * @return string
      * @throws \Twig_Error_Loader
      * @throws \Twig_Error_Runtime
      * @throws \Twig_Error_Syntax
-     *
      * @throws \Psr\Cache\InvalidArgumentException
+     *
+     * @return string
      */
     public function render()
     {
         $this->frontendFramework->compile($this->templateName, $this->templateData, $this);
 
+        /** @var BeforeRenderTwigTemplateEvent $event */
         $event = $this->eventDispatcher->dispatch(
             BeforeRenderTwigTemplateEvent::NAME,
             new BeforeRenderTwigTemplateEvent($this->getType(), $this->templateName, $this->templateData, $this->entity)
         );
 
-        return $this->templateUtil->renderTwigTemplate($event->getTemplateName(), array_merge(is_array($event->getTemplateData()) ? $event->getTemplateData() : [], ['_entity' => $this->getEntity()]));
+        return $this->templateUtil->renderTwigTemplate($event->getTemplateName(), array_merge(\is_array($event->getTemplateData()) ? $event->getTemplateData() : [], ['_entity' => $this->getEntity()]));
     }
 
     /**
-     * Prepare templateName and templateData from entity (Widget, Module, ContentElement,...).
-     *
-     * @param $entity
-     *
-     */
-    abstract protected function prepareData($entity);
-
-    /**
-     * Set if element support a feature
+     * Set if element support a feature.
      *
      * @param string $key
-     * @param mixed $value
+     * @param mixed  $value
      */
     public function addSupport(string $key, $value)
     {
@@ -122,11 +115,12 @@ abstract class AbstractTemplate
      * Return false, if support is not set or false.
      *
      * @param string $key
+     *
      * @return bool
      */
     public function hasSupport(string $key)
     {
-        return (isset($this->support[$key]) && $this->support !== false);
+        return isset($this->support[$key]) && false !== $this->support;
     }
 
     /**
@@ -134,6 +128,7 @@ abstract class AbstractTemplate
      * Return false, if feature not found.
      *
      * @param string $key
+     *
      * @return bool|mixed
      */
     public function getSupport(string $key)
@@ -141,6 +136,14 @@ abstract class AbstractTemplate
         if (isset($this->support[$key])) {
             return $this->support[$key];
         }
+
         return false;
     }
+
+    /**
+     * Prepare templateName and templateData from entity (Widget, Module, ContentElement,...).
+     *
+     * @param $entity
+     */
+    abstract protected function prepareData($entity);
 }

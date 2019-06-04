@@ -1,16 +1,12 @@
 <?php
-/**
- * Contao Open Source CMS
- *
+
+/*
  * Copyright (c) 2019 Heimrich & Hannot GmbH
  *
- * @author  Thomas Körner <t.koerner@heimrich-hannot.de>
- * @license http://www.gnu.org/licences/lgpl-3.0.html LGPL
+ * @license LGPL-3.0-or-later
  */
 
-
 namespace HeimrichHannot\TwigTemplatesBundle\DataContainer;
-
 
 use HeimrichHannot\TwigTemplatesBundle\FrontendFramework\FrontendFrameworkCollection;
 use Symfony\Component\DependencyInjection\ContainerInterface;
@@ -28,7 +24,7 @@ class LayoutContainer
     }
 
     /**
-     * Returns all registered frameworks as one-dimensional array for options_callback
+     * Returns all registered frameworks as one-dimensional array for options_callback.
      *
      * @return array
      */
@@ -46,10 +42,11 @@ class LayoutContainer
     {
         $translations = [];
         $frameworks = $this->container->get(FrontendFrameworkCollection::class)->getAllFrameworks();
-        foreach ($frameworks as $framework)
-        {
+
+        foreach ($frameworks as $framework) {
             $translations[$framework->getAlias()] = $this->container->get('translator')->trans($framework->getName());
         }
+
         return $translations;
     }
 }

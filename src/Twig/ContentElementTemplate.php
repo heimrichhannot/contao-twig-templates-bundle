@@ -18,7 +18,6 @@ class ContentElementTemplate extends DefaultTemplate
      * Prepare templateName and templateData from entity (Widget, Module, ContentElement,...).
      *
      * @param FrontendTemplate $entity
-     *
      */
     public function prepareData($entity)
     {

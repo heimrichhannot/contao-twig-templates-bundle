@@ -10,9 +10,7 @@ namespace HeimrichHannot\TwigTemplatesBundle\Twig;
 
 use Contao\FrontendTemplate;
 use Contao\LayoutModel;
-use Contao\System;
 use Contao\Widget;
-use HeimrichHannot\TwigTemplatesBundle\DependencyInjection\Compiler\FrontendFrameworkPass;
 use HeimrichHannot\TwigTemplatesBundle\Exception\TemplateTypeNotSupportedException;
 use HeimrichHannot\TwigTemplatesBundle\FrontendFramework\FrontendFrameworkCollection;
 use HeimrichHannot\UtilsBundle\Classes\ClassUtil;
@@ -58,13 +56,13 @@ class TemplateFactory
      */
     public function getTemplateSuffix(): string
     {
-        if (null === ($layout = $this->getLayout()))
-        {
+        if (null === ($layout = $this->getLayout())) {
             return '';
         }
 
         if ($layout->ttFramework) {
             $frontendFramework = $this->container->get(FrontendFrameworkCollection::class)->getFramework($layout->ttFramework);
+
             return '_'.$frontendFramework->getAlias();
         }
 
@@ -96,20 +94,19 @@ class TemplateFactory
     public function createInstance($object)
     {
         $layout = $this->getLayout();
-        $frontendFramework = $this->container->get(FrontendFrameworkCollection::class)->getFramework($layout->ttFramework ? : 'contao');
+        $frontendFramework = $this->container->get(FrontendFrameworkCollection::class)->getFramework($layout->ttFramework ?: 'contao');
 
-        if ($object instanceof Widget)
-        {
+        if ($object instanceof Widget) {
             $template = new FormTemplate($this->container, $frontendFramework);
-        }
-        elseif ($object instanceof FrontendTemplate)
-        {
+        } elseif ($object instanceof FrontendTemplate) {
             $type = strtok($object->getName(), '_');
 
             switch ($type) {
                 case 'ce':
                     $template = new ContentElementTemplate($this->container, $frontendFramework);
+
                     break;
+
                 default:
                     $template = new DefaultTemplate($this->container, $frontendFramework);
             }
@@ -126,18 +123,17 @@ class TemplateFactory
 
     protected function getLayout()
     {
-        if (!$this->layout)
-        {
+        if (!$this->layout) {
             global $objPage;
 
             if (null === $objPage || null === ($this->layout = $this->container
                     ->get('huh.utils.model')
                     ->findModelInstanceByPk('tl_layout', $objPage->layout)
-                ))
-            {
+                )) {
                 return null;
             }
         }
+
         return $this->layout;
     }
 }

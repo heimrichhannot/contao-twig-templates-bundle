@@ -1,16 +1,12 @@
 <?php
-/**
- * Contao Open Source CMS
- *
+
+/*
  * Copyright (c) 2019 Heimrich & Hannot GmbH
  *
- * @author  Thomas Körner <t.koerner@heimrich-hannot.de>
- * @license http://www.gnu.org/licences/lgpl-3.0.html LGPL
+ * @license LGPL-3.0-or-later
  */
 
-
 namespace HeimrichHannot\TwigTemplatesBundle\FrontendFramework;
-
 
 use HeimrichHannot\TwigTemplatesBundle\Twig\AbstractTemplate;
 
@@ -20,7 +16,7 @@ class Bootstrap4Framework extends AbstractFrontendFramework
 
     /**
      * Return the framework alias. Is used for template suffix and database identification.
-     * Example: bs4 for Bootstrap 4
+     * Example: bs4 for Bootstrap 4.
      *
      * @return string
      */
@@ -40,7 +36,7 @@ class Bootstrap4Framework extends AbstractFrontendFramework
     }
 
     /**
-     * @inheritDoc
+     * {@inheritdoc}
      */
     public function generate(string &$templateName, array &$templateData): void
     {
@@ -48,22 +44,20 @@ class Bootstrap4Framework extends AbstractFrontendFramework
     }
 
     /**
-     * @inheritDoc
+     * {@inheritdoc}
      */
     public function compile(string &$templateName, array &$templateData, AbstractTemplate $entity): void
     {
         $this->supportCustomControl($templateName, $entity);
     }
 
-
     protected function supportCustomControl(string &$templateName, AbstractTemplate $entity)
     {
-        if (null === ($layout = $this->getLayout()))
-        {
+        if (null === ($layout = $this->getLayout())) {
             return;
         }
-        if ($layout->ttUseFrameworkCustomControls && $entity->getSupport(static::SUPPORT_CUSTOM_FORMS))
-        {
+
+        if ($layout->ttUseFrameworkCustomControls && $entity->getSupport(static::SUPPORT_CUSTOM_FORMS)) {
             $suffix = $this->container->get('huh.twig.template.factory')->getTemplateSuffix();
             $customFormTemplate = preg_replace('/'.$suffix.'$/', '', $templateName);
             $customFormTemplate .= '_custom_'.$this->getAlias();
@@ -84,11 +78,13 @@ class Bootstrap4Framework extends AbstractFrontendFramework
         switch ($templateName) {
             case 'ce_accordionSingle':
                 $this->container->get('huh.utils.accordion')->structureAccordionSingle($data);
+
                 break;
 
             case 'ce_accordionStart':
             case 'ce_accordionStop':
                 $this->container->get('huh.utils.accordion')->structureAccordionStartStop($data);
+
                 break;
         }
     }

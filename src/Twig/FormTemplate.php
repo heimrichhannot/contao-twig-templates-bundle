@@ -8,9 +8,7 @@
 
 namespace HeimrichHannot\TwigTemplatesBundle\Twig;
 
-
 use Contao\Widget;
-use HeimrichHannot\TwigTemplatesBundle\FrontendFramework\Bootstrap4Framework;
 
 class FormTemplate extends AbstractTemplate
 {
@@ -20,6 +18,7 @@ class FormTemplate extends AbstractTemplate
      * Prepare templateName and templateData from entity (Widget, Module, ContentElement,...).
      *
      * @param Widget $entity
+     *
      * @throws \ReflectionException
      */
     public function prepareData($entity)
