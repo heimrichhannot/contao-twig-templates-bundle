@@ -1,5 +1,3 @@
-
-{{ dump(cssID) }}
 <div class="{{ class }} block"{{ cssID|default|raw }}{% if style|default() %} style="{{ style }}"{% endif %}>
     {% block headline %}
         {% if headline|default() %}
