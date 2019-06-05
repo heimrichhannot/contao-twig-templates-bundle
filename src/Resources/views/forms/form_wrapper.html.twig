@@ -1,6 +1,6 @@
 <!-- indexer::stop -->
 <div class="{{ class|default('ce_form') }} block"{{ cssId|default }}{{ style|default ? ' class="' ~ style ~ '"' }}>
-    {% include '@ContaoTwigTemplates/parts/headline_core.html.twig' %}
+    {% include '@ContaoTwigTemplates/parts/headline.html.twig' %}
     <form{{ action|default ? ' action="' ~ action ~ '"' }} method="{{ method|default('post') }}"
                                                                   enctype="{{ enctype|default('multipart/form-data') }}"{{ attributes|default }}{{ novalidate|default }}>
         <div class="formbody">
