@@ -1,6 +1,6 @@
 {% if teaserOnly|default %}
     {% block alias %}
-        <article class="{{ class|default }} block"{{ cssID|default }}{{ style|default ? ' style="' ~ style ~ '"' : '' }}>
+        <article class="{{ class|default }} block"{{ cssID|default|raw }}{{ style|default ? ' style="' ~ style ~ '"' : '' }}>
             <div class="ce_text block">
                 <h2>{{ headline|default }}</h2>
                 <div class="teaser">
@@ -14,7 +14,7 @@
 {% elseif noMarkup|default %}
     {{ elements|join('')|raw }}
 {% else %}
-    <div class="{{ class|default }} block"{{ cssID|default }}{{ style|default ? ' style="' ~ style ~ '"' : '' }}>
+    <div class="{{ class|default }} block"{{ cssID|default|raw }}{{ style|default ? ' style="' ~ style ~ '"' : '' }}>
         {% if printable|default %}
             {% block syndication %}
                 <!-- indexer::stop -->
