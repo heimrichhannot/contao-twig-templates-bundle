@@ -1,10 +1,20 @@
 # Changelog
 All notable changes to this project will be documented in this file.
 
-## [1.1.6] - 2019-08-06
+## [1.1.8] - 2019-08-06
 
 ### Fixed
 - fix from action issue in search templates
+
+## [1.1.7] - 2019-07-26
+
+### Fixed
+- issue in pagination.html.twig
+
+## [1.1.6] - 2019-07-17
+
+### Fixed
+- issue in mod_article.html.twig
 
 ## [1.1.5] - 2019-06-05
 
