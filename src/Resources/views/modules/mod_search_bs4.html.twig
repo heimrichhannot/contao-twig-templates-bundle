@@ -2,7 +2,7 @@
 
 {% block content %}
 
-    <form{{ action|default ? ' action="' ~ action ~ '"' : '' }} method="get">
+    <form{{ action|default ? ' action=' ~ action }} method="get">
         <div class="formbody">
             <div class="form-group mb-2">
                 <div class="input-group">

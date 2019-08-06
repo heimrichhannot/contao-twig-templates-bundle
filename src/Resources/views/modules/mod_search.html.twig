@@ -2,7 +2,7 @@
 
 {% block content %}
 
-    <form{{ action|default ? ' action="' ~ action ~ '"' : '' }} method="get">
+    <form{{ action|default ? ' action="' ~ action }} method="get">
         <div class="formbody">
             <div class="widget widget-text">
                 <label for="ctrl_keywords_{{ uniqueId }}">{{ keywordLabel }}</label>
