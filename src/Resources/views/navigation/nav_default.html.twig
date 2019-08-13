@@ -5,7 +5,7 @@
                 <strong class="{{ item.class|default }}" {{ item.subitems|default ? ' aria-haspopup="true"'}} itemprop="name">{{ item.link|default }}</strong>{{ item.subitems|default }}
             </li>
         {% else %}
-            <li{{ item.class|default ? ' class="' ~ item.class ~ '"' }}>
+            <li class="{{ item.class|default }}">
                 <a href="{{ item.href|default ?: './' }}" title="{{ item.pageTitle|default ?: item.title }}"{{ item.accesskey|default  is not same as('') ? ' accesskey=' ~ item.accesskey ~ '"' }}{{ item.tabindex|default ? ' tabindex=' ~ item.tabindex ~ '"' }}{{ item.nofollow|default ? ' rel="nofollow"' }}{{ target|default|raw }}{{ item.subitems|default ? ' aria-haspopup="true"' }} itemprop="url"><span itemprop="name">{{ item.link }}</span></a>
                 {{ item.subitems|default }}
             </li>

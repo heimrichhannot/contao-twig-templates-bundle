@@ -1,6 +1,11 @@
 # Changelog
 All notable changes to this project will be documented in this file.
 
+## [1.1.9] - 2019-08-13
+
+### Fixed
+- class render issue in nav_default.html.twig
+
 ## [1.1.8] - 2019-08-06
 
 ### Fixed
