@@ -3,13 +3,19 @@
         {% for image in row %}
             {% if image.singleSRC|default %}
                 <li class="{{ class|default }}">
-                    {% include ('@HeimrichHannotContaoUtils/image.html.twig') with {
-                        'margin': image.margin|default,
-                        'attributes': image.attributes|default,
-                        'alt' : image.alt|default,
-                        'picture': image.picture|default,
-                        'caption': image.caption|default,
-                    } only %}
+                    {% if image.href|default %}
+                    <a href="{{ image.href }}" target="_blank">
+                        {% endif %}
+                        {% include ('@HeimrichHannotContaoUtils/image.html.twig') with {
+                            'margin': image.margin|default,
+                            'attributes': image.attributes|default,
+                            'alt' : image.alt|default,
+                            'picture': image.picture|default,
+                            'caption': image.caption|default,
+                        } only %}
+                        {% if image.href|default %}
+                    </a>
+                    {% endif %}
                 </li>
             {% endif %}
         {% endfor %}

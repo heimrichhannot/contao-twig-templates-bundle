@@ -1,6 +1,11 @@
 # Changelog
 All notable changes to this project will be documented in this file.
 
+## [1.1.10] - 2019-09-09
+
+### Added
+- 'open in new window' support in gallery templates
+
 ## [1.1.9] - 2019-08-13
 
 ### Fixed

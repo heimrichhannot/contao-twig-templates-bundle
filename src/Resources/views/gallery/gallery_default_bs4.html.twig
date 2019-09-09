@@ -3,12 +3,18 @@
         {% for image in row %}
             {% if image.singleSRC|default %}
                 <div class="col-12 col-sm-6 col-md-4 col-lg-3 {{ class|default }}">
-                    <figure class="image_container">
-                        {{ include('@HeimrichHannotContaoUtils/picture.html.twig', image.picture) }}
-                        {% if image.caption|default %}
-                        <figcaption class="caption">image.caption</figcaption>
+                    {% if image.href|default %}
+                    <a href="{{ image.href }}" target="_blank">
                         {% endif %}
-                    </figure>
+                        <figure class="image_container">
+                            {{ include('@HeimrichHannotContaoUtils/picture.html.twig', image.picture) }}
+                            {% if image.caption|default %}
+                                <figcaption class="caption">image.caption</figcaption>
+                            {% endif %}
+                        </figure>
+                        {% if image.href|default %}
+                    </a>
+                    {% endif %}
                 </div>
             {% endif %}
         {% endfor %}
