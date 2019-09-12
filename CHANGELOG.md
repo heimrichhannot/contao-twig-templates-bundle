@@ -1,6 +1,11 @@
 # Changelog
 All notable changes to this project will be documented in this file.
 
+## [1.1.11] - 2019-09-12
+
+### Fixed
+- raw output of subitems in navigation templates
+
 ## [1.1.10] - 2019-09-09
 
 ### Added
