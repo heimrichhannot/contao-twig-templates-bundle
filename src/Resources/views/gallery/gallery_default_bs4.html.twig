@@ -9,7 +9,7 @@
                         <figure class="image_container">
                             {{ include('@HeimrichHannotContaoUtils/picture.html.twig', image.picture) }}
                             {% if image.caption|default %}
-                                <figcaption class="caption">image.caption</figcaption>
+                                <figcaption class="caption">{{ image.caption|raw }}</figcaption>
                             {% endif %}
                         </figure>
                         {% if image.href|default %}

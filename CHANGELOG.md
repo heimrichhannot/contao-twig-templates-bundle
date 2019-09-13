@@ -1,6 +1,11 @@
 # Changelog
 All notable changes to this project will be documented in this file.
 
+## [1.1.12] - 2019-09-13
+
+### Fixed
+- issue in gallery_default_bs4.html.twig
+
 ## [1.1.11] - 2019-09-12
 
 ### Fixed
