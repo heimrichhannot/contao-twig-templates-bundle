@@ -3,12 +3,12 @@
 {% block content %}
     {% if singleSRC|default %}
         {% include ('@HeimrichHannotContaoUtils/image.html.twig') with {
-            'margin': margin|default,
-            'href': href|default,
-            'linkTitle': linkTitle|default,
-            'attributes': attributes|default,
-            'picture': picture|default,
-            'caption': caption|default
+            margin: margin|default,
+            href: href|default,
+            linkTitle: linkTitle|default,
+            linkAttributes: attributes|default,
+            picture: picture|default,
+            caption: caption|default,
         } only %}
     {% endif %}
 {% endblock %}
