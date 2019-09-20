@@ -1,6 +1,11 @@
 # Changelog
 All notable changes to this project will be documented in this file.
 
+## [1.1.14] - 2019-09-20
+
+### Fixed
+- issue in ce_download.html.twig
+
 ## [1.1.13] - 2019-09-20
 
 ### Fixed
