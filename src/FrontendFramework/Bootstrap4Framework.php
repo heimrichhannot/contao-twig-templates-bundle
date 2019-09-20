@@ -40,7 +40,7 @@ class Bootstrap4Framework extends AbstractFrontendFramework
      */
     public function generate(string &$templateName, array &$templateData): void
     {
-        $this->prepareAccordeons($templateName, $templateData);
+        $this->prepareAccordions($templateName, $templateData);
     }
 
     /**
@@ -72,7 +72,7 @@ class Bootstrap4Framework extends AbstractFrontendFramework
         }
     }
 
-    protected function prepareAccordeons(string &$templateName, array &$data)
+    protected function prepareAccordions(string &$templateName, array &$data)
     {
         // prepare template data for bootstrap
         switch ($templateName) {
