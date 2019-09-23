@@ -1,6 +1,13 @@
 # Changelog
 All notable changes to this project will be documented in this file.
 
+## [1.1.16] - 2019-09-23
+
+### Fixed
+- accordion
+- hyperlink
+- list
+
 ## [1.1.15] - 2019-09-20
 
 ### Fixed

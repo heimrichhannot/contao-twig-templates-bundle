@@ -1,7 +1,7 @@
 {% extends '@ContaoTwigTemplates/block/block_searchable.html.twig' %}
 
 {% block content %}
-    {% if useImage %}
+    {% if useImage and picture|default %}
         {{ include('@HeimrichHannotContaoUtils/image.html.twig', picture) }}
     {% else %}
         {{ embed_pre|default }}
@@ -9,3 +9,4 @@
         {{ embed_post|default }}
     {% endif %}
 {% endblock %}
+c
