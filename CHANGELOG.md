@@ -1,6 +1,11 @@
 # Changelog
 All notable changes to this project will be documented in this file.
 
+## [1.1.17] - 2019-09-24
+
+### Fixed
+- hyperlink
+
 ## [1.1.16] - 2019-09-23
 
 ### Fixed
