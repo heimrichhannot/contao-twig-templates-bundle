@@ -76,7 +76,7 @@
         <div class="{{ formFeedbackClass|join(' ') }}" id="help-block-ctrl_{{ strId }}">
             {% block explanation %}
                 {% if(arrConfiguration.explanation|default()) %}
-                    <div class="form-text text-muted explanation">{{ arrConfiguration.explanation }}</div>
+                    <div class="form-text text-muted explanation">{{ arrConfiguration.explanation|raw }}</div>
                 {% endif %}
             {% endblock %}
 

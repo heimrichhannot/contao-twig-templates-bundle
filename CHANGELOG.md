@@ -1,6 +1,11 @@
 # Changelog
 All notable changes to this project will be documented in this file.
 
+## [1.1.18] - 2019-09-30
+
+### Fixed
+- raw `form_row_bs4.html`
+
 ## [1.1.17] - 2019-09-24
 
 ### Fixed
