@@ -1,6 +1,11 @@
 # Changelog
 All notable changes to this project will be documented in this file.
 
+## [1.1.19] - 2019-10-04
+
+### Added
+- explanation bs4
+
 ## [1.1.18] - 2019-09-30
 
 ### Fixed
