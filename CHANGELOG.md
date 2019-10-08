@@ -1,6 +1,12 @@
 # Changelog
 All notable changes to this project will be documented in this file.
 
+## [1.1.20] - 2019-10-08
+
+### Fixed 
+- form_checkbox template lable not raw output
+- form_checkbox checkbox syntax
+
 ## [1.1.19] - 2019-10-04
 
 ### Added
