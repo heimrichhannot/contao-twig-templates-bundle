@@ -1,6 +1,11 @@
 # Changelog
 All notable changes to this project will be documented in this file.
 
+## [1.1.21] - 2019-10-14
+
+### Fixed 
+- attribute issues for ce_text
+
 ## [1.1.20] - 2019-10-08
 
 ### Fixed 
