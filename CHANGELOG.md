@@ -1,6 +1,11 @@
 # Changelog
 All notable changes to this project will be documented in this file.
 
+## [1.1.22] - 2019-11-01
+
+### Fixed 
+- fixed attributes issue in checkbox custom
+
 ## [1.1.21] - 2019-10-14
 
 ### Fixed 
