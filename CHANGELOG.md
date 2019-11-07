@@ -1,7 +1,10 @@
 # Changelog
 All notable changes to this project will be documented in this file.
 
-## [1.1.24] - 2019-11-06
+## [1.1.25] - 2019-11-07
+* removed debug echo in config.php
+
+## [1.1.24] - 2019-11-07
 
 ### Fixed 
 - formhybrid sub palettes again

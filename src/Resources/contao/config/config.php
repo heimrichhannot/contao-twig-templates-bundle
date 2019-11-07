@@ -12,4 +12,3 @@ if (is_array($GLOBALS['TL_HOOKS']['parseWidget']) && in_array(['HeimrichHannot\F
 } else {
     $GLOBALS['TL_HOOKS']['parseWidget']['twig-templates']    = ['huh.twig.event_listener.hook_listener', 'parseWidget'];
 }
-echo 1;
