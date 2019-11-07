@@ -1,6 +1,11 @@
 # Changelog
 All notable changes to this project will be documented in this file.
 
+## [1.1.24] - 2019-11-06
+
+### Fixed 
+- formhybrid sub palettes again
+
 ## [1.1.23] - 2019-11-04
 
 ### Fixed 
