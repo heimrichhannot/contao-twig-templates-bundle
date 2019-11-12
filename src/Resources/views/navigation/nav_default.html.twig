@@ -2,7 +2,7 @@
     {% for item in items %}
         {% if item.isActive|default %}
             <li class="{{ item.class|default }}">
-                <strong class="{{ item.class|default }}" {{ item.subitems|default ? ' aria-haspopup="true"'}} itemprop="name">{{ item.link|default }}</strong>{{ item.subitems|default }}
+                <strong class="{{ item.class|default }}" {{ item.subitems|default ? ' aria-haspopup="true"'}} itemprop="name">{{ item.link|default }}</strong>{{ item.subitems|default|raw }}
             </li>
         {% else %}
             <li class="{{ item.class|default }}">
