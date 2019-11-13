@@ -5,12 +5,12 @@
 
     <ul>
         {% if hasFirst|default %}
-            <li class="first"><a href="{{ first.href }}" class="first"
+            <li class="first"><a href="{{ first.href|raw }}" class="first"
                                  title="{{ first.title }}">{{ first.link|raw }}</a></li>
         {% endif %}
 
         {% if hasPrevious|default %}
-            <li class="previous"><a href="{{ hasPrevious.href }}" class="previous"
+            <li class="previous"><a href="{{ hasPrevious.href|raw }}" class="previous"
                                     title="{{ hasPrevious.title }}">{{ hasPrevious.link|raw }}</a></li>
         {% endif %}
 
@@ -18,17 +18,17 @@
             {% if page.href is null %}
                 <li class="active"><span class="active">{{ page.page }}</span></li>
             {% else %}
-                <li><a href="{{ page.href }}" class="link" title="{{ page.title }}">{{ page.page }}</a></li>
+                <li><a href="{{ page.href|raw }}" class="link" title="{{ page.title }}">{{ page.page }}</a></li>
             {% endif %}
         {% endfor %}
 
         {% if hasNext|default %}
-            <li class="next"><a href="{{ next.href }}" class="next"
+            <li class="next"><a href="{{ next.href|raw }}" class="next"
                                 title="{{ next.title }}">{{ next.link|raw }}</a></li>
         {% endif %}
 
         {% if hasLast|default %}
-            <li class="last"><a href="{{ last.href }}" class="last"
+            <li class="last"><a href="{{ last.href|raw }}" class="last"
                                 title="{{ last.title }}">{{ last.link|raw }}</a></li>
         {% endif %}
     </ul>

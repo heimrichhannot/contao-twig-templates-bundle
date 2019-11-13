@@ -1,6 +1,9 @@
 # Changelog
 All notable changes to this project will be documented in this file.
 
+## [1.1.28] - 2019-11-13
+* raw output pagination
+
 ## [1.1.27] - 2019-11-13
 * raw output of ce_table content
 
