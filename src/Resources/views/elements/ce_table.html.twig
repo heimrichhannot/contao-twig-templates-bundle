@@ -12,7 +12,7 @@
                 <thead>
                     <tr>
                         {% for col in header %}
-                            <th scope="col" class="{{ col.class|default }}">{{ col.content|default("&nbsp;") }}</th>
+                            <th scope="col" class="{{ col.class|default }}">{{ col.content|default("&nbsp;")|raw }}</th>
                         {% endfor %}
                     </tr>
                 </thead>
@@ -23,9 +23,9 @@
                     <tr>
                         {% for i, col in footer %}
                             {% if i == 0 and useLeftTh|default %}
-                                <th scope="row" class="{{ col.class|default }}">{{ col.content|default("&nbsp;") }}</th>
+                                <th scope="row" class="{{ col.class|default }}">{{ col.content|default("&nbsp;")|raw }}</th>
                             {% else %}
-                                <td class="{{ col.class|default }}">{{ col.content|default("&nbsp;") }}</td>
+                                <td class="{{ col.class|default }}">{{ col.content|default("&nbsp;")|raw }}</td>
                             {% endif %}
                         {% endfor %}
                     </tr>
@@ -37,9 +37,9 @@
                     <tr class="{{ class }}">
                         {% for i, col in row %}
                             {% if i == 0 and useLeftTh|default %}
-                                <th scope="row" class="{{ col.class|default }}">{{ col.content|default("&nbsp;") }}</th>
+                                <th scope="row" class="{{ col.class|default }}">{{ col.content|default("&nbsp;")|raw }}</th>
                             {% else %}
-                                <td class="{{ col.class|default }}">{{ col.content|default("&nbsp;") }}</td>
+                                <td class="{{ col.class|default }}">{{ col.content|default("&nbsp;")|raw }}</td>
                             {% endif %}
                         {% endfor %}
                     </tr>

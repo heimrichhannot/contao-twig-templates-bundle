@@ -1,6 +1,9 @@
 # Changelog
 All notable changes to this project will be documented in this file.
 
+## [1.1.27] - 2019-11-13
+* raw output of ce_table content
+
 ## [1.1.26] - 2019-11-12
 * raw output of subitems in nav_default
 
