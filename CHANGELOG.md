@@ -1,17 +1,20 @@
 # Changelog
 All notable changes to this project will be documented in this file.
 
+## [1.1.29] - 2019-11-26
+- fixed checkbox and radio id issue
+
 ## [1.1.28] - 2019-11-13
-* raw output pagination
+- raw output pagination
 
 ## [1.1.27] - 2019-11-13
-* raw output of ce_table content
+- raw output of ce_table content
 
 ## [1.1.26] - 2019-11-12
-* raw output of subitems in nav_default
+- raw output of subitems in nav_default
 
 ## [1.1.25] - 2019-11-07
-* removed debug echo in config.php
+- removed debug echo in config.php
 
 ## [1.1.24] - 2019-11-07
 
