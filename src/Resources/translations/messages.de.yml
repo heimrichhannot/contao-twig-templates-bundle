@@ -8,3 +8,6 @@ huh.twig.templates:
     contao: "Contao"
     bs3: "Bootstrap 3"
     bs4: "Bootstrap 4"
+
+# aria-label
+huh.twig.teplates.button.submit.aria-label: Dieses Formular absenden

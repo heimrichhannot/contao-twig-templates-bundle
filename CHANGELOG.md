@@ -1,6 +1,10 @@
 # Changelog
 All notable changes to this project will be documented in this file.
 
+## [1.1.30] - 2019-11-29
+- added aria-label to form submit button
+- translated aria-label for form submit button
+
 ## [1.1.29] - 2019-11-26
 - fixed checkbox and radio id issue
 
