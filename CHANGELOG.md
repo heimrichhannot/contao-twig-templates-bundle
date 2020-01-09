@@ -1,6 +1,9 @@
 # Changelog
 All notable changes to this project will be documented in this file.
 
+## [1.1.31] - 2020-01-09
+- fixed display of form in mod_password
+
 ## [1.1.30] - 2019-11-29
 - added aria-label to form submit button
 - translated aria-label for form submit button
