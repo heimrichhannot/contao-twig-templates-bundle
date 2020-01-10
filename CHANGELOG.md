@@ -1,6 +1,9 @@
 # Changelog
 All notable changes to this project will be documented in this file.
 
+## [1.1.32] - 2020-01-10
+- fixed missing attributes in form_password
+
 ## [1.1.31] - 2020-01-09
 - fixed display of form in mod_password
 
