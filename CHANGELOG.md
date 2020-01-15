@@ -1,6 +1,9 @@
 # Changelog
 All notable changes to this project will be documented in this file.
 
+## [1.1.33] - 2020-01-15
+- fixed member_default
+
 ## [1.1.32] - 2020-01-10
 - fixed missing attributes in form_password
 
