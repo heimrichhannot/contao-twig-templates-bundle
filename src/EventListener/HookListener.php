@@ -37,6 +37,11 @@ class HookListener implements ContainerAwareInterface
         if (!$this->container->get('huh.utils.container')->isFrontend()) {
             return;
         }
+        $layout = $this->getLayout();
+
+        if (!$layout->ttUseTwig) {
+            return;
+        }
         $result = $this->applyTwigTemplate($template->getName(), $template->getData());
 
         if (false === $result) {
@@ -64,6 +69,12 @@ class HookListener implements ContainerAwareInterface
         if (!$this->container->get('huh.utils.container')->isFrontend()) {
             return $buffer;
         }
+        $layout = $this->getLayout();
+
+        if (!$layout->ttUseTwig) {
+            return $buffer;
+        }
+
         $data = $this->container->get('huh.utils.class')->jsonSerialize(
             $widget,
             [],

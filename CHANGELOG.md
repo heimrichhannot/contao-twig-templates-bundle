@@ -1,6 +1,13 @@
 # Changelog
 All notable changes to this project will be documented in this file.
 
+## [1.1.35] - 2020-02-06
+- fixed useTwigTemplate checkbox not evaluated before applying logic
+- fixed dca issue in tl_layout
+
+## [1.1.34] - 2020-01-27
+- pagination role button and alt attribute
+
 ## [1.1.33] - 2020-01-15
 - fixed member_default
 
