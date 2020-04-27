@@ -21,8 +21,6 @@ class FrontendFrameworkCollection
     }
 
     /**
-     * @param string $alias
-     *
      * @return AbstractFrontendFramework|null
      */
     public function getFramework(string $alias)

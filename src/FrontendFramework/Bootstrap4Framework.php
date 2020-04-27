@@ -17,8 +17,6 @@ class Bootstrap4Framework extends AbstractFrontendFramework
     /**
      * Return the framework alias. Is used for template suffix and database identification.
      * Example: bs4 for Bootstrap 4.
-     *
-     * @return string
      */
     public function getAlias(): string
     {
@@ -27,8 +25,6 @@ class Bootstrap4Framework extends AbstractFrontendFramework
 
     /**
      * Return the name of the framework. Can be an translation alias.
-     *
-     * @return string
      */
     public function getName(): string
     {

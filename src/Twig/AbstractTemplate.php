@@ -57,7 +57,6 @@ abstract class AbstractTemplate
     /**
      * Set the form entity, e.g. Widget, Module,...
      *
-     *
      * @param $entity
      */
     public function setEntity($entity)
@@ -102,8 +101,7 @@ abstract class AbstractTemplate
     /**
      * Set if element support a feature.
      *
-     * @param string $key
-     * @param mixed  $value
+     * @param mixed $value
      */
     public function addSupport(string $key, $value)
     {
@@ -113,8 +111,6 @@ abstract class AbstractTemplate
     /**
      * Check if element supports a feature
      * Return false, if support is not set or false.
-     *
-     * @param string $key
      *
      * @return bool
      */
@@ -126,8 +122,6 @@ abstract class AbstractTemplate
     /**
      * Get the value for a support feature.
      * Return false, if feature not found.
-     *
-     * @param string $key
      *
      * @return bool|mixed
      */

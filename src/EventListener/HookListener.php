@@ -29,8 +29,6 @@ class HookListener implements ContainerAwareInterface
 
     /**
      * Hook for applying bootstrap templates for elements and modules.
-     *
-     * @param Template $template
      */
     public function parseTemplate(Template $template)
     {
@@ -57,8 +55,7 @@ class HookListener implements ContainerAwareInterface
     /**
      * Hook for applying bootstrap templates for elements and modules.
      *
-     * @param        $buffer
-     * @param Widget $widget
+     * @param $buffer
      *
      * @throws \ReflectionException
      *

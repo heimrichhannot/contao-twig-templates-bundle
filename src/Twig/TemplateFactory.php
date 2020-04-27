@@ -51,8 +51,6 @@ class TemplateFactory
 
     /**
      * Get current templates suffix from layout.
-     *
-     * @return string
      */
     public function getTemplateSuffix(): string
     {
@@ -75,8 +73,6 @@ class TemplateFactory
 
     /**
      * Get the contao core twig templates suffix.
-     *
-     * @return string
      */
     public function getCoreTemplateSuffix(): string
     {

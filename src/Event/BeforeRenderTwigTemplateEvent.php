@@ -25,8 +25,6 @@ class BeforeRenderTwigTemplateEvent extends Event
     /**
      * BeforeRenderEvent constructor.
      *
-     * @param string $type
-     * @param string $templateName
      * @param $templateData
      * @param $entity
      */
@@ -38,17 +36,11 @@ class BeforeRenderTwigTemplateEvent extends Event
         $this->type = $type;
     }
 
-    /**
-     * @return string
-     */
     public function getType(): string
     {
         return $this->type;
     }
 
-    /**
-     * @param string $type
-     */
     public function setType(string $type): void
     {
         $this->type = $type;

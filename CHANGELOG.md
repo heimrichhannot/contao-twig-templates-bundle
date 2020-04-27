@@ -1,6 +1,9 @@
 # Changelog
 All notable changes to this project will be documented in this file.
 
+## [1.1.36] - 2020-04-27
+- added fallback if href is empty
+
 ## [1.1.35] - 2020-02-06
 - fixed useTwigTemplate checkbox not evaluated before applying logic
 - fixed dca issue in tl_layout
