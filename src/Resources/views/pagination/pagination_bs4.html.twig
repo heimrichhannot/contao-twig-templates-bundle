@@ -4,11 +4,11 @@
 
     <ul class="pagination">
         {% if hasFirst|default %}
-            <li class="page-item first"><a role="button" href="{{ first.href|raw }}" class="page-link first"  alt="{{ first.title }}" title="{{ first.title }}">{{ first.link|raw }}</a></li>
+            <li class="page-item first"><a role="button" href="{{ first.href|raw }}" class="page-link first"  aria-label="{{ first.title }}" title="{{ first.title }}">{{ first.link|raw }}</a></li>
         {% endif %}
 
         {% if hasPrevious|default %}
-            <li class="page-item previous"><a role="button" href="{{ previous.href|raw }}" class="page-link previous" alt="{{ previous.title }}" title="{{ previous.title }}">{{ previous.link|raw }}</a>
+            <li class="page-item previous"><a role="button" href="{{ previous.href|raw }}" class="page-link previous" aria-label="{{ previous.title }}" title="{{ previous.title }}">{{ previous.link|raw }}</a>
             </li>
         {% endif %}
 
@@ -16,16 +16,16 @@
             {% if page.href is null %}
                 <li class="page-item active"><span class="page-link active">{{ page.page }}</span></li>
             {% else %}
-                <li class="page-item"><a role="button" href="{{ page.href|raw }}" class="page-link link" alt="{{ page.title }}" title="{{ page.title }}">{{ page.page }}</a></li>
+                <li class="page-item"><a role="button" href="{{ page.href|raw }}" class="page-link link" aria-label="{{ page.title }}" title="{{ page.title }}">{{ page.page }}</a></li>
             {% endif %}
         {% endfor %}
 
         {% if hasNext|default %}
-            <li class="page-item next"><a role="button" href="{{ next.href|raw }}" class="page-link next" alt="{{ next.title }}" title="{{ next.title }}">{{ next.link|raw }}</a></li>
+            <li class="page-item next"><a role="button" href="{{ next.href|raw }}" class="page-link next" aria-label="{{ next.title }}" title="{{ next.title }}">{{ next.link|raw }}</a></li>
         {% endif %}
 
         {% if hasLast|default %}
-            <li class="page-item last"><a role="button" href="{{ last.href|raw }}" class="page-link last" alt="{{ last.title }}" title="{{ last.title }}">{{ last.link|raw }}</a></li>
+            <li class="page-item last"><a role="button" href="{{ last.href|raw }}" class="page-link last" aria-label="{{ last.title }}" title="{{ last.title }}">{{ last.link|raw }}</a></li>
         {% endif %}
     </ul>
 </nav>
