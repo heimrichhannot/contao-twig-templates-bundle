@@ -9,7 +9,7 @@
         {% endif %}
 
         {% if hasPrevious|default %}
-            <li class="previous"><a role="button" href="{{ hasPrevious.href|raw }}" class="previous" aria-label="{{ hasPrevious.title } title="{{ hasPrevious.title }}">{{ hasPrevious.link|raw }}</a></li>
+            <li class="previous"><a role="button" href="{{ hasPrevious.href|raw }}" class="previous" aria-label="{{ hasPrevious.title }} title="{{ hasPrevious.title }}">{{ hasPrevious.link|raw }}</a></li>
         {% endif %}
 
         {% for page in pages %}
