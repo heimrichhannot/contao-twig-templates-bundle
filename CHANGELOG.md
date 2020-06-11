@@ -1,13 +1,13 @@
 # Changelog
 All notable changes to this project will be documented in this file.
 
-## [1.1.39] - 2020-06-11
+## [1.1.40] - 2020-06-11
 - fixed missing } in pagination tempalte
 
-## [1.1.38] - 2020-05-18
+## [1.1.39] - 2020-05-18
 - fixed missing space after attribute required and missing relation between input and invalid-feedback
 
-## [1.1.37] - 2020-05-07
+## [1.1.38] - 2020-05-07
 - added aria-label and role button Links to pagination templates
 
 ## [1.1.36] - 2020-04-27
