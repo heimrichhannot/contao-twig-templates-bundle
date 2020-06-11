@@ -12,7 +12,7 @@
     <form{{ action|default ? ' action="' ~ action ~ '"' }} id="{{ formId|default }}" method="post" enctype="{{ enctype|default }}">
         <div class="formbody">
             <input type="hidden" name="FORM_SUBMIT" value="{{ formId|default }}">
-            <input type="hidden" name="REQUEST_TOKEN" value="{{ '{{ request_token }}' }}">
+            <input type="hidden" name="REQUEST_TOKEN" value="{{ '{{request_token}}' }}">
             <div class="fields">
                 {{ fields|default|raw }}
             </div>

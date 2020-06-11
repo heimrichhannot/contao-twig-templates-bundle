@@ -1,6 +1,9 @@
 # Changelog
 All notable changes to this project will be documented in this file.
 
+## [1.1.41] - 2020-06-11
+- fixed inserttags in member templates
+
 ## [1.1.40] - 2020-06-11
 - fixed missing } in pagination tempalte
 
