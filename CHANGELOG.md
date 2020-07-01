@@ -1,6 +1,9 @@
 # Changelog
 All notable changes to this project will be documented in this file.
 
+## [1.1.43] - 2020-07-01
+- fixed action in mod_password template
+
 ## [1.1.42] - 2020-06-11
 - fixed typo in form_row_double template
 
