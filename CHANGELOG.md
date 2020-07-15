@@ -1,6 +1,9 @@
 # Changelog
 All notable changes to this project will be documented in this file.
 
+## [1.1.47] - 2020-07-15
+- removed height 100% style from form_textarea_bs4
+
 ## [1.1.46] - 2020-07-15
 - fixed wrong variable in nav_inline_bs4
 
