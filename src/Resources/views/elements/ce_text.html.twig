@@ -6,9 +6,15 @@
     {% endif %}
 
     {% if addImage|default and singleSRC|default %}
-        {% set data = _context|merge({'href' : url}) %}
         <div class="image">
-            {{ singleSRC|image(size,data)|raw }}
+            {{ singleSRC|image(size, {
+                href: imageUrl|default or fullsize|default ?
+                imageUrl|default(singleSRC) : null,
+                margin: margin|default,
+                floating: floating|default,
+                fullsize: fullsize,
+                linkAttributes: attributes|default
+            })|raw }}
         </div>
     {% endif %}
 

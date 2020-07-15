@@ -1,7 +1,7 @@
 <?php
 
 /*
- * Copyright (c) 2019 Heimrich & Hannot GmbH
+ * Copyright (c) 2020 Heimrich & Hannot GmbH
  *
  * @license LGPL-3.0-or-later
  */
@@ -29,12 +29,15 @@ class HookListener implements ContainerAwareInterface
 
     /**
      * Hook for applying bootstrap templates for elements and modules.
-     *
-     * @param Template $template
      */
     public function parseTemplate(Template $template)
     {
         if (!$this->container->get('huh.utils.container')->isFrontend()) {
+            return;
+        }
+        $layout = $this->getLayout();
+
+        if (!$layout->ttUseTwig) {
             return;
         }
         $result = $this->applyTwigTemplate($template->getName(), $template->getData());
@@ -52,8 +55,7 @@ class HookListener implements ContainerAwareInterface
     /**
      * Hook for applying bootstrap templates for elements and modules.
      *
-     * @param        $buffer
-     * @param Widget $widget
+     * @param $buffer
      *
      * @throws \ReflectionException
      *
@@ -64,6 +66,12 @@ class HookListener implements ContainerAwareInterface
         if (!$this->container->get('huh.utils.container')->isFrontend()) {
             return $buffer;
         }
+        $layout = $this->getLayout();
+
+        if (!$layout->ttUseTwig) {
+            return $buffer;
+        }
+
         $data = $this->container->get('huh.utils.class')->jsonSerialize(
             $widget,
             [],

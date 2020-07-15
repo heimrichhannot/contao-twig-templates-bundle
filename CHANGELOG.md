@@ -1,10 +1,148 @@
 # Changelog
 All notable changes to this project will be documented in this file.
 
-## [1.1.9] - 2020-07-15
+## [1.1.44] - 2020-07-15
+- add raw to hyperlink 
+
+## [1.1.43] - 2020-07-01
+- fixed action in mod_password template
+
+## [1.1.42] - 2020-06-11
+- fixed typo in form_row_double template
+
+## [1.1.41] - 2020-06-11
+- fixed inserttags in member templates
+
+## [1.1.40] - 2020-06-11
+- fixed missing } in pagination tempalte
+
+## [1.1.39] - 2020-05-18
+- fixed missing space after attribute required and missing relation between input and invalid-feedback
+
+## [1.1.38] - 2020-05-07
+- added aria-label and role button Links to pagination templates
+
+## [1.1.36] - 2020-04-27
+- added fallback if href is empty
+
+## [1.1.35] - 2020-02-06
+- fixed useTwigTemplate checkbox not evaluated before applying logic
+- fixed dca issue in tl_layout
+
+## [1.1.34] - 2020-01-27
+- pagination role button and alt attribute
+
+## [1.1.33] - 2020-01-15
+- fixed member_default
+
+## [1.1.32] - 2020-01-10
+- fixed missing attributes in form_password
+
+## [1.1.31] - 2020-01-09
+- fixed display of form in mod_password
+
+## [1.1.30] - 2019-11-29
+- added aria-label to form submit button
+- translated aria-label for form submit button
+
+## [1.1.29] - 2019-11-26
+- fixed checkbox and radio id issue
+
+## [1.1.28] - 2019-11-13
+- raw output pagination
+
+## [1.1.27] - 2019-11-13
+- raw output of ce_table content
+
+## [1.1.26] - 2019-11-12
+- raw output of subitems in nav_default
+
+## [1.1.25] - 2019-11-07
+- removed debug echo in config.php
+
+## [1.1.24] - 2019-11-07
+
+### Fixed 
+- formhybrid sub palettes again
+
+## [1.1.23] - 2019-11-04
+
+### Fixed 
+- formhybrid sub palettes
+
+## [1.1.22] - 2019-11-01
+
+### Fixed 
+- fixed attributes issue in checkbox custom
+
+## [1.1.21] - 2019-10-14
+
+### Fixed 
+- attribute issues for ce_text
+
+## [1.1.20] - 2019-10-08
+
+### Fixed 
+- form_checkbox template lable not raw output
+- form_checkbox checkbox syntax
+
+## [1.1.19] - 2019-10-04
+
+### Added
+- explanation bs4
+
+## [1.1.18] - 2019-09-30
 
 ### Fixed
-- add raw to hyperlink
+- raw `form_row_bs4.html`
+
+## [1.1.17] - 2019-09-24
+
+### Fixed
+- hyperlink
+
+## [1.1.16] - 2019-09-23
+
+### Fixed
+- accordion
+- hyperlink
+- list
+
+## [1.1.15] - 2019-09-20
+
+### Fixed
+- accordion
+
+## [1.1.14] - 2019-09-20
+
+### Fixed
+- issue in ce_download.html.twig
+
+## [1.1.13] - 2019-09-20
+
+### Fixed
+- issue in ce_image.html.twig
+
+## [1.1.12] - 2019-09-13
+
+### Fixed
+- issue in gallery_default_bs4.html.twig
+
+## [1.1.11] - 2019-09-12
+
+### Fixed
+- raw output of subitems in navigation templates
+
+## [1.1.10] - 2019-09-09
+
+### Added
+- 'open in new window' support in gallery templates
+
+## [1.1.9] - 2019-08-13
+
+### Fixed
+- class render issue in nav_default.html.twig
+>>>>>>> 415530b570fecfcc08f78eb3d2eb8d01fabb6dd5
 
 ## [1.1.8] - 2019-08-06
 

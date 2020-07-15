@@ -3,7 +3,7 @@
 {% block content %}
     <{{ tag|default('ul') }}>
     {% for item in items %}
-        <li{% if item.class|default %} class="{{ item.class }}"{% endif %}>{{ item.content|default }}</li>
+        <li{% if item.class|default %} class="{{ item.class }}"{% endif %}>{{ item.content|default|raw }}</li>
     {% endfor %}
     </{{ tag }}>
 {% endblock %}

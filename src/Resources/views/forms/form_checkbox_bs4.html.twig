@@ -30,7 +30,7 @@
 {% block field %}
     <div class="{{ optionGroupClass }}">
     {% for option in arrOptions %}
-        {% set counter = ( counter | default(0) ) + 1 %}
+        {% set counter = random() %}
         {% block option %}
         <div class="form-check {% if arrConfiguration.inline|default(false) %}form-check-inline{% endif %}">
             <input class="form-check-input{% if(hasErrors|default(false)) %} is-invalid{% endif %}" name="{{ strName }}{% if arrConfiguration.multiple|default %}[]{% endif %}" type="checkbox" value="{{ option.value }}"{{ option.checked }} id="opt_{{ strId }}_{{ counter }}" {{ attributes|default()|raw }} {% if arrConfiguration.disabled|default(false) %} disabled{% endif %} {{ option.attributes }}>
@@ -38,7 +38,7 @@
 
             {% if loop.last and not arrConfiguration.inline|default(false)%}
                 {% if(hasErrors|default(false) and errorsAsString|default()) %}
-                    <div class="invalid-feedback">{{ errorsAsString|raw }}</div>
+                    <div class="invalid-feedback" id="{{ ariaDescribedby|default()|raw }}">{{ errorsAsString|raw }}</div>
                 {% endif %}
             {% endif %}
         </div>

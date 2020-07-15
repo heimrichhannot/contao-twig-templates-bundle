@@ -1,5 +1,5 @@
 <!-- indexer::stop -->
-<div class="{{ class|default }} block"{{ cssID|default }}{{ style|default ? ' class="' ~ style ~ '"' }>
+<div class="{{ class|default }} block"{{ cssID|default }}{{ style|default ? ' class="' ~ style ~ '"' }}>
 
     {% if headline|default %}
         <{{ hl|default('h1') }}>{{ headline }}</{{ hl|default('h1') }}>
@@ -12,9 +12,9 @@
     <form{{ action|default ? ' action="' ~ action ~ '"' }} id="{{ formId|default }}" method="post" enctype="{{ enctype|default }}">
         <div class="formbody">
             <input type="hidden" name="FORM_SUBMIT" value="{{ formId|default }}">
-            <input type="hidden" name="REQUEST_TOKEN" value="{{ '{{ request_token }}' }}">
+            <input type="hidden" name="REQUEST_TOKEN" value="{{ '{{request_token}}' }}">
             <div class="fields">
-                {{ fields|default }}
+                {{ fields|default|raw }}
             </div>
             <div class="widget widget-submit">
                 <button type="submit" class="submit">{{ slabel|default }}</button>

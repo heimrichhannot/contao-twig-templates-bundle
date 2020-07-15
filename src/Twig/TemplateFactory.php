@@ -1,7 +1,7 @@
 <?php
 
 /*
- * Copyright (c) 2019 Heimrich & Hannot GmbH
+ * Copyright (c) 2020 Heimrich & Hannot GmbH
  *
  * @license LGPL-3.0-or-later
  */
@@ -51,8 +51,6 @@ class TemplateFactory
 
     /**
      * Get current templates suffix from layout.
-     *
-     * @return string
      */
     public function getTemplateSuffix(): string
     {
@@ -75,8 +73,6 @@ class TemplateFactory
 
     /**
      * Get the contao core twig templates suffix.
-     *
-     * @return string
      */
     public function getCoreTemplateSuffix(): string
     {

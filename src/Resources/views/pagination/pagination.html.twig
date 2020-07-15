@@ -5,31 +5,27 @@
 
     <ul>
         {% if hasFirst|default %}
-            <li class="first"><a href="{{ first.href }}" class="first"
-                                 title="{{ first.title }}">{{ first.link|raw }}</a></li>
+            <li class="first"><a role="button" href="{{ first.href|raw }}" class="first" aria-label="{{ first.title }}" title="{{ first.title }}">{{ first.link|raw }}</a></li>
         {% endif %}
 
         {% if hasPrevious|default %}
-            <li class="previous"><a href="{{ hasPrevious.href }}" class="previous"
-                                    title="{{ hasPrevious.title }}">{{ hasPrevious.link|raw }}</a></li>
+            <li class="previous"><a role="button" href="{{ hasPrevious.href|raw }}" class="previous" aria-label="{{ hasPrevious.title }} title="{{ hasPrevious.title }}">{{ hasPrevious.link|raw }}</a></li>
         {% endif %}
 
         {% for page in pages %}
             {% if page.href is null %}
                 <li class="active"><span class="active">{{ page.page }}</span></li>
             {% else %}
-                <li><a href="{{ page.href }}" class="link" title="{{ page.title }}">{{ page.page }}</a></li>
+                <li><a role="button" href="{{ page.href|raw }}" class="link" aria-label="{{ page.title }}" title="{{ page.title }}">{{ page.page }}</a></li>
             {% endif %}
         {% endfor %}
 
         {% if hasNext|default %}
-            <li class="next"><a href="{{ next.href }}" class="next"
-                                title="{{ next.title }}">{{ next.link|raw }}</a></li>
+            <li role="button" class="next"><a href="{{ next.href|raw }}" class="next" aria-label="{{ next.title }}" title="{{ next.title }}">{{ next.link|raw }}</a></li>
         {% endif %}
 
         {% if hasLast|default %}
-            <li class="last"><a href="{{ last.href }}" class="last"
-                                title="{{ last.title }}">{{ last.link|raw }}</a></li>
+            <li role="button" class="last"><a href="{{ last.href|raw }}" class="last" aria-label="{{ last.title }}" title="{{ last.title }}">{{ last.link|raw }}</a></li>
         {% endif %}
     </ul>
 

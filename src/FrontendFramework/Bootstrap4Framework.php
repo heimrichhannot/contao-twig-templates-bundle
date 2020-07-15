@@ -1,7 +1,7 @@
 <?php
 
 /*
- * Copyright (c) 2019 Heimrich & Hannot GmbH
+ * Copyright (c) 2020 Heimrich & Hannot GmbH
  *
  * @license LGPL-3.0-or-later
  */
@@ -17,8 +17,6 @@ class Bootstrap4Framework extends AbstractFrontendFramework
     /**
      * Return the framework alias. Is used for template suffix and database identification.
      * Example: bs4 for Bootstrap 4.
-     *
-     * @return string
      */
     public function getAlias(): string
     {
@@ -27,8 +25,6 @@ class Bootstrap4Framework extends AbstractFrontendFramework
 
     /**
      * Return the name of the framework. Can be an translation alias.
-     *
-     * @return string
      */
     public function getName(): string
     {
@@ -40,7 +36,7 @@ class Bootstrap4Framework extends AbstractFrontendFramework
      */
     public function generate(string &$templateName, array &$templateData): void
     {
-        $this->prepareAccordeons($templateName, $templateData);
+        $this->prepareAccordions($templateName, $templateData);
     }
 
     /**
@@ -72,7 +68,7 @@ class Bootstrap4Framework extends AbstractFrontendFramework
         }
     }
 
-    protected function prepareAccordeons(string &$templateName, array &$data)
+    protected function prepareAccordions(string &$templateName, array &$data)
     {
         // prepare template data for bootstrap
         switch ($templateName) {

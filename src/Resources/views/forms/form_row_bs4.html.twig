@@ -1,7 +1,8 @@
 {% set attributes =  attributes|default() %}
 
 {% if(arrConfiguration.explanation|default() or (hasErrors|default(false) and errorsAsString|default())) %}
-    {% set attributes =  attributes ~ ('aria-describedby="help-block-ctrl_' ~ strId ~ '"') %}
+    {% set attributes =  attributes ~ (' aria-describedby="help-block-ctrl_' ~ strId ~ '"') %}
+    {% set ariaDescribedby =  "help-block-ctrl_ " ~ strId  %}
 {% endif %}
 
 {% if arrConfiguration.inputPrepend|default() %}
@@ -76,7 +77,7 @@
         <div class="{{ formFeedbackClass|join(' ') }}" id="help-block-ctrl_{{ strId }}">
             {% block explanation %}
                 {% if(arrConfiguration.explanation|default()) %}
-                    <div class="form-text text-muted explanation">{{ arrConfiguration.explanation }}</div>
+                    <div class="form-text text-muted explanation">{{ arrConfiguration.explanation|raw }}</div>
                 {% endif %}
             {% endblock %}
 

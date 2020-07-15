@@ -1,7 +1,7 @@
 <?php
 
 /*
- * Copyright (c) 2019 Heimrich & Hannot GmbH
+ * Copyright (c) 2020 Heimrich & Hannot GmbH
  *
  * @license LGPL-3.0-or-later
  */
@@ -34,32 +34,21 @@ abstract class AbstractFrontendFramework
     /**
      * Return the framework alias. Is used for template suffix and database identification.
      * Example: bs4 for Bootstrap 4.
-     *
-     * @return string
      */
     abstract public function getAlias(): string;
 
     /**
      * Return the name of the framework. Can be an translation alias.
-     *
-     * @return string
      */
     abstract public function getName(): string;
 
     /**
      * Prepare template data at the applyTwigTemplate method.
-     *
-     * @param string $templateName
-     * @param array  $templateData
      */
     abstract public function generate(string &$templateName, array &$templateData): void;
 
     /**
      * Update template data and template name before render template.
-     *
-     * @param string           $templateName
-     * @param array            $templateData
-     * @param AbstractTemplate $entity
      */
     abstract public function compile(string &$templateName, array &$templateData, AbstractTemplate $entity): void;
 

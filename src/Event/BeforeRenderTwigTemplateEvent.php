@@ -1,7 +1,7 @@
 <?php
 
 /*
- * Copyright (c) 2019 Heimrich & Hannot GmbH
+ * Copyright (c) 2020 Heimrich & Hannot GmbH
  *
  * @license LGPL-3.0-or-later
  */
@@ -25,8 +25,6 @@ class BeforeRenderTwigTemplateEvent extends Event
     /**
      * BeforeRenderEvent constructor.
      *
-     * @param string $type
-     * @param string $templateName
      * @param $templateData
      * @param $entity
      */
@@ -38,17 +36,11 @@ class BeforeRenderTwigTemplateEvent extends Event
         $this->type = $type;
     }
 
-    /**
-     * @return string
-     */
     public function getType(): string
     {
         return $this->type;
     }
 
-    /**
-     * @param string $type
-     */
     public function setType(string $type): void
     {
         $this->type = $type;
