@@ -1,11 +1,14 @@
 # Changelog
 All notable changes to this project will be documented in this file.
 
+## [1.1.46] - 2020-07-15
+- fixed wrong variable in nav_inline_bs4
+
 ## [1.1.45] - 2020-07-15
-- fix pagination role
+- fixed pagination role
 
 ## [1.1.44] - 2020-07-15
-- add raw to hyperlink 
+- added raw to hyperlink 
 
 ## [1.1.43] - 2020-07-01
 - fixed action in mod_password template

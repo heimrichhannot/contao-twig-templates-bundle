@@ -1,7 +1,7 @@
 <ul class="nav {{ level }}">
     {% for item in items %}
         <li class="nav-item {{ item.class }}">
-            <a href="{{ item.href|default ? item.href : './' }}" title="{{ pageTitle|default ? pageTitle : item.title }}" class="nav-link {{ item.class }}" {{ (item.accesskey is not same as('')) ? 'accesskey="' ~ item.accesskey ~ '"' }}{{ item.tabindex|default ? ' tabindex="' ~ item.tabindex ~ '"' }}{{ item.nofollow|default ? ' rel="nofollow"' }}{{ item.target|raw }}{{ item.subitems|default ? ' aria-haspopup="true"' }} itemprop="url"{{ item.isActive|default ? ' aria-current="page"' }}>
+            <a href="{{ item.href|default ? item.href : './' }}" title="{{ item.pageTitle|default ? item.pageTitle : item.title }}" class="nav-link {{ item.class }}" {{ (item.accesskey is not same as('')) ? 'accesskey="' ~ item.accesskey ~ '"' }}{{ item.tabindex|default ? ' tabindex="' ~ item.tabindex ~ '"' }}{{ item.nofollow|default ? ' rel="nofollow"' }}{{ item.target|raw }}{{ item.subitems|default ? ' aria-haspopup="true"' }} itemprop="url"{{ item.isActive|default ? ' aria-current="page"' }}>
                 <span itemprop="name">
                     {{ item.link }}
                 </span>
