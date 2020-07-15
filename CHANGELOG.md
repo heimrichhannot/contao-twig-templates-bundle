@@ -1,6 +1,9 @@
 # Changelog
 All notable changes to this project will be documented in this file.
 
+## [1.1.45] - 2020-07-15
+- fix pagination role
+
 ## [1.1.44] - 2020-07-15
 - add raw to hyperlink 
 

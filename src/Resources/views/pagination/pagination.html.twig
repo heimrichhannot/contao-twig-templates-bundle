@@ -21,11 +21,11 @@
         {% endfor %}
 
         {% if hasNext|default %}
-            <li role="button" class="next"><a href="{{ next.href|raw }}" class="next" aria-label="{{ next.title }}" title="{{ next.title }}">{{ next.link|raw }}</a></li>
+            <li class="next"><a role="button" href="{{ next.href|raw }}" class="next" aria-label="{{ next.title }}" title="{{ next.title }}">{{ next.link|raw }}</a></li>
         {% endif %}
 
         {% if hasLast|default %}
-            <li role="button" class="last"><a href="{{ last.href|raw }}" class="last" aria-label="{{ last.title }}" title="{{ last.title }}">{{ last.link|raw }}</a></li>
+            <li class="last"><a role="button" href="{{ last.href|raw }}" class="last" aria-label="{{ last.title }}" title="{{ last.title }}">{{ last.link|raw }}</a></li>
         {% endif %}
     </ul>
 
