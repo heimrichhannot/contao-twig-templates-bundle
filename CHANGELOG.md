@@ -1,6 +1,11 @@
 # Changelog
 All notable changes to this project will be documented in this file.
 
+## [1.1.9] - 2020-07-15
+
+### Fixed
+- add raw to hyperlink
+
 ## [1.1.8] - 2019-08-06
 
 ### Fixed

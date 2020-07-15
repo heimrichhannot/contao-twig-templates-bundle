@@ -5,7 +5,7 @@
         {{ include('@HeimrichHannotContaoUtils/image.html.twig', picture) }}
     {% else %}
         {{ embed_pre|default }}
-        <a href="{{ href }}" class="hyperlink_txt" title="{{ linkTitle|default|raw }}"{{ attribute|default }}{{ target|default }}>{{ link|default|raw }}</a>
+        <a href="{{ href }}" class="hyperlink_txt" title="{{ linkTitle|default|raw }}"{{ attribute|default }}{{ target|default|raw }}>{{ link|default|raw }}</a>
         {{ embed_post|default }}
     {% endif %}
 {% endblock %}
