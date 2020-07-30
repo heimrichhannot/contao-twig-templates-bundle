@@ -1,6 +1,10 @@
 # Changelog
 All notable changes to this project will be documented in this file.
 
+## [1.2.0] - 2020-07-30
+- added blocks to mod_login template
+- fixed autologin block position in mod_login
+
 ## [1.1.47] - 2020-07-15
 - removed height 100% style from form_textarea_bs4
 

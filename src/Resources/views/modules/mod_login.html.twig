@@ -13,32 +13,40 @@
         <input type="hidden" name="_target_path" value="{{ targetPath|default }}">
 
         {% if logout|default %}
+            {% block loginInfo %}
             <p class="login_info">{{ loggedInAs|default }}{{ lastLogin|default ? '<br>' ~ lastLogin : '' }}</p>
+            {% endblock %}
         {% else %}
             <input type="hidden" name="_failure_path" value="{{ failurePath|default }}">
             <input type="hidden" name="_always_use_target_path" value="{{ forceTargetPath|default }}">
+            {% block username %}
             <div class="widget widget-text">
                 <label for="username">{{ username }}</label>
                 <input type="text" name="username" id="username" class="text" value="{{ value|default }}">
             </div>
+            {% endblock %}
+            {% block password %}
             <div class="widget widget-password">
                 <label for="password">{{ password }}</label>
                 <input type="password" name="password" id="password" class="text password" value="">
             </div>
+            {% endblock password %}
             {% if autologin|default %}
+                {% block autologin %}
                 <div class="widget widget-checkbox">
-                    {% block autologin %}
                     <fieldset class="checkbox_container">
                         <span><input type="checkbox" name="autologin" id="autologin" value="1" class="checkbox"> <label for="autologin">{{ autoLabel }}</label></span>
                     </fieldset>
-                    {% endblock %}
                 </div>
+                {% endblock %}
             {% endif %}
         {% endif %}
 
+        {% block submit %}
         <div class="widget widget-submit">
             <button type="submit" class="submit">{{ slabel|default }}</button>
         </div>
+        {% endblock %}
     </div>
     </form>
 
