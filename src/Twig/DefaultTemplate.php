@@ -10,6 +10,11 @@ namespace HeimrichHannot\TwigTemplatesBundle\Twig;
 
 use Contao\FrontendTemplate;
 
+/**
+ * Class DefaultTemplate.
+ *
+ * @deprecated
+ */
 class DefaultTemplate extends AbstractTemplate
 {
     const TYPE = 'frontendtemplate';

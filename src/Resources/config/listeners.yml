@@ -11,3 +11,7 @@ services:
     class: HeimrichHannot\TwigTemplatesBundle\EventListener\HookListener
     public: true
     autowire: true
+
+  HeimrichHannot\TwigTemplatesBundle\EventListener\RenderListener:
+    autowire: true
+    public: true

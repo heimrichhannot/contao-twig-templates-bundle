@@ -3,6 +3,8 @@ services:
     class: HeimrichHannot\TwigTemplatesBundle\Twig\TemplateFactory
     public: true
     autowire: true
+  HeimrichHannot\TwigTemplatesBundle\Twig\TemplateFactory: '@huh.twig.template.factory'
+
   huh.twig.template.twig_extension:
     class: HeimrichHannot\TwigTemplatesBundle\Twig\TwigTemplatesExtension
     public: false

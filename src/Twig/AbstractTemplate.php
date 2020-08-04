@@ -14,6 +14,11 @@ use HeimrichHannot\UtilsBundle\Template\TemplateUtil;
 use Symfony\Component\DependencyInjection\ContainerInterface;
 use Symfony\Component\EventDispatcher\EventDispatcherInterface;
 
+/**
+ * Class AbstractTemplate.
+ *
+ * @deprecated Will be removed in next major version
+ */
 abstract class AbstractTemplate
 {
     protected $templateName;

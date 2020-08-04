@@ -11,22 +11,22 @@ namespace HeimrichHannot\TwigTemplatesBundle\FrontendFramework;
 class FrontendFrameworkCollection
 {
     /**
-     * @var AbstractFrontendFramework[]|array
+     * @var FrontendFrameworkInterface[]|array
      */
     protected $frameworks = [];
 
-    public function addFramework(AbstractFrontendFramework $framework)
+    public function addFramework(FrontendFrameworkInterface $framework)
     {
-        $this->frameworks[$framework->getAlias()] = $framework;
+        $this->frameworks[$framework::getIdentifier()] = $framework;
     }
 
     /**
-     * @return AbstractFrontendFramework|null
+     * @return FrontendFrameworkInterface|null
      */
-    public function getFramework(string $alias)
+    public function getFramework(string $identifier)
     {
-        if (isset($this->frameworks[$alias])) {
-            return $this->frameworks[$alias];
+        if (isset($this->frameworks[$identifier])) {
+            return $this->frameworks[$identifier];
         }
 
         return null;

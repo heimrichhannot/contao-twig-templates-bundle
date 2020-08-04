@@ -10,6 +10,11 @@ namespace HeimrichHannot\TwigTemplatesBundle\Twig;
 
 use Contao\Widget;
 
+/**
+ * Class FormTemplate.
+ *
+ * @deprecated
+ */
 class FormTemplate extends AbstractTemplate
 {
     const TYPE = 'widget';

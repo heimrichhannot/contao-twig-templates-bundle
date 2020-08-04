@@ -10,6 +10,9 @@ namespace HeimrichHannot\TwigTemplatesBundle\Event;
 
 use Symfony\Component\EventDispatcher\Event;
 
+/**
+ * Class BeforeRenderTwigTemplateEvent.
+ */
 class BeforeRenderTwigTemplateEvent extends Event
 {
     const NAME = 'huh.twig.beforeRenderTemplate';

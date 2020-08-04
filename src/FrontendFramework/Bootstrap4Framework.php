@@ -10,7 +10,7 @@ namespace HeimrichHannot\TwigTemplatesBundle\FrontendFramework;
 
 use HeimrichHannot\TwigTemplatesBundle\Twig\AbstractTemplate;
 
-class Bootstrap4Framework extends AbstractFrontendFramework
+class Bootstrap4Framework extends AbstractFrontendFramework implements FrontendFrameworkInterface
 {
     const SUPPORT_CUSTOM_FORMS = 'custom-forms';
 
@@ -19,6 +19,11 @@ class Bootstrap4Framework extends AbstractFrontendFramework
      * Example: bs4 for Bootstrap 4.
      */
     public function getAlias(): string
+    {
+        return 'bs4';
+    }
+
+    public static function getIdentifier(): string
     {
         return 'bs4';
     }
@@ -53,13 +58,13 @@ class Bootstrap4Framework extends AbstractFrontendFramework
             return;
         }
 
-        if ($layout->ttUseFrameworkCustomControls && $entity->getSupport(static::SUPPORT_CUSTOM_FORMS)) {
+        if ($layout->ttUseFrameworkCustomControls) {
             $suffix = $this->container->get('huh.twig.template.factory')->getTemplateSuffix();
             $customFormTemplate = preg_replace('/'.$suffix.'$/', '', $templateName);
             $customFormTemplate .= '_custom_'.$this->getAlias();
 
             try {
-                if ($this->container->get('huh.utils.template')->getTemplate($customFormTemplate) !== $customFormTemplate) {
+                if ($this->container->get('huh.utils.template')->getTemplate($customFormTemplate)) {
                     $templateName = $customFormTemplate;
                 }
             } catch (\Exception $e) {

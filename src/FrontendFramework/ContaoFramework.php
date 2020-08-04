@@ -10,13 +10,18 @@ namespace HeimrichHannot\TwigTemplatesBundle\FrontendFramework;
 
 use HeimrichHannot\TwigTemplatesBundle\Twig\AbstractTemplate;
 
-class ContaoFramework extends AbstractFrontendFramework
+class ContaoFramework extends AbstractFrontendFramework implements FrontendFrameworkInterface
 {
     /**
      * Return the framework alias. Is used for template suffix and database identification.
      * Example: bs4 for Bootstrap 4.
      */
     public function getAlias(): string
+    {
+        return 'contao';
+    }
+
+    public static function getIdentifier(): string
     {
         return 'contao';
     }
