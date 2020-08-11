@@ -7,10 +7,11 @@ All notable changes to this project will be documented in this file.
 - refactored HookListener into RenderListener
 - deprecated AbstractTemplate and its childs
 
-## [1.3.0-DEV] - 2020-08-04
+## [1.3.0] - 2020-08-11
 - removed form_captcha template as it not used and working anymore
 - added blocks and formAttributes variable to member_default template
 - added formClass to mod_login template
+- fixed not default contao label used in
 
 ## [1.2.0] - 2020-07-30
 - added blocks to mod_login template
