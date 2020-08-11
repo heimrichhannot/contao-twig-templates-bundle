@@ -5,6 +5,7 @@ All notable changes to this project will be documented in this file.
 - removed form_captcha template as it not used and working anymore
 - added blocks and formAttributes variable to member_default template
 - added formClass to mod_login template
+- fixed not default contao label used in
 
 ## [1.2.0] - 2020-07-30
 - added blocks to mod_login template
@@ -160,7 +161,6 @@ All notable changes to this project will be documented in this file.
 
 ### Fixed
 - class render issue in nav_default.html.twig
->>>>>>> 415530b570fecfcc08f78eb3d2eb8d01fabb6dd5
 
 ## [1.1.8] - 2019-08-06
 
