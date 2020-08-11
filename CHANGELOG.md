@@ -1,7 +1,7 @@
 # Changelog
 All notable changes to this project will be documented in this file.
 
-## [1.3.0-DEV] - 2020-08-04
+## [1.3.0] - 2020-08-04
 - removed form_captcha template as it not used and working anymore
 - added blocks and formAttributes variable to member_default template
 - added formClass to mod_login template
