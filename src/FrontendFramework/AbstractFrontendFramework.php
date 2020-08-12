@@ -9,10 +9,18 @@
 namespace HeimrichHannot\TwigTemplatesBundle\FrontendFramework;
 
 use Contao\LayoutModel;
+use Contao\System;
+use HeimrichHannot\TwigTemplatesBundle\Event\BeforeRenderCallback;
+use HeimrichHannot\TwigTemplatesBundle\Event\PrepareTemplateCallback;
 use HeimrichHannot\TwigTemplatesBundle\Twig\AbstractTemplate;
 use Symfony\Component\DependencyInjection\ContainerInterface;
 
-abstract class AbstractFrontendFramework
+/**
+ * Class AbstractFrontendFramework.
+ *
+ * @deprecated Will be removed in next major version. Use FrontendFrameworkInterface instead.
+ */
+abstract class AbstractFrontendFramework implements FrontendFrameworkInterface
 {
     /**
      * @var LayoutModel
@@ -51,6 +59,33 @@ abstract class AbstractFrontendFramework
      * Update template data and template name before render template.
      */
     abstract public function compile(string &$templateName, array &$templateData, AbstractTemplate $entity): void;
+
+    public static function getIdentifier(): string
+    {
+        return (new static(System::getContainer()))->getAlias();
+    }
+
+    public function prepare(PrepareTemplateCallback $callback): PrepareTemplateCallback
+    {
+        $templateName = $callback->getTemplateName();
+        $templateData = $callback->getData();
+        $this->generate($templateName, $templateData);
+        $callback->setData($templateData);
+
+        return $callback;
+    }
+
+    public function beforeRender(BeforeRenderCallback $callback): BeforeRenderCallback
+    {
+        $templateName = $callback->getTwigTemplateName();
+        $templateData = $callback->getTwigTemplateContext();
+        $entity = $callback->getLegacyTemplate();
+        $this->compile($templateName, $templateData, $entity);
+        $callback->setTwigTemplateName($templateName);
+        $callback->setTwigTemplateContext($templateData);
+
+        return $callback;
+    }
 
     protected function getLayout()
     {

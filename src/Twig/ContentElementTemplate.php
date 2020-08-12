@@ -10,6 +10,11 @@ namespace HeimrichHannot\TwigTemplatesBundle\Twig;
 
 use Contao\FrontendTemplate;
 
+/**
+ * Class ContentElementTemplate.
+ *
+ * @deprecated
+ */
 class ContentElementTemplate extends DefaultTemplate
 {
     const TYPE = 'contentelement';

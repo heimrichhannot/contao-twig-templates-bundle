@@ -1,6 +1,15 @@
 # Changelog
 All notable changes to this project will be documented in this file.
 
+## [1.4.0] - 2020-08-12
+This release introduce a lot of enhancements to ease the upgrate to version 2.0.
+
+- added FrontendFrameworkInterface
+- refactored relevant code to use FrontendFrameworkInterface instead of AbstractFrontendFramework, provide backward compatibility through AbstractFrontendFramework
+- deprecated AbstractFrontendFramework
+- deprecated AbstractTemplate and it's childs
+- deprecated TemplateFactory
+
 ## [1.3.0] - 2020-08-04
 - removed form_captcha template as it not used and working anymore
 - added blocks and formAttributes variable to member_default template

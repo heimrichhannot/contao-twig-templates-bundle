@@ -8,12 +8,18 @@
 
 namespace HeimrichHannot\TwigTemplatesBundle\Twig;
 
+use HeimrichHannot\TwigTemplatesBundle\Event\BeforeRenderCallback;
 use HeimrichHannot\TwigTemplatesBundle\Event\BeforeRenderTwigTemplateEvent;
 use HeimrichHannot\TwigTemplatesBundle\FrontendFramework\AbstractFrontendFramework;
 use HeimrichHannot\UtilsBundle\Template\TemplateUtil;
 use Symfony\Component\DependencyInjection\ContainerInterface;
 use Symfony\Component\EventDispatcher\EventDispatcherInterface;
 
+/**
+ * Class AbstractTemplate.
+ *
+ * @deprecated Will be removed in next major version
+ */
 abstract class AbstractTemplate
 {
     protected $templateName;
@@ -87,12 +93,13 @@ abstract class AbstractTemplate
      */
     public function render()
     {
-        $this->frontendFramework->compile($this->templateName, $this->templateData, $this);
+        $callback = $this->frontendFramework->beforeRender(new BeforeRenderCallback($this->templateName, $this->templateData, $this->entity, $this));
 
         /** @var BeforeRenderTwigTemplateEvent $event */
         $event = $this->eventDispatcher->dispatch(
             BeforeRenderTwigTemplateEvent::NAME,
-            new BeforeRenderTwigTemplateEvent($this->getType(), $this->templateName, $this->templateData, $this->entity)
+            new BeforeRenderTwigTemplateEvent(
+                $this->getType(), $callback->getTwigTemplateName(), $callback->getTwigTemplateContext(), $this->entity)
         );
 
         return $this->templateUtil->renderTwigTemplate($event->getTemplateName(), array_merge(\is_array($event->getTemplateData()) ? $event->getTemplateData() : [], ['_entity' => $this->getEntity()]));
