@@ -10,7 +10,7 @@ namespace HeimrichHannot\TwigTemplatesBundle\Twig;
 
 use HeimrichHannot\TwigTemplatesBundle\Event\BeforeRenderCallback;
 use HeimrichHannot\TwigTemplatesBundle\Event\BeforeRenderTwigTemplateEvent;
-use HeimrichHannot\TwigTemplatesBundle\FrontendFramework\AbstractFrontendFramework;
+use HeimrichHannot\TwigTemplatesBundle\FrontendFramework\FrontendFrameworkInterface;
 use HeimrichHannot\UtilsBundle\Template\TemplateUtil;
 use Symfony\Component\DependencyInjection\ContainerInterface;
 use Symfony\Component\EventDispatcher\EventDispatcherInterface;
@@ -39,7 +39,7 @@ abstract class AbstractTemplate
      */
     protected $container;
     /**
-     * @var AbstractFrontendFramework
+     * @var FrontendFrameworkInterface
      */
     protected $frontendFramework;
     /**
@@ -50,7 +50,7 @@ abstract class AbstractTemplate
     /**
      * AbstractTemplate constructor.
      */
-    public function __construct(ContainerInterface $container, AbstractFrontendFramework $frontendFramework)
+    public function __construct(ContainerInterface $container, FrontendFrameworkInterface $frontendFramework)
     {
         $this->templateUtil = $container->get('huh.utils.template');
         $this->eventDispatcher = $container->get('event_dispatcher');

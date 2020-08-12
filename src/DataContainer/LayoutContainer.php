@@ -46,7 +46,7 @@ class LayoutContainer
         $frameworks = $this->container->get(FrontendFrameworkCollection::class)->getAllFrameworks();
 
         foreach ($frameworks as $framework) {
-            $translations[$framework::getIdentifier()] = $this->container->get('translator')->trans($framework->getName());
+            $translations[$framework::getIdentifier()] = $this->container->get('translator')->trans($framework::getLabel());
         }
 
         return $translations;

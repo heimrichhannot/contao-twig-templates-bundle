@@ -1,6 +1,11 @@
 # Changelog
 All notable changes to this project will be documented in this file.
 
+## [1.4.1] - 2020-08-12
+- added missing getLabel method to FrontendFrameworkInterface
+- implemented getLabel into AbstractFrontendFramework for bc
+- fixed constructor parameter in AbstractTemplate
+
 ## [1.4.0] - 2020-08-12
 This release introduce a lot of enhancements to ease the upgrate to version 2.0.
 

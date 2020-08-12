@@ -87,6 +87,11 @@ abstract class AbstractFrontendFramework implements FrontendFrameworkInterface
         return $callback;
     }
 
+    public static function getLabel(): string
+    {
+        return (new static(System::getContainer()))->getName();
+    }
+
     protected function getLayout()
     {
         if (!$this->layout) {
