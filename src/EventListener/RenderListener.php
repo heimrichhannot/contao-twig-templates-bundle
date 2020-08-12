@@ -148,10 +148,6 @@ class RenderListener
 
         $widget->template = 'twig_template_proxy';
 
-//        foreach ($templateData as $k => $v) {
-//            $widget->{$k} = $v;
-//        }
-
         return $widget->inherit();
     }
 
@@ -301,7 +297,7 @@ class RenderListener
         $frontendFramework = $this->getFrontendFramework($layout);
 
         $suffixedTemplates = [
-            $templateName.'_'.$frontendFramework->getAlias(),
+            $templateName.'_'.$frontendFramework::getIdentifier(),
             $templateName,
         ];
 

@@ -1,15 +1,20 @@
 services:
+  _defaults:
+    autowire: true
+
+  HeimrichHannot\TwigTemplatesBundle\EventListener\RenderListener:
+    public: true
+
   huh.twig.template.factory:
     class: HeimrichHannot\TwigTemplatesBundle\Twig\TemplateFactory
     public: true
-    autowire: true
   HeimrichHannot\TwigTemplatesBundle\Twig\TemplateFactory: '@huh.twig.template.factory'
 
   huh.twig.template.twig_extension:
     class: HeimrichHannot\TwigTemplatesBundle\Twig\TwigTemplatesExtension
     public: false
     tags:
-      - {name: twig.extension}
+      - { name: twig.extension }
+
   HeimrichHannot\TwigTemplatesBundle\FrontendFramework\FrontendFrameworkCollection:
     public: true
-    autowire: true

@@ -1,6 +1,10 @@
 # Changelog
 All notable changes to this project will be documented in this file.
 
+## [2.0.0-beta3] - 2020-08-12
+- removed HookListener class
+- fixed method call in RenderListener
+
 ## [2.0.0-beta2] - 2020-08-12
 Merged changes from 1.4.0 and 1.4.1, especially:
 
