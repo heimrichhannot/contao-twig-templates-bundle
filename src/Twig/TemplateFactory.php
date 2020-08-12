@@ -13,6 +13,7 @@ use Contao\LayoutModel;
 use Contao\Widget;
 use HeimrichHannot\TwigTemplatesBundle\Exception\TemplateTypeNotSupportedException;
 use HeimrichHannot\TwigTemplatesBundle\FrontendFramework\FrontendFrameworkCollection;
+use HeimrichHannot\TwigTemplatesBundle\FrontendFramework\FrontendFrameworkInterface;
 use HeimrichHannot\UtilsBundle\Classes\ClassUtil;
 use HeimrichHannot\UtilsBundle\Template\TemplateUtil;
 use Symfony\Component\DependencyInjection\ContainerInterface;
@@ -64,9 +65,10 @@ class TemplateFactory
         }
 
         if ($layout->ttFramework) {
+            /** @var FrontendFrameworkInterface $frontendFramework */
             $frontendFramework = $this->container->get(FrontendFrameworkCollection::class)->getFramework($layout->ttFramework);
 
-            return '_'.$frontendFramework->getAlias();
+            return '_'.$frontendFramework::getIdentifier();
         }
 
         if ($layout->ttUseTwig) {

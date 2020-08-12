@@ -8,8 +8,9 @@
 
 namespace HeimrichHannot\TwigTemplatesBundle\Twig;
 
+use HeimrichHannot\TwigTemplatesBundle\Event\BeforeRenderCallback;
 use HeimrichHannot\TwigTemplatesBundle\Event\BeforeRenderTwigTemplateEvent;
-use HeimrichHannot\TwigTemplatesBundle\FrontendFramework\AbstractFrontendFramework;
+use HeimrichHannot\TwigTemplatesBundle\FrontendFramework\FrontendFrameworkInterface;
 use HeimrichHannot\UtilsBundle\Template\TemplateUtil;
 use Symfony\Component\DependencyInjection\ContainerInterface;
 use Symfony\Component\EventDispatcher\EventDispatcherInterface;
@@ -38,7 +39,7 @@ abstract class AbstractTemplate
      */
     protected $container;
     /**
-     * @var AbstractFrontendFramework
+     * @var FrontendFrameworkInterface
      */
     protected $frontendFramework;
     /**
@@ -49,7 +50,7 @@ abstract class AbstractTemplate
     /**
      * AbstractTemplate constructor.
      */
-    public function __construct(ContainerInterface $container, AbstractFrontendFramework $frontendFramework)
+    public function __construct(ContainerInterface $container, FrontendFrameworkInterface $frontendFramework)
     {
         $this->templateUtil = $container->get('huh.utils.template');
         $this->eventDispatcher = $container->get('event_dispatcher');
@@ -92,12 +93,13 @@ abstract class AbstractTemplate
      */
     public function render()
     {
-        $this->frontendFramework->compile($this->templateName, $this->templateData, $this);
+        $callback = $this->frontendFramework->beforeRender(new BeforeRenderCallback($this->templateName, $this->templateData, $this->entity, $this));
 
         /** @var BeforeRenderTwigTemplateEvent $event */
         $event = $this->eventDispatcher->dispatch(
             BeforeRenderTwigTemplateEvent::NAME,
-            new BeforeRenderTwigTemplateEvent($this->getType(), $this->templateName, $this->templateData, $this->entity)
+            new BeforeRenderTwigTemplateEvent(
+                $this->getType(), $callback->getTwigTemplateName(), $callback->getTwigTemplateContext(), $this->entity)
         );
 
         return $this->templateUtil->renderTwigTemplate($event->getTemplateName(), array_merge(\is_array($event->getTemplateData()) ? $event->getTemplateData() : [], ['_entity' => $this->getEntity()]));

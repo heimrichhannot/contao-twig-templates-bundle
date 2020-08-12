@@ -9,6 +9,7 @@
 namespace HeimrichHannot\TwigTemplatesBundle\DataContainer;
 
 use HeimrichHannot\TwigTemplatesBundle\FrontendFramework\FrontendFrameworkCollection;
+use HeimrichHannot\TwigTemplatesBundle\FrontendFramework\FrontendFrameworkInterface;
 use Symfony\Component\DependencyInjection\ContainerInterface;
 
 class LayoutContainer
@@ -41,10 +42,11 @@ class LayoutContainer
     public function getFrameworkNameReference()
     {
         $translations = [];
+        /** @var FrontendFrameworkInterface[] $frameworks */
         $frameworks = $this->container->get(FrontendFrameworkCollection::class)->getAllFrameworks();
 
         foreach ($frameworks as $framework) {
-            $translations[$framework->getAlias()] = $this->container->get('translator')->trans($framework->getName());
+            $translations[$framework::getIdentifier()] = $this->container->get('translator')->trans($framework::getLabel());
         }
 
         return $translations;

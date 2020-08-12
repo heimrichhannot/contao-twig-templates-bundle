@@ -12,7 +12,9 @@ use Contao\LayoutModel;
 use Contao\Template;
 use Contao\TemplateLoader;
 use Contao\Widget;
+use HeimrichHannot\TwigTemplatesBundle\Event\PrepareTemplateCallback;
 use HeimrichHannot\TwigTemplatesBundle\FrontendFramework\FrontendFrameworkCollection;
+use HeimrichHannot\TwigTemplatesBundle\FrontendFramework\FrontendFrameworkInterface;
 use Symfony\Component\DependencyInjection\ContainerAwareInterface;
 use Symfony\Component\DependencyInjection\ContainerAwareTrait;
 
@@ -46,7 +48,7 @@ class HookListener implements ContainerAwareInterface
             return;
         }
 
-        list($templateName, $templateData) = $result;
+        [$templateName, $templateData] = $result;
 
         $template->setName($templateName);
         $template->setData($templateData);
@@ -86,7 +88,7 @@ class HookListener implements ContainerAwareInterface
             return $buffer;
         }
 
-        list($templateName, $templateData) = $result;
+        [$templateName, $templateData] = $result;
 
         $widget->template = $templateName;
 
@@ -143,13 +145,25 @@ class HookListener implements ContainerAwareInterface
             return false;
         }
 
+        try {
+            $path = $this->container->get('huh.utils.template')->getTemplate($customTemplateName, 'html.twig');
+        } catch (\Exception $e) {
+            return false;
+        }
+
+        // template not found
+        if (!$path) {
+            return false;
+        }
+
+        /** @var FrontendFrameworkInterface $frontendFramework */
         if (null !== ($layout = $this->getLayout()) && null !== ($frontendFramework = $this->container
                 ->get(FrontendFrameworkCollection::class)->getFramework($layout->ttFramework))
         ) {
-            $frontendFramework->generate($templateName, $data);
+            $callback = $frontendFramework->prepare(new PrepareTemplateCallback($templateName, $customTemplateName, $path, $data));
         }
 
-        return [$customTemplateName, $data];
+        return [$callback->getCustomTemplateName(), $callback->getData()];
     }
 
     protected function getLayout()

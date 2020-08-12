@@ -20,6 +20,11 @@ interface FrontendFrameworkInterface
     public static function getIdentifier(): string;
 
     /**
+     * Return a translatable label name. Can be an translation alias. Will be translated through symfony translator.
+     */
+    public static function getLabel(): string;
+
+    /**
      * Prepare template data when applying twig template.
      */
     public function prepare(PrepareTemplateCallback $callback): PrepareTemplateCallback;

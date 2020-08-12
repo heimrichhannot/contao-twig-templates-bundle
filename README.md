@@ -150,10 +150,10 @@ huh.twig.beforeRenderTemplate | Modify template data before rendering the widget
 
 ### Add custom frontend frameworks
 
-1. Create a class which extends `HeimrichHannot\TwigTemplatesBundle\FrontendFramework\AbstractFrontendFramework` and implement the abstract methods
+1. Create a class which implements `HeimrichHannot\TwigTemplatesBundle\FrontendFramework\FrontendFrameworkInterfacce`
     > Please read the method comments for implementation
 1. Register your newly created class as service with `huh.contao_twig_templates.framework` service tag
-1. For each template, you want to replace, create an html5 template (where filename suffix is the same as the alias set in the class, example `form_checkbox_bs4.html5`) and call the template factory. Typical this code can be used without any adjustment: 
+1. For each template, you want to replace, create an html5 template (where filename suffix is the same as the identifier set in the class, example `form_checkbox_bs4.html5`) and call the template factory. Typical this code can be used without any adjustment: 
 
     ```php
     <?= \Contao\System::getContainer()->get('huh.utils.template')->renderTwigTemplate($this->getName(), $this->getData()); ?>

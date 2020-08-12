@@ -9,12 +9,18 @@
 namespace HeimrichHannot\TwigTemplatesBundle\FrontendFramework;
 
 use Contao\LayoutModel;
+use Contao\System;
 use HeimrichHannot\TwigTemplatesBundle\Event\BeforeRenderCallback;
 use HeimrichHannot\TwigTemplatesBundle\Event\PrepareTemplateCallback;
 use HeimrichHannot\TwigTemplatesBundle\Twig\AbstractTemplate;
 use Symfony\Component\DependencyInjection\ContainerInterface;
 
-abstract class AbstractFrontendFramework
+/**
+ * Class AbstractFrontendFramework.
+ *
+ * @deprecated Will be removed in next major version. Use FrontendFrameworkInterface instead.
+ */
+abstract class AbstractFrontendFramework implements FrontendFrameworkInterface
 {
     /**
      * @var LayoutModel
@@ -36,8 +42,6 @@ abstract class AbstractFrontendFramework
     /**
      * Return the framework alias. Is used for template suffix and database identification.
      * Example: bs4 for Bootstrap 4.
-     *
-     * @deprecated use FrontendFrameworkInterface::getIdentifier instead
      */
     abstract public function getAlias(): string;
 
@@ -55,6 +59,11 @@ abstract class AbstractFrontendFramework
      * Update template data and template name before render template.
      */
     abstract public function compile(string &$templateName, array &$templateData, AbstractTemplate $entity): void;
+
+    public static function getIdentifier(): string
+    {
+        return (new static(System::getContainer()))->getAlias();
+    }
 
     public function prepare(PrepareTemplateCallback $callback): PrepareTemplateCallback
     {
@@ -76,6 +85,11 @@ abstract class AbstractFrontendFramework
         $callback->setTwigTemplateContext($templateData);
 
         return $callback;
+    }
+
+    public static function getLabel(): string
+    {
+        return (new static(System::getContainer()))->getName();
     }
 
     protected function getLayout()
