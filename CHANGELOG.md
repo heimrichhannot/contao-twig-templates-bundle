@@ -1,7 +1,13 @@
 # Changelog
 All notable changes to this project will be documented in this file.
 
-## [2.0.0-BETA-DEV] - 2020-08-04
+## [2.0.0-beta2] - 2020-08-12
+Merged changes from 1.4.0 and 1.4.1, especially:
+
+- added FrontendFrameworkInterface::getLabel()
+- refactored code to use FrontendFrameworkInterface
+
+## [2.0.0-beta1] - 2020-08-04
 - added proxy template to replace html5 template dublicates
 - added FrontendFrameworkInterface to soon replace AbstractFrontendFramework
 - refactored HookListener into RenderListener
