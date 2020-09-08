@@ -1,6 +1,9 @@
 # Changelog
 All notable changes to this project will be documented in this file.
 
+## [1.5.0] - 2020-09-08
+- added placeholder for date/time fields (accessibility)
+
 ## [1.4.1] - 2020-08-12
 - added missing getLabel method to FrontendFrameworkInterface
 - implemented getLabel into AbstractFrontendFramework for bc

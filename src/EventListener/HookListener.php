@@ -8,7 +8,9 @@
 
 namespace HeimrichHannot\TwigTemplatesBundle\EventListener;
 
+use Contao\Config;
 use Contao\LayoutModel;
+use Contao\System;
 use Contao\Template;
 use Contao\TemplateLoader;
 use Contao\Widget;
@@ -164,6 +166,18 @@ class HookListener implements ContainerAwareInterface
         }
 
         return [$callback->getCustomTemplateName(), $callback->getData()];
+    }
+
+    public function onGetAttributesFromDca(array $attributes, $dc = null): array
+    {
+        // add format placeholder for accessibility reasons
+        if ('text' === $attributes['type'] && isset($attributes['rgxp']) && \in_array($attributes['rgxp'], ['datim', 'date', 'time'])) {
+            $attributes['placeholder'] = System::getContainer()->get('translator')->trans('huh.twig.templates.placeholder.'.$attributes['rgxp'], [
+                '{format}' => System::getContainer()->get('huh.utils.date')->transformPhpDateFormatToISO8601(Config::get($attributes['rgxp'].'Format')),
+            ]);
+        }
+
+        return $attributes;
     }
 
     protected function getLayout()
