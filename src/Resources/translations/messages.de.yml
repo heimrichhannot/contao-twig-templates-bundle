@@ -5,9 +5,13 @@ huh.twig.templates:
     submit: Absenden
     password_confirm: Passwort bestätigen
   framework:
-    contao: "Contao"
-    bs3: "Bootstrap 3"
-    bs4: "Bootstrap 4"
+    contao: Contao
+    bs3: Bootstrap 3
+    bs4: Bootstrap 4
+  placeholder:
+    date: Bitte Datum im Format "{format}" eingeben
+    time: Bitte Uhrzeit im Format "{format}" eingeben
+    datim: Bitte Datum und Uhrzeit im Format "{format}" eingeben
 
 # aria-label
 huh.twig.teplates.button.submit.aria-label: Dieses Formular absenden
