@@ -1,6 +1,10 @@
 # Changelog
 All notable changes to this project will be documented in this file.
 
+## [2.0.0-beta5] - 2020-09-10
+- added blocks to mod_password template
+- fixed variable name in mod_password
+
 ## [2.0.0-beta4] - 2020-09-08
 - added placeholder for date/time fields (accessibility)
 
@@ -20,6 +24,10 @@ Merged changes from 1.4.0 and 1.4.1, especially:
 - refactored HookListener into RenderListener
 - deprecated AbstractTemplate and its childs
 
+## [1.4.2] - 2020-09-10
+- added blocks to mod_password template
+- fixed variable name in mod_password
+
 ## [1.4.1] - 2020-08-12
 - added missing getLabel method to FrontendFrameworkInterface
 - implemented getLabel into AbstractFrontendFramework for bc
@@ -34,7 +42,7 @@ This release introduce a lot of enhancements to ease the upgrate to version 2.0.
 - deprecated AbstractTemplate and it's childs
 - deprecated TemplateFactory
 
-## [1.3.0] - 2020-08-11
+## [1.3.0] - 2020-08-04
 - removed form_captcha template as it not used and working anymore
 - added blocks and formAttributes variable to member_default template
 - added formClass to mod_login template
