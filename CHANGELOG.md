@@ -1,11 +1,11 @@
 # Changelog
 All notable changes to this project will be documented in this file.
 
-## [2.0.0-beta5] - 2020-09-10
+## [2.0.0-beta6] - 2020-09-10
 - added blocks to mod_password template
 - fixed variable name in mod_password
 
-## [2.0.0-beta4] - 2020-09-08
+## [2.0.0-beta5] - 2020-09-08
 - added placeholder for date/time fields (accessibility)
 
 ## [2.0.0-beta3] - 2020-08-12
