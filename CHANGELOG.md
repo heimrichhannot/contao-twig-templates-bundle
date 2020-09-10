@@ -1,6 +1,10 @@
 # Changelog
 All notable changes to this project will be documented in this file.
 
+## [1.4.2] - 2020-09-10
+- added blocks to mod_password template
+- fixed variable name in mod_password
+
 ## [1.4.1] - 2020-08-12
 - added missing getLabel method to FrontendFrameworkInterface
 - implemented getLabel into AbstractFrontendFramework for bc
