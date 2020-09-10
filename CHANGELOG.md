@@ -1,6 +1,9 @@
 # Changelog
 All notable changes to this project will be documented in this file.
 
+## [2.0.0-beta4] - 2020-09-08
+- added placeholder for date/time fields (accessibility)
+
 ## [2.0.0-beta3] - 2020-08-12
 - removed HookListener class
 - fixed method call in RenderListener

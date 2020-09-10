@@ -8,6 +8,10 @@ huh.twig.templates:
     contao: "Contao"
     bs3: "Bootstrap 3"
     bs4: "Bootstrap 4"
+  placeholder:
+    date: Please type in a date in the format "{format}"
+    time: Please type in a time in the format "{format}"
+    datim: Please type in a date and time in the format "{format}"
 
 # aria-label
 huh.twig.teplates.button.submit.aria-label: Send this form
