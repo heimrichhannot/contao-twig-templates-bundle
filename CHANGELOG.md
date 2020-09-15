@@ -1,6 +1,10 @@
 # Changelog
 All notable changes to this project will be documented in this file.
 
+## [1.5.1] - 2020-09-15
+- fixed repo and added changes from 1.5 into master branch
+- from 1.5: added placeholder for date/time fields (accessibility)
+
 ## [1.4.4] - 2020-09-15
 - added errorClass variable to multiple module templates
 - added error block to multiple variable templates
