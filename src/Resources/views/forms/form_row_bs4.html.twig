@@ -1,3 +1,5 @@
+{% extends "@ContaoTwigTemplates/forms/form_row.html.twig" %}
+
 {% set attributes =  attributes|default() %}
 
 {% if(arrConfiguration.explanation|default() or (hasErrors|default(false) and errorsAsString|default())) %}
@@ -24,6 +26,8 @@
         {% set formFeedbackClass = formFeedbackClass|default({})|merge(['invalid-feedback']) %}
     {% endif %}
 {% endif %}
+
+{% block row %}
 
 <{{ wrapperTag|default('div') }} class="{{ strName }} {{ groupClass }} {{ strPrefix }}{% if(arrConfiguration.invisible|default(false)) %} invisible{% endif %}">
 
@@ -89,4 +93,5 @@
         </div>
     {% endblock %}
 </{{ wrapperTag|default('div') }}>
+{% endblock %}
 
