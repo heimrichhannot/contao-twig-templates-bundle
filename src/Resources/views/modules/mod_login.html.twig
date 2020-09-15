@@ -6,7 +6,9 @@
     <form{% if action|default %} action="{{ action }}"{% endif %} id="{{ formId }}" method="post" {% if formClass|default %}class="{{ formClass }}"{% endif %}>
     <div class="formbody">
 
-        {% include '@ContaoTwigTemplates/parts/message.html.twig' with { 'mclass': 'error', 'message': message|default } %}
+        {% block error %}
+            {% include '@ContaoTwigTemplates/parts/message.html.twig' with { 'mclass': errorClass|default('error'), 'message': message|default } %}
+        {% endblock %}
 
         <input type="hidden" name="FORM_SUBMIT" value="{{ formId }}">
         <input type="hidden" name="REQUEST_TOKEN" value="{{ '{{request_token}}' }}">
