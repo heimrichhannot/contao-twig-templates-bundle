@@ -1,9 +1,14 @@
+{% block row %}
+    <div class="{{ strPrefix|default() }} {{ class|default }}">
 
-<div class="{{ strPrefix|default() }} {{ class|default }}">
+      {% block label %}
+      {% endblock %}
 
-  {% block label %}
-  {% endblock %}
+      {% block field %}
+      {% endblock %}
+    </div>
+{% endblock %}
 
-  {% block field %}
-  {% endblock %}
-</div>
+{% block sub %}
+    {{ arrConfiguration.sub|default|raw }}
+{% endblock %}
