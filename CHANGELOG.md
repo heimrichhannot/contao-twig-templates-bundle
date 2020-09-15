@@ -1,6 +1,9 @@
 # Changelog
 All notable changes to this project will be documented in this file.
 
+## [1.4.3] - 2020-09-15
+- fixed support for formhybrid subpalettes
+
 ## [1.4.2] - 2020-09-10
 - added blocks to mod_password template
 - fixed variable name in mod_password
