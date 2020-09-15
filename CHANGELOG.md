@@ -1,9 +1,13 @@
 # Changelog
 All notable changes to this project will be documented in this file.
 
-## [2.0.0-beta7-DEV] - 2020-09-10
+## [2.0.0-beta7-DEV] - 2020-09-15
+- added errorClass variable to multiple module templates
+- added error block to multiple variable templates
+- added role alert to message templates
 - fixed hook method call
 - fixed support for formhybrid subpalettes
+- 
 
 ## [2.0.0-beta6] - 2020-09-10
 - added blocks to mod_password template
