@@ -1,6 +1,11 @@
 # Changelog
 All notable changes to this project will be documented in this file.
 
+## [1.4.4] - 2020-09-15
+- added errorClass variable to multiple module templates
+- added error block to multiple variable templates
+- added role alert to message templates
+
 ## [1.4.3] - 2020-09-15
 - fixed support for formhybrid subpalettes
 
