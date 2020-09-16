@@ -1,6 +1,9 @@
 # Changelog
 All notable changes to this project will be documented in this file.
 
+## [1.5.2] - 2020-09-16
+- fixed placeholder to only be set in frontend
+
 ## [1.5.1] - 2020-09-15
 - fixed repo and added changes from 1.5 into master branch
 - from 1.5: added placeholder for date/time fields (accessibility)
@@ -23,7 +26,7 @@ All notable changes to this project will be documented in this file.
 - fixed constructor parameter in AbstractTemplate
 
 ## [1.4.0] - 2020-08-12
-This release introduce a lot of enhancements to ease the upgrate to version 2.0.
+This release introduce a lot of enhancements to ease the upgrade to version 2.0.
 
 - added FrontendFrameworkInterface
 - refactored relevant code to use FrontendFrameworkInterface instead of AbstractFrontendFramework, provide backward compatibility through AbstractFrontendFramework
