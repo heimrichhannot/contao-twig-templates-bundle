@@ -8,43 +8,28 @@
 
 namespace HeimrichHannot\TwigTemplatesBundle\FrontendFramework;
 
-use HeimrichHannot\TwigTemplatesBundle\Twig\AbstractTemplate;
+use HeimrichHannot\TwigTemplatesBundle\Event\BeforeRenderCallback;
+use HeimrichHannot\TwigTemplatesBundle\Event\PrepareTemplateCallback;
 
-class ContaoFramework extends AbstractFrontendFramework implements FrontendFrameworkInterface
+class ContaoFramework implements FrontendFrameworkInterface
 {
-    /**
-     * Return the framework alias. Is used for template suffix and database identification.
-     * Example: bs4 for Bootstrap 4.
-     */
-    public function getAlias(): string
-    {
-        return 'contao';
-    }
-
     public static function getIdentifier(): string
     {
         return 'contao';
     }
 
-    /**
-     * Return the name of the framework. Can be an translation alias.
-     */
-    public function getName(): string
+    public static function getLabel(): string
     {
         return 'huh.twig.templates.framework.contao';
     }
 
-    /**
-     * {@inheritdoc}
-     */
-    public function generate(string &$templateName, array &$templateData): void
+    public function prepare(PrepareTemplateCallback $callback): PrepareTemplateCallback
     {
+        return $callback;
     }
 
-    /**
-     * {@inheritdoc}
-     */
-    public function compile(string &$templateName, array &$templateData, AbstractTemplate $entity): void
+    public function beforeRender(BeforeRenderCallback $callback): BeforeRenderCallback
     {
+        return $callback;
     }
 }

@@ -10,19 +10,18 @@ namespace HeimrichHannot\TwigTemplatesBundle\EventListener;
 
 use Contao\Input;
 use Contao\LayoutModel;
-use Contao\Template;
-use Contao\Widget;
+use HeimrichHannot\TwigSupportBundle\Event\BeforeParseTwigTemplateEvent;
+use HeimrichHannot\TwigSupportBundle\Event\BeforeRenderTwigTemplateEvent;
+use HeimrichHannot\TwigSupportBundle\Exception\TemplateNotFoundException;
+use HeimrichHannot\TwigSupportBundle\Filesystem\TwigTemplateLocator;
 use HeimrichHannot\TwigTemplatesBundle\Event\BeforeRenderCallback;
-use HeimrichHannot\TwigTemplatesBundle\Event\BeforeRenderTwigTemplateEvent;
+use HeimrichHannot\TwigTemplatesBundle\Event\BeforeRenderTwigTemplateEvent as OnBeforeRenderTwigTemplateEvent;
 use HeimrichHannot\TwigTemplatesBundle\Event\PrepareTemplateCallback;
 use HeimrichHannot\TwigTemplatesBundle\FrontendFramework\ContaoFramework;
 use HeimrichHannot\TwigTemplatesBundle\FrontendFramework\FrontendFrameworkCollection;
 use HeimrichHannot\TwigTemplatesBundle\FrontendFramework\FrontendFrameworkInterface;
-use HeimrichHannot\TwigTemplatesBundle\Twig\TemplateFactory;
-use HeimrichHannot\UtilsBundle\Classes\ClassUtil;
 use HeimrichHannot\UtilsBundle\Container\ContainerUtil;
 use HeimrichHannot\UtilsBundle\Model\ModelUtil;
-use HeimrichHannot\UtilsBundle\Template\TemplateUtil;
 use Symfony\Component\EventDispatcher\EventDispatcherInterface;
 
 class RenderListener
@@ -34,15 +33,10 @@ class RenderListener
      * @var ContainerUtil
      */
     protected $containerUtil;
-
     /**
      * @var LayoutModel|null
      */
     protected $layout;
-    /**
-     * @var TemplateUtil
-     */
-    protected $templateUtil;
     /**
      * @var array|null
      */
@@ -64,155 +58,67 @@ class RenderListener
      */
     protected $eventDispatcher;
     /**
-     * @var TemplateFactory
-     */
-    protected $templateFactory;
-    /**
-     * @var ClassUtil
-     */
-    protected $classUtil;
-    /**
      * @var ModelUtil
      */
     protected $modelUtil;
+    /**
+     * @var TwigTemplateLocator
+     */
+    protected $templateLocator;
 
     /**
      * RenderListener constructor.
      */
-    public function __construct(ContainerUtil $containerUtil, TemplateUtil $templateUtil, FrontendFrameworkCollection $frontendFrameworkCollection, EventDispatcherInterface $eventDispatcher, TemplateFactory $templateFactory, ClassUtil $classUtil, ModelUtil $modelUtil)
+    public function __construct(ContainerUtil $containerUtil, FrontendFrameworkCollection $frontendFrameworkCollection, EventDispatcherInterface $eventDispatcher, ModelUtil $modelUtil, TwigTemplateLocator $templateLocator)
     {
         $this->containerUtil = $containerUtil;
-        $this->templateUtil = $templateUtil;
         $this->frontendFrameworkCollection = $frontendFrameworkCollection;
         $this->eventDispatcher = $eventDispatcher;
-        $this->templateFactory = $templateFactory;
-        $this->classUtil = $classUtil;
         $this->modelUtil = $modelUtil;
+        $this->templateLocator = $templateLocator;
     }
 
-    /**
-     * @Hook("parseTemplate")
-     */
-    public function onParseTemplate(Template $template): void
+    public function onBeforeParseTwigTemplateEvent(BeforeParseTwigTemplateEvent $event)
     {
         $layout = $this->getLayout();
 
         if ($this->isTerminationCondition($layout)) {
             return;
         }
-        $result = $this->applyTwigTemplate($template->getName(), $template->getData());
+        [$templateName, $templateData] = $this->applyTwigTemplate($event->getTemplateName(), $event->getTemplateData());
 
-        if (false === $result) {
-            return;
-        }
-
-        $template->setName('twig_template_proxy');
-
-        [$templateName, $templateData] = $result;
-
-        $template->setData([
-            static::TWIG_TEMPLATE => $templateName,
-            static::TWIG_CONTEXT => $templateData,
-        ]);
+        $event->setTemplateName($templateName);
+        $event->getTemplateData($templateData);
     }
 
-    /**
-     * @Hook("parseWidget")
-     */
-    public function onParseWidget(string $buffer, Widget $widget): string
-    {
-        $layout = $this->getLayout();
-
-        if ($this->isTerminationCondition($layout)) {
-            return $buffer;
-        }
-
-        $data = $this->classUtil->jsonSerialize(
-            $widget,
-            [],
-            [
-                'ignorePropertyVisibility' => true,
-            ]
-        );
-
-        $result = $this->applyTwigTemplate($widget->template, $data);
-
-        if (false === $result) {
-            return $buffer;
-        }
-
-        [$templateName, $templateData] = $result;
-
-        $widget->{static::TWIG_TEMPLATE} = $templateName;
-        $widget->{static::TWIG_CONTEXT} = $templateData;
-
-        $widget->template = 'twig_template_proxy';
-
-        return $widget->inherit();
-    }
-
-    /**
-     * Render the template.
-     *
-     * @param $contaoTemplate
-     */
-    public function render($contaoTemplate)
+    public function onBeforeRenderTwigTemplateEvent(BeforeRenderTwigTemplateEvent $event)
     {
         $layout = $this->getLayout();
         $frontendFramework = $this->getFrontendFramework($layout);
 
-        if ($contaoTemplate instanceof Widget) {
-            $data = $this->prepareWidget($contaoTemplate);
-            $twigTemplateName = $data['arrConfiguration'][self::TWIG_TEMPLATE] ?? null;
-            $twigTemplateContext = $data ?? null;
-        } else {
-            $data = $contaoTemplate->getData();
-            $twigTemplateName = $data[self::TWIG_TEMPLATE] ?? null;
-            $twigTemplateContext = $data[self::TWIG_CONTEXT] ?? null;
-        }
-
-        $legacyTemplate = $this->templateFactory->createInstance($contaoTemplate);
-
-        $callback = $frontendFramework->beforeRender(new BeforeRenderCallback($twigTemplateName, $twigTemplateContext, $contaoTemplate, $legacyTemplate));
+        $callback = $frontendFramework->beforeRender(
+            new BeforeRenderCallback($event->getTemplateName(), $event->getTemplateData(), $event->getContaoTemplate(), $layout)
+        );
 
         /** @var BeforeRenderTwigTemplateEvent $event */
         /** @noinspection PhpMethodParametersCountMismatchInspection */
         /** @noinspection PhpParamsInspection */
-        $event = $this->eventDispatcher->dispatch(
-            BeforeRenderTwigTemplateEvent::NAME,
-            new BeforeRenderTwigTemplateEvent(
-                $legacyTemplate->getType(),
+        $beforeEvent = $this->eventDispatcher->dispatch(
+            OnBeforeRenderTwigTemplateEvent::NAME,
+            new OnBeforeRenderTwigTemplateEvent(
                 $callback->getTwigTemplateName(),
                 $callback->getTwigTemplateContext(),
-                $contaoTemplate
+                $event->getContaoTemplate()
             )
         );
 
-        if ($contaoTemplate instanceof Template) {
-            $contaoTemplate->setData($event->getTemplateData());
+        if ($event->getTemplateName() !== $beforeEvent->getTemplateName()) {
+            try {
+                $event->setTwigTemplatePath($this->templateLocator->getTemplatePath($beforeEvent->getTemplateName()));
+            } catch (TemplateNotFoundException $e) {
+            }
         }
-
-        $buffer = $this->templateUtil->renderTwigTemplate($event->getTemplateName(), $event->getTemplateData());
-
-        return $buffer;
-    }
-
-    protected function prepareWidget($entity): array
-    {
-        $templateData = $this->classUtil->jsonSerialize(
-            $entity,
-            [],
-            [
-                'includeProperties' => true,
-                'ignorePropertyVisibility' => true,
-            ]
-        );
-
-        if (method_exists($entity, 'getOptions')) {
-            $templateData['arrOptions'] = $this->classUtil->callInaccessibleMethod($entity, 'getOptions');
-        }
-
-        return $templateData;
+        $event->setTemplateData($beforeEvent->getTemplateData());
     }
 
     protected function isTerminationCondition(?LayoutModel $layoutModel): bool
@@ -256,7 +162,7 @@ class RenderListener
     {
         if (!$this->templatesNames) {
             try {
-                $this->templatesNames = array_keys($this->templateUtil->getAllTemplates());
+                $this->templatesNames = array_keys($this->templateLocator->getTemplates());
             } catch (\Exception $e) {
                 $this->templatesNames = [];
             }
@@ -309,17 +215,12 @@ class RenderListener
         }
 
         try {
-            $path = $this->templateUtil->getTemplate($customTemplateName, 'html.twig');
-        } catch (\Exception $e) {
+            $path = $this->templateLocator->getTemplatePath($customTemplateName);
+        } catch (TemplateNotFoundException $e) {
             return false;
         }
 
-        // template not found
-        if (!$path) {
-            return false;
-        }
-
-        $callback = $frontendFramework->prepare(new PrepareTemplateCallback($templateName, $customTemplateName, $path, $data));
+        $callback = $frontendFramework->prepare(new PrepareTemplateCallback($templateName, $customTemplateName, $path, $data, $layout));
 
         return [$callback->getCustomTemplateName(), $callback->getData()];
     }

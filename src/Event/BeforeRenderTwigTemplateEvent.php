@@ -12,6 +12,8 @@ use Symfony\Component\EventDispatcher\Event;
 
 /**
  * Class BeforeRenderTwigTemplateEvent.
+ *
+ * @deprecated Will be removed in version 3. Use \HeimrichHannot\TwigSupportBundle\Event\BeforeParseTwigTemplateEvent instead.
  */
 class BeforeRenderTwigTemplateEvent extends Event
 {
@@ -31,22 +33,11 @@ class BeforeRenderTwigTemplateEvent extends Event
      * @param $templateData
      * @param $entity
      */
-    public function __construct(string $type, string $templateName, $templateData, $entity)
+    public function __construct(string $templateName, $templateData, $entity)
     {
         $this->templateName = $templateName;
         $this->templateData = $templateData;
         $this->entity = $entity;
-        $this->type = $type;
-    }
-
-    public function getType(): string
-    {
-        return $this->type;
-    }
-
-    public function setType(string $type): void
-    {
-        $this->type = $type;
     }
 
     /**

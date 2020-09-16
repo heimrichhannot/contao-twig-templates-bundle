@@ -8,19 +8,29 @@
 
 namespace HeimrichHannot\TwigTemplatesBundle\FrontendFramework;
 
-use HeimrichHannot\TwigTemplatesBundle\Twig\AbstractTemplate;
+use Contao\LayoutModel;
+use HeimrichHannot\TwigSupportBundle\Exception\TemplateNotFoundException;
+use HeimrichHannot\TwigSupportBundle\Filesystem\TwigTemplateLocator;
+use HeimrichHannot\TwigTemplatesBundle\Event\BeforeRenderCallback;
+use HeimrichHannot\TwigTemplatesBundle\Event\PrepareTemplateCallback;
+use HeimrichHannot\UtilsBundle\Accordion\AccordionUtil;
 
-class Bootstrap4Framework extends AbstractFrontendFramework implements FrontendFrameworkInterface
+class Bootstrap4Framework implements FrontendFrameworkInterface
 {
-    const SUPPORT_CUSTOM_FORMS = 'custom-forms';
+    /**
+     * @var AccordionUtil
+     */
+    protected $accordionUtil;
+
+    protected TwigTemplateLocator $templateLocator;
 
     /**
-     * Return the framework alias. Is used for template suffix and database identification.
-     * Example: bs4 for Bootstrap 4.
+     * Bootstrap4Framework constructor.
      */
-    public function getAlias(): string
+    public function __construct(AccordionUtil $accordionUtil, TwigTemplateLocator $templateLocator)
     {
-        return 'bs4';
+        $this->accordionUtil = $accordionUtil;
+        $this->templateLocator = $templateLocator;
     }
 
     public static function getIdentifier(): string
@@ -28,46 +38,39 @@ class Bootstrap4Framework extends AbstractFrontendFramework implements FrontendF
         return 'bs4';
     }
 
-    /**
-     * Return the name of the framework. Can be an translation alias.
-     */
-    public function getName(): string
+    public static function getLabel(): string
     {
         return 'huh.twig.templates.framework.bs4';
     }
 
-    /**
-     * {@inheritdoc}
-     */
-    public function generate(string &$templateName, array &$templateData): void
+    public function prepare(PrepareTemplateCallback $callback): PrepareTemplateCallback
     {
+        $templateName = $callback->getTemplateName();
+        $templateData = $callback->getData();
         $this->prepareAccordions($templateName, $templateData);
+        $callback->setData($templateData);
+
+        return $callback;
     }
 
-    /**
-     * {@inheritdoc}
-     */
-    public function compile(string &$templateName, array &$templateData, AbstractTemplate $entity): void
+    public function beforeRender(BeforeRenderCallback $callback): BeforeRenderCallback
     {
-        $this->supportCustomControl($templateName, $entity);
+        $templateName = $callback->getTwigTemplateName();
+        $this->supportCustomControl($templateName, $callback->getLayoutModel());
+        $callback->setTwigTemplateName($templateName);
+
+        return $callback;
     }
 
-    protected function supportCustomControl(string &$templateName, AbstractTemplate $entity)
+    protected function supportCustomControl(string &$templateName, LayoutModel $layout)
     {
-        if (null === ($layout = $this->getLayout())) {
-            return;
-        }
-
         if ($layout->ttUseFrameworkCustomControls) {
-            $suffix = $this->container->get('huh.twig.template.factory')->getTemplateSuffix();
-            $customFormTemplate = preg_replace('/'.$suffix.'$/', '', $templateName);
-            $customFormTemplate .= '_custom_'.$this->getAlias();
+            $customFormTemplate = preg_replace('/'.static::getIdentifier().'$/', '', $templateName);
+            $customFormTemplate .= '_custom_'.static::getIdentifier();
 
             try {
-                if ($this->container->get('huh.utils.template')->getTemplate($customFormTemplate)) {
-                    $templateName = $customFormTemplate;
-                }
-            } catch (\Exception $e) {
+                $templateName = $this->templateLocator->getTemplatePath($customFormTemplate);
+            } catch (TemplateNotFoundException $e) {
                 // if template not found, use default template
             }
         }
@@ -78,13 +81,13 @@ class Bootstrap4Framework extends AbstractFrontendFramework implements FrontendF
         // prepare template data for bootstrap
         switch ($templateName) {
             case 'ce_accordionSingle':
-                $this->container->get('huh.utils.accordion')->structureAccordionSingle($data);
+                $this->accordionUtil->structureAccordionSingle($data);
 
                 break;
 
             case 'ce_accordionStart':
             case 'ce_accordionStop':
-                $this->container->get('huh.utils.accordion')->structureAccordionStartStop($data);
+                $this->accordionUtil->structureAccordionStartStop($data);
 
                 break;
         }

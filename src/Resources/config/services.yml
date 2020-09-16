@@ -2,6 +2,10 @@ services:
   _defaults:
     autowire: true
 
+  HeimrichHannot\TwigTemplatesBundle\:
+    resource: "../../{DataContainer}/*"
+    public: true
+
   huh.twig.template.factory:
     class: HeimrichHannot\TwigTemplatesBundle\Twig\TemplateFactory
     public: true

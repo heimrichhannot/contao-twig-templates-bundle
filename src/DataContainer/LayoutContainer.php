@@ -9,19 +9,18 @@
 namespace HeimrichHannot\TwigTemplatesBundle\DataContainer;
 
 use HeimrichHannot\TwigTemplatesBundle\FrontendFramework\FrontendFrameworkCollection;
-use HeimrichHannot\TwigTemplatesBundle\FrontendFramework\FrontendFrameworkInterface;
-use Symfony\Component\DependencyInjection\ContainerInterface;
+use Symfony\Contracts\Translation\TranslatorInterface;
 
 class LayoutContainer
 {
-    /**
-     * @var ContainerInterface
-     */
-    protected $container;
+    protected FrontendFrameworkCollection $collection;
 
-    public function __construct(ContainerInterface $container)
+    protected TranslatorInterface $translator;
+
+    public function __construct(FrontendFrameworkCollection $collection, TranslatorInterface $translator)
     {
-        $this->container = $container;
+        $this->collection = $collection;
+        $this->translator = $translator;
     }
 
     /**
@@ -29,26 +28,17 @@ class LayoutContainer
      *
      * @return array
      */
-    public function getFrameworkOptions()
+    public function onTtFrameworkOptionsCallback()
     {
-        return array_keys($this->container->get(FrontendFrameworkCollection::class)->getAllFrameworks());
-    }
+        $frameworks = $this->collection->getAllFrameworks();
+        $options = [];
 
-    /**
-     * Returns the translations for the frameworks as reference for options reference.
-     *
-     * @return array
-     */
-    public function getFrameworkNameReference()
-    {
-        $translations = [];
-        /** @var FrontendFrameworkInterface[] $frameworks */
-        $frameworks = $this->container->get(FrontendFrameworkCollection::class)->getAllFrameworks();
-
-        foreach ($frameworks as $framework) {
-            $translations[$framework::getIdentifier()] = $this->container->get('translator')->trans($framework::getLabel());
+        if ($frameworks) {
+            foreach ($frameworks as $framework) {
+                $options[$framework::getIdentifier()] = $this->translator->trans($framework::getLabel());
+            }
         }
 
-        return $translations;
+        return $options;
     }
 }
