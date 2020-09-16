@@ -3,22 +3,19 @@ services:
     autowire: true
 
   HeimrichHannot\TwigTemplatesBundle\:
-    resource: "../../{DataContainer}/*"
+    resource: "../../{DataContainer,EventListener}/*"
     public: true
+
+  HeimrichHannot\TwigTemplatesBundle\FrontendFramework\:
+    resource: "../../FrontendFramework/*"
+    tags: ['huh.contao_twig_templates.framework']
 
   HeimrichHannot\TwigTemplatesBundle\EventListener\RenderListener:
     tags:
       - { name: kernel.event_listener, event: huh.twig_support.before_parse_twig_template, method: "onBeforeParseTwigTemplateEvent" }
       - { name: kernel.event_listener, event: huh.twig_support.before_render_twig_template, method: "onBeforeRenderTwigTemplateEvent" }
 
-  huh.twig.template.factory:
-    class: HeimrichHannot\TwigTemplatesBundle\Twig\TemplateFactory
-    public: true
-  HeimrichHannot\TwigTemplatesBundle\Twig\TemplateFactory: '@huh.twig.template.factory'
-
-  huh.twig.template.twig_extension:
-    class: HeimrichHannot\TwigTemplatesBundle\Twig\TwigTemplatesExtension
-    public: false
+  HeimrichHannot\TwigTemplatesBundle\Twig\TwigTemplatesExtension:
     tags:
       - { name: twig.extension }
 

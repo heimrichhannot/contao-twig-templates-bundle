@@ -1,7 +1,0 @@
-services:
-  _defaults:
-    tags: ['huh.contao_twig_templates.framework']
-    autowire: true
-
-  HeimrichHannot\TwigTemplatesBundle\FrontendFramework\Bootstrap4Framework: ~
-  HeimrichHannot\TwigTemplatesBundle\FrontendFramework\ContaoFramework: ~
