@@ -8,19 +8,26 @@
 
 namespace HeimrichHannot\TwigTemplatesBundle\Event;
 
+use Contao\LayoutModel;
+
 class BeforeRenderCallback
 {
     protected $twigTemplateName;
     protected $twigTemplateContext;
     protected $contaoTemplate;
     protected $legacyTemplate;
+    /**
+     * @var LayoutModel
+     */
+    protected $layoutModel;
 
-    public function __construct($twigTemplateName, $twigTemplateContext, $contaoTemplate, $legacyTemplate)
+    public function __construct($twigTemplateName, $twigTemplateContext, $contaoTemplate, $legacyTemplate, LayoutModel $layoutModel)
     {
         $this->twigTemplateName = $twigTemplateName;
         $this->twigTemplateContext = $twigTemplateContext;
         $this->contaoTemplate = $contaoTemplate;
         $this->legacyTemplate = $legacyTemplate;
+        $this->layoutModel = $layoutModel;
     }
 
     /**
@@ -71,5 +78,10 @@ class BeforeRenderCallback
     public function setTwigTemplateContext($twigTemplateContext): void
     {
         $this->twigTemplateContext = $twigTemplateContext;
+    }
+
+    public function getLayoutModel(): LayoutModel
+    {
+        return $this->layoutModel;
     }
 }

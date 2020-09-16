@@ -8,6 +8,8 @@
 
 namespace HeimrichHannot\TwigTemplatesBundle\Event;
 
+use Contao\LayoutModel;
+
 class PrepareTemplateCallback
 {
     /**
@@ -26,16 +28,21 @@ class PrepareTemplateCallback
      * @var array
      */
     protected $data;
+    /**
+     * @var LayoutModel
+     */
+    protected $layoutModel;
 
     /**
      * PrepareTemplateCallback constructor.
      */
-    public function __construct(string $templateName, string $customTemplateName, string $templatePath, array $data)
+    public function __construct(string $templateName, string $customTemplateName, string $templatePath, array $data, LayoutModel $layoutModel)
     {
         $this->templateName = $templateName;
         $this->customTemplateName = $customTemplateName;
         $this->templatePath = $templatePath;
         $this->data = $data;
+        $this->layoutModel = $layoutModel;
     }
 
     public function getTemplateName(): string
@@ -66,5 +73,10 @@ class PrepareTemplateCallback
     public function setData(array $data): void
     {
         $this->data = $data;
+    }
+
+    public function getLayoutModel(): LayoutModel
+    {
+        return $this->layoutModel;
     }
 }

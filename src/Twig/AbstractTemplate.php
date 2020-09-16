@@ -8,6 +8,7 @@
 
 namespace HeimrichHannot\TwigTemplatesBundle\Twig;
 
+use Contao\System;
 use HeimrichHannot\TwigTemplatesBundle\Event\BeforeRenderCallback;
 use HeimrichHannot\TwigTemplatesBundle\Event\BeforeRenderTwigTemplateEvent;
 use HeimrichHannot\TwigTemplatesBundle\FrontendFramework\FrontendFrameworkInterface;
@@ -46,6 +47,7 @@ abstract class AbstractTemplate
      * @var array
      */
     protected $support;
+    protected $layout;
 
     /**
      * AbstractTemplate constructor.
@@ -93,7 +95,9 @@ abstract class AbstractTemplate
      */
     public function render()
     {
-        $callback = $this->frontendFramework->beforeRender(new BeforeRenderCallback($this->templateName, $this->templateData, $this->entity, $this));
+        $callback = $this->frontendFramework->beforeRender(new BeforeRenderCallback(
+            $this->templateName, $this->templateData, $this->entity, $this, $this->getLayout()
+        ));
 
         /** @var BeforeRenderTwigTemplateEvent $event */
         $event = $this->eventDispatcher->dispatch(
@@ -139,6 +143,22 @@ abstract class AbstractTemplate
         }
 
         return false;
+    }
+
+    public function getLayout()
+    {
+        if (!$this->layout) {
+            global $objPage;
+
+            if (null === $objPage || null === ($this->layout = System::getContainer()
+                    ->get('huh.utils.model')
+                    ->findModelInstanceByPk('tl_layout', $objPage->layout)
+                )) {
+                return null;
+            }
+        }
+
+        return $this->layout;
     }
 
     /**

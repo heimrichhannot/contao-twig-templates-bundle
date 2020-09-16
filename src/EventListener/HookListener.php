@@ -162,7 +162,7 @@ class HookListener implements ContainerAwareInterface
         if (null !== ($layout = $this->getLayout()) && null !== ($frontendFramework = $this->container
                 ->get(FrontendFrameworkCollection::class)->getFramework($layout->ttFramework))
         ) {
-            $callback = $frontendFramework->prepare(new PrepareTemplateCallback($templateName, $customTemplateName, $path, $data));
+            $callback = $frontendFramework->prepare(new PrepareTemplateCallback($templateName, $customTemplateName, $path, $data, $layout));
         }
 
         return [$callback->getCustomTemplateName(), $callback->getData()];

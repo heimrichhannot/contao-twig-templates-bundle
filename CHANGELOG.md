@@ -3,6 +3,7 @@ All notable changes to this project will be documented in this file.
 
 ## [DEV] - 2020-09-16
 - deprecated BeforeRenderTwigTemplateEvent::getType() and ::setType()
+- added getLayout() to BeforeRenderCallback and PrepareTemplateCallback
 
 ## [1.5.1] - 2020-09-15
 - fixed repo and added changes from 1.5 into master branch
