@@ -6,6 +6,11 @@ services:
     resource: "../../{DataContainer}/*"
     public: true
 
+  HeimrichHannot\TwigTemplatesBundle\EventListener\RenderListener:
+    tags:
+      - { name: kernel.event_listener, event: huh.twig_support.before_parse_twig_template, method: "onBeforeParseTwigTemplateEvent" }
+      - { name: kernel.event_listener, event: huh.twig_support.before_render_twig_template, method: "onBeforeRenderTwigTemplateEvent" }
+
   huh.twig.template.factory:
     class: HeimrichHannot\TwigTemplatesBundle\Twig\TemplateFactory
     public: true

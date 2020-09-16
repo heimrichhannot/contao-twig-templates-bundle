@@ -37,7 +37,6 @@ class Plugin implements BundlePluginInterface, ConfigPluginInterface
     public function registerContainerConfiguration(LoaderInterface $loader, array $managerConfig)
     {
         $loader->load('@ContaoTwigTemplatesBundle/Resources/config/services.yml');
-        $loader->load('@ContaoTwigTemplatesBundle/Resources/config/listeners.yml');
         $loader->load('@ContaoTwigTemplatesBundle/Resources/config/frontend_frameworks.yml');
     }
 }

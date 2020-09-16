@@ -101,8 +101,6 @@ class RenderListener
         );
 
         /** @var BeforeRenderTwigTemplateEvent $event */
-        /** @noinspection PhpMethodParametersCountMismatchInspection */
-        /** @noinspection PhpParamsInspection */
         $beforeEvent = $this->eventDispatcher->dispatch(
             OnBeforeRenderTwigTemplateEvent::NAME,
             new OnBeforeRenderTwigTemplateEvent(
