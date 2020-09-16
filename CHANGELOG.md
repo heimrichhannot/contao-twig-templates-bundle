@@ -7,7 +7,7 @@ All notable changes to this project will be documented in this file.
 - added role alert to message templates
 - fixed hook method call
 - fixed support for formhybrid subpalettes
-- 
+- fixed placeholders to only be applied in frontend
 
 ## [2.0.0-beta6] - 2020-09-10
 - added blocks to mod_password template
