@@ -36,11 +36,17 @@ class BeforeRenderTwigTemplateEvent extends Event
         $this->type = $type;
     }
 
+    /**
+     * @deprecated Get type from entity class
+     */
     public function getType(): string
     {
         return $this->type;
     }
 
+    /**
+     * @deprecated Get type from entity class
+     */
     public function setType(string $type): void
     {
         $this->type = $type;
