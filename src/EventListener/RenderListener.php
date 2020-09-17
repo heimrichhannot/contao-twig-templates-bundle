@@ -94,6 +94,11 @@ class RenderListener
     public function onBeforeRenderTwigTemplateEvent(BeforeRenderTwigTemplateEvent $event)
     {
         $layout = $this->getLayout();
+
+        if ($this->isTerminationCondition($layout)) {
+            return;
+        }
+
         $frontendFramework = $this->getFrontendFramework($layout);
 
         $callback = $frontendFramework->beforeRender(
