@@ -1,1 +1,0 @@
-<?php echo \Contao\System::getContainer()->get(\HeimrichHannot\TwigTemplatesBundle\EventListener\RenderListener::class)->render($this);

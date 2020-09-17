@@ -22,7 +22,10 @@ class Bootstrap4Framework implements FrontendFrameworkInterface
      */
     protected $accordionUtil;
 
-    protected TwigTemplateLocator $templateLocator;
+    /**
+     * @var TwigTemplateLocator
+     */
+    protected $templateLocator;
 
     /**
      * Bootstrap4Framework constructor.

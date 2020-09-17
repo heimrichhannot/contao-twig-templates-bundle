@@ -2,9 +2,10 @@
 All notable changes to this project will be documented in this file.
 
 ## [DEV]
-- removed deprecated code: AbstractTemplate, AbstractFramework, ...
 - twig template base logic moved into contao-twig-support-bundle
+- removed deprecated code: AbstractTemplate, AbstractFramework, ...
 - replaced parseTemplate and parseWidget with BeforeParseTwigTemplateEvent and BeforeRenderTwigTemplateEvent
+- removed template proxy templates
 - deprecated BeforeRenderTwigTemplateEvent
 - added layout to BeforeRenderCallback and PrepareTemplateCallback
 - removed legacyTemplate from BeforeRenderCallback and PrepareTemplateCallback
