@@ -1,13 +1,12 @@
 # Contao Twig Templates Bundle
 
-This bundle brings twig support to Contao CMS. In addition to supporting replacing the core templates with twig pendants, it also supports different frontend frameworks like [Bootstrap](https://getbootstrap.com) (Bootstrap 4 templates are supported out of the box).
+This bundle builds on top of [Twig support bundle](https://github.com/heimrichhannot/contao-twig-support-bundle) and replaces the most core templates with twig templates. In addition, it comes with an expandable frontend framework architecture that allows to select a frontend framework in your layout and automatically use customized templates instead of the core templates.
  
 ## Features
-
 - replaces various core templates with twig templates
+- expandable frontend framework architecture to easily add your frontend framework without changing all templates in contao backend or override core templates
 - automatic usage of templates prepared for frontend frameworks, if set in settings (inspired by [contao-bootstrap/templates](https://github.com/contao-bootstrap/templates))
 - bundles bootstrap 4 support with optional support for custom form controls
-- template caching using [Twig](https://twig.symfony.com)
 
 ## Installation
 
@@ -15,7 +14,7 @@ Install via composer: `composer require heimrichhannot/contao-bootstrap-template
 
 ### Additional frontend frameworks
 
-Currently available (known) extensions:
+Available (known) extensions:
 * [Bootstrap 3](https://github.com/heimrichhannot/contao-twig-templates-bootstrap3-bundle)
 
 ## Usage
@@ -25,15 +24,10 @@ It's as simple as that: Check 'Use twig templates' in your page layout configura
 
 Automapping order (check if template exists, else use the next one):
 1. Frontend framework twig template
-1. modified Template Files in your specific bundle
-1. Core twig template
-1. default (contao html5) template
+1. Core/custom twig template
+1. Default/Custom (contao html5) template
 
 If you don't want to use *automapping* you can also assign the template you want in the ordinary way by selecting it in the `customTpl` field of your module or content element.
-
-## Update
-
-If you used _core templates in versions before 1.0 you need to refactor them to filenames without _core. 
 
 ### Additional dca configuration keys
 
@@ -142,11 +136,7 @@ Search List Group|              |       x      |
 
 ### Events
 
-Through the bundle lifecycle following [Events](https://symfony.com/doc/current/event_dispatcher.html) are dispatched: 
-
-Event                         | Description
------------------------------ | -----------
-huh.twig.beforeRenderTemplate | Modify template data before rendering the widget
+To modify template data before parsing or rendering, use the events of [twig support bundle](https://github.com/heimrichhannot/contao-twig-support-bundle#events) with a priority lower than 100 (0 is default, so you don't need to set this value in most cases).
 
 ### Add custom frontend frameworks
 

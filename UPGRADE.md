@@ -7,3 +7,7 @@
 - added layout to BeforeRenderCallback and PrepareTemplateCallback
 - removed legacyTemplate from BeforeRenderCallback and PrepareTemplateCallback
 - removed TemplateTypeNotSupportedException
+
+## Version 0.x to 1.0
+
+If you used _core templates in versions before 1.0 you need to refactor them to filenames without _core. 

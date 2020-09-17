@@ -12,8 +12,8 @@ services:
 
   HeimrichHannot\TwigTemplatesBundle\EventListener\RenderListener:
     tags:
-      - { name: kernel.event_listener, event: huh.twig_support.before_parse_twig_template, method: "onBeforeParseTwigTemplateEvent" }
-      - { name: kernel.event_listener, event: huh.twig_support.before_render_twig_template, method: "onBeforeRenderTwigTemplateEvent" }
+      - { name: kernel.event_listener, event: huh.twig_support.before_parse_twig_template, method: "onBeforeParseTwigTemplateEvent", priority: 100 }
+      - { name: kernel.event_listener, event: huh.twig_support.before_render_twig_template, method: "onBeforeRenderTwigTemplateEvent", priority: 100 }
 
   HeimrichHannot\TwigTemplatesBundle\Twig\TwigTemplatesExtension:
     tags:
