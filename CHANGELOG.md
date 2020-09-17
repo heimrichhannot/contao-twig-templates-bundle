@@ -1,7 +1,7 @@
 # Changelog
 All notable changes to this project will be documented in this file.
 
-## [DEV]
+## [2.0.0-beta7] - 2020-09-17
 - twig template base logic moved into contao-twig-support-bundle
 - removed deprecated code: AbstractTemplate, AbstractFramework, ...
 - replaced parseTemplate and parseWidget with BeforeParseTwigTemplateEvent and BeforeRenderTwigTemplateEvent
@@ -10,8 +10,6 @@ All notable changes to this project will be documented in this file.
 - added layout to BeforeRenderCallback and PrepareTemplateCallback
 - removed legacyTemplate from BeforeRenderCallback and PrepareTemplateCallback
 - code enhancements
-
-## [2.0.0-beta7-DEV] - 2020-09-15
 - added errorClass variable to multiple module templates
 - added error block to multiple variable templates
 - added role alert to message templates
