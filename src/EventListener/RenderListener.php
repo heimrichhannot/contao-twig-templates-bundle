@@ -88,7 +88,7 @@ class RenderListener
         [$templateName, $templateData] = $this->applyTwigTemplate($event->getTemplateName(), $event->getTemplateData());
 
         $event->setTemplateName($templateName);
-        $event->getTemplateData($templateData);
+        $event->setTemplateData($templateData);
     }
 
     public function onBeforeRenderTwigTemplateEvent(BeforeRenderTwigTemplateEvent $event)
