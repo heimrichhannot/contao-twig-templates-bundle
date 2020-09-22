@@ -13,7 +13,7 @@ use Contao\ManagerPlugin\Bundle\Config\BundleConfig;
 use Contao\ManagerPlugin\Bundle\Parser\DelegatingParser;
 use Contao\TestCase\ContaoTestCase;
 use HeimrichHannot\TwigTemplatesBundle\ContaoManager\Plugin;
-use HeimrichHannot\TwigTemplatesBundle\ContaoTwigTemplatesBundle;
+use HeimrichHannot\TwigTemplatesBundle\HeimrichHannotTwigTemplatesBundle;
 
 class PluginTest extends ContaoTestCase
 {
@@ -31,7 +31,7 @@ class PluginTest extends ContaoTestCase
 
         $this->assertCount(1, $bundles);
         $this->assertInstanceOf(BundleConfig::class, $bundles[0]);
-        $this->assertEquals(ContaoTwigTemplatesBundle::class, $bundles[0]->getName());
+        $this->assertEquals(HeimrichHannotTwigTemplatesBundle::class, $bundles[0]->getName());
         $this->assertEquals([ContaoCoreBundle::class], $bundles[0]->getLoadAfter());
     }
 }

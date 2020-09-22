@@ -1,5 +1,8 @@
 # Contao Twig Templates Bundle
 
+[![Latest Stable Version](https://img.shields.io/packagist/v/heimrichhannot/contao-twig-templates-bundle.svg)](https://packagist.org/packages/heimrichhannot/contao-twig-templates-bundle)
+[![Total Downloads](https://img.shields.io/packagist/dt/heimrichhannot/contao-twig-templates-bundle.svg)](https://packagist.org/packages/heimrichhannot/contao-twig-templates-bundle)
+
 This bundle builds on top of [Twig support bundle](https://github.com/heimrichhannot/contao-twig-support-bundle) and replaces the most core templates with twig templates. In addition, it comes with an expandable frontend framework architecture that allows to select a frontend framework in your layout and automatically use customized templates instead of the core templates.
  
 ## Features
@@ -10,7 +13,7 @@ This bundle builds on top of [Twig support bundle](https://github.com/heimrichha
 
 ## Installation
 
-Install via composer: `composer require heimrichhannot/contao-bootstrap-templates-bundle` and update your database.
+Install via composer: `composer require heimrichhannot/contao-twig-templates-bundle` and update your database.
 
 ### Additional frontend frameworks
 
@@ -18,7 +21,6 @@ Available (known) extensions:
 * [Bootstrap 3](https://github.com/heimrichhannot/contao-twig-templates-bootstrap3-bundle)
 
 ## Usage
-
 
 It's as simple as that: Check 'Use twig templates' in your page layout configuration. If your want to use a frontend framework like bootstrap, select the corresponding option in the 'Use framework' select. This way the *automapping* takes place and according to the current content element or module, the correct template is used.
 
@@ -40,6 +42,12 @@ Key            | Description
 `inline`       | Input will be displayed horizontal. Only for checkboxes and radio buttons. 
 `groupClass`   | Classes for outer form group wrapper (default: form-group)
 `inputGroupClass`   | Classes for input group wrapper (input-group is always added)
+
+### Additional twig functions
+
+Function | Description
+-------- | -----------
+getCurrentLanguage | Return the current language (`$GLOBALS['TL_LANGUAGE']`)
 
 ## Bundled templates
 

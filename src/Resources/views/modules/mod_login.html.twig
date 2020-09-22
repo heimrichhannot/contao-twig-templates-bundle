@@ -1,13 +1,13 @@
 <!-- indexer::stop -->
 <div class="{{ class|default }} {{ logout|default ? 'logout' : 'login' }} block"{{ cssID|default }}{{ style|default ? ' style="' ~ style ~ '"' : '' }}>
 
-    {% include '@ContaoTwigTemplates/parts/headline.html.twig' %}
+    {% include '@HeimrichHannotTwigTemplates/parts/headline.html.twig' %}
 
     <form{% if action|default %} action="{{ action }}"{% endif %} id="{{ formId }}" method="post" {% if formClass|default %}class="{{ formClass }}"{% endif %}>
     <div class="formbody">
 
         {% block error %}
-            {% include '@ContaoTwigTemplates/parts/message.html.twig' with { 'mclass': errorClass|default('error'), 'message': message|default } %}
+            {% include '@HeimrichHannotTwigTemplates/parts/message.html.twig' with { 'mclass': errorClass|default('error'), 'message': message|default } %}
         {% endblock %}
 
         <input type="hidden" name="FORM_SUBMIT" value="{{ formId }}">

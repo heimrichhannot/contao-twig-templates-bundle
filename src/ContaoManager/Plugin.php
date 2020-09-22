@@ -13,7 +13,8 @@ use Contao\ManagerPlugin\Bundle\BundlePluginInterface;
 use Contao\ManagerPlugin\Bundle\Config\BundleConfig;
 use Contao\ManagerPlugin\Bundle\Parser\ParserInterface;
 use Contao\ManagerPlugin\Config\ConfigPluginInterface;
-use HeimrichHannot\TwigTemplatesBundle\ContaoTwigTemplatesBundle;
+use HeimrichHannot\TwigSupportBundle\HeimrichHannotTwigSupportBundle;
+use HeimrichHannot\TwigTemplatesBundle\HeimrichHannotTwigTemplatesBundle;
 use Symfony\Component\Config\Loader\LoaderInterface;
 
 class Plugin implements BundlePluginInterface, ConfigPluginInterface
@@ -24,8 +25,9 @@ class Plugin implements BundlePluginInterface, ConfigPluginInterface
     public function getBundles(ParserInterface $parser)
     {
         return [
-            BundleConfig::create(ContaoTwigTemplatesBundle::class)->setLoadAfter([
+            BundleConfig::create(HeimrichHannotTwigTemplatesBundle::class)->setLoadAfter([
                 ContaoCoreBundle::class,
+                HeimrichHannotTwigSupportBundle::class,
                 'formhybrid',
             ]),
         ];
@@ -36,6 +38,6 @@ class Plugin implements BundlePluginInterface, ConfigPluginInterface
      */
     public function registerContainerConfiguration(LoaderInterface $loader, array $managerConfig)
     {
-        $loader->load('@ContaoTwigTemplatesBundle/Resources/config/services.yml');
+        $loader->load('@HeimrichHannotTwigTemplatesBundle/Resources/config/services.yml');
     }
 }
