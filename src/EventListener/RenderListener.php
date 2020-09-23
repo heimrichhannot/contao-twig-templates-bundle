@@ -99,10 +99,13 @@ class RenderListener
             return;
         }
 
+        $data = $event->getTemplateData();
+        $data['_entity'] = $event->getContaoTemplate();
+
         $frontendFramework = $this->getFrontendFramework($layout);
 
         $callback = $frontendFramework->beforeRender(
-            new BeforeRenderCallback($event->getTemplateName(), $event->getTemplateData(), $event->getContaoTemplate(), $layout)
+            new BeforeRenderCallback($event->getTemplateName(), $data, $event->getContaoTemplate(), $layout)
         );
 
         /** @var BeforeRenderTwigTemplateEvent $event */

@@ -1,6 +1,9 @@
 # Changelog
 All notable changes to this project will be documented in this file.
 
+## [2.0.0-beta9] - 2020-09-23
+- fixed missing _entity variable in template data
+
 ## [2.0.0-beta8] - 2020-09-22
 - **BREAKING:** renamed bundle class to HeimrichHannotTwigTemplatesBundle (old twig namespaces are preserved, but should be updated till next major version)
 - raised twig support bundle dependency to 0.2
