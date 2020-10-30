@@ -1,7 +1,8 @@
 # Changelog
 All notable changes to this project will be documented in this file.
 
-## [DEV] - 2020-09-16
+## [1.6.0-DEV] - 2020-10-30
+- added support for 2.0 twig template namespace (@HeimrichHannotTwigTemplates)
 - deprecated BeforeRenderTwigTemplateEvent::getType() and ::setType()
 - added getLayout() to BeforeRenderCallback and PrepareTemplateCallback
 
