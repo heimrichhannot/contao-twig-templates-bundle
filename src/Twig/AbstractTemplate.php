@@ -95,15 +95,18 @@ abstract class AbstractTemplate
      */
     public function render()
     {
-        $callback = $this->frontendFramework->beforeRender(new BeforeRenderCallback(
-            $this->templateName, $this->templateData, $this->entity, $this, $this->getLayout()
-        ));
-
+        if (System::getContainer()->get('huh.utils.container')->isFrontend()) {
+            $callback = $this->frontendFramework->beforeRender(new BeforeRenderCallback(
+                $this->templateName, $this->templateData, $this->entity, $this, $this->getLayout()
+            ));
+            $this->templateName = $callback->getTwigTemplateName();
+            $this->templateData = $callback->getTwigTemplateContext();
+        }
         /** @var BeforeRenderTwigTemplateEvent $event */
         $event = $this->eventDispatcher->dispatch(
             BeforeRenderTwigTemplateEvent::NAME,
             new BeforeRenderTwigTemplateEvent(
-                $this->getType(), $callback->getTwigTemplateName(), $callback->getTwigTemplateContext(), $this->entity)
+                $this->getType(), $this->templateName, $this->templateData, $this->entity)
         );
 
         return $this->templateUtil->renderTwigTemplate($event->getTemplateName(), array_merge(\is_array($event->getTemplateData()) ? $event->getTemplateData() : [], ['_entity' => $this->getEntity()]));
