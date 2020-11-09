@@ -70,18 +70,14 @@ class Bootstrap4Framework extends AbstractFrontendFramework
 
     protected function prepareAccordions(string &$templateName, array &$data)
     {
+        $stringUtil = $this->container->get('huh.utils.string');
+
         // prepare template data for bootstrap
-        switch ($templateName) {
-            case 'ce_accordionSingle':
-                $this->container->get('huh.utils.accordion')->structureAccordionSingle($data);
-
-                break;
-
-            case 'ce_accordionStart':
-            case 'ce_accordionStop':
-                $this->container->get('huh.utils.accordion')->structureAccordionStartStop($data);
-
-                break;
+        if ($stringUtil->startsWith($templateName, 'ce_accordionSingle')) {
+            $this->container->get('huh.utils.accordion')->structureAccordionSingle($data);
+        } elseif ($stringUtil->startsWith($templateName, 'ce_accordionStart') ||
+                  $stringUtil->startsWith($templateName, 'ce_accordionStop')) {
+            $this->container->get('huh.utils.accordion')->structureAccordionStartStop($data);
         }
     }
 }
