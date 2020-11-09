@@ -14,6 +14,7 @@ use HeimrichHannot\TwigSupportBundle\Filesystem\TwigTemplateLocator;
 use HeimrichHannot\TwigTemplatesBundle\Event\BeforeRenderCallback;
 use HeimrichHannot\TwigTemplatesBundle\Event\PrepareTemplateCallback;
 use HeimrichHannot\UtilsBundle\Accordion\AccordionUtil;
+use HeimrichHannot\UtilsBundle\String\StringUtil;
 
 class Bootstrap4Framework implements FrontendFrameworkInterface
 {
@@ -26,14 +27,19 @@ class Bootstrap4Framework implements FrontendFrameworkInterface
      * @var TwigTemplateLocator
      */
     protected $templateLocator;
+    /**
+     * @var StringUtil
+     */
+    protected $stringUtil;
 
     /**
      * Bootstrap4Framework constructor.
      */
-    public function __construct(AccordionUtil $accordionUtil, TwigTemplateLocator $templateLocator)
+    public function __construct(AccordionUtil $accordionUtil, TwigTemplateLocator $templateLocator, StringUtil $stringUtil)
     {
         $this->accordionUtil = $accordionUtil;
         $this->templateLocator = $templateLocator;
+        $this->stringUtil = $stringUtil;
     }
 
     public static function getIdentifier(): string
@@ -82,17 +88,11 @@ class Bootstrap4Framework implements FrontendFrameworkInterface
     protected function prepareAccordions(string &$templateName, array &$data)
     {
         // prepare template data for bootstrap
-        switch ($templateName) {
-            case 'ce_accordionSingle':
-                $this->accordionUtil->structureAccordionSingle($data);
-
-                break;
-
-            case 'ce_accordionStart':
-            case 'ce_accordionStop':
-                $this->accordionUtil->structureAccordionStartStop($data);
-
-                break;
+        if ($this->stringUtil->startsWith($templateName, 'ce_accordionSingle')) {
+            $this->accordionUtil->structureAccordionSingle($data);
+        } elseif ($this->stringUtil->startsWith($templateName, 'ce_accordionStart') ||
+                  $this->stringUtil->startsWith($templateName, 'ce_accordionStop')) {
+            $this->accordionUtil->structureAccordionStartStop($data);
         }
     }
 }

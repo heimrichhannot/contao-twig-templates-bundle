@@ -1,6 +1,9 @@
 # Changelog
 All notable changes to this project will be documented in this file.
 
+## [2.0.0-beta11] - 2020-11-09
+- fixed Bootstrap4Framework::prepareAccordions to accept custom template names
+
 ## [2.0.0-beta10] - 2020-11-09
 - fixes for contao 4.4
 
