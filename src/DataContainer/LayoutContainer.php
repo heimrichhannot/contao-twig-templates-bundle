@@ -9,13 +9,13 @@
 namespace HeimrichHannot\TwigTemplatesBundle\DataContainer;
 
 use HeimrichHannot\TwigTemplatesBundle\FrontendFramework\FrontendFrameworkCollection;
-use Symfony\Contracts\Translation\TranslatorInterface;
+use Symfony\Component\Translation\TranslatorInterface;
 
 class LayoutContainer
 {
-    protected FrontendFrameworkCollection $collection;
+    protected $collection;
 
-    protected TranslatorInterface $translator;
+    protected $translator;
 
     public function __construct(FrontendFrameworkCollection $collection, TranslatorInterface $translator)
     {

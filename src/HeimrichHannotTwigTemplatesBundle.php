@@ -24,6 +24,4 @@ class HeimrichHannotTwigTemplatesBundle extends Bundle
     {
         return new HeimrichHannotTwigTemplatesExtension();
     }
-
-
 }

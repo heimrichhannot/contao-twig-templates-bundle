@@ -1,6 +1,9 @@
 # Changelog
 All notable changes to this project will be documented in this file.
 
+## [2.0.0-beta10] - 2020-11-09
+- fixes for contao 4.4
+
 ## [2.0.0-beta9] - 2020-09-23
 - fixed missing _entity variable in template data
 
