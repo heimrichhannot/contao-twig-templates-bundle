@@ -1,6 +1,9 @@
 # Changelog
 All notable changes to this project will be documented in this file.
 
+## [1.6.3] - 2020-11-13
+- fixed extension not loaded
+
 ## [1.6.2] - 2020-11-09
 - fixed Bootstrap4Framework::prepareAccordions to accept custom templates
 
