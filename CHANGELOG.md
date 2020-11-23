@@ -1,6 +1,9 @@
 # Changelog
 All notable changes to this project will be documented in this file.
 
+## [1.6.4] - 2020-11-23
+- fixed problems when used together with twig support bundle
+
 ## [1.6.3] - 2020-11-13
 - fixed extension not loaded
 

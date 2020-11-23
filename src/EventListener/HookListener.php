@@ -14,6 +14,7 @@ use Contao\System;
 use Contao\Template;
 use Contao\TemplateLoader;
 use Contao\Widget;
+use HeimrichHannot\TwigSupportBundle\EventListener\RenderListener;
 use HeimrichHannot\TwigTemplatesBundle\Event\PrepareTemplateCallback;
 use HeimrichHannot\TwigTemplatesBundle\FrontendFramework\FrontendFrameworkCollection;
 use HeimrichHannot\TwigTemplatesBundle\FrontendFramework\FrontendFrameworkInterface;
@@ -117,6 +118,11 @@ class HookListener implements ContainerAwareInterface
 
         if ($ampMode || !empty($data['customTpl'])) {
             return false;
+        }
+
+        if ('twig_template_proxy' === $templateName && class_exists("HeimrichHannot\TwigSupportBundle\EventListener\RenderListener")) {
+            $templateName = $data[RenderListener::TWIG_TEMPLATE];
+            $data = $data[RenderListener::TWIG_CONTEXT];
         }
 
         $path = null;

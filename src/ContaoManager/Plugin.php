@@ -26,6 +26,7 @@ class Plugin implements BundlePluginInterface, ConfigPluginInterface
         return [
             BundleConfig::create(ContaoTwigTemplatesBundle::class)->setLoadAfter([
                 ContaoCoreBundle::class,
+                "HeimrichHannot\TwigSupportBundle\HeimrichHannotTwigSupportBundle",
             ]),
         ];
     }
