@@ -12,12 +12,10 @@ use Contao\CoreBundle\ContaoCoreBundle;
 use Contao\ManagerPlugin\Bundle\BundlePluginInterface;
 use Contao\ManagerPlugin\Bundle\Config\BundleConfig;
 use Contao\ManagerPlugin\Bundle\Parser\ParserInterface;
-use Contao\ManagerPlugin\Config\ConfigPluginInterface;
 use HeimrichHannot\TwigSupportBundle\HeimrichHannotTwigSupportBundle;
 use HeimrichHannot\TwigTemplatesBundle\HeimrichHannotTwigTemplatesBundle;
-use Symfony\Component\Config\Loader\LoaderInterface;
 
-class Plugin implements BundlePluginInterface, ConfigPluginInterface
+class Plugin implements BundlePluginInterface
 {
     /**
      * {@inheritdoc}
@@ -31,13 +29,5 @@ class Plugin implements BundlePluginInterface, ConfigPluginInterface
                 'formhybrid',
             ]),
         ];
-    }
-
-    /**
-     * Allows a plugin to load container configuration.
-     */
-    public function registerContainerConfiguration(LoaderInterface $loader, array $managerConfig)
-    {
-        $loader->load('@HeimrichHannotTwigTemplatesBundle/Resources/config/services.yml');
     }
 }
