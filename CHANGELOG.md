@@ -1,7 +1,7 @@
 # Changelog
 All notable changes to this project will be documented in this file.
 
-## [2.0.0-DEV] - 2020-12-03
+## [2.0.0] - 2020-12-03
 - moved service loading to Extension class
 
 ## [2.0.0-beta11] - 2020-11-09
