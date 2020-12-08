@@ -1,6 +1,9 @@
 # Changelog
 All notable changes to this project will be documented in this file.
 
+## [2.0.1] - 2020-12-08
+- add raw to cssId in unsearchable block template
+
 ## [2.0.0] - 2020-12-03
 - moved service loading to Extension class
 
