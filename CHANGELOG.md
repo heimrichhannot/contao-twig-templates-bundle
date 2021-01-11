@@ -1,6 +1,9 @@
 # Changelog
 All notable changes to this project will be documented in this file.
 
+## [1.6.5] - 2021-01-11
+- fixed wrong widget template used when twig support bundle template loader is activated
+
 ## [1.6.4] - 2020-11-23
 - fixed problems when used together with twig support bundle
 

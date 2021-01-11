@@ -1,7 +1,7 @@
 <?php
 
 /*
- * Copyright (c) 2020 Heimrich & Hannot GmbH
+ * Copyright (c) 2021 Heimrich & Hannot GmbH
  *
  * @license LGPL-3.0-or-later
  */
@@ -84,6 +84,11 @@ class HookListener implements ContainerAwareInterface
                 'ignorePropertyVisibility' => true,
             ]
         );
+
+        if ('twig_template_proxy' === $widget->template && class_exists("HeimrichHannot\TwigSupportBundle\EventListener\RenderListener") && $widget->{RenderListener::TWIG_TEMPLATE}) {
+            $data[RenderListener::TWIG_TEMPLATE] = $widget->{RenderListener::TWIG_TEMPLATE};
+            $data[RenderListener::TWIG_CONTEXT] = $widget->{RenderListener::TWIG_CONTEXT};
+        }
 
         $result = $this->applyTwigTemplate($widget->template, $data);
 
