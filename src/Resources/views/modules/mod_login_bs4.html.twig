@@ -15,7 +15,7 @@
         <input type="hidden" name="_target_path" value="{{ targetPath|default }}">
 
         {% if logout|default %}
-            <p class="login_info">{{ loggedInAs }}{{ lastLogin|default() ? '<br>' ~ lastLogin : '' }}</p>
+            <p class="login_info">{{ loggedInAs }}{{ (lastLogin|default() ? '<br>' ~ lastLogin : '') | raw }}</p>
         {% else %}
             <input type="hidden" name="_failure_path" value="{{ failurePath|default }}">
             <input type="hidden" name="_always_use_target_path" value="{{ forceTargetPath|default }}">

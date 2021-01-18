@@ -16,7 +16,7 @@
 
         {% if logout|default %}
             {% block loginInfo %}
-            <p class="login_info">{{ loggedInAs|default }}{{ lastLogin|default ? '<br>' ~ lastLogin : '' }}</p>
+            <p class="login_info">{{ loggedInAs|default }}{{ (lastLogin|default ? '<br>' ~ lastLogin : '') | raw }}</p>
             {% endblock %}
         {% else %}
             <input type="hidden" name="_failure_path" value="{{ failurePath|default }}">
