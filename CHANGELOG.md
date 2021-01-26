@@ -1,6 +1,9 @@
 # Changelog
 All notable changes to this project will be documented in this file.
 
+## [2.0.3] - 2021-01-26
+- fixed custom controls for bs4
+
 ## [2.0.2] - 2021-01-18
 - add raw to logged in message
 
