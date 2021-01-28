@@ -1,6 +1,9 @@
 # Changelog
 All notable changes to this project will be documented in this file.
 
+## [2.0.4] - 2021-01-26
+- added bs4 version of mod_password template
+
 ## [2.0.3] - 2021-01-26
 - fixed custom controls for bs4
 
