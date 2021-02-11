@@ -15,3 +15,9 @@ services:
   HeimrichHannot\TwigTemplatesBundle\EventListener\GetAttributesFromDcaListener:
     public: true
     autowire: true
+
+  HeimrichHannot\TwigTemplatesBundle\EventListener\BeforeRenderTwigTemplateEventListener:
+    public: true
+    autowire: true
+    tags:
+      - { name: kernel.event_listener, event: huh.twig_support.before_render_twig_template, method: '__invoke' }

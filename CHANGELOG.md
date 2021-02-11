@@ -1,6 +1,9 @@
 # Changelog
 All notable changes to this project will be documented in this file.
 
+## [1.6.6] - 2021-02-11
+- fixed _entity variable to be added to template
+
 ## [1.6.5] - 2021-01-11
 - fixed wrong widget template used when twig support bundle template loader is activated
 
