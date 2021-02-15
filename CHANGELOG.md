@@ -1,6 +1,9 @@
 # Changelog
 All notable changes to this project will be documented in this file.
 
+## [2.0.5] - 2021-02-15
+- fixed tag
+
 ## [2.0.4] - 2021-01-26
 - added bs4 version of mod_password template
 
