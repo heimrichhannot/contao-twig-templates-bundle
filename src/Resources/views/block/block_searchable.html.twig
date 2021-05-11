@@ -1,8 +1,6 @@
 <div class="{{ class }} block"{{ cssID|default|raw }}{% if style|default() %} style="{{ style }}"{% endif %}>
     {% block headline %}
-        {% if headline|default() %}
-            <{{ hl|default('h1') }}>{{ headline|raw }}</{{ hl|default('h1') }}>
-        {% endif %}
+        {{ include('@HeimrichHannotTwigTemplates/partials/_headline.html.twig') }}
     {% endblock %}
 
     {% block content %}

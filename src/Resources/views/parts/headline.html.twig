@@ -1,3 +1,1 @@
-{% if headline|default %}
-    <{{ hl|default('h1') }}>{{ headline }}</{{ hl|default('h1') }}>
-{% endif %}
+{{ include('@HeimrichHannotTwigTemplates/partials/_headline.html.twig') }}

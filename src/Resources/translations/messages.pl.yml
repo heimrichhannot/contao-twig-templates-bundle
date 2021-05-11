@@ -6,8 +6,7 @@ huh.twig.templates:
     password_confirm: Potwierdź hasło
   framework:
     contao: "Contao"
-    bs3: "Bootstrap 3"
     bs4: "Bootstrap 4"
-
+    bs5: "Bootstrap 5"
 # aria-label
 huh.twig.teplates.button.submit.aria-label: wyślij ten formularz

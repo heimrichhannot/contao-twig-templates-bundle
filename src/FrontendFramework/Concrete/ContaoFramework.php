@@ -6,12 +6,13 @@
  * @license LGPL-3.0-or-later
  */
 
-namespace HeimrichHannot\TwigTemplatesBundle\FrontendFramework;
+namespace HeimrichHannot\TwigTemplatesBundle\FrontendFramework\Concrete;
 
 use HeimrichHannot\TwigTemplatesBundle\Event\BeforeRenderCallback;
 use HeimrichHannot\TwigTemplatesBundle\Event\PrepareTemplateCallback;
+use HeimrichHannot\TwigTemplatesBundle\FrontendFramework\AbstractFrontendFramework;
 
-class ContaoFramework implements FrontendFrameworkInterface
+class ContaoFramework extends AbstractFrontendFramework
 {
     public static function getIdentifier(): string
     {
