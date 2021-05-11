@@ -6,8 +6,8 @@ huh.twig.templates:
     password_confirm: Passwort bestätigen
   framework:
     contao: Contao
-    bs3: Bootstrap 3
-    bs4: Bootstrap 4
+    bs4: "Bootstrap 4"
+    bs5: "Bootstrap 5"
   placeholder:
     date: Bitte Datum im Format "{format}" eingeben
     time: Bitte Uhrzeit im Format "{format}" eingeben

@@ -6,8 +6,8 @@ services:
     resource: "../../{DataContainer,EventListener}/*"
     public: true
 
-  HeimrichHannot\TwigTemplatesBundle\FrontendFramework\:
-    resource: "../../FrontendFramework/*"
+  HeimrichHannot\TwigTemplatesBundle\FrontendFramework\Concrete\:
+    resource: "../../FrontendFramework/Concrete/*"
     tags: ['huh.contao_twig_templates.framework']
 
   HeimrichHannot\TwigTemplatesBundle\EventListener\RenderListener:
