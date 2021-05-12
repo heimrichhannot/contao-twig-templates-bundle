@@ -1,6 +1,10 @@
 # Changelog
 All notable changes to this project will be documented in this file.
 
+## [2.1.0] - 2021-05-12
+- added AbstractFrontendFramework to prevent repeating code
+- corrected license file
+
 ## [2.0.6] - 2021-05-10
 - allow twig support bundle ^1.0
 

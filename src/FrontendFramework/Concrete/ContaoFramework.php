@@ -19,11 +19,6 @@ class ContaoFramework extends AbstractFrontendFramework
         return 'contao';
     }
 
-    public static function getLabel(): string
-    {
-        return 'huh.twig.templates.framework.contao';
-    }
-
     public function prepare(PrepareTemplateCallback $callback): PrepareTemplateCallback
     {
         return $callback;
