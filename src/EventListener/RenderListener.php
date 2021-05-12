@@ -15,9 +15,8 @@ use HeimrichHannot\TwigSupportBundle\Event\BeforeRenderTwigTemplateEvent;
 use HeimrichHannot\TwigSupportBundle\Exception\TemplateNotFoundException;
 use HeimrichHannot\TwigSupportBundle\Filesystem\TwigTemplateLocator;
 use HeimrichHannot\TwigTemplatesBundle\Event\BeforeRenderCallback;
-use HeimrichHannot\TwigTemplatesBundle\Event\BeforeRenderTwigTemplateEvent as OnBeforeRenderTwigTemplateEvent;
 use HeimrichHannot\TwigTemplatesBundle\Event\PrepareTemplateCallback;
-use HeimrichHannot\TwigTemplatesBundle\FrontendFramework\ContaoFramework;
+use HeimrichHannot\TwigTemplatesBundle\FrontendFramework\Concrete\ContaoFramework;
 use HeimrichHannot\TwigTemplatesBundle\FrontendFramework\FrontendFrameworkCollection;
 use HeimrichHannot\TwigTemplatesBundle\FrontendFramework\FrontendFrameworkInterface;
 use HeimrichHannot\UtilsBundle\Container\ContainerUtil;
@@ -26,9 +25,6 @@ use Symfony\Component\EventDispatcher\EventDispatcherInterface;
 
 class RenderListener
 {
-    const TWIG_TEMPLATE = 'twig_template';
-    const TWIG_CONTEXT = 'twig_context';
-
     /**
      * @var ContainerUtil
      */
@@ -108,23 +104,13 @@ class RenderListener
             new BeforeRenderCallback($event->getTemplateName(), $data, $event->getContaoTemplate(), $layout)
         );
 
-        /** @var BeforeRenderTwigTemplateEvent $event */
-        $beforeEvent = $this->eventDispatcher->dispatch(
-            OnBeforeRenderTwigTemplateEvent::NAME,
-            new OnBeforeRenderTwigTemplateEvent(
-                $callback->getTwigTemplateName(),
-                $callback->getTwigTemplateContext(),
-                $event->getContaoTemplate()
-            )
-        );
-
-        if ($event->getTemplateName() !== $beforeEvent->getTemplateName()) {
+        if ($event->getTemplateName() !== $callback->getTwigTemplateName()) {
             try {
-                $event->setTwigTemplatePath($this->templateLocator->getTemplatePath($beforeEvent->getTemplateName()));
+                $event->setTwigTemplatePath($this->templateLocator->getTemplatePath($callback->getTwigTemplateName()));
             } catch (TemplateNotFoundException $e) {
             }
         }
-        $event->setTemplateData($beforeEvent->getTemplateData());
+        $event->setTemplateData($callback->getTwigTemplateContext());
     }
 
     protected function isTerminationCondition(?LayoutModel $layoutModel): bool
@@ -200,8 +186,6 @@ class RenderListener
      */
     protected function applyTwigTemplate(string $templateName, array $data)
     {
-        $path = null;
-
         if (!$layout = $this->getLayout()) {
             return false;
         }

@@ -4,6 +4,7 @@ All notable changes to this project will be documented in this file.
 ## [3.0.0-DEV] - 2021-05-12
 - bootstrap 4 framework moved to [own bundle](https://github.com/heimrichhannot/contao-twig-templates-bootstrap4-bundle)
 - removed support for ContaoTwigTemplates alias twig path
+- removed deprecated BeforeRenderTwigTemplateEvent
 - raised minimum contao version to 4.9
 - raised minimum twig support bundle dependency to 1.1
 

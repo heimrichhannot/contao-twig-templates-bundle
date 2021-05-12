@@ -6,13 +6,20 @@
  * @license LGPL-3.0-or-later
  */
 
-namespace HeimrichHannot\TwigTemplatesBundle\EventListener;
+namespace HeimrichHannot\TwigTemplatesBundle\EventListener\Contao;
 
 use Contao\Config;
+use Contao\CoreBundle\ServiceAnnotation\Hook;
 use HeimrichHannot\UtilsBundle\Container\ContainerUtil;
 use HeimrichHannot\UtilsBundle\Date\DateUtil;
-use Symfony\Component\Translation\TranslatorInterface;
+use Symfony\Contracts\Translation\TranslatorInterface;
 
+/**
+ * Class GetAttributesFromDcaListener
+ * @package HeimrichHannot\TwigTemplatesBundle\EventListener\Contao
+ *
+ * @Hook("getAttributesFromDca")
+ */
 class GetAttributesFromDcaListener
 {
     /**

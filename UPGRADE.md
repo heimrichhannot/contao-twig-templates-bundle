@@ -3,6 +3,7 @@
 ## Version 2.* to 3.0
 - removed bundled bootstrap 4 framework (is now available as extension)
 - removed support for ContaoTwigTemplates alias twig path (use HeimrichHannotTwigTemplates instead)
+- removed deprecated BeforeRenderTwigTemplateEvent (Use \HeimrichHannot\TwigSupportBundle\Event\BeforeParseTwigTemplateEvent instead)
 - minimum contao version is 4.9
 - minimum twig support bundle is 1.1
 
