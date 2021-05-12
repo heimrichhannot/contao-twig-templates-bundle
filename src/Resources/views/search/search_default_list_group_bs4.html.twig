@@ -1,7 +1,0 @@
-<a href="{{ href }}" title="{{ title }}" class="list-group-item list-group-item-action flex-column align-items-start">
-    <h3 class="mb-1">{{ link }} <small class="relevance text-muted">[{{ relevance }}]</small></h3>
-    <small class="url text-success mb-2">{{ url }}<span class="filesize"> - {{ filesize }} kB</span></small>
-    {% if(context) %}
-        <span class="d-inline-block context text-body">{{ context|raw }}</span>
-    {% endif %}
-</a>

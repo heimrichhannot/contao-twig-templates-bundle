@@ -1,7 +1,0 @@
-{% extends '@HeimrichHannotTwigTemplates/forms/form_row_bs4.html.twig' %}
-
-{% block field %}
-<button type="submit" id="ctrl_{{ strId }}" class="btn btn-primary {{ strClass }}" aria-label="{{ 'huh.twig.teplates.button.submit.aria-label'|trans }}" {{ attributes|default()|raw }}>
-    {% if arrConfiguration.slabel is defined and arrConfiguration.slabel is not empty %}{{ arrConfiguration.slabel }}{% else %}{% trans %}huh.twig.templates.label.submit{% endtrans %}{% endif %}
-</button>
-{% endblock %}
