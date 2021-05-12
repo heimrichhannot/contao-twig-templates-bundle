@@ -1,6 +1,9 @@
 # Changelog
 All notable changes to this project will be documented in this file.
 
+## [2.1.1] - 2021-05-12
+- fixed issue in Bootstrap4Framework class
+
 ## [2.1.0] - 2021-05-12
 - added AbstractFrontendFramework to prevent repeating code
 - corrected license file

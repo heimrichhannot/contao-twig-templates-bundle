@@ -42,9 +42,9 @@ class Bootstrap4Framework extends AbstractFrontendFramework
         $this->stringUtil = $stringUtil;
     }
 
-    public static function getLabel(): string
+    public static function getIdentifier(): string
     {
-        return 'huh.twig.templates.framework.bs4';
+        return 'bs4';
     }
 
     public function prepare(PrepareTemplateCallback $callback): PrepareTemplateCallback
