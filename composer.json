@@ -5,9 +5,9 @@
   "license": "LGPL-3.0-or-later",
   "require": {
     "php": "^7.2",
-    "contao/core-bundle": "^4.4",
+    "contao/core-bundle": "^4.9",
     "heimrichhannot/contao-utils-bundle": "^2.100",
-    "heimrichhannot/contao-twig-support-bundle": "^0.2.1|^1.0"
+    "heimrichhannot/contao-twig-support-bundle": "^1.1"
   },
   "require-dev": {
     "contao/test-case": "1.1.*",
