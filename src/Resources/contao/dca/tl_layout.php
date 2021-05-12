@@ -36,7 +36,6 @@ $dca['fields']['ttFramework'] = [
     'label' => &$GLOBALS['TL_LANG']['tl_layout']['ttFramework'],
     'exclude' => true,
     'inputType' => 'select',
-    'options_callback' => [\HeimrichHannot\TwigTemplatesBundle\DataContainer\LayoutContainer::class, 'onTtFrameworkOptionsCallback'],
     'eval' => ['includeBlankOption' => true, 'submitOnChange' => true, 'tl_class' => 'w50 clr'],
     'sql' => "varchar(64) NOT NULL default ''",
 ];

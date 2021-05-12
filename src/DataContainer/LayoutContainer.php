@@ -8,6 +8,7 @@
 
 namespace HeimrichHannot\TwigTemplatesBundle\DataContainer;
 
+use Contao\CoreBundle\ServiceAnnotation\Callback;
 use HeimrichHannot\TwigTemplatesBundle\FrontendFramework\FrontendFrameworkCollection;
 use Symfony\Component\Translation\TranslatorInterface;
 
@@ -27,6 +28,8 @@ class LayoutContainer
      * Returns all registered frameworks as one-dimensional array for options_callback.
      *
      * @return array
+     *
+     * @Callback(table="tl_layout", target="fields.ttFramework.options")
      */
     public function onTtFrameworkOptionsCallback()
     {
