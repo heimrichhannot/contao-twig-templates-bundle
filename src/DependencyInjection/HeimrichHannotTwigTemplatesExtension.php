@@ -28,8 +28,5 @@ class HeimrichHannotTwigTemplatesExtension extends Extension implements PrependE
     public function prepend(ContainerBuilder $container)
     {
         $container->prependExtensionConfig('huh_twig_support', ['enable_template_loader' => true]);
-        $container->prependExtensionConfig('twig', ['paths' => [
-            '%kernel.project_dir%/vendor/heimrichhannot/contao-twig-templates-bundle/src/Resources/views' => 'ContaoTwigTemplates',
-        ]]);
     }
 }
