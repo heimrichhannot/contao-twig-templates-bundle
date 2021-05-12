@@ -16,7 +16,7 @@ use HeimrichHannot\TwigTemplatesBundle\Event\PrepareTemplateCallback;
 use HeimrichHannot\UtilsBundle\Accordion\AccordionUtil;
 use HeimrichHannot\UtilsBundle\String\StringUtil;
 
-class Bootstrap4Framework implements FrontendFrameworkInterface
+class Bootstrap4Framework extends AbstractFrontendFramework
 {
     /**
      * @var AccordionUtil
@@ -40,11 +40,6 @@ class Bootstrap4Framework implements FrontendFrameworkInterface
         $this->accordionUtil = $accordionUtil;
         $this->templateLocator = $templateLocator;
         $this->stringUtil = $stringUtil;
-    }
-
-    public static function getIdentifier(): string
-    {
-        return 'bs4';
     }
 
     public static function getLabel(): string
