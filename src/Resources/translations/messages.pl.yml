@@ -7,6 +7,5 @@ huh.twig.templates:
   framework:
     contao: "Contao"
     bs4: "Bootstrap 4"
-    bs5: "Bootstrap 5"
 # aria-label
 huh.twig.teplates.button.submit.aria-label: wyślij ten formularz

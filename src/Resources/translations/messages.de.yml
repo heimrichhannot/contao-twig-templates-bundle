@@ -7,7 +7,6 @@ huh.twig.templates:
   framework:
     contao: Contao
     bs4: "Bootstrap 4"
-    bs5: "Bootstrap 5"
   placeholder:
     date: Bitte Datum im Format "{format}" eingeben
     time: Bitte Uhrzeit im Format "{format}" eingeben
