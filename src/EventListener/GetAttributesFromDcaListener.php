@@ -46,7 +46,11 @@ class GetAttributesFromDcaListener
         }
 
         // add format placeholder for accessibility reasons
-        if ('text' === $attributes['type'] && isset($attributes['rgxp']) && \in_array($attributes['rgxp'], ['datim', 'date', 'time'])) {
+        if ('text' === $attributes['type']
+            && isset($attributes['rgxp'])
+            && \in_array($attributes['rgxp'], ['datim', 'date', 'time'])
+            && (!$attributes['placeholder'] || '' === $attributes['placeholder'])
+        ) {
             $attributes['placeholder'] = $this->translator->trans('huh.twig.templates.placeholder.'.$attributes['rgxp'], [
                 '{format}' => $this->dateUtil->transformPhpDateFormatToISO8601(Config::get($attributes['rgxp'].'Format')),
             ]);

@@ -1,6 +1,9 @@
 # Changelog
 All notable changes to this project will be documented in this file.
 
+## [2.1.2] - 2021-05-18
+- fixed GetAttributesFromDcaListener to add placeholder only if its not set in dca
+
 ## [2.1.1] - 2021-05-12
 - fixed issue in Bootstrap4Framework class
 
