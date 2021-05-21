@@ -1,6 +1,9 @@
 # Changelog
 All notable changes to this project will be documented in this file.
 
+## [2.1.5] - 2021-05-21
+- fixed `message.html.twig`
+
 ## [2.1.4] - 2021-05-21
 - fixed `form_password.html.twig`
 
