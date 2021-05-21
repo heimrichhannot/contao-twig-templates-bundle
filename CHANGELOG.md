@@ -1,6 +1,9 @@
 # Changelog
 All notable changes to this project will be documented in this file.
 
+## [2.1.4] - 2021-05-21
+- fixed `form_password.html.twig`
+
 ## [2.1.3] - 2021-05-21
 - fixed `member_grouped.html.twig`
 
