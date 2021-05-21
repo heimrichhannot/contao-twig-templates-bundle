@@ -1,24 +1,19 @@
 <!-- indexer::stop -->
-<div class="{{ class|default }} block"{{ cssID|default }}{{ style|default ? ' class="' ~ style ~ '"' }>
-
+<div class="{{ class|default }} block"{{ cssID|default }}{{ style|default ? ' class="' ~ style ~ '"' }}>
     {% include '@HeimrichHannotTwigTemplates/parts/headline.html.twig' %}
     {% include '@HeimrichHannotTwigTemplates/parts/message.html.twig' %}
 
-    <form{{{ action|default ? ' action="' ~ action ~ '"' }} id="{{ formId|default }}" method="post" enctype="{{ enctype|default }}">
+    <form id="{{ formId|default }}" method="post" enctype="{{ enctype|default }}">
         <div class="formbody">
             <input type="hidden" name="FORM_SUBMIT" value="{{ formId|default }}">
             <input type="hidden" name="REQUEST_TOKEN" value="{{ '{{request_token}}' }}">
-            <div class="fields">
-                <?= $this->fields ?>
-            </div>
 
-            {% for category in categories|default %}
-                {% if category %}
-                    <fieldset>
-                        <legend>{{ legend|default }}</legend>
-                        {{ category|join('')|raw }}
-                    </fieldset>
+            {% for legend, category in categories|default %}
+                {% if legend|default %}
+                    <legend>{{ legend }}</legend>
                 {% endif %}
+
+                {{ category|join('')|raw }}
             {% endfor %}
 
             <div class="widget widget-submit">
@@ -26,6 +21,5 @@
             </div>
         </div>
     </form>
-
 </div>
 <!-- indexer::continue -->

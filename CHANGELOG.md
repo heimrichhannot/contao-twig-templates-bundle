@@ -1,6 +1,9 @@
 # Changelog
 All notable changes to this project will be documented in this file.
 
+## [2.1.3] - 2021-05-21
+- fixed `member_grouped.html.twig`
+
 ## [2.1.2] - 2021-05-18
 - fixed GetAttributesFromDcaListener to add placeholder only if its not set in dca
 
