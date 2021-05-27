@@ -20,6 +20,11 @@ class TwigTemplatesExtension extends AbstractExtension
         ];
     }
 
+    /**
+     * @return mixed
+     *
+     * @deprecated Use app.request.locale instead. Will be removed in next version 3.0
+     */
     public function getCurrentLanguage()
     {
         return $GLOBALS['TL_LANGUAGE'];

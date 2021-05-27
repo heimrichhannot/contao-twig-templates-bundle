@@ -1,6 +1,9 @@
 # Changelog
 All notable changes to this project will be documented in this file.
 
+## [2.1.6] - 2021-05-27
+- deprecated getCurrentLanguage function, use app.request.locale instead
+
 ## [2.1.5] - 2021-05-21
 - fixed `message.html.twig`
 

@@ -19,6 +19,7 @@ Install via composer: `composer require heimrichhannot/contao-twig-templates-bun
 
 Available (known) extensions:
 * [Bootstrap 3](https://github.com/heimrichhannot/contao-twig-templates-bootstrap3-bundle)
+* [Bootstrap 5](https://github.com/heimrichhannot/contao-twig-templates-bootstrap5-bundle)
 
 ## Usage
 
