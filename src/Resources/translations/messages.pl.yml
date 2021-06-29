@@ -3,11 +3,14 @@ huh.twig.templates:
   label:
     mandatory: Pole obowiązkowe
     submit: Wyślij
-    password_confirm: Potwierdź hasło
+    password_confirm: Powtórz hasło
   framework:
-    contao: "Contao"
-    bs3: "Bootstrap 3"
-    bs4: "Bootstrap 4"
-
-# aria-label
-huh.twig.teplates.button.submit.aria-label: wyślij ten formularz
+    contao: Contao
+    bs3: Bootstrap 3
+    bs4: Bootstrap 4
+  placeholder:
+    date: Wprowadź datę w formacie "{format}"
+    time: Wprowadź godzinę w formacie "{format}"
+    datim: Wprowadź datę i godzinę w formacie "{format}"
+    # aria-label
+huh.twig.teplates.button.submit.aria-label: Wyślij formularz
