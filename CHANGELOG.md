@@ -2,6 +2,10 @@
 
 All notable changes to this project will be documented in this file.
 
+## [2.2.1] - 2021-08-17
+
+- Fixed: added missing error class to form_checkbox and form_radio templates
+
 ## [2.2.0] - 2021-06-29
 
 - added Polish translations

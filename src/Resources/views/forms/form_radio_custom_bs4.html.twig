@@ -2,7 +2,7 @@
 
 {% block option %}
     <div class="custom-control custom-radio {% if arrConfiguration.inline|default(false) %}custom-control-inline{% endif %}">
-        <input class="custom-control-input{% if(hasErrors|default(false)) %} is-invalid{% endif %}" type="radio" value="{{ option.value }}"{{ option.checked }} name="{{ strName }}" id="opt_{{ strId }}_{{ counter }}" {{ attributes|default()|raw }} {% if arrConfiguration.disabled|default(false) %} disabled{% endif %}>
+        <input class="custom-control-input{% if(hasErrors|default(false)) %} is-invalid error{% endif %}" type="radio" value="{{ option.value }}"{{ option.checked }} name="{{ strName }}" id="opt_{{ strId }}_{{ counter }}" {{ attributes|default()|raw }} {% if arrConfiguration.disabled|default(false) %} disabled{% endif %}>
         <label class="custom-control-label" for="opt_{{ strId }}_{{ counter }}">{{ option.label|raw }}</label>
 
         {% if loop.last and not arrConfiguration.inline|default(false)%}
