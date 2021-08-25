@@ -2,6 +2,10 @@
 
 All notable changes to this project will be documented in this file.
 
+## [2.2.2] - 2021-08-25
+
+- Fixed: added missing `|raw` filters for form inputs
+
 ## [2.2.1] - 2021-08-17
 
 - Fixed: added missing error class to form_checkbox and form_radio templates

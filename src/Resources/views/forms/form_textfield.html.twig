@@ -16,5 +16,5 @@
     {% if hasErrors|default(false) %}
         <p class="error">{{ errorAsString|default(null) }}</p>
     {% endif %}
-    <input type="{{ arrConfiguration.type|default('text') }}" name="{{ strName }}" id="ctrl_{{ strId }}" class="text{% if hideInput|default %}{{ password }}{% endif %}{% if strClass|default %} {{ strClass }}{% endif %}" value="{{ varValue|default() }}" {{ attributes|default()|raw }}>
+    <input type="{{ arrConfiguration.type|default('text') }}" name="{{ strName }}" id="ctrl_{{ strId }}" class="text{% if hideInput|default %}{{ password }}{% endif %}{% if strClass|default %} {{ strClass }}{% endif %}" value="{{ varValue|default()|raw }}" {{ attributes|default()|raw }}>
 {% endblock %}

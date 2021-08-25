@@ -17,5 +17,5 @@
         <p class="error">{{ errorAsString|default(null) }}</p>
     {% endif %}
 
-    <textarea name="{{ strName }}" id="ctrl_{{ strId }}" class="textarea{% if strClass %} {{ strClass }}{% endif %}" rows="{{ intRows|default(3) }}" cols="{{ intCols|default(3) }}"{{ attributes|default()|raw }}>{{ varValue|default() }}</textarea>
+    <textarea name="{{ strName }}" id="ctrl_{{ strId }}" class="textarea{% if strClass %} {{ strClass }}{% endif %}" rows="{{ intRows|default(3) }}" cols="{{ intCols|default(3) }}"{{ attributes|default()|raw }}>{{ varValue|default()|raw }}</textarea>
 {% endblock %}

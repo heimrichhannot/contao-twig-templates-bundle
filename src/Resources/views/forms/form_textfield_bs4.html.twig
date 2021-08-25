@@ -1,5 +1,5 @@
 {% extends '@HeimrichHannotTwigTemplates/forms/form_row_bs4.html.twig' %}
 
 {% block field %}
-    <input type="{{ _entity.type }}" name="{{ strName }}" id="ctrl_{{ strId }}" class="form-control {{ strClass }}" value="{{ varValue|default() }}" {{ attributes|default()|raw }} {{ arrConfiguration.placeholder|default|raw }}>
+    <input type="{{ _entity.type }}" name="{{ strName }}" id="ctrl_{{ strId }}" class="form-control {{ strClass }}" value="{{ varValue|default()|raw }}" {{ attributes|default()|raw }} {{ arrConfiguration.placeholder|default|raw }}>
 {% endblock %}
