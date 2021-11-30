@@ -2,6 +2,10 @@
 
 All notable changes to this project will be documented in this file.
 
+## [2.3.1] - 2021-11-30
+
+- Fixed: added missing `|raw` filter at `ce_headline.html.twig`
+
 ## [2.3.0] - 2021-08-31
 
 - Added: support for php 8
