@@ -2,7 +2,7 @@
 
 All notable changes to this project will be documented in this file.
 
-## [2.3.1] - 2022-01-12
+## [2.3.2] - 2022-01-12
 - Fixed: link attributes for gallery_default templates
 
 ## [2.3.1] - 2021-11-30
