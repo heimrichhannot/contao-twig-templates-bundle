@@ -4,7 +4,7 @@
             {% if image.singleSRC|default %}
                 <div class="col-12 col-sm-6 col-md-4 col-lg-3 {{ class|default }}">
                     {% if image.href|default %}
-                    <a href="{{ image.href }}" target="_blank">
+                    <a href="{{ image.href }}" {% if linkTitle|default() %} title="{{ linkTitle }}"{% endif %}{% if target|default() %} target="_blank"{% endif %} {{ attributes|default()|raw }} {{ linkAttributes|default()|raw }}>
                         {% endif %}
                         <figure class="image_container">
                             {{ include('@HeimrichHannotContaoUtils/picture.html.twig', image.picture) }}
