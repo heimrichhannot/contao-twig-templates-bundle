@@ -2,6 +2,9 @@
 
 All notable changes to this project will be documented in this file.
 
+## [2.3.3] - 2022-01-13
+- Fixed: missing link title in gallery
+
 ## [2.3.2] - 2022-01-12
 - Fixed: link attributes for gallery_default templates
 
