@@ -2,10 +2,18 @@
 
 All notable changes to this project will be documented in this file.
 
+## [2.4.0] - 2022-02-09
+
+- Changed: minimum contao version is now 4.9
+- Changed: supported symfony versions are `^4.4||^5.4`
+- Fixed: config for symfony 4+
+
 ## [2.3.3] - 2022-01-13
+
 - Fixed: missing link title in gallery
 
 ## [2.3.2] - 2022-01-12
+
 - Fixed: link attributes for gallery_default templates
 
 ## [2.3.1] - 2021-11-30
