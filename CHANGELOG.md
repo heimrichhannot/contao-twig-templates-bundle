@@ -2,6 +2,10 @@
 
 All notable changes to this project will be documented in this file.
 
+## [2.4.2] - 2022-02-09
+
+- Fixed: type hint
+
 ## [2.4.1] - 2022-02-09
 
 - Fixed: event dispatcher for symfony 4+
