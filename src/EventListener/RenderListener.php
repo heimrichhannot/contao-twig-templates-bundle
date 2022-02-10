@@ -91,7 +91,7 @@ class RenderListener
         $event->setTemplateData($templateData);
     }
 
-    public function onBeforeRenderTwigTemplateEvent($event)
+    public function onBeforeRenderTwigTemplateEvent(BeforeRenderTwigTemplateEvent $event)
     {
         $layout = $this->getLayout();
 

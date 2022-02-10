@@ -2,6 +2,10 @@
 
 All notable changes to this project will be documented in this file.
 
+## [2.4.3] - 2022-02-10
+
+- Fixed: type hint
+
 ## [2.4.2] - 2022-02-09
 
 - Fixed: type hint
