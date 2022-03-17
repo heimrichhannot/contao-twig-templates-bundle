@@ -2,7 +2,7 @@
 <div class="{{ class|default('ce_form') }} block"{{ cssId|default }}{{ style|default ? ' class="' ~ style ~ '"' }}>
     {% include '@HeimrichHannotTwigTemplates/parts/headline.html.twig' %}
     <form{{ action|default ? ' action="' ~ action ~ '"' }} method="{{ method|default('post') }}"
-                                                                  enctype="{{ enctype|default('multipart/form-data') }}"{{ attributes|default }}{{ novalidate|default }}>
+                                                                  enctype="{{ enctype|default('multipart/form-data') }}"{{ attributes|default|raw }}{{ novalidate|default }}>
         <div class="formbody">
             {% if method != 'get' %}
                 <input type="hidden" name="FORM_SUBMIT" value="{{ formSubmit|default }}">

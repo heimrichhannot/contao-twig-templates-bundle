@@ -2,6 +2,11 @@
 
 All notable changes to this project will be documented in this file.
 
+## [2.4.4] - 2022-03-17
+
+- Fixed: added missing `|raw` filter at `form_wrapper_bs4.html.twig` and `form_wrapper.html.twig`
+- Fixed: html markup at `form_wrapper_bs4.html.twig`
+
 ## [2.4.3] - 2022-02-10
 
 - Fixed: type hint
