@@ -4,7 +4,7 @@
     <ul>
         {% for file in files %}
             <li class="download-element ext-{{ file.extension|default }}">
-                <a href="{{ file.href|default }}" title="{{ file.title|default }}">{{ file.link|default }} <span class="size">({{ file.filesize|default }})</span></a>
+                <a href="{{ file.href|default|raw }}" title="{{ file.title|default }}">{{ file.link|default }} <span class="size">({{ file.filesize|default }})</span></a>
             </li>
         {% endfor %}
     </ul>

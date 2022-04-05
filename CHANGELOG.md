@@ -2,6 +2,10 @@
 
 All notable changes to this project will be documented in this file.
 
+## [2.4.4] - 2022-04-05
+
+- Fixed: added missing `|raw` filter to download/s elements
+
 ## [2.4.4] - 2022-03-17
 
 - Fixed: added missing `|raw` filter at `form_wrapper_bs4.html.twig` and `form_wrapper.html.twig`
