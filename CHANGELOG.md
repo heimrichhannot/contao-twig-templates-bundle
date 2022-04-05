@@ -2,7 +2,7 @@
 
 All notable changes to this project will be documented in this file.
 
-## [2.4.4] - 2022-04-05
+## [2.4.5] - 2022-04-05
 
 - Fixed: added missing `|raw` filter to download/s elements
 
