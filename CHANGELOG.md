@@ -2,6 +2,10 @@
 
 All notable changes to this project will be documented in this file.
 
+## [2.4.6] - 2022-05-09
+
+- Fixed: added missing `|default` at `block_searchable.html.twig` and `block_unsearchable.html.twig` 
+
 ## [2.4.5] - 2022-04-05
 
 - Fixed: added missing `|raw` filter to download/s elements

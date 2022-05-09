@@ -1,6 +1,6 @@
 
 <!-- indexer::stop -->
-<div class="{{ class }} block"{{ cssID|default|raw }}{% if style|default() %} style="{{ style }}"{% endif %}>
+<div class="{{ class|default() }} block"{{ cssID|default|raw }}{% if style|default() %} style="{{ style }}"{% endif %}>
     {% block headline %}
         {% if headline|default() %}
             <{{ hl|default('h1') }}>{{ headline }}</{{ hl|default('h1') }}>
