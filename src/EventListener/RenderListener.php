@@ -20,8 +20,7 @@ use HeimrichHannot\TwigTemplatesBundle\Event\PrepareTemplateCallback;
 use HeimrichHannot\TwigTemplatesBundle\FrontendFramework\ContaoFramework;
 use HeimrichHannot\TwigTemplatesBundle\FrontendFramework\FrontendFrameworkCollection;
 use HeimrichHannot\TwigTemplatesBundle\FrontendFramework\FrontendFrameworkInterface;
-use HeimrichHannot\UtilsBundle\Container\ContainerUtil;
-use HeimrichHannot\UtilsBundle\Model\ModelUtil;
+use HeimrichHannot\UtilsBundle\Util\Utils;
 use Symfony\Component\EventDispatcher\EventDispatcherInterface;
 
 class RenderListener
@@ -29,10 +28,6 @@ class RenderListener
     const TWIG_TEMPLATE = 'twig_template';
     const TWIG_CONTEXT = 'twig_context';
 
-    /**
-     * @var ContainerUtil
-     */
-    protected $containerUtil;
     /**
      * @var LayoutModel|null
      */
@@ -58,24 +53,21 @@ class RenderListener
      */
     protected $eventDispatcher;
     /**
-     * @var ModelUtil
-     */
-    protected $modelUtil;
-    /**
      * @var TwigTemplateLocator
      */
     protected $templateLocator;
+    /** @var Utils */
+    private $utils;
 
     /**
      * RenderListener constructor.
      */
-    public function __construct(ContainerUtil $containerUtil, FrontendFrameworkCollection $frontendFrameworkCollection, EventDispatcherInterface $eventDispatcher, ModelUtil $modelUtil, TwigTemplateLocator $templateLocator)
+    public function __construct(FrontendFrameworkCollection $frontendFrameworkCollection, EventDispatcherInterface $eventDispatcher, TwigTemplateLocator $templateLocator, Utils $utils)
     {
-        $this->containerUtil = $containerUtil;
         $this->frontendFrameworkCollection = $frontendFrameworkCollection;
         $this->eventDispatcher = $eventDispatcher;
-        $this->modelUtil = $modelUtil;
         $this->templateLocator = $templateLocator;
+        $this->utils = $utils;
     }
 
     public function onBeforeParseTwigTemplateEvent(BeforeParseTwigTemplateEvent $event)
@@ -134,7 +126,7 @@ class RenderListener
         }
         $this->terminationCondition = false;
 
-        if (!$this->containerUtil->isFrontend()) {
+        if (!$this->utils->container()->isFrontend()) {
             $this->terminationCondition = true;
         }
         // deactivate if AMP mode is active
@@ -152,11 +144,9 @@ class RenderListener
     protected function getLayout()
     {
         if (!$this->layout) {
-            global $objPage;
+            $objPage = $this->utils->request()->getCurrentPageModel();
 
-            if (null === $objPage || null === ($this->layout = $this->modelUtil
-                    ->findModelInstanceByPk('tl_layout', $objPage->layout)
-                )) {
+            if (null === $objPage || null === ($this->layout = LayoutModel::findByPk($objPage->layout))) {
                 return null;
             }
         }

@@ -2,6 +2,9 @@
 
 All notable changes to this project will be documented in this file.
 
+## [2.4.7] - 2022-05-10
+- Fixed: respect request attributes for layout evaluation
+
 ## [2.4.6] - 2022-05-09
 
 - Fixed: added missing `|default` at `block_searchable.html.twig` and `block_unsearchable.html.twig` 
