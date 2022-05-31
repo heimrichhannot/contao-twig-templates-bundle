@@ -2,6 +2,10 @@
 
 All notable changes to this project will be documented in this file.
 
+## [2.4.8] - 2022-05-31
+- Changed: removed test setup
+- Fixed: warning in php 8
+
 ## [2.4.7] - 2022-05-10
 - Fixed: respect request attributes for layout evaluation
 
