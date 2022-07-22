@@ -6,7 +6,15 @@
             {% set counter = random() %}
             {% set default = option.value == arrConfiguration.default|default() %}
             {% block option %}
-                <option value="{{ option.value }}"{% if option.selected|default(false) %} selected{% endif %}>{{ option.label|raw }}</option>
+                {% if option.type == "group_start" %}
+                    <optgroup label="{{ option.label }}">
+                {% endif %}
+                {% if option.type == "option" %}
+                    <option value="{{ option.value }}"{% if option.selected|default(false) %} selected{% endif %}>{{ option.label|raw }}</option>
+                {% endif %}
+                {% if option.type == "group_end" %}
+                    </optgroup>
+                {% endif %}
             {% endblock %}
         {% endfor %}
     </select>
