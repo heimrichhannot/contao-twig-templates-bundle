@@ -2,6 +2,9 @@
 
 All notable changes to this project will be documented in this file.
 
+## [2.4.9] - 2022-07-25
+- Changed: added optgroup syntax (thanks @werph)
+
 ## [2.4.8] - 2022-05-31
 - Changed: removed test setup
 - Fixed: warning in php 8
