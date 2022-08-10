@@ -4,10 +4,10 @@
     <ul itemprop="breadcrumb" itemscope itemtype="http://schema.org/BreadcrumbList">
         {% for key, item in items %}
             {% if item.isActive|default %}
-                <li class="active{{ item.class|default ? ' ' ~ item.class : '' }} last">{{ item.link|default }}</li>
+                <li class="active{{ item.class|default ? ' ' ~ item.class : '' }} last">{{ item.link|default|raw }}</li>
             {% else %}
                 <li class="{{ item.class|default ? ' ' ~ item.class : '' }}" itemscope itemtype="http://schema.org/ListItem" itemprop="itemListElement">
-                    <a href="{{ item.href|default }}" title="{{ item.title|default }}" itemprop="url"><span itemprop="name">{{ item.isRoot|default ? item.title : item.link }}</span></a>
+                    <a href="{{ item.href|default }}" title="{{ item.title|default|raw }}" itemprop="url"><span itemprop="name">{{ item.isRoot|default ? item.title|raw : item.link|raw }}</span></a>
                     <meta itemprop="position" content="{{ (key + 1) }}">
                 </li>
             {% endif %}

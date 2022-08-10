@@ -5,12 +5,12 @@
         {% for key, item in items %}
             {% if item.isActive|default %}
                 <li class="active list-inline-item{{ item.class|default ? ' ' ~ item.class : '' }} last">
-                    <a href="{{ item.href|default }}" title="{{ item.title|default }}">{{ item.isRoot|default ? item.title : item.link }}</a>
+                    <a href="{{ item.href|default }}" title="{{ item.title|default|raw }}">{{ item.isRoot|default ? item.title|raw : item.link|raw }}</a>
                 </li>
             {% else %}
                 <li class="list-inline-item{{ item.class|default ? ' ' ~ item.class : '' }}" itemscope itemtype="http://schema.org/ListItem"
                     itemprop="itemListElement">
-                    <a href="{{ item.href|default }}" title="{{ item.title|default }}" itemprop="url"><span itemprop="name">{{ item.isRoot|default ? item.title : item.link }}</span> > </a>
+                    <a href="{{ item.href|default }}" title="{{ item.title|default|raw }}" itemprop="url"><span itemprop="name">{{ item.isRoot|default ? item.title|raw : item.link|raw }}</span> > </a>
                     <meta itemprop="position" content="{{ (key + 1) }}">
                 </li>
             {% endif %}

@@ -2,6 +2,9 @@
 
 All notable changes to this project will be documented in this file.
 
+## [2.4.10] - 2022-08-10
+- Fixed: added missing `|raw` filters at `mod_breadcrumb_bs4.html.twig` and `mod_breadcrumb.html.twig` 
+
 ## [2.4.9] - 2022-07-25
 - Changed: added optgroup syntax (thanks @werph)
 
