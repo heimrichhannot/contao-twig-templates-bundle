@@ -2,6 +2,10 @@
 
 All notable changes to this project will be documented in this file.
 
+## [2.5.0] - 2022-10-17
+- Changed: use updated accordion util in bs4
+- Changed: dropped support for php <7.4
+
 ## [2.4.10] - 2022-08-10
 - Fixed: added missing `|raw` filters at `mod_breadcrumb_bs4.html.twig` and `mod_breadcrumb.html.twig` 
 

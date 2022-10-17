@@ -1,7 +1,7 @@
 <?php
 
 /*
- * Copyright (c) 2021 Heimrich & Hannot GmbH
+ * Copyright (c) 2022 Heimrich & Hannot GmbH
  *
  * @license LGPL-3.0-or-later
  */
@@ -13,33 +13,20 @@ use HeimrichHannot\TwigSupportBundle\Exception\TemplateNotFoundException;
 use HeimrichHannot\TwigSupportBundle\Filesystem\TwigTemplateLocator;
 use HeimrichHannot\TwigTemplatesBundle\Event\BeforeRenderCallback;
 use HeimrichHannot\TwigTemplatesBundle\Event\PrepareTemplateCallback;
-use HeimrichHannot\UtilsBundle\Accordion\AccordionUtil;
-use HeimrichHannot\UtilsBundle\String\StringUtil;
+use HeimrichHannot\UtilsBundle\Util\Utils;
 
 class Bootstrap4Framework extends AbstractFrontendFramework
 {
-    /**
-     * @var AccordionUtil
-     */
-    protected $accordionUtil;
-
-    /**
-     * @var TwigTemplateLocator
-     */
-    protected $templateLocator;
-    /**
-     * @var StringUtil
-     */
-    protected $stringUtil;
+    protected TwigTemplateLocator $templateLocator;
+    private Utils $utils;
 
     /**
      * Bootstrap4Framework constructor.
      */
-    public function __construct(AccordionUtil $accordionUtil, TwigTemplateLocator $templateLocator, StringUtil $stringUtil)
+    public function __construct(Utils $utils, TwigTemplateLocator $templateLocator)
     {
-        $this->accordionUtil = $accordionUtil;
         $this->templateLocator = $templateLocator;
-        $this->stringUtil = $stringUtil;
+        $this->utils = $utils;
     }
 
     public static function getIdentifier(): string
@@ -83,11 +70,10 @@ class Bootstrap4Framework extends AbstractFrontendFramework
     protected function prepareAccordions(string &$templateName, array &$data)
     {
         // prepare template data for bootstrap
-        if ($this->stringUtil->startsWith($templateName, 'ce_accordionSingle')) {
-            $this->accordionUtil->structureAccordionSingle($data);
-        } elseif ($this->stringUtil->startsWith($templateName, 'ce_accordionStart') ||
-                  $this->stringUtil->startsWith($templateName, 'ce_accordionStop')) {
-            $this->accordionUtil->structureAccordionStartStop($data);
+        if (str_starts_with($templateName, 'ce_accordionSingle')) {
+            $this->utils->accordion()->structureAccordionSingle($data);
+        } elseif (str_starts_with($templateName, 'ce_accordionStart') || str_starts_with($templateName, 'ce_accordionStop')) {
+            $this->utils->accordion()->structureAccordionStartStop($data);
         }
     }
 }
