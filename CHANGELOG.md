@@ -2,6 +2,9 @@
 
 All notable changes to this project will be documented in this file.
 
+## [2.5.1] - 2023-02-08
+- Changed: optimized form_row_no_label template
+
 ## [2.5.0] - 2023-02-08
 - Added: create template without label for submit button
 - Changed: use updated accordion util in bs4
