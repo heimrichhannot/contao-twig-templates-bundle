@@ -2,7 +2,8 @@
 
 All notable changes to this project will be documented in this file.
 
-## [2.5.0] - 2022-10-17
+## [2.5.0] - 2023-02-08
+- Added: create template without label for submit button
 - Changed: use updated accordion util in bs4
 - Changed: dropped support for php <7.4
 
