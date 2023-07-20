@@ -2,6 +2,10 @@
 
 All notable changes to this project will be documented in this file.
 
+## [2.5.2] - 2023-07-20
+- Added: '|raw' filter for checkbox options and select attr
+- Fixed: include css class in 'form_row' 
+
 ## [2.5.1] - 2023-02-08
 - Changed: optimized form_row_no_label template
 

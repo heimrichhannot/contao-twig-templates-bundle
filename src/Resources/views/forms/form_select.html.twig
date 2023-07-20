@@ -21,7 +21,7 @@
         <input type="hidden" name="{{ strName|trim('[]', 'right') }}" value="">
     {% endif %}
 
-    <select name="{{ strName|default }}" id="ctrl_{{ strId|default }}" class="{{ strClass|default }}"{{ attritbutes|default }}>
+    <select name="{{ strName|default }}" id="ctrl_{{ strId|default }}" class="{{ strClass|default }}"{{ attributes|default()|raw }}>
         {% for option in arrOptions %}
             {% if option.type|default() == 'group_start' %}
                 <optgroup label="{{ option.label|default }}">

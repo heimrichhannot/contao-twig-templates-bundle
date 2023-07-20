@@ -26,7 +26,7 @@
             {% endif %}
 
             {% if option.type == 'option' %}
-                <span><input type="checkbox" name="{{ option.name }}" id="opt_{{ option.id }}" class="checkbox" value="{{ option.value }}" {{ option.checked }} {{ option.attributes }}> <label id="lbl_{{ option.id }}" for="opt_{{ option.id }}">{{ option.label }}</label></span>
+                <span><input type="checkbox" name="{{ option.name }}" id="opt_{{ option.id }}" class="checkbox" value="{{ option.value }}" {{ option.checked }} {{ option.attributes }}> <label id="lbl_{{ option.id }}" for="opt_{{ option.id }}">{{ option.label|raw }}</label></span>
             {% endif %}
 
             {% if option.type == 'group_start' %}
