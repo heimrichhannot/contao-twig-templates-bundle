@@ -26,7 +26,18 @@
             {% endif %}
 
             {% if option.type == 'option' %}
-                <span><input type="checkbox" name="{{ option.name }}" id="opt_{{ option.id }}" class="checkbox" value="{{ option.value }}" {{ option.checked }} {{ option.attributes }}> <label id="lbl_{{ option.id }}" for="opt_{{ option.id }}">{{ option.label|raw }}</label></span>
+                <span>
+                    <input type="checkbox" name="{{ option.name }}" id="opt_{{ option.id }}" class="checkbox" value="{{ option.value }}" {{ option.checked }} {{ option.attributes }}>
+                    <label id="lbl_{{ option.id }}" for="opt_{{ option.id }}">
+                        {% if arrConfiguration.mandatory|default(false) %}
+                            <span class="sr-only">{{ 'huh.twig.templates.label.mandatory'|trans }}</span>
+                             {{ option.label|raw }}
+                            <span class="mandatory">*</span>
+                        {% else %}
+                            {{ option.label|raw }}
+                        {% endif %}
+                    </label>
+                </span>
             {% endif %}
 
             {% if option.type == 'group_start' %}

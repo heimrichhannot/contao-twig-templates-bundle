@@ -2,6 +2,10 @@
 
 All notable changes to this project will be documented in this file.
 
+## [2.5.3] - 2023-07-21
+- Added: * to mandatory checkbox options in form_checkbox
+- Fixed: label attribute in form_textfield
+
 ## [2.5.2] - 2023-07-20
 - Added: '|raw' filter for checkbox options and select attr
 - Fixed: include css class in 'form_row' 
