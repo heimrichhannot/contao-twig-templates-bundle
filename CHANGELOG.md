@@ -2,6 +2,9 @@
 
 All notable changes to this project will be documented in this file.
 
+## [2.5.4] - 2023-12-07
+- Fixed: checkbox compatibility with form generator
+
 ## [2.5.3] - 2023-07-21
 - Added: * to mandatory checkbox options in form_checkbox
 - Fixed: label attribute in form_textfield
